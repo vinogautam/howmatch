@@ -1,0 +1,45 @@
+/*
+
+* Override Pages default styles or create your own styles here
+
+*/
+.card-title{
+	font-size: 20px!important; 
+}
+.no-pm{
+	margin:0 !important;
+	padding: 0 !important;
+}
+.pgn-wrapper{
+	z-index: 99999!important;
+    right: 30px !important;
+    top: 30px !important;
+}
+.submitted .form-group.invalid{
+	border:1px solid red;
+}
+.datepicker td.disabled{
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+.cp{
+	cursor: pointer;
+}
+.active_dt{
+	background: #17977c;
+	width: 30px;
+	height: 30px;
+	color: #fff;
+	display: inline-block;
+	border-radius: 50%;
+	padding: 9px;
+}
+.inactive_dt{
+	background: #f35958;
+	width: 30px;
+	color: #fff;
+	height: 30px;
+	padding: 9px;
+	display: inline-block;
+	border-radius: 50%;
+}
