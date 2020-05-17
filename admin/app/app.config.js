@@ -48,6 +48,7 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'jobsController'
         },
         {
+
             name: 'category',
             label: 'Category',
             auth: true,
@@ -55,6 +56,16 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/category',
             templateUrl: 'app/category/category.html',
             controller: 'categoryController'
+          },
+          
+          {
+            name: 'package',
+            label: 'Package',
+            auth: true,
+            restricted:false,
+            url: '/package',
+            templateUrl: 'app/package/package.html',
+            controller: 'packageController'
         }
     ]
 

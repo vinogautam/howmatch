@@ -7,7 +7,6 @@ function hm_packages(){
 
 function hm_save_package(){
 	$data = $_POST;
-	$data['created_on'] = date('Y-m-d H:i:s');
 
 	if(isset($data['id'])){
 		$id = $data['id'];
@@ -15,6 +14,8 @@ function hm_save_package(){
 		update('packages', $data, array('id' => $id));
 		return array('status' => 'Success', 'msg' => 'Package Updated Successfully');
 	} else {
+		$data['created_on'] = date('Y-m-d H:i:s');
+		$data['status'] = 1;
 		insert('packages', $data);
 		return array('status' => 'Success', 'msg' => 'Package Added Successfully');
 	}
