@@ -1,9 +1,9 @@
 angular.module('app')
-        .controller('skillsController', skillseController);
+        .controller('skillsController', skillsController);
 
 skillseController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', 'ApiService']
 
-function skillseController($scope, $state, $rootScope, APIURL, $http, ApiService) {
+function skillsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
