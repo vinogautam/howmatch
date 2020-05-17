@@ -1,7 +1,7 @@
 angular.module('app')
         .controller('skillsController', skillsController);
 
-skillseController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', 'ApiService']
+skillsController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', 'ApiService']
 
 function skillsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 

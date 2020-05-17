@@ -5,10 +5,7 @@ usersController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', 
 
 function usersController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
-    $('#show-modal').click(function() {
-        $('#addNewAppModal').modal('show');
-    });
-
+   
     $scope.pagingSize = 5;
     $scope.dataPerPage = 10;
     $scope.totalItems = [];
@@ -17,17 +14,17 @@ function usersController($scope, $state, $rootScope, APIURL, $http, ApiService) 
     $scope.pageInfo = {submitted: false};
     $scope.form_data = {};
     $scope.totalItems = [];
-    ApiService.hm_skills().then(function(res){
+    ApiService.hm_users().then(function(res){
     	$scope.totalItems = res.data;
     });
 
-    $scope.save = function(frm){
+    $scope.save_user = function(frm){
     	$scope.pageInfo.submitted = true;
     	if(frm.$valid){
-    		ApiService.hm_save_skill($scope.form_data).then(function(res){
+    		ApiService.hm_save_user($scope.form_data).then(function(res){
     			$('#addNewAppModal').modal('hide');
     			ApiService.notification(res.msg, 'success');
-    			ApiService.hm_skills().then(function(res){
+    			ApiService.hm_users().then(function(res){
 			    	$scope.totalItems = res.data;
 			    });
 			    $scope.form_data = {};
@@ -48,21 +45,26 @@ function usersController($scope, $state, $rootScope, APIURL, $http, ApiService) 
     };
 
     $scope.delete2 = function(id){
-    	ApiService.hm_delete_skill($scope.pageInfo.actionId).then(function(res){
+    	ApiService.hm_delete_user($scope.pageInfo.actionId).then(function(res){
     		$('#deleteAppModal').modal('hide');
     		ApiService.notification(res.msg, 'success');
-    		ApiService.hm_skills().then(function(res){
+    		ApiService.hm_users().then(function(res){
 		    	$scope.totalItems = res.data;
 		    });
     	});
     };
 
     $scope.change_status = function(st, id){
-    	ApiService.hm_change_skill_status(st, id).then(function(res){
+    	ApiService.hm_change_user_status(st, id).then(function(res){
     		ApiService.notification(res.msg, 'success');
-    		ApiService.hm_skills().then(function(res){
+    		ApiService.hm_users().then(function(res){
 		    	$scope.totalItems = res.data;
 		    });
     	});
     };
+
+    $scope.skills=[];
+    ApiService.hm_skills().then(function(res){
+        $scope.skills = res.data;
+    });
 }

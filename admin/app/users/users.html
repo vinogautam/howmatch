@@ -12,7 +12,7 @@
 <div class=" container-fluid   container-fixed-lg bg-white">
   <div class="card card-transparent">
     <div class="card-header">
-      <div class="card-title">{{currentStateDetails.label}}&nbsp;&nbsp;&nbsp;<button id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add New
+      <div class="card-title">{{currentStateDetails.label}}&nbsp;&nbsp;&nbsp;<button id="show-modal" ng-click="edit({profile: {}, user_type:3})" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add New
                     </button>
       </div>
       <div class="pull-right">
@@ -103,21 +103,35 @@
       <div class="modal-header clearfix ">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
         </button>
-        <h4 class="p-b-5"><span class="semi-bold">{{user_form_data.id ? 'Edit' : 'New'}}</span> user</h4>
+        <h4 class="p-b-5"><span class="semi-bold">{{form_data.id ? 'Edit' : 'New'}}</span> user</h4>
       </div>
       <div class="modal-body">
         <p class="small-text">Create a new user using this form, make sure you fill them all</p>
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: userform.username.$invalid}">
+                <label>User Name</label>
+                <input name="username" required="" ng-model="form_data.username" type="text" class="form-control" placeholder="Enter Username">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: userform.dob.$invalid}">
+                <label>Password</label>
+                <input  name="password" ng-model="form_data.password" required type="password" class="form-control" placeholder="Enter Password">
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.name.$invalid}">
                 <label>Full Name</label>
-                <input name="title" required="" ng-model="user_form_data.title" type="text" class="form-control" placeholder="Name of the user">
+                <input name="name" required="" ng-model="form_data.profile.name" type="text" class="form-control" placeholder="Name of the user">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.dob.$invalid}">
                 <label>Date of Birth</label>
-                <input  name="dob" ng-model="user_form_data.dob" required date-picker type="text" class="form-control" placeholder="Date of Birth">
+                <input  name="dob" ng-model="form_data.profile.dob" required cdate-picker type="text" class="form-control" placeholder="Date of Birth">
               </div>
             </div>
           </div>
@@ -125,13 +139,13 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.phonenumber.$invalid}">
                 <label>Phone Number</label>
-                 <input  name="phonenumber" ng-model="user_form_data.phonenumber" required  type="text" class="form-control" placeholder="Phone number">
+                 <input  name="phonenumber" ng-model="form_data.profile.phonenumber" required  type="text" class="form-control" placeholder="Phone number">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.email.$invalid}">
                 <label>Email</label>
-                <input  name="email" ng-model="user_form_data.email" required  type="text" class="form-control" placeholder="Email">
+                <input  name="email" ng-model="form_data.email" required  type="email" class="form-control" placeholder="Email">
               </div>
             </div>
           </div>
@@ -139,8 +153,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default">
                 <label>Gender</label>
-                <select name="gender" class="form-control"  ng-model="user_form_data.gender" >
-                  <option>Both</option>
+                <select name="gender" class="form-control"  ng-model="form_data.profile.gender" >
                   <option>Male</option>
                   <option>Female</option>
                 </select>
@@ -149,7 +162,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.email.$invalid}">
                 <label>Age</label>
-                <input  name="age" ng-model="user_form_data.age" required  type="text" class="form-control" placeholder="Age">
+                <input  name="age" ng-model="form_data.profile.age" required  type="text" class="form-control" placeholder="Age">
               </div>
             </div>
           </div>
@@ -158,7 +171,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: userform.job_title.$invalid}">
                 <label>Job Title</label>
-                <input  name="job_title" ng-model="user_form_data.job_title" required id="appDescription" type="text" class="form-control" placeholder="Job Title">
+                <input  name="job_title" ng-model="form_data.profile.job_title" required id="appDescription" type="text" class="form-control" placeholder="Job Title">
               </div>
             </div>
           </div>
@@ -166,13 +179,13 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.salary.$invalid}">
                 <label>Salary</label>
-                <input  name="salary" ng-model="user_form_data.salary" required type="text" class="form-control" placeholder="Last Drawn salary">
+                <input  name="salary" ng-model="form_data.profile.salary" required type="text" class="form-control" placeholder="Last Drawn salary">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: userform.salarytype.$invalid}">
                 <label>Salary Type</label>
-                <input  name="salarytype" ng-model="user_form_data.salarytype" required  type="text" class="form-control" placeholder="">
+                <input  name="salarytype" ng-model="form_data.profile.salarytype" required  type="text" class="form-control" placeholder="">
               </div>
             </div>
             
@@ -184,22 +197,22 @@
                 <label>Industry</label>
                 <div class="row">
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Marketing']" type="checkbox" id="checkboxteamMarketing">
+                    <input type="checkbox" id="checkboxteamMarketing">
                     <label for="checkboxteamMarketing">Marketing</label>
                   </div>
 
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Software']" type="checkbox" id="checkboxteamSoftware">
+                    <input type="checkbox" id="checkboxteamSoftware">
                     <label for="checkboxteamSoftware">Software</label>
                   </div>
 
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Banking']" type="checkbox" id="checkboxteamBanking">
+                    <input type="checkbox" id="checkboxteamBanking">
                     <label for="checkboxteamBanking">Banking</label>
                   </div>
 
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Medical']" type="checkbox" id="checkboxteamMedical">
+                    <input type="checkbox" id="checkboxteamMedical">
                     <label for="checkboxteamMedical">Medical</label>
                   </div>
                 </div>
@@ -212,12 +225,12 @@
                 <label>Qualification</label>
                 <div class="row">
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Bachelor']" type="checkbox" id="checkboxteamBachelor">
+                    <input ng-model="form_data.industry['Bachelor']" type="checkbox" id="checkboxteamBachelor">
                     <label for="checkboxteamBachelor">Bachelor</label>
                   </div>
 
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.industry['Master']" type="checkbox" id="checkboxteamMaster">
+                    <input ng-model="form_data.industry['Master']" type="checkbox" id="checkboxteamMaster">
                     <label for="checkboxteamMaster">Master</label>
                   </div>
                 </div>
@@ -230,12 +243,12 @@
                 <label>Career Level</label>
                 <div class="row">
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.career_level['Manager']" type="checkbox" id="checkboxteamManager">
+                    <input ng-model="form_data.career_level['Manager']" type="checkbox" id="checkboxteamManager">
                     <label for="checkboxteamManager">Manager</label>
                   </div>
 
                   <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="user_form_data.career_level['Student']" type="checkbox" id="checkboxteamStudent">
+                    <input ng-model="form_data.career_level['Student']" type="checkbox" id="checkboxteamStudent">
                     <label for="checkboxteamStudent">Student</label>
                   </div>
                 </div>
@@ -245,8 +258,33 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group form-group-default">
+                <label>Skills</label>
+                 <select name="gender" class="form-control"  ng-model="form_data.profile.skills" multiple >
+                  <option value="0">Select Skills</option>
+                  <option ng-repeat="skills in skills" value="{{skills.id}}">{{skills.title}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group form-group-default">
+                <label>Profile Photo</label>
+                <input  name="photo"  required  type="file" class="form-control" placeholder="Profile photo">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: userform.resume.$invalid}">
+                <label>Resume</label>
+                <input  name="age"  required  type="file" class="form-control" placeholder="Resume">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group form-group-default">
                 <label>Location</label>
-                <input required="" ng-model="user_form_data.location" name="location" type="text" class="form-control" placeholder="Location">
+                <input required="" ng-model="form_data.profile.location" name="location" type="text" class="form-control" placeholder="Location">
               </div>
             </div>
           </div>
