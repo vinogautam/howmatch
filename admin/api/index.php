@@ -1,6 +1,6 @@
 <?php
 
-$array = array('config', 'common', 'jobs', 'users','category', 'package');
+$array = array('config', 'common', 'jobs', 'users','category', 'package', 'skills');
 
 foreach ($array as $key => $value) {
 	include $value.'.php';
