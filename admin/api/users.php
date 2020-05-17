@@ -25,7 +25,7 @@ function hm_users(){
 }
 
 function hm_company(){
-	$res = get_row("select * from users where user_type = 2");
+	$res = get_row("select * from users where user_type = 3");
 	$new_res = array();
 	foreach ($res as $key => $value) {
 		$value['profile'] = get_all_meta('users', $value['id']);

@@ -76,6 +76,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/skills',
             templateUrl: 'app/skills/skills.html',
             controller: 'skillsController'
+        },
+        {
+            name: 'company',
+            label: 'Company',
+            auth: true,
+            restricted:false,
+            url: '/company',
+            templateUrl: 'app/company/company.html',
+            controller: 'companyController'
         }
     ]
 
