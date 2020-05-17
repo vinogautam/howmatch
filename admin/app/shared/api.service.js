@@ -63,5 +63,33 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     }
 
+    apiService.hm_packages = function(){
+        return httpService.get(APIURL+'hm_packages')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_package = function(data){
+        return httpService.post(APIURL+'hm_save_package', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_delete_package = function(id){
+        return httpService.post(APIURL+'hm_delete_package', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_change_package_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_package_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
     return apiService;
 });
