@@ -15,23 +15,25 @@ function hm_login(){
 }
 
 function hm_users(){
-	$res = get_row("select * from users where user_type = 2");
+	$res = get_results("select * from users where user_type = 3");
 	$new_res = array();
 	foreach ($res as $key => $value) {
 		$value['profile'] = get_all_meta('users', $value['id']);
 		unset($value['password']);
+		$new_res[] = $value;
 	}
-	return array('status' => 'Success', 'data' => $res);
+	return array('status' => 'Success', 'data' => $new_res);
 }
 
 function hm_company(){
-	$res = get_row("select * from users where user_type = 3");
+	$res = get_results("select * from users where user_type = 2");
 	$new_res = array();
 	foreach ($res as $key => $value) {
 		$value['profile'] = get_all_meta('users', $value['id']);
 		unset($value['password']);
+		$new_res[] = $value;
 	}
-	return array('status' => 'Success', 'data' => $res);
+	return array('status' => 'Success', 'data' => $new_res);
 }
 
 function hm_save_user(){

@@ -43,3 +43,22 @@
 	display: inline-block;
 	border-radius: 50%;
 }
+input[type="file"]{display: none;}
+.profile_picture{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	overflow: hidden;
+	border:1px solid #444;
+	background: #ccc;
+	margin-bottom: 20px;
+}
+.profile_picture img{
+	width: 100%;
+	height: auto;
+}
+.profile_picture+button{
+	height: 33px !important;
+    margin-left: 20px !important;
+    margin-top: 25px !important;
+}

@@ -1,6 +1,6 @@
 var hmapp = angular.module('app', 
     ['ui.router', 'ui.bootstrap', 'ui.tinymce'])
-.value('APIURL', 'http://localhost/howmatch/admin/api/?action=');
+.value('APIURL', 'http://localhost/Boopathi/howmatch/admin/api/?action=');
 
 hmapp
 .config(routes);
@@ -222,15 +222,14 @@ hmapp.directive('fileUpload', function(ApiService, $rootScope, $timeout, $state,
     require: '?ngModel',
     link: function (scope, element, attrs, ngModel) {
         element.bind('change', function(event){
-        	ApiService.upload(attrs['fileUpload'], result, attrs['fileFolder'], ext).then(function(data){
-                            ngModel.$setViewValue(data.Location);
-                            
-                            if(attrs.afterUpload){
-                                scope.$eval(attrs.afterUpload);
-                            }
-                       }, function(err){
-                           console.log(err);
-                       });
+        	var file = event.target.files[0];
+        	
+        	var fileReader = new FileReader();
+        	fileReader.onload = function(){
+        		ngModel.$setViewValue(fileReader.result);
+        	}
+        	fileReader.readAsDataURL( file );
+        	
         }); 
     }
   };

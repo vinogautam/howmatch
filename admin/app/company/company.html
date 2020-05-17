@@ -12,7 +12,7 @@
 <div class=" container-fluid   container-fixed-lg bg-white">
   <div class="card card-transparent">
     <div class="card-header">
-      <div class="card-title">Company&nbsp;&nbsp;&nbsp;<button id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add New
+      <div class="card-title">Company&nbsp;&nbsp;&nbsp;<button ng-click="edit({user_type:2, profile:{}});" id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add New
                     </button>
       </div>
       <div class="pull-right">
@@ -28,10 +28,11 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Package Name</th>
-            <th>Package Price</th>
-            <th>Package Details</th>
-            <th>No. of Subscription</th>
+            <th>Company Name</th>
+            <th>Employer Name</th>
+            <th>Contact Details</th>
+            <th>Package</th>
+            <th>No. of Jobs Posted</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -39,14 +40,15 @@
         <tbody>
           <tr class="gradeX" ng-repeat="t in totalItems" repeat-end="initTooltip()">
             <td>{{$index + 1}}</td>
-            <td>{{t.name}}</td>
-            <td>{{t.amount}}</td>
+            <td>{{t.profile.company_name}}</td>
+            <td>{{t.profile.employer_name}}</td>
             <td>
-              <p>{{t.no_of_posting}} job posting</p>
-              <p>{{t.featured_job}} Featured job</p>
-              <p>Job displayed {{t.no_of_display_day}} 60 days</p>
-              <p>{{t.description}}</p>
+              <p>Website: {{t.profile.website}}</p>
+              <p>Email: {{t.email}}</p>
+              <p>Contact1: {{t.profile.contact1}} 60 days</p>
+              <p>Contact2: {{t.profile.contact2}}</p>
             </td>
+            <td>{{t.profile.package}}</td>
             <td>{{t.no_of_subscription}}</td>
             <td ng-if="t.status == 0">
               <i ng-click="change_status(1, t.id);" class="inactive_dt cp fa fa-times"></i>
@@ -55,8 +57,8 @@
               <i ng-click="change_status(0, t.id);" class="active_dt cp fa fa-check"></i>
             </td>
             <td>
-              <i ng-click="edit(t);" class="fa fa-pencil cp" data-toggle="tooltip" data-original-title="Edit Package" ></i> &nbsp;&nbsp;&nbsp;
-              <i ng-click="delete(t.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Package" ></i>
+              <i ng-click="edit(t);" class="fa fa-pencil cp" data-toggle="tooltip" data-original-title="Edit Company" ></i> &nbsp;&nbsp;&nbsp;
+              <i ng-click="delete(t.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Company" ></i>
             </td>
           </tr>
           <tr ng-if="totalItems.length == 0"><td colspan="7">No Packages</td></tr>
@@ -98,60 +100,103 @@
         <h4 class="p-b-5"><span class="semi-bold">{{form_data.id ? 'Edit' : 'New'}}</span> Company</h4>
       </div>
       <div class="modal-body">
-        <p class="small-text">Create a new package using this form, make sure you fill them all</p>
+        <p class="small-text">Create a new company using this form, make sure you fill them all</p>
+          <div class="row">
+              <div class="profile_picture">
+                <img ng-if="form_data.profile.profile_picture" src="{{pageInfo.profile_picture}}">
+              </div>
+              <button trigger-upload="profile_picture" class="btn btn-primary">Upload Image</button>
+              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="pageInfo.profile_picture">
+              
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: newform.name.$invalid}">
                 <label>User Name</label>
-                <input name="name" required="" ng-model="form_data.name" type="text" class="form-control" placeholder="Name of the package">
+                <input name="name" required="" ng-model="form_data.username" type="text" class="form-control" placeholder="">
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.name.$invalid}">
+            <div class="col-sm-6" ng-if="!form_data.id">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.password.$invalid}">
                 <label>Password</label>
-                <input name="name" required="" ng-model="form_data.name" type="text" class="form-control" placeholder="Name of the package">
+                <input name="password" required="" ng-model="form_data.password" type="password" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-6" ng-if="form_data.id">
+              <p ng-if="!change_password"><input type="checkbox" ng-model="change_password">Change Password</p>
+              <div ng-if="change_password" class="form-group form-group-default" ng-class="{invalid: newform.password.$invalid}">
+                <label>Password</label>
+                <input name="password" required="" ng-model="form_data.password" type="password" class="form-control" placeholder="">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.no_of_display_day.$invalid}">
-                <label>Employer name</label>
-                <input name="no_of_display_day" required="" ng-model="form_data.no_of_display_day" type="text" class="form-control" placeholder="No of days to display jobs">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.company_name.$invalid}">
+                <label>Company name</label>
+                <input name="company_name" required="" ng-model="form_data.profile.company_name" type="text" class="form-control" placeholder="">
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.no_of_posting.$invalid}">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.founded_on.$invalid}">
                 <label>Founded Date</label>
-                <input name="no_of_posting" required="" ng-model="form_data.no_of_posting" type="text" class="form-control" placeholder="No of Job Posting">
+                <input cdate-picker name="founded_on" required="" ng-model="form_data.profile.founded_on" type="text" class="form-control" placeholder="">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.amount.$invalid}">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.employer_name.$invalid}">
+                <label>Employer name</label>
+                <input name="employer_name" required="" ng-model="form_data.profile.employer_name" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.Address.$invalid}">
+                <label>Address</label>
+                <input name="address" required="" ng-model="form_data.profile.address" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.website.$invalid}">
                 <label>Website</label>
-                <input name="amount" required="" ng-model="form_data.amount" type="text" class="form-control" placeholder="Price of the package">
+                <input name="website" required="" ng-model="form_data.profile.website" type="text" class="form-control" placeholder="">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: newform.featured_job.$invalid}">
-                <label>Contact No</label>
-                <input name="featured_job" required="" ng-model="form_data.featured_job" type="text" class="form-control" placeholder="Featured job">
+                <label>Email</label>
+                <input name="email" required="" ng-model="form_data.email" type="email" class="form-control" placeholder="">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.amount.$invalid}">
-                <label>Team size</label>
-                <input name="amount" required="" ng-model="form_data.amount" type="text" class="form-control" placeholder="Price of the package">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.contact1.$invalid}">
+                <label>Contact No 1</label>
+                <input name="contact1" required="" ng-model="form_data.profile.contact1" type="text" class="form-control" placeholder="Price of the package">
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.featured_job.$invalid}">
+              <div class="form-group form-group-default">
+                <label>Contact No 2</label>
+                <input name="contact2" ng-model="form_data.profile.contact2" type="text" class="form-control" placeholder="Featured job">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.team.$invalid}">
+                <label>Team size</label>
+                <input name="team" ng-model="form_data.profile.team" type="text" class="form-control" placeholder="Price of the package">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.category.$invalid}">
                 <label>Categories</label>
-                <select  name="parent" required class="form-control" ng-model="cat_form_data.parent">
+                <select multiple name="category" class="form-control" ng-model="form_data.profile.category">
                   <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.name}}</option>
                 </select>
               </div>
@@ -159,19 +204,25 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.featured_job.$invalid}">
+              <div class="form-group form-group-default" ng-class="{invalid: newform.package.$invalid}">
                 <label>Package</label>
-                <select  name="parent" required class="form-control" ng-model="cat_form_data.parent">
+                <select  name="package" required class="form-control" ng-model="form_data.profile.package">
                   <option ng-repeat="cat in packages" value="{{cat.id}}">{{cat.name}}</option>
                 </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default">
+                <label>Location</label>
+                <input name="location" ng-model="form_data.profile.location" type="text" class="form-control" placeholder="Price of the package">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <div class="form-group form-group-default" ng-class="{invalid: newform.description.$invalid}">
+              <div class="form-group form-group-default" >
                 <label>Description</label>
-                <input  name="description" ng-model="form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                <textarea rows="5"  name="description" ng-model="form_data.profile.description"  id="appDescription" type="text" class="form-control" placeholder="Tell us more about it"></textarea>
               </div>
             </div>
           </div>
