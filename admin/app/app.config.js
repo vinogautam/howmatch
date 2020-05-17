@@ -77,7 +77,6 @@ function routes($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/skills/skills.html',
             controller: 'skillsController'
         },
-
          {
             name: 'users',
             label: 'Users',
@@ -86,6 +85,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/users',
             templateUrl: 'app/users/users.html',
             controller: 'usersController'
+        },
+        {
+            name: 'company',
+            label: 'Company',
+            auth: true,
+            restricted:false,
+            url: '/company',
+            templateUrl: 'app/company/company.html',
+            controller: 'companyController'
         }
     ]
 
