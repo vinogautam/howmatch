@@ -5,17 +5,13 @@ companyController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http'
 
 function companyController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
-    $('#show-modal').click(function() {
-        $('#addNewAppModal').modal('show');
-    });
-
     $scope.pagingSize = 5;
     $scope.dataPerPage = 10;
     $scope.totalItems = [];
     $scope.displayItems = [];
 
     $scope.pageInfo = {submitted: false};
-    $scope.form_data = {};
+    $scope.form_data = {profile:{}};
     $scope.totalItems = [];
     ApiService.hm_company().then(function(res){
     	$scope.totalItems = res.data;
@@ -40,7 +36,7 @@ function companyController($scope, $state, $rootScope, APIURL, $http, ApiService
     			ApiService.hm_company().then(function(res){
 			    	$scope.totalItems = res.data;
 			    });
-			    $scope.form_data = {};
+			    $scope.form_data = {profile:{}};
     		});
     	} else {
     		ApiService.notification('Please fill all required fields', 'error');
