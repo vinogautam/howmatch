@@ -1,50 +1,53 @@
 <?php
 /* Admin Side*/
-function hm_jobs(){
-	$res = get_results("select * from jobs");
-	return array('status' => 'Success', 'data' => $res);
+function hm_category(){
+	$res = get_results("select * from category");
+	$new_res =  array();
+	foreach ($res as $key => $value) {
+		if($value['parent'] == 0){
+			$value['parent_details'] = array('name' => 'Parent');
+		} else {
+			$value['parent_details'] = get_data_by_id('category', $value['parent']);
+		}
+		$new_res[] = $value;	
+	}
+	return array('status' => 'Success', 'data' => $new_res);
 }
 
-function hm_save_job(){
+function hm_save_category(){
 	$data = $_POST;
-	$data['posted_on'] = date('Y-m-d H:i:s');
-	if(isset($data['industry'])){
-		$data['industry'] = serialize($data['industry']);
-	}
-	if(isset($data['career_level'])){
-		$data['career_level'] = serialize($data['career_level']);
-	}
-	if(isset($data['qualification'])){
-		$data['qualification'] = serialize($data['qualification']);
-	}
-
+	
+	
 	if(isset($data['id'])){
 		$id = $data['id'];
 		unset($data['id']);
-		update('jobs', $data, array('id' => $id));
-		return array('status' => 'Success', 'msg' => 'Job Updated Successfully');
+		unset($data['parent_details']);
+		update('category', $data, array('id' => $id));
+		return array('status' => 'Success', 'msg' => 'Category Updated Successfully');
 	} else {
-		insert('jobs', $data);
-		return array('status' => 'Success', 'msg' => 'Job Added Successfully');
+		$data['created_on'] = date('Y-m-d H:i:s');
+		$data['status'] = 1;
+		insert('category', $data);
+		return array('status' => 'Success', 'msg' => 'Category Added Successfully');
 	}
 }
 
-function hm_delete_job(){
+function hm_delete_category(){
 	$data = $_POST['delete'];
 
 	foreach ($data as $key => $value) {
-		delete('jobs', array('id' => $value));
+		delete('category', array('id' => $value));
 	}
 
-	return array('status' => 'Success', 'msg' => 'Job Deleted Successfully');
+	return array('status' => 'Success', 'msg' => 'Category Deleted Successfully');
 }
 
-function hm_change_status(){
-	update('jobs', array('status' => $_POST['status']), array('id' => $_POST['id']));
+function hm_change_status_cat(){
+	update('category', array('status' => $_POST['status']), array('id' => $_POST['id']));
 
 	if($_POST['status']){
-		return array('status' => 'Success', 'msg' => 'Job Published Successfully');
+		return array('status' => 'Success', 'msg' => 'Category Published Successfully');
 	} else {
-		return array('status' => 'Success', 'msg' => 'Job Unpublished Successfully');
+		return array('status' => 'Success', 'msg' => 'Category Unpublished Successfully');
 	}
 }

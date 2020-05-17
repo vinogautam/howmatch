@@ -7,7 +7,7 @@ function hm_jobs(){
 
 function hm_save_job(){
 	$data = $_POST;
-	$data['posted_on'] = date('Y-m-d H:i:s');
+	
 	if(isset($data['industry'])){
 		$data['industry'] = serialize($data['industry']);
 	}
@@ -24,6 +24,8 @@ function hm_save_job(){
 		update('jobs', $data, array('id' => $id));
 		return array('status' => 'Success', 'msg' => 'Job Updated Successfully');
 	} else {
+		$data['posted_on'] = date('Y-m-d H:i:s');
+		$data['status'] = 1;
 		insert('jobs', $data);
 		return array('status' => 'Success', 'msg' => 'Job Added Successfully');
 	}

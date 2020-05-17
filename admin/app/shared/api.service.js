@@ -63,5 +63,33 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     }
 
+     apiService.hm_category = function(){
+        return httpService.get(APIURL+'hm_category')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_category = function(data){
+        return httpService.post(APIURL+'hm_save_category', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_delete_category = function(id){
+        return httpService.post(APIURL+'hm_delete_category', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_change_status_cat = function(st, id){
+        return httpService.post(APIURL+'hm_change_status_cat', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
     return apiService;
 });
