@@ -1,6 +1,6 @@
 var hmapp = angular.module('app', 
     ['ui.router', 'ui.bootstrap', 'ui.tinymce'])
-.value('APIURL', 'http://localhost/Boopathi/howmatch/admin/api/?action=');
+.value('APIURL', 'http://localhost/howmatch/admin/api/?action=');
 
 hmapp
 .config(routes);

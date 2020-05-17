@@ -41,12 +41,12 @@
         <tbody>
           <tr class="gradeX" ng-repeat="user in totalItems" repeat-end="initTooltip()">
             <td>{{$index + 1}}</td>
-            <td>{{user.title}}</td>
-            <td>{{user.category.name}}</td>
-            <td>{{user.last_date}}</td>
-            <td>{{user.no_of_position}}</td>
-            <td>{{user.posted_by.username}}</td>
-            <td>{{user.posted_on}}</td>
+            <td>{{user.profile.name}}</td>
+            <td>{{user.profile.job_title}}</td>
+            <td>{{user.profile.phonenumber}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.profile.experince}}</td>
+            <td>{{user.profile.salary}}</td>
             <td ng-if="user.status == 0">
               <i ng-click="change_status(1, user.id);" class="inactive_dt cp fa fa-times"></i>
             </td>
