@@ -111,9 +111,38 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
             return res['data'];
         });
     }
-    
+
     apiService.hm_change_package_status = function(st, id){
         return httpService.post(APIURL+'hm_change_package_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_skills = function(){
+        return httpService.get(APIURL+'hm_skills')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+    apiService.hm_save_skill = function(data){
+        return httpService.post(APIURL+'hm_save_skill', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_skill = function(id){
+        return httpService.post(APIURL+'hm_delete_skill', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_skill_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_skill_status', {status: st, id:id})
         .then(function (res) {
             return res['data'];
         });
