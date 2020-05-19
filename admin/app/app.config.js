@@ -103,6 +103,33 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/settings',
             templateUrl: 'app/settings/settings.html',
             controller: 'settingsController'
+        },
+        {
+            name: 'education',
+            label: 'Education Level',
+            auth: true,
+            restricted:false,
+            url: '/education',
+            templateUrl: 'app/education/education.html',
+            controller: 'educationController'
+        },
+        {
+            name: 'joblevel',
+            label: 'Job Level',
+            auth: true,
+            restricted:false,
+            url: '/joblevel',
+            templateUrl: 'app/joblevel/joblevel.html',
+            controller: 'joblevelController'
+        },
+        {
+            name: 'industry',
+            label: 'Industry',
+            auth: true,
+            restricted:false,
+            url: '/industry',
+            templateUrl: 'app/industry/industry.html',
+            controller: 'industryController'
         }
     ]
 
