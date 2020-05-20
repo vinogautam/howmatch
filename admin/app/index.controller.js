@@ -39,7 +39,9 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     };
     
     $scope.loadPlugin = function(){
-       //$.Pages.init(); 
+       $timeout(function(){
+       	$.Pages.initSidebar();
+       }, 100);
     };
     
     $scope.initTooltip = function(){

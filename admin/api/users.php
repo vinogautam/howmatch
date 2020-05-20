@@ -86,3 +86,27 @@ function hm_change_user_status(){
 		return array('status' => 'Success', 'msg' => 'Users Unpublished Successfully');
 	}
 }
+
+function hm_save_admin_profile(){
+	
+	if(isset($_POST['site_title'])){
+		$arr = array('site_title', 'admin_email', 'meta_tag', 'meta_description');
+		foreach ($arr as $key => $value) {
+			set_meta('users', 1, $value, $_POST[$value]);
+		}
+	}
+
+	return array('status' => 'Success', 'data' => get_all_meta('users', 1), 'msg' => 'Admin Profile updated Successfully');
+}
+
+function hm_change_password(){
+	$dt = get_count('select * from users where id = 1 and password = "'.md5($_POST['old_password']).'"');
+	
+	if($dt){
+		update('users', array('password' => md5($_POST['password'])), array('id' => 1));
+		return array('status' => 'Success', 'msg' => 'Password updated Successfully');
+	} else {
+		return array('status' => 'Error', 'msg' => 'Invalid Old Password');
+	}
+	
+}

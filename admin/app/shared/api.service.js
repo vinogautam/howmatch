@@ -385,8 +385,22 @@ apiService.hm_education = function(){
         });
     }
 
-     apiService.hm_change_designation_status = function(st, id){
+    apiService.hm_change_designation_status = function(st, id){
         return httpService.post(APIURL+'hm_change_designation_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_change_password = function(data){
+        return httpService.post(APIURL+'hm_change_password', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_admin_profile = function(data){
+        return httpService.post(APIURL+'hm_save_admin_profile', data)
         .then(function (res) {
             return res['data'];
         });

@@ -17,29 +17,35 @@
       <div class="export-options-container"></div>
     </div>
     <div class="card-body">
-      <form role="form" name="settingsform" novalidate="" ng-class="{submitted: pageInfo.submitted}">
+      <form role="form" name="settingsform" novalidate="" ng-class="{submitted: pageInfo.submitted1}">
       
         <h4>General Settings</h4>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: settingsform.aemail.$invalid}">
-                <label>Admin Email</label>
-                <input name="name" required="" ng-model="settings_form_data.aemail" type="email" class="form-control" placeholder="Enter your Email">
-              </div>
-            </div>
-             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: settingsform.stitle.$invalid}">
                 <label>Site Title</label>
-                <input name="stitle" required="" ng-model="settings_form_data.stitle" type="text" class="form-control" placeholder="Site Title">
+                <input name="stitle" required="" ng-model="settings_form_data.site_title" type="text" class="form-control">
                  
               </div>
             </div> 
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: settingsform.aemail.$invalid}">
+                <label>Admin Email</label>
+                <input name="name" required="" ng-model="settings_form_data.admin_email" type="email" class="form-control">
+              </div>
+            </div>
           </div>         
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: catform.mtag.$invalid}">
                 <label>Meta Tag</label>
-                <input  name="mtag" ng-model="settings_form_data.mtag" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                <textarea rows="5" name="mtag" ng-model="settings_form_data.meta_tag" required id="appDescription" type="text" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: catform.mtag.$invalid}">
+                <label>Meta Description</label>
+                <textarea rows="5" name="mtag" ng-model="settings_form_data.meta_description" required id="appDescription2" type="text" class="form-control"></textarea>
               </div>
             </div>
           </div>
@@ -49,27 +55,36 @@
        
          </form>
       
-      <form role="form" name="changpform" novalidate="" ng-class="{submitted: pageInfo.submitted}">
+      <form role="form" name="changpform" novalidate="" ng-class="{submitted: pageInfo.submitted2}">
       
         <h4>Change Password</h4>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: changpform.opassword.$invalid}">
+              <div class="form-group form-group-default" ng-class="{invalid: changpform.old_password.$invalid}">
                 <label>Old Password</label>
-                <input name="opassword" required="" ng-model="changep_form_data.opassword" type="Password" class="form-control" placeholder="Enter your Old Password">
+                <input ng-pattern="/^.{6,}$/"  name="old_password" required="" ng-model="changep_form_data.old_password" type="Password" class="form-control">
               </div>
             </div>
-             <div class="col-sm-6">
+          </div>   
+          <div class="row">
+            <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: changpform.password.$invalid}">
-                <label>New  Password</label>
-                <input name="password" required="" ng-model="changep_form_data.password" type="password" class="form-control" placeholder="Enter New Password">
-                 
+                <label>New Password</label>
+                <input ng-pattern="/^.{6,}$/"  name="password" required="" ng-model="changep_form_data.password" type="password" class="form-control">
               </div>
             </div> 
-          </div>         
+          </div>   
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: changpform.cpassword.$invalid}">
+                <label>Confirm Password</label>
+                <input ng-pattern="/^.{6,}$/"  name="cpassword" required="" compare-to="changep_form_data.password" ng-model="changep_form_data.cpassword" type="password" class="form-control">
+              </div>
+            </div> 
+          </div>   
                
       
-        <button ng-click="save(changpform)" id="add-app" type="button" class="btn btn-primary  btn-cons">Save</button>
+        <button ng-click="change_password(changpform)" id="add-app" type="button" class="btn btn-primary  btn-cons">Save</button>
        
          </form>
       
