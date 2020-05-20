@@ -247,7 +247,7 @@ apiService.hm_education = function(){
         });
     }
 
-apiService.hm_joblevel = function(){
+    apiService.hm_joblevel = function(){
         return httpService.get(APIURL+'hm_joblevel')
         .then(function (res) {
             return res['data'];
@@ -271,6 +271,122 @@ apiService.hm_joblevel = function(){
 
      apiService.hm_change_joblevel_status = function(st, id){
         return httpService.post(APIURL+'hm_change_joblevel_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_benefits = function(){
+        return httpService.get(APIURL+'hm_benefits')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_benefits = function(data){
+        return httpService.post(APIURL+'hm_save_benefits', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_benefits = function(id){
+        return httpService.post(APIURL+'hm_delete_benefits', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_benefits_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_benefits_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_location = function(){
+        return httpService.get(APIURL+'hm_location')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_location = function(data){
+        return httpService.post(APIURL+'hm_save_location', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_location= function(id){
+        return httpService.post(APIURL+'hm_delete_location', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_location_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_location_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_language = function(){
+        return httpService.get(APIURL+'hm_language')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_language = function(data){
+        return httpService.post(APIURL+'hm_save_language', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_language = function(id){
+        return httpService.post(APIURL+'hm_delete_language', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_language_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_language_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_designation= function(){
+        return httpService.get(APIURL+'hm_designation')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_designation = function(data){
+        return httpService.post(APIURL+'hm_save_designation', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_designation = function(id){
+        return httpService.post(APIURL+'hm_delete_designation', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_designation_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_designation_status', {status: st, id:id})
         .then(function (res) {
             return res['data'];
         });

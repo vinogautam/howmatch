@@ -130,6 +130,42 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/industry',
             templateUrl: 'app/industry/industry.html',
             controller: 'industryController'
+        },
+        {
+            name: 'benefits',
+            label: 'Benefits',
+            auth: true,
+            restricted:false,
+            url: '/benefits',
+            templateUrl: 'app/benefits/benefits.html',
+            controller: 'benefitsController'
+        },
+        {
+            name: 'location',
+            label: 'Location',
+            auth: true,
+            restricted:false,
+            url: '/location',
+            templateUrl: 'app/location/location.html',
+            controller: 'locationController'
+        },
+        {
+            name: 'language',
+            label: 'Language',
+            auth: true,
+            restricted:false,
+            url: '/language',
+            templateUrl: 'app/language/language.html',
+            controller: 'languageController'
+        },
+        {
+            name: 'designation',
+            label: 'Designation',
+            auth: true,
+            restricted:false,
+            url: '/designation',
+            templateUrl: 'app/designation/designation.html',
+            controller: 'designationController'
         }
     ]
 
