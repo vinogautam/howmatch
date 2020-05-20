@@ -11,6 +11,7 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         $rootScope.loggedInUserInfo = JSON.parse($scope.user);
     }
 
+    $rootScope.menu = {};
     $rootScope.currentState = $state.current.name;
     $rootScope.currentStateDetails = $state.current;
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
