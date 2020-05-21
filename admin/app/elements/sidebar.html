@@ -49,15 +49,17 @@
               <span class="title">Jobs</span>
               <span class="details">12 New Jobs</span>
             </a>
-            <span class="icon-thumbnail"><i class="pg-mail"></i></span>
+            <span class="icon-thumbnail"><img src="assets/img/job.svg"></span>
           </li>
           <li class="" ui-sref="company">
             <a href="#" ><span class="title">Company</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
+            <span class="icon-thumbnail"><i class="fa fa-building-o" aria-hidden="true"></i>
+            </span>
           </li>
           <li ui-sref="users">
             <a href="#"><span class="title">Users</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
+            <span class="icon-thumbnail"><i class="fa fa-users" aria-hidden="true"></i>
+            </span>
           </li>
           <li ui-sref="package">
             <a href="javascript:;"><span class="title">Packages</span></a>
@@ -65,50 +67,13 @@
           </li>
           <li ui-sref="category">
             <a href="javascript:;"><span class="title">Category</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
+            <span class="icon-thumbnail"><img src="assets/img/category.svg"></span>
           </li>
-
-          <li ui-sref="skills">
-            <a href="javascript:;"><span class="title">Skills</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
-          </li>
-          <li ui-sref="industry">
-            <a href="javascript:;"><span class="title">Industry</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
-          </li>
-          <li ui-sref="education">
-            <a href="javascript:;"><span class="title">Education Level</span></a>
-            <span class="icon-thumbnail"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            </span>
-          </li>
-          <li ui-sref="joblevel">
-            <a href="javascript:;"><span class="title">Job Level</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
-          </li>
-          <li ui-sref="benefits">
-            <a href="javascript:;"><span class="title">Benefits</span></a>
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
-          </li>
-          <li ui-sref="language">
-            <a href="javascript:;"><span class="title">Language</span></a>
-            <span class="icon-thumbnail"><i class="fa fa-language" aria-hidden="true"></i>
-            </i></span>
-          </li>
-          <li ui-sref="location">
-            <a href="javascript:;"><span class="title">Location</span></a>
-            <span class="icon-thumbnail"><i class="fa fa-map-marker" aria-hidden="true"></i>
-            </i></span>
-          </li>
-          <li ui-sref="designation">
-            <a href="javascript:;"><span class="title">Designation</span></a>
-
           <li ng-click="menu.pagesidebar = !menu.pagesidebar">
             <a href="javascript:;">
               <span class="title">LOV</span>
-              <span class=" arrow" ng-class="{'open active': menu.pagesidebar}"></span>
             </a>
-
-            <span class="icon-thumbnail"><i class="pg-social"></i></span>
+            <span class="icon-thumbnail"><i class=" fa fa-chevron-left" ng-class="{'fa fa-chevron-down': menu.pagesidebar,'fa fa-chevron-left': !menu.pagesidebar}"></i></span>
             <ul ng-click="$event.stopPropagation();" class="sub-menu" ng-style="{display: menu.pagesidebar ? 'block' : 'none'}">
               <li ui-sref="skills">
                 <a href="javascript:;"><span class="title">Skills</span></a>
@@ -120,7 +85,7 @@
               </li>
               <li ui-sref="education">
                 <a href="javascript:;"><span class="title">Education Level</span></a>
-                <span class="icon-thumbnail">e</span>
+                <span class="icon-thumbnail"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
               </li>
               <li ui-sref="joblevel">
                 <a href="javascript:;"><span class="title">Job Level</span></a>
@@ -132,11 +97,13 @@
               </li>
               <li ui-sref="language">
                 <a href="javascript:;"><span class="title">Language</span></a>
-                <span class="icon-thumbnail">la</span>
+                <span class="icon-thumbnail">  <i class="fa fa-language" aria-hidden="true"></i>
+                </span>
               </li>
               <li ui-sref="location">
                 <a href="javascript:;"><span class="title">Location</span></a>
-                <span class="icon-thumbnail">lo</span>
+                <span class="icon-thumbnail"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                </span>
               </li>
               <li ui-sref="designation">
                 <a href="javascript:;"><span class="title">Designation</span></a>
