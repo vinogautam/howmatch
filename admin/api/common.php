@@ -4,7 +4,7 @@ function insert($table, $array){
 
 	$keys = implode(",", array_keys($array));
 	$values = implode("','", array_values($array));
-	$sql = "INSERT INTO $table ($keys) VALUES ('$values')";
+	echo $sql = "INSERT INTO $table ($keys) VALUES ('$values')";
 	return mysqli_query($db, $sql);
 }
 
