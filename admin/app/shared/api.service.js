@@ -334,6 +334,37 @@ apiService.hm_education = function(){
         });
     }
 
+
+    apiService.hm_pages = function(){
+        return httpService.get(APIURL+'hm_pages')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_page= function(data){
+        return httpService.post(APIURL+'hm_save_page', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_page= function(id){
+        return httpService.post(APIURL+'hm_delete_page', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_page_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_page_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
     apiService.hm_language = function(){
         return httpService.get(APIURL+'hm_language')
         .then(function (res) {

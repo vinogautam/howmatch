@@ -166,6 +166,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/designation',
             templateUrl: 'app/designation/designation.html',
             controller: 'designationController'
+        },
+        {
+            name: 'pages',
+            label: 'Pages',
+            auth: true,
+            restricted:false,
+            url: '/pages',
+            templateUrl: 'app/pages/pages.html',
+            controller: 'pagesController'
         }
     ]
 

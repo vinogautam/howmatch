@@ -39,7 +39,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: catform.mtag.$invalid}">
                 <label>Meta Tag</label>
-                <textarea rows="5" name="mtag" ng-model="settings_form_data.meta_tag" required id="appDescription" type="text" class="form-control"></textarea>
+                <input name="mtag" ng-model="settings_form_data.meta_tag" required id="appDescription" type="text" class="form-control"></input>
               </div>
             </div>
             <div class="col-sm-6">
@@ -49,6 +49,47 @@
               </div>
             </div>
           </div>
+
+             <h4>Social Links</h4>
+             <div class="row"> 
+                <div class="col-sm-6">
+                  <div class="form-group form-group-default" ng-class="{invalid: settingsform.li.$invalid}">
+                    <label>LinkedIn</label>
+                    <input name="li" required="" ng-model="settings_form_data.li" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group form-group-default" ng-class="{invalid: settingsform.fb.$invalid}">
+                    <label>Facebook</label>
+                    <input name="fb" required="" ng-model="settings_form_data.fb" type="text" class="form-control">
+                  </div>
+                </div>
+             </div>
+            
+            <div class="row"> 
+              <div class="col-sm-6">
+                <div class="form-group form-group-default" ng-class="{invalid: settingsform.twitter.$invalid}">
+                  <label>Twitter</label>
+                  <input name="twitter" required="" ng-model="settings_form_data.twitter" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group form-group-default" ng-class="{invalid: settingsform.ig.$invalid}">
+                  <label>Instagram</label>
+                  <input name="ig" required="" ng-model="settings_form_data.ig" type="text" class="form-control">
+                </div>
+              </div>
+             </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group form-group-default" ng-class="{invalid: settingsform.yt.$invalid}">
+                  <label>YouTube</label>
+                  <input name="yt" required="" ng-model="settings_form_data.yt" type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+          
         
       
         <button ng-click="save(settingsform)" id="add-app" type="button" class="btn btn-primary  btn-cons">Save</button>
