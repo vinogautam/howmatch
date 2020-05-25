@@ -5,6 +5,7 @@ languageController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http
 
 function languageController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.select2multiple').select2();
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
     });

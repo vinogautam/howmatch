@@ -196,7 +196,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: newform.category.$invalid}">
                 <label>Categories</label>
-                <select multiple name="category" class="form-control" ng-model="form_data.profile.category">
+                <select multiple name="category" class="form-control select2multiple" multiple="multiple" ng-model="form_data.profile.category">
                   <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.name}}</option>
                 </select>
               </div>
@@ -206,7 +206,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: newform.package.$invalid}">
                 <label>Package</label>
-                <select  name="package" required class="form-control" ng-model="form_data.profile.package">
+                <select  name="package" required class="form-control select2multiple" multiple="multiple" ng-model="form_data.profile.package">
                   <option ng-repeat="cat in packages" value="{{cat.id}}">{{cat.name}}</option>
                 </select>
               </div>
@@ -214,7 +214,9 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default">
                 <label>Location</label>
-                <input name="location" ng-model="form_data.profile.location" type="text" class="form-control" placeholder="Price of the package">
+                 <select  name="location" required class="form-control select2multiple" multiple="multiple" ng-model="form_data.profile.location">
+                  <option ng-repeat="cat in location" value="{{cat.id}}">{{cat.title}}</option>
+                </select>
               </div>
             </div>
           </div>

@@ -5,6 +5,8 @@ educationController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$htt
 
 function educationController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.select2multiple').select2();
+
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
     });

@@ -5,6 +5,7 @@ packageController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http'
 
 function packageController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.select2multiple').select2();
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
     });

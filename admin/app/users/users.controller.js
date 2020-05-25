@@ -5,7 +5,8 @@ usersController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', 
 
 function usersController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
-   
+    $('.select2multiple').select2();
+
     $scope.pagingSize = 5;
     $scope.dataPerPage = 10;
     $scope.totalItems = [];
@@ -66,5 +67,30 @@ function usersController($scope, $state, $rootScope, APIURL, $http, ApiService) 
     $scope.skills=[];
     ApiService.hm_skills().then(function(res){
         $scope.skills = res.data;
+    });
+
+    $scope.category = [];
+    ApiService.hm_category().then(function(res){
+        $scope.category = res.data;
+    });
+
+    $scope.education = [];
+    ApiService.hm_education().then(function(res){
+        $scope.education = res.data;
+    });
+
+    $scope.industry = [];
+    ApiService.hm_industry().then(function(res){
+        $scope.industry = res.data;
+    });
+
+    $scope.joblevel = [];
+    ApiService.hm_joblevel().then(function(res){
+        $scope.joblevel = res.data;
+    });
+
+     $scope.location = [];
+    ApiService.hm_location().then(function(res){
+        $scope.location = res.data;
     });
 }

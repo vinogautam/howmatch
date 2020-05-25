@@ -5,8 +5,9 @@ skillsController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http',
 
 function skillsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.select2multiple').select2();
     $('#show-modal').click(function() {
-        $('#addNewAppModal').modal('show');
+    $('#addNewAppModal').modal('show');
     });
 
     $scope.pagingSize = 5;

@@ -5,6 +5,7 @@ jobsController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', '
 
 function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.select2multiple').select2();
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
     });
@@ -65,4 +66,31 @@ function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 		    });
     	});
     };
+
+    $scope.category = [];
+    ApiService.hm_category().then(function(res){
+        $scope.category = res.data;
+    });
+
+    $scope.education = [];
+    ApiService.hm_education().then(function(res){
+        $scope.education = res.data;
+    });
+
+    $scope.industry = [];
+    ApiService.hm_industry().then(function(res){
+        $scope.industry = res.data;
+    });
+
+    $scope.joblevel = [];
+    ApiService.hm_joblevel().then(function(res){
+        $scope.joblevel = res.data;
+    });
+
+     $scope.location = [];
+    ApiService.hm_location().then(function(res){
+        $scope.location = res.data;
+    });
+
+
 }

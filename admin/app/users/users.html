@@ -153,7 +153,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default">
                 <label>Gender</label>
-                <select name="gender" class="form-control"  ng-model="form_data.profile.gender" >
+                <select name="gender" class="form-control select2multiple"  ng-model="form_data.profile.gender" >
                   <option>Male</option>
                   <option>Female</option>
                 </select>
@@ -195,27 +195,10 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default">
                 <label>Industry</label>
-                <div class="row">
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input type="checkbox" id="checkboxteamMarketing">
-                    <label for="checkboxteamMarketing">Marketing</label>
-                  </div>
-
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input type="checkbox" id="checkboxteamSoftware">
-                    <label for="checkboxteamSoftware">Software</label>
-                  </div>
-
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input type="checkbox" id="checkboxteamBanking">
-                    <label for="checkboxteamBanking">Banking</label>
-                  </div>
-
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input type="checkbox" id="checkboxteamMedical">
-                    <label for="checkboxteamMedical">Medical</label>
-                  </div>
-                </div>
+                 <select name="industry" class="form-control select2multiple"  ng-model="form_data.profile.industry" multiple >
+                    <option value="0">Select industry</option>
+                    <option ng-repeat="loc in industry" value="{{loc.id}}">{{loc.title}}</option>
+                  </select>
               </div>
             </div>
           </div>
@@ -223,17 +206,10 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default">
                 <label>Qualification</label>
-                <div class="row">
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="form_data.industry['Bachelor']" type="checkbox" id="checkboxteamBachelor">
-                    <label for="checkboxteamBachelor">Bachelor</label>
-                  </div>
-
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="form_data.industry['Master']" type="checkbox" id="checkboxteamMaster">
-                    <label for="checkboxteamMaster">Master</label>
-                  </div>
-                </div>
+                <select name="education" class="form-control select2multiple"  ng-model="form_data.profile.education" multiple >
+                  <option value="0">Select education</option>
+                  <option ng-repeat="edu in education" value="{{edu.id}}">{{edu.title}}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -241,25 +217,18 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default">
                 <label>Career Level</label>
-                <div class="row">
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="form_data.career_level['Manager']" type="checkbox" id="checkboxteamManager">
-                    <label for="checkboxteamManager">Manager</label>
-                  </div>
-
-                  <div class="checkbox check-success text-left col-md-6 no-pm">
-                    <input ng-model="form_data.career_level['Student']" type="checkbox" id="checkboxteamStudent">
-                    <label for="checkboxteamStudent">Student</label>
-                  </div>
-                </div>
-              </div>
+                <select name="joblevel" class="form-control select2multiple"  ng-model="form_data.profile.joblevel" multiple >
+                  <option value="0">Select Career Level</option>
+                  <option ng-repeat="jl in joblevel" value="{{jl.id}}">{{jl.title}}</option>
+                </select>
             </div>
           </div>
+        </div>
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group form-group-default">
                 <label>Skills</label>
-                 <select name="gender" class="form-control"  ng-model="form_data.profile.skills" multiple >
+                 <select name="skills" class="form-control select2multiple"  ng-model="form_data.profile.skills" multiple >
                   <option value="0">Select Skills</option>
                   <option ng-repeat="skills in skills" value="{{skills.id}}">{{skills.title}}</option>
                 </select>
@@ -284,7 +253,10 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default">
                 <label>Location</label>
-                <input required="" ng-model="form_data.profile.location" name="location" type="text" class="form-control" placeholder="Location">
+                <select name="location" class="form-control select2multiple"  ng-model="form_data.profile.location" multiple >
+                  <option value="0">Select Location</option>
+                  <option ng-repeat="loc in location" value="{{loc.id}}">{{loc.title}}</option>
+                </select>
               </div>
             </div>
           </div>

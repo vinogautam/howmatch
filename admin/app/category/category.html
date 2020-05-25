@@ -112,7 +112,7 @@
              <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: catform.parent.$invalid}">
                 <label>Parent</label>
-                 <select  name="parent" required class="form-control" ng-model="cat_form_data.parent">
+                 <select  name="parent" required class="form-control select2multiple" ng-model="cat_form_data.parent">
                   <option value="0">Parent</option>
                   <option ng-repeat="cat in totalItems" value="{{cat.id}}">{{cat.name}}</option>
                 </select>
