@@ -9,11 +9,16 @@ function signupController($rootScope, $scope, $state, ApiService, $window, $time
 
 	$scope.register = function(fl){
 		if(fl){
-			ApiService.register($scope.signupData).then(function(){
-
+			ApiService.register($scope.signupData).then(function(response){
+				if (response.status === 'Success') {
+					$("#signupModal").modal('hide');
+					$("#signinModal").modal('show');
+	            } else {
+	                ApiService.notification(response.msg, 'error');
+	            }
 			});
 		} else {
-			
+			ApiService.notification('Please fill all required fields', 'error');
 		}
 	};
 
