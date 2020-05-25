@@ -5,7 +5,7 @@ indexController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$win
 function indexController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
     var vm = this;
 
-    $scope.user = localStorage.getItem('hwuser');
+    $scope.user = localStorage.getItem('hmuser');
 
     if(!!$scope.user){
         $rootScope.loggedInUserInfo = JSON.parse($scope.user);
@@ -14,6 +14,7 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     $rootScope.menu = {};
     $rootScope.currentState = $state.current.name;
     $rootScope.currentStateDetails = $state.current;
+
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
         $rootScope.currentState = toState.name;
         $rootScope.currentStateDetails = toState;
@@ -56,7 +57,7 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     };
 
     $scope.logout = function(){
-        localStorage.removeItem('hwuser');
+        localStorage.removeItem('hmuser');
         $rootScope.loggedInUserInfo = {};
         $state.go('home');
     }

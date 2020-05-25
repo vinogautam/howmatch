@@ -1,9 +1,9 @@
 hmapp.controller('loginController', loginController);
 
-loginController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+loginController.$inject = ['facebookService', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function loginController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
-	$scope.pageInfo = {};
+function loginController(facebookService, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+	$scope.pageInfo = {login: true};
 
 	$scope.signupData = {};
 
@@ -14,5 +14,39 @@ function loginController($rootScope, $scope, $state, ApiService, $window, $timeo
 	$scope.openSignup = function(){
 		$("#signinModal").modal('hide');
 		$("#signupModal").modal('show');
+	};
+
+	$scope.fbLogin = function() {
+	   facebookService.getMyLastName() 
+	     .then(function(response) {
+	       //$scope.last_name = response.last_name;
+	       console.log(response);
+	     }
+	   );
+	};
+
+	$scope.login = function(fl){
+		if(fl){
+			ApiService.login($scope.signupData).then(function(response){
+				if (response.status === 'Success') {
+					$("#signinModal").modal('hide');
+	                $rootScope.loggedInUserInfo = response.data;
+	                localStorage.setItem('hmuser', JSON.stringify(response.data));
+	                $state.go('dashboard');
+	            } else {
+	                ApiService.notification(response.msg, 'error');
+	            }
+			});
+		} else {
+			ApiService.notification(response.msg, 'error');
+		}
+		
+
+	};
+
+	$scope.lostPassword = function(){
+		ApiService.forgotPassword({email: $scope.pageInfo.email}).then(function(){
+
+		});
 	};
 }

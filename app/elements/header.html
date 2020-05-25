@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="navbar navbar-expand-md navbar-light  bg-white">
-    <div class="logo"><span class="text-success">How</span> Match</div>
+    <div class="logo" ui-sref="home"><span class="text-success">How</span> Match</div>
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +17,11 @@
             <img src="html/images/homepage1/post_a_job.svg">Post A Job</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">
+          <a class="nav-link" href="#">
             <img src="html/images/homepage1/companies.svg">Companies</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#signinModal">
+        <li class="nav-item" ng-show="!loggedInUserInfo.id">
+          <a class="nav-link" href="#"  data-toggle="modal" data-target="#signupModal">
             <img src="html/images/homepage1/sign_up.svg">Sign Up</a>
         </li>
       </ul>
@@ -31,9 +31,16 @@
               <option>EN</option>
             </select></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ng-show="loggedInUserInfo.id">
+          <a class="nav-link" href="#" ui-sref="dashbaord">
+            <img src="html/images/homepage1/sign_up.svg">{{loggedInUserInfo.username}}</a>
+        </li>
+        <li class="nav-item" ng-show="!loggedInUserInfo.id">
           <a class="nav-link" href="#"><button type="button" class="btn btn-outline-success btn-sm custo-bt"
-              data-toggle="modal" data-target="#login">Login</button></a>
+              data-toggle="modal" data-target="#signinModal">Login</button></a>
+        </li>
+        <li class="nav-item" ng-show="loggedInUserInfo.id">
+          <a class="nav-link" href="#" ng-click="$event.preventDefault();logout();"><button type="button" class="btn btn-outline-success btn-sm custo-bt">Logout</button></a>
         </li>
       </ul>
     </div>

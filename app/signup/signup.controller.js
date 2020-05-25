@@ -5,10 +5,16 @@ signupController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$wi
 function signupController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 
-	$scope.signupData = {};
+	$scope.signupData = {profile: {}, user_type: '3'};
 
-	$scope.register = function(){
+	$scope.register = function(fl){
+		if(fl){
+			ApiService.register($scope.signupData).then(function(){
 
+			});
+		} else {
+			
+		}
 	};
 
 	$scope.openLogin = function(){

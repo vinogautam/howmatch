@@ -19,6 +19,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: 'app/home/home.html',
             controller: 'homeController'
+        },
+        {
+            name: 'dashboard',
+            label: 'Dashboard',
+            auth: false,
+            restricted:false,
+            url: '/dashboard',
+            templateUrl: 'app/dashboard/dashboard.html',
+            controller: 'dashboardController'
         }
     ]
 
