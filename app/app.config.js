@@ -21,13 +21,76 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'homeController'
         },
         {
-            name: 'dashboard',
+            name: 'user',
+            label: 'User',
+            auth: true,
+            restricted:false,
+            url: '/user',
+            templateUrl: 'app/user/user.html',
+            controller: 'userController'
+        },
+        {
+            name: 'user.dashboard',
             label: 'Dashboard',
-            auth: false,
+            auth: true,
             restricted:false,
             url: '/dashboard',
-            templateUrl: 'app/dashboard/dashboard.html',
-            controller: 'dashboardController'
+            templateUrl: 'app/user/dashboard/dashboard.html',
+            controller: 'userDashboardController'
+        },
+        {
+            name: 'user.profile',
+            label: 'Profile',
+            auth: true,
+            restricted:false,
+            url: '/profile',
+            templateUrl: 'app/user/profile/profile.html',
+            controller: 'userProfileController'
+        },
+        {
+            name: 'user.resume',
+            label: 'Resume',
+            auth: true,
+            restricted:false,
+            url: '/resume',
+            templateUrl: 'app/user/resume/resume.html',
+            controller: 'resumeController'
+        },
+        {
+            name: 'user.applied_job',
+            label: 'Applied Job',
+            auth: true,
+            restricted:false,
+            url: '/applied_job',
+            templateUrl: 'app/user/applied_job/applied_job.html',
+            controller: 'appliedJobController'
+        },
+        {
+            name: 'user.shortlist_job',
+            label: 'Shortlist Job',
+            auth: true,
+            restricted:false,
+            url: '/shortist_job',
+            templateUrl: 'app/user/shortist_job/shortist_job.html',
+            controller: 'shortistJobController'
+        },
+        {
+            name: 'user.following_employees',
+            label: 'Following Employees',
+            auth: true,
+            restricted:false,
+            url: '/following_employees',
+            templateUrl: 'app/user/following_employees/following_employees.html',
+            controller: 'followingEmployeesController'
+        },
+        {
+            name: 'user.alerts',
+            label: 'Alerts',
+            auth: true,
+            restricted:false,
+            url: '/alerts',
+            templateUrl: 'app/user/alerts/alerts.html',
+            controller: 'userAlertsController'
         }
     ]
 

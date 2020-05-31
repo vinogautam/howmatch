@@ -52,3 +52,13 @@
 .apple{
 	width: 40%!important;
 }
+.serh-form .fa-search{    
+	position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: 18px !important;
+    color: #888;
+}
+.serh-form .form-control{
+	padding-left: 30px;
+}

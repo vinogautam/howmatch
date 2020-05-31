@@ -32,7 +32,7 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 					$("#signinModal").modal('hide');
 	                $rootScope.loggedInUserInfo = response.data;
 	                localStorage.setItem('hmuser', JSON.stringify(response.data));
-	                $state.go('dashboard');
+	                $state.go('user.dashboard');
 	            } else {
 	                ApiService.notification(response.msg, 'error');
 	            }
