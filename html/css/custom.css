@@ -13,6 +13,8 @@
      width: 0!important; 
      padding: 0!important; 
      height: 0!important; 
+     border-radius: unset!important; 
+     border: none!important; 
 }
 #scroll {
     position:fixed;
@@ -53,4 +55,13 @@
 }
 .apple{
 	width: 40%!important;
+}
+}
+.fa-search{
+	position: absolute;
+    width: 41px;
+    height: 41px;
+    font-size: 24px !important;
+    padding: 9px 11px;
+    color: #777;
 }
