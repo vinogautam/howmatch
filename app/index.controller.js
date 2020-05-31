@@ -60,5 +60,9 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         localStorage.removeItem('hmuser');
         $rootScope.loggedInUserInfo = {};
         $state.go('home');
-    }
+    };
+
+    $scope.show_modal = function(id){
+        $(id).modal('show');
+    };
 }
