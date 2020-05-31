@@ -46,22 +46,9 @@
     opacity:1;filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
 }
-.store-icon a{
-	margin-left: -10px;
-    margin-top: -25px;
-}
 .store-icon img{
 	width: 50%;
 }
 .apple{
 	width: 40%!important;
-}
-}
-.fa-search{
-	position: absolute;
-    width: 41px;
-    height: 41px;
-    font-size: 24px !important;
-    padding: 9px 11px;
-    color: #777;
 }
