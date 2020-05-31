@@ -16,4 +16,9 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
         $("html, body").animate({ scrollTop: 0 }, 600); 
         return false; 
     }); 
+
+    $(".show-toast").click(function(){
+        $("#myToast").toast({ delay: 3000 });
+        $("#myToast").toast('show');
+    }); 
 }

@@ -46,10 +46,6 @@
     opacity:1;filter:"alpha(opacity=100)";
     -ms-filter:"alpha(opacity=100)";
 }
-.store-icon a{
-	margin-left: -10px;
-    margin-top: -25px;
-}
 .store-icon img{
 	width: 50%;
 }
