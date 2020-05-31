@@ -1,0 +1,55 @@
+<main role="main" class="home_margin-top">
+  <div class="sub_header"><img src="html/images/homepage1/subpage.png" class="img-fluid"></div>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 left-menu db_padd">
+          <div class="pho-file">
+            <div class="p-photo"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="pro-details"><h3>Vinodh L</h3><p>UI Developer</p><p class="exp">6 years of experience</p></div>
+          </div>
+            <nav class="navbar navbar-expand-md navbar-light">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidemenu"
+                aria-controls="sidemenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-start" id="sidemenu">
+                <ul class="dash_menu top-menu">
+                  <li class="nav-item " ng-class="{active: currentState == 'user.dashboard'}">
+                    <a class="nav-link" href="#" ui-sref="user.dashboard">Dashboard</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.profile'}">
+                    <a class="nav-link" href="#" ui-sref="user.profile">Profile</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.resume'}">
+                    <a class="nav-link" href="#" ui-sref="user.resume">My Resume</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.applied_job'}">
+                    <a class="nav-link" href="#" ui-sref="user.applied_job">Applied Jobs</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.shortlist_job'}">
+                    <a class="nav-link" href="#" ui-sref="user.shortlist_job">Shortlist Jobs</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.following_employees'}">
+                    <a class="nav-link" href="#" ui-sref="user.following_employees">Following Employers</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.alerts'}">
+                    <a class="nav-link" href="#" ui-sref="user.alerts">Alerts Jobs</a>
+                  </li>
+                  <li class="nav-item" ng-class="{active: currentState == 'user.settings'}">
+                    <a class="nav-link" href="#" ui-sref="user.settings">Settings</a>
+                  </li>
+                  <li class="nav-item" >
+                    <a class="nav-link" href="#" ng-click="$event.preventDefault();logout();">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>            
+        </div>
+        <div class="col-sm-8 db_padd db-view">
+          <ui-view id='childviews'></ui-view>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
