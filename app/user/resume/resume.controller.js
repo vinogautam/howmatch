@@ -4,4 +4,6 @@ resumeController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$wi
 
 function resumeController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
+
+	
 }
