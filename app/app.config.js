@@ -70,9 +70,9 @@ function routes($stateProvider, $urlRouterProvider) {
             label: 'Shortlist Job',
             auth: true,
             restricted:false,
-            url: '/shortist_job',
-            templateUrl: 'app/user/shortist_job/shortist_job.html',
-            controller: 'shortistJobController'
+            url: '/shortlist_job',
+            templateUrl: 'app/user/shortlist_job/shortlist_job.html',
+            controller: 'shortlistJobController'
         },
         {
             name: 'user.following_employees',

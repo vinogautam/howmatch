@@ -1,7 +1,7 @@
-hmapp.controller('shortistJobController', shortistJobController);
+hmapp.controller('shortlistJobController', shortlistJobController);
 
-shortistJobController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+shortlistJobController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function shortistJobController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function shortlistJobController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 }
