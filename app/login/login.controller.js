@@ -34,7 +34,7 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 		                $rootScope.loggedInUserInfo = response.data;
 		                localStorage.setItem('hmuser', JSON.stringify(response.data));
 	                	$state.go('company.dashboard');
-	                } else if(response.data.user_type == 2){
+	                } else if(response.data.user_type == 3){
 	                	$("#signinModal").modal('hide');
 		                $rootScope.loggedInUserInfo = response.data;
 		                localStorage.setItem('hmuser', JSON.stringify(response.data));
