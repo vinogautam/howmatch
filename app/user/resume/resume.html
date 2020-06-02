@@ -1,32 +1,603 @@
-<div class="col-sm-12">
+<div>
   <h2>Edit Resume</h2>
-  <form>
-    
-        <div class="form-group">
-          <label for="name">CV Attachment </label>
-          <input type="text" class="form-control" id="name">
-        </div>
-        <div class="text-right padd30">               
-          <button type="submit" class="btn btn-success">Add File</button>
-      </div>
-        <div class="form-group">
-          <label for="inputPassword4">Education  </label>
-          <input type="text" class="form-control" id="inputPassword4"><br>
-          <input type="text" class="form-control" id="inputPassword4">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword4">Experience </label>
-          <input type="text" class="form-control" id="inputPassword4"><br>
-          <input type="text" class="form-control" id="inputPassword4">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword4">Skill </label>
-          <input type="text" class="form-control" id="inputPassword4"><br>
-          <input type="text" class="form-control" id="inputPassword4"><br>
-          <input type="text" class="form-control" id="inputPassword4">
-        </div>  
-        <div class="text-right padd30">               
-      <button type="submit" class="btn btn-success">Save Resume</button>
+
+  <div class="resume-sec">
+    <div class="resume-file-download">
+      <div class="res-view">
+        <a href=""><h5>filename</h5>
+            <i class="fa fa-download"></i>
+            <i class="fa fa-trash"></i>
+        </a>
+      </div>       
+          <p class="res-updated">Updated on</p>
+      </div>      
+       
+    <div class="resume-file-uploaad">
+      <label for="name">CV Attachment </label>
+      <div class="resume">
+        <button type="submit" class="btn btn-success">Update Resume</button>
+      </div>        
+    </div>      
   </div>
-    </form>
+
+
+
+  <div class="resume-sec">
+    <div class="row">
+      <h4 class="col-sm-6">Resume Headline</h4>
+      <div class="col-sm-6 addex">
+        <a href="#" ng-click="$event.preventDefault();show_modal('#headModal')">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>{{Designation}}</h4>
+       <h4>{{Organization}}</h4>
+       <p>{{period}}</p>
+       <p>{{noticeperiod}}</p>
+       <p>{{description}}</p>
+    </div>
+  </div>
+
+  <div class="resume-sec">
+  <div class="row">
+    <h4 class="col-sm-6">Summary</h4>
+    <div class="col-sm-6 addex">
+      <a href="#" ng-click="$event.preventDefault();show_modal('#summaryModal')">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    <h4>{{Designation}}</h4>
+     <h4>{{Organization}}</h4>
+     <p>{{period}}</p>
+     <p>{{noticeperiod}}</p>
+     <p>{{description}}</p>
+  </div>
 </div>
+
+<div class="resume-sec">
+  <div class="row">
+    <h4 class="col-sm-6">Key Skills</h4>
+    <div class="col-sm-6 addex">
+      <a href="#" ng-click="$event.preventDefault();show_modal('#skillModal')">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Add/Edit SKills
+      </a>
+    </div>
+  </div>
+  <div>
+    <h4>{{Designation}}</h4>
+     <h4>{{Organization}}</h4>
+     <p>{{period}}</p>
+     <p>{{noticeperiod}}</p>
+     <p>{{description}}</p>
+  </div>
+</div>
+
+
+<div class="resume-sec">
+  <div class="row">
+    <h4 class="col-sm-6">Experience</h4>
+    <div class="col-sm-6 addex">
+      <a href="#" ng-click="$event.preventDefault();show_modal('#experienceModal')">
+        <i class="fa fa-plus"></i>Add Experience
+      </a>
+    </div>
+  </div>
+  <div>
+    <h4>{{Designation}}</h4>
+     <h4>{{Organization}}</h4>
+     <p>{{period}}</p>
+     <p>{{noticeperiod}}</p>
+     <p>{{description}}</p>
+  </div>
+</div>
+
+<div class="resume-sec">
+  <div class="row">
+    <h4 class="col-sm-6">Education</h4>
+    <div class="col-sm-6 addex">
+      <a href="#" ng-click="$event.preventDefault();show_modal('#educationModal')">
+        <i class="fa fa-plus"></i>Add Education
+      </a>
+    </div>
+  </div>
+  <div>
+    <h4>{{Education}}</h4>
+     <h4>{{Institute}}</h4>
+     <p>{{period}}</p>
+     <p>{{fulltime}}</p>
+     <p>{{description}}</p>
+  </div>
+
+</div>
+
+
+<div class="resume-sec">
+  <div class="row">
+    <h4 class="col-sm-6">Working Preference</h4>
+    <div class="col-sm-6 addex">
+      <a href="#" ng-click="$event.preventDefault();show_modal('#preferedModal')">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    <h4>{{Designation}}</h4>
+     <h4>{{Organization}}</h4>
+     <p>{{period}}</p>
+     <p>{{noticeperiod}}</p>
+     <p>{{description}}</p>
+  </div>
+
+</div>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="educationModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Education</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="expform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: expform.education.$invalid}">
+              <label>Education</label>
+             <select class=" form-control" ng-model="">
+                <option>Select Select</option>
+                <option>Masters</option>
+                <option>Bachelors</option>
+                <option>College</option>
+              </select>               
+            </div>
+            <div class="form-group form-group-default" ng-class="{invalid: expform.course.$invalid}">
+              <label>Course</label>
+              <input name="course" required="" ng-model="exp_form_data.course" type="text" class="form-control" placeholder="Enter Your Course">              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.specialization.$invalid}">
+              <label>Specialization</label>
+              <input name="specialization" required="" ng-model="exp_form_data.specialization" type="text" class="form-control" placeholder="Enter Your Specialization">              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.institute.$invalid}">
+              <label>University/Institute</label>
+              <input name="institute" required="" ng-model="exp_form_data.institute" type="text" class="form-control" placeholder="Enter Your Institute">              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.coursetype.$invalid}">
+              <label>Course Type</label>
+              <div>
+                <label class="radio-inline"><input name="coursetype"  value="fulltime" type="radio" class="form-control">Fulltime</label>
+                <label class="radio-inline"><input name="coursetype" value="partime"  type="radio" class="form-control"> Partime </label>
+                <label class="radio-inline"><input name="coursetype" value="distance"  type="radio" class="form-control"> Distance </label>
+              </div>                        
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Passing out Year</label>
+              
+                <select class="col-sm-4 form-control selyr" ng-model="">
+                <option>Select Year</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </select> 
+             
+              
+                      
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Grading System</label>
+              <select class=" form-control" ng-model="">
+                <option>Select Year</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </select>       
+              </div>            
+            
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="experienceModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Experience</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="expform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Designation</label>
+              <input name="designation" required="" ng-model="exp_form_data.designation" type="text" class="form-control" placeholder="Enter Your Designation">              
+            </div>
+            <div class="form-group form-group-default" ng-class="{invalid: expform.orgination.$invalid}">
+              <label>Organization</label>
+              <input name="orgination" required="" ng-model="exp_form_data.orgination" type="text" class="form-control" placeholder="Enter Your Designation">              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.currntorg.$invalid}">
+              <label>Is this your current Organization</label>
+              <div>
+                <label class="radio-inline"><input name="currntorg"  value="yes" type="radio" class="form-control">Yes</label>
+                <label class="radio-inline"><input name="currntorg" value="no"  type="radio" class="form-control"> No </label>
+              </div>                        
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Started Working From</label>
+              <div class="row">
+                <select class="col-sm-4 form-control selyr" ng-model="">
+                <option>Select Year</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </select> 
+
+              <select class="col-sm-4 form-control selyr" ng-model="">
+                <option>Select Month</option>
+                <option>Jan</option>
+                <option>Fed</option>
+                <option>Mar</option>
+              </select>         
+              </div>
+                      
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Worked Till</label>
+              <input name="designation" required="" ng-model="exp_form_data.designation" type="text" class="form-control" value="Present">              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Current Salary</label>
+              <div class="row">
+                <label class="col-sm-6 radio-inline"><input name="currntorg"  value="yes" type="radio" class="form-control">Yes</label>
+                <label class="col-sm-6 radio-inline"><input name="currntorg" value="no"  type="radio" class="form-control"> No </label>
+              </div>  
+              <div class="row">
+                <select class="col-sm-4 form-control" ng-model="">
+                <option>Select Year</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+              </select> 
+
+              <select class="col-sm-4 form-control" ng-model="">
+                <option>Select Month</option>
+                <option>Jan</option>
+                <option>Fed</option>
+                <option>Mar</option>
+              </select>          
+              </div>            
+            </div>
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Top Skills </label>
+             <select class="form-control select2multiple" ng-model="" multiple>
+                <option>Select Your skill</option>
+                <option>PHP</option>
+                <option>HTML</option>
+                <option>Angular</option>
+              </select>              
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Describe your job profile</label>
+              <textarea rows="5" name="designation" required="" ng-model="exp_form_data.designation" type="text" class="form-control" placeholder="Enter Your Current Designation"></textarea>             
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Notice Period</label>
+              <select class="form-control" ng-model="">
+                <option>Select Notice Period</option>
+                <option>15 Days</option>
+                <option>30 Days</option>
+                <option>60 Days</option>
+              </select>                
+            </div>
+
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="headModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Resume Headline</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="headform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: headform.headline.$invalid}">
+              <input name="headline" required="" ng-model="head_form_data.headline" type="text" class="form-control" placeholder="Enter Your Resume Headline">              
+            </div>
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="summaryModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Summar</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="sumform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: sumform.summary.$invalid}">
+              <textarea name="summary" required="" ng-model="sum_form_data.summary" type="text" class="form-control" placeholder="Enter Your Professional Summary"></textarea>             
+            </div>
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="skillModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Key Skills</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="sumform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: skillform.summary.$invalid}">
+              <select name="skills" class="form-control select2multiple"  ng-model="form_data.skills" multiple >
+                  <option value="0">Select Skills</option>
+                  <option ng-repeat="skills in skills" value="{{skills.id}}">{{skills.title}}</option>
+                </select>           
+            </div>
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" role="dialog" id="preferedModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Your Preferences</h5>
+        </div>
+        <div class="modal-body bg-gra usrmodal">
+          <form role="form" name="expform" ng-class="{submitted: pageInfo.submitted}">
+            <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
+              <label>Prefered Working Location</label>
+              <input name="designation" required="" ng-model="exp_form_data.plocation" type="text" class="form-control" placeholder="Enter Your Prefered Location">              
+            </div>
+            <div class="form-group form-group-default" ng-class="{invalid: expform.category.$invalid}">
+              <label>Expected Job Category</label>
+               <select name="skills" class="form-control select2multiple"  ng-model="form_data.category" multiple >
+                <option value="0">Select Category</option>
+                <option ng-repeat="cat in category" value="{{skills.id}}">{{cat.title}}</option>
+              </select>
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.joblevel.$invalid}">
+              <label>Expected Job Level</label>
+               <select name="skills" class="form-control select2multiple"  ng-model="form_data.joblevel" multiple >
+                <option value="0">Select Job Level</option>
+                <option ng-repeat="jl in joblevel" value="{{jl.id}}">{{jl.title}}</option>
+              </select>                       
+            </div>
+
+            <div class="form-group form-group-default" ng-class="{invalid: expform.expsalary.$invalid}">
+              <label>Expected Salary</label>
+              <input name="designation" required="" ng-model="exp_form_data.expsalary" type="text" class="form-control" placeholder="Expected Salary">              
+            </div>
+
+<div class="form-group expected-company-benefit">
+  <label>
+      <strong class="text-red edit-field" style="display: inline;">*</strong>
+      My Top 5 Desired Benefits
+  </label>
+  <div class="icon-group expected-company-benefit-list push-top-sm view-mode" id="benefit-view-mode">
+      <div class="row">
+          <div class="col-sm-4">
+              <div>
+                  <label>
+                      
+                      <span title="Awards">
+                          <a class="benefit-icon"><i class="fa fa-fw fa-trophy"></i></a>
+                          <span class="benefit-name">Awards</span>
+                          <span class="ic-check"><i class="fa fa-fw "></i></span>
+                      </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                      <span title="Bonus">
+                          <a class="benefit-icon"><i class="fa fa-fw fa-dollar"></i></a>
+                          <span class="benefit-name">Bonus</span>
+                          <span class="ic-check"><i class="fa fa-fw "></i></span>
+                      </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Canteen">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-coffee"></i></a>
+                      <span class="benefit-name">Canteen</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Healthcare Plan">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-user-md"></i></a>
+                      <span class="benefit-name">Healthcare Plan</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Kindergarten">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-child"></i></a>
+                      <span class="benefit-name">Kindergarten</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+          </div>
+          <div class="col-sm-4">
+              <div>
+                  <label>
+                      
+                  <span title="Laptop">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-laptop"></i></a>
+                      <span class="benefit-name">Laptop</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Library">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-book"></i></a>
+                      <span class="benefit-name">Library</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Mobile">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-mobile"></i></a>
+                      <span class="benefit-name">Mobile</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Paid Leave">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-file-image-o"></i></a>
+                      <span class="benefit-name">Paid Leave</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Team Activities">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-glass"></i></a>
+                      <span class="benefit-name">Team Activities</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+          </div>
+          <div class="col-sm-4">
+              <div>
+                  <label>
+                      
+                  <span title="Training">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-graduation-cap"></i></a>
+                      <span class="benefit-name">Training</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Transportation">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-cab"></i></a>
+                      <span class="benefit-name">Transportation</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Travel Opportunities">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-plane"></i></a>
+                      <span class="benefit-name">Travel Opportunities</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+              <div>
+                  <label>
+                      
+                  <span title="Vouchers">
+                      <a class="benefit-icon"><i class="fa fa-fw fa-gift"></i></a>
+                      <span class="benefit-name">Vouchers</span>
+                      <span class="ic-check"><i class="fa fa-fw "></i></span>
+                  </span>
+                  </label>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              
+              <p class="text-danger min-number-of-benefits" hidden="hidden" style="overflow: hidden; display: none; height: 1px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;"><em>Please select at least one benefit.</em></p>
+          </div>
+  </div>
+  <!--/ Benefit Edit Mode-->
+</div>
+</div>
+<!-- Buttons-->
+
+            <div>
+              <button class="btn btn-primary  btn-cons" type="submit" ng-click="save(expform)">Save</button>
+            </div>
+          </form>
+        
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
