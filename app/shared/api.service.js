@@ -43,5 +43,13 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.register = function (data) {
+        return httpService
+        .post(APIURL+'hm_save_user', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });

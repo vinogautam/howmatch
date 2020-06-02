@@ -29,10 +29,19 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 		if(fl){
 			ApiService.login($scope.signupData).then(function(response){
 				if (response.status === 'Success') {
-					$("#signinModal").modal('hide');
-	                $rootScope.loggedInUserInfo = response.data;
-	                localStorage.setItem('hmuser', JSON.stringify(response.data));
-	                $state.go('user.dashboard');
+					if(response.data.user_type == 2){
+						$("#signinModal").modal('hide');
+		                $rootScope.loggedInUserInfo = response.data;
+		                localStorage.setItem('hmuser', JSON.stringify(response.data));
+	                	$state.go('company.dashboard');
+	                } else if(response.data.user_type == 2){
+	                	$("#signinModal").modal('hide');
+		                $rootScope.loggedInUserInfo = response.data;
+		                localStorage.setItem('hmuser', JSON.stringify(response.data));
+	                	$state.go('user.dashboard');
+	                } else {
+	                	ApiService.notification(response.msg, 'error');
+	                }
 	            } else {
 	                ApiService.notification(response.msg, 'error');
 	            }
