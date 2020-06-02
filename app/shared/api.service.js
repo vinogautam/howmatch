@@ -2,13 +2,13 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
 	var apiService = {};
     
     apiService.notification = function(msg, type){
-        $('body').pgNotification({
+        /*$('body').pgNotification({
             style: 'flip',
             message: msg,
             position: 'top-middle',
             timeout: 1000,
             type: type
-        }).show();
+        }).show();*/
     };
     
 	apiService.login = function (data) {
@@ -43,7 +43,8 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
-    apiService.register = function (data) {
+    apiService.dahboard = function (data) {
+        data.user_id = $rootScope.lo
         return httpService
         .post(APIURL+'hm_save_user', data)
         .then(function (res) {
