@@ -128,6 +128,15 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
+            name: 'company',
+            label: 'User',
+            auth: true,
+            restricted:false,
+            url: '/company',
+            templateUrl: 'app/company/company.html',
+            controller: 'companyController'
+        },
+        {
             name: 'company.dashboard',
             label: 'Dashboard',
             auth: true,
