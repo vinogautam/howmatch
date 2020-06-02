@@ -111,17 +111,3 @@ function hm_change_password(){
 	
 }
 
-function hm_profile(){
-	if(isset($_POST['profile'])){
-		$profile = $_POST['profile'];
-		foreach ($profile as $key => $value) {
-			set_meta('users', $_POST['user_id'], $key, $value);
-		}
-	}
-	
-	return array('status' => 'Success', 'data' => get_all_meta('users', $_POST['user_id']), 'msg' => 'Profile updated Successfully');
-}
-
-function hm_applied_job(){
-	
-}

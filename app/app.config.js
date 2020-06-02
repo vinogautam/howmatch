@@ -36,7 +36,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/dashboard',
             templateUrl: 'app/user/dashboard/dashboard.html',
-            controller: 'userDashboardController'
+            controller: 'userDashboardController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_dashboard();
+                }
+            }
         },
         {
             name: 'user.profile',
@@ -45,7 +50,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/profile',
             templateUrl: 'app/user/profile/profile.html',
-            controller: 'userProfileController'
+            controller: 'userProfileController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_profile({});
+                }
+            }
         },
         {
             name: 'user.resume',
@@ -54,7 +64,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/resume',
             templateUrl: 'app/user/resume/resume.html',
-            controller: 'resumeController'
+            controller: 'resumeController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_profile({});
+                }
+            }
         },
         {
             name: 'user.applied_job',
@@ -63,7 +78,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/applied_job',
             templateUrl: 'app/user/applied_job/applied_job.html',
-            controller: 'appliedJobController'
+            controller: 'appliedJobController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_applied_job();
+                }
+            }
         },
         {
             name: 'user.shortlist_job',
@@ -72,7 +92,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/shortlist_job',
             templateUrl: 'app/user/shortlist_job/shortlist_job.html',
-            controller: 'shortlistJobController'
+            controller: 'shortlistJobController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_shortlist_job();
+                }
+            }
         },
         {
             name: 'user.following_employees',
@@ -81,7 +106,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/following_employees',
             templateUrl: 'app/user/following_employees/following_employees.html',
-            controller: 'followingEmployeesController'
+            controller: 'followingEmployeesController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_following_employees();
+                }
+            }
         },
         {
             name: 'user.alerts',
@@ -90,7 +120,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/alerts',
             templateUrl: 'app/user/alerts/alerts.html',
-            controller: 'userAlertsController'
+            controller: 'userAlertsController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_alerts();
+                }
+            }
         }
     ]
 

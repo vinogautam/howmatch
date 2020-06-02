@@ -123,3 +123,6 @@
 .well.dash {
     border: 1px dashed #000;
 }
+.jq-toast-heading{
+    text-transform: capitalize;
+}

@@ -40,14 +40,14 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 		                localStorage.setItem('hmuser', JSON.stringify(response.data));
 	                	$state.go('user.dashboard');
 	                } else {
-	                	ApiService.notification(response.msg, 'error');
+	                	ApiService.notification('Invalid User Type. Please contact support', 'Error');
 	                }
 	            } else {
-	                ApiService.notification(response.msg, 'error');
+	                ApiService.notification(response.msg, 'Error');
 	            }
 			});
 		} else {
-			ApiService.notification(response.msg, 'error');
+			ApiService.notification(response.msg, 'Error');
 		}
 		
 
