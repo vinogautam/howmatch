@@ -91,6 +91,69 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/alerts',
             templateUrl: 'app/user/alerts/alerts.html',
             controller: 'userAlertsController'
+        },
+        {
+            name: 'company.dashboard',
+            label: 'Dashboard',
+            auth: true,
+            restricted:false,
+            url: '/dashboard',
+            templateUrl: 'app/company/dashboard/dashboard.html',
+            controller: 'companyDashboardController'
+        },
+        {
+            name: 'company.profile',
+            label: 'Profile',
+            auth: true,
+            restricted:false,
+            url: '/profile',
+            templateUrl: 'app/company/profile/profile.html',
+            controller: 'companyProfileController'
+        },
+        {
+            name: 'company.resume',
+            label: 'Resume',
+            auth: true,
+            restricted:false,
+            url: '/resume',
+            templateUrl: 'app/company/resume/resume.html',
+            controller: 'companyController'
+        },
+        {
+            name: 'company.applied_job',
+            label: 'Applied Job',
+            auth: true,
+            restricted:false,
+            url: '/applied_job',
+            templateUrl: 'app/company/applied_job/applied_job.html',
+            controller: 'appliedJobController'
+        },
+        {
+            name: 'company.shortlist_job',
+            label: 'Shortlist Job',
+            auth: true,
+            restricted:false,
+            url: '/shortlist_job',
+            templateUrl: 'app/company/shortlist_job/shortlist_job.html',
+            controller: 'shortlistJobController'
+        },
+        {
+            name: 'company.following_employees',
+            label: 'Following Employees',
+            auth: true,
+            restricted:false,
+            url: '/following_employees',
+            templateUrl: 'app/company/following_employees/following_employees.html',
+            controller: 'followingEmployeesController'
+        },
+        {
+            name: 'company.alerts',
+            label: 'Alerts',
+            auth: true,
+            restricted:false,
+            url: '/alerts',
+            templateUrl: 'app/company/alerts/alerts.html',
+            controller: 'companyAlertsController'
         }
     ]
 
