@@ -129,7 +129,7 @@ function routes($stateProvider, $urlRouterProvider) {
         },
         {
             name: 'company',
-            label: 'User',
+            label: 'Company',
             auth: true,
             restricted:false,
             url: '/company',
@@ -155,31 +155,31 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companyProfileController'
         },
         {
-            name: 'company.resume',
-            label: 'Resume',
+            name: 'company.jobs',
+            label: 'Jobs',
             auth: true,
             restricted:false,
-            url: '/resume',
-            templateUrl: 'app/company/resume/resume.html',
-            controller: 'companyController'
+            url: '/jobs',
+            templateUrl: 'app/company/jobs/jobs.html',
+            controller: 'jobsController'
         },
         {
-            name: 'company.applied_job',
-            label: 'Applied Job',
+            name: 'company.jobapplicants',
+            label: 'Job Applicants',
             auth: true,
             restricted:false,
-            url: '/applied_job',
-            templateUrl: 'app/company/applied_job/applied_job.html',
-            controller: 'appliedJobController'
+            url: '/jobapplicants',
+            templateUrl: 'app/company/jobapplicants/jobapplicants.html',
+            controller: 'jobapplicantsController'
         },
         {
-            name: 'company.shortlist_job',
-            label: 'Shortlist Job',
+            name: 'company.shortlist_candidates',
+            label: 'Shortlisted Candidates',
             auth: true,
             restricted:false,
-            url: '/shortlist_job',
-            templateUrl: 'app/company/shortlist_job/shortlist_job.html',
-            controller: 'shortlistJobController'
+            url: '/shortlist_candidates',
+            templateUrl: 'app/company/shortlist_candidates/shortlist_candidates.html',
+            controller: 'shortlistcandidateController'
         },
         {
             name: 'company.following_employees',
@@ -198,6 +198,24 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/alerts',
             templateUrl: 'app/company/alerts/alerts.html',
             controller: 'companyAlertsController'
+        },
+        {
+            name: 'company.settings',
+            label: 'Settings',
+            auth: true,
+            restricted:false,
+            url: '/settings',
+            templateUrl: 'app/company/settings/settings.html',
+            controller: 'companySettingsController'
+        },
+        {
+            name: 'view_candidate',
+            label: 'View Candidates',
+            auth: false,
+            restricted:false,
+            url: '/view_candidate',
+            templateUrl: 'app/view_candidate/view_candidate.html',
+            controller: 'viewcandidateController'
         }
     ]
 

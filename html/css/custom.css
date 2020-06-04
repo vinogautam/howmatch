@@ -81,7 +81,7 @@
 .res-view{
     padding-left: 20px;
 }
-.res-view h5, p{
+.res-view h5, .res-view p{
     display: inline-block;
 }
 .res-view i{
@@ -125,4 +125,64 @@
 }
 .jq-toast-heading{
     text-transform: capitalize;
+}
+.settingscard{
+    border: none!important;
+}
+.settingshead{
+    background:none!important;
+    border-bottom: none!important;
+}
+.edit_url{
+    padding: 10px;
+}
+.edit_url button{
+border-radius: 50px;
+}
+.edit_url i{
+    padding: 0 5px 0px 0px;
+}
+.submitjob i{
+    padding: 0 5px 0px 0px;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.search i{
+    position: absolute;
+    margin-left: 10px;
+}
+.joblist{
+    position: absolute;
+    width: 95%;
+    margin-top: 10px;
+    padding: 10px;    
+}
+.joblist i{
+    color: #46cc62;
+}
+.joblist a{
+    text-decoration: none;
+    color: #46cc62;
+}
+.margin-t20{
+    margin-top: 20px;
+}
+.view_can{
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: none;
+    border-top: none;
+}
+.view_can i{
+    padding: 5px;
+}
+.view_can{
+    padding: 10px;
+}
+.view_can button{
+    width: 150px;
 }

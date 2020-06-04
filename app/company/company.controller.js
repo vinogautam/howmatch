@@ -1,7 +1,7 @@
-hmapp.controller('userController', userController);
+hmapp.controller('companyController', companyController);
 
-userController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+companyController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function userController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function companyController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 }
