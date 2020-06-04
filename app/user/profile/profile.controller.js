@@ -5,7 +5,13 @@ userProfileController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiS
 function userProfileController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 
-	$scope.save = function(){
+	$scope.profile = DATA.data;
 
+	$scope.save = function(flag){
+		if(flag){
+
+		} else {
+			ApiService.notification('Please fill all required fields', 'Warning');
+		}
 	};
 }

@@ -18,17 +18,25 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
         $rootScope.currentState = toState.name;
         $rootScope.currentStateDetails = toState;
-        
+        $rootScope.preloader = false;
         if($('body').hasClass('sidebar-open')){
             $('.sidebar-header i.fa-close').trigger('click');
         }
         $('.tooltip').removeClass('show');
         $("html, body").animate({ scrollTop: 0 }, "slow");
     });
+
+    $rootScope.preloader = true;
+
+    window.addEventListener('load', (event) => {
+        $('body').addClass('loaded');
+        $rootScope.preloader = false;
+        $scope.$apply();
+    });
     
     $rootScope.$on('$stateChangeStart',
     function (event, toState, toParams, fromState, fromParams, options) { 
-        
+        $rootScope.preloader = true;
         if(toState.auth && !$rootScope.loggedInUserInfo){
             event.preventDefault();
             $state.go('home');
