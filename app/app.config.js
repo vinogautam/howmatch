@@ -216,6 +216,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/view_candidate',
             templateUrl: 'app/view_candidate/view_candidate.html',
             controller: 'viewcandidateController'
+        },
+        {
+            name: 'view_company',
+            label: 'View Company',
+            auth: false,
+            restricted:false,
+            url: '/view_company',
+            templateUrl: 'app/view_company/view_company.html',
+            controller: 'viewcompanyController'
         }
     ]
 
