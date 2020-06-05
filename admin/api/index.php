@@ -1,6 +1,6 @@
 <?php
 
-$array = array('config', 'common', 'jobs', 'users','category', 'package', 'skills', 'education', 'industry','joblevel','benefits', 'location', 'language', 'designation','pages', 'frontend/company_dashboard', 'frontend/user_dashboard');
+$array = array('config', 'common', 'jobs', 'users','category', 'package', 'skills', 'education', 'industry','joblevel','benefits', 'location', 'language', 'designation','pages', 'frontend/company_dashboard', 'frontend/user_dashboard', 'upload');
 
 foreach ($array as $key => $value) {
 	include $value.'.php';

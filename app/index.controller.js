@@ -23,7 +23,9 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
             $('.sidebar-header i.fa-close').trigger('click');
         }
         $('.tooltip').removeClass('show');
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        if(toState.name != fromState.name){
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
     });
 
     $rootScope.preloader = true;

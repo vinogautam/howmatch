@@ -81,7 +81,7 @@
 .res-view{
     padding-left: 20px;
 }
-.res-view h5, p{
+.disp-inline{
     display: inline-block;
 }
 .res-view i{
@@ -333,4 +333,55 @@ body.loaded .preloader{
     -webkit-transform: translate(100%, 100%);
             transform: translate(100%, 100%);
   }
+}
+input[type="file"]{
+    display: none;
+}
+.pho-file-uploaad .p-photo.hv_img{
+    padding: 0;
+    overflow: hidden;
+}
+.pho-file-uploaad .p-photo img{
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+.resume-sec h4{
+    font-size: 18px;
+}
+.no-margin{
+    margin:0 !important;
+}
+.no-padding{
+    padding: 0 !important;
+}
+.submitted .ng-invalid{
+    border:1px solid red;
+}
+.resume-inner{
+    margin-left: 15px;
+}
+.resume-inner h5{
+
+}
+.resume-inner h6{
+
+}
+.cp{
+    cursor: pointer;
+}
+.tdu{
+    text-decoration: underline;
+}
+.progress-bar{
+    border: 1px solid #46cc62;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.expected-company-benefit-list .fa-check{
+    color: #46cc62;
+}
+.progress-bar div{
+    background: #46cc62
 }

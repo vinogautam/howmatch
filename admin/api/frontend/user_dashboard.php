@@ -10,9 +10,8 @@ function hm_user_dashboard(){
 }
 
 function hm_user_profile(){
-	if(isset($_POST['profile'])){
-		$profile = $_POST['profile'];
-		foreach ($profile as $key => $value) {
+	if(isset($_POST['first_name'])){
+		foreach ($_POST as $key => $value) {
 			set_meta('users', $_POST['user_id'], $key, $value);
 		}
 	}

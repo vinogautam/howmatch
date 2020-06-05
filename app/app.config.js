@@ -311,8 +311,7 @@ hmapp.directive('ngRightClick', function($parse) {
 hmapp.directive('triggerUpload', function() {
   return {
     restrict: 'A',
-    require: '?ngModel',
-    link: function (scope, element, attrs, ngModel) {
+    link: function (scope, element, attrs) {
         element.bind('click', function(event){
             $("#"+attrs['triggerUpload']).trigger('click');
         }); 
@@ -327,13 +326,19 @@ hmapp.directive('fileUpload', function(ApiService, $rootScope, $timeout, $state,
     link: function (scope, element, attrs, ngModel) {
         element.bind('change', function(event){
         	var file = event.target.files[0];
-        	
+        	var ext = file.name.split('.').pop();
         	var fileReader = new FileReader();
         	fileReader.onload = function(){
-        		ngModel.$setViewValue(fileReader.result);
+        		ApiService.upload({name: file.name, ext: ext, data: fileReader.result}).then(function (res) {
+                    ngModel.$setViewValue(res['data']);
+
+                    if(attrs.afterUpload){
+                        scope.$eval(attrs.afterUpload);
+                    }
+                });
         	}
         	fileReader.readAsDataURL( file );
-        	
+
         }); 
     }
   };
