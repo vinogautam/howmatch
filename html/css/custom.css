@@ -126,6 +126,66 @@
 .jq-toast-heading{
     text-transform: capitalize;
 }
+.settingscard{
+    border: none!important;
+}
+.settingshead{
+    background:none!important;
+    border-bottom: none!important;
+}
+.edit_url{
+    padding: 10px;
+}
+.edit_url button{
+border-radius: 50px;
+}
+.edit_url i{
+    padding: 0 5px 0px 0px;
+}
+.submitjob i{
+    padding: 0 5px 0px 0px;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.search i{
+    position: absolute;
+    margin-left: 10px;
+}
+.joblist{
+    position: absolute;
+    width: 95%;
+    margin-top: 10px;
+    padding: 10px;    
+}
+.joblist i{
+    color: #46cc62;
+}
+.joblist a{
+    text-decoration: none;
+    color: #46cc62;
+}
+.margin-t20{
+    margin-top: 20px;
+}
+.view_can{
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: none;
+    border-top: none;
+}
+.view_can i{
+    padding: 5px;
+}
+.view_can{
+    padding: 10px;
+}
+.view_can button{
+    width: 150px;
+}
 body .preloader{
     position: fixed;
     top: 0;
@@ -384,4 +444,78 @@ input[type="file"]{
 }
 .progress-bar div{
     background: #46cc62
+}
+.can_info{
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 1px #949090;
+    padding: 17px;
+    margin-bottom: 16px;
+}
+.can_info img{
+    width: 25px;
+    position: absolute;
+}
+.mar-l30{
+    margin-left: 30px;
+}
+.about hr{
+    border-color: #46cc62;
+}
+.com_back{
+    background-image: url('../images/companies/subheader3.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 345px;
+}
+.cmp_image img{
+    width: 200px;
+    vertical-align: middle;
+    margin: 70px 0px 0px 0px;
+}
+.com_info{
+    margin-top: 60px;
+    color: #fff;
+}
+.com_info i{
+    color: #46cc62;
+}
+.cmp_btn{
+    margin-top: 60px;
+}
+.cmp_view{
+    width: 40px;
+}
+.cmp_job{
+    width: 35px;
+}
+.cmp_team{
+    width: 65px;
+}
+.cmp_loc{
+    width: 40px
+}
+.cmp_since{
+    width: 40px
+}
+.cmp_cat{
+    width: 40px
+}
+.cmp_detail{
+    padding:10px;
+    font-size: 24px; 
+}
+.op-pad{
+    padding: 10px;
+}
+.op_loc{
+    float: right;
+}
+.mar_auto{
+    margin: auto;
+}
+.width60{
+    width: 60%
+}
+.margin-b20{
+    margin-bottom: 20px;
 }

@@ -32,7 +32,9 @@
             </select></a>
         </li>
         <li class="nav-item" ng-show="loggedInUserInfo.id">
-          <a class="nav-link" href="#" ui-sref="user.dashboard">
+          <a class="nav-link" href="#" ng-if="loggedInUserInfo.user_type == 3" ui-sref="user.dashboard">
+            <img src="html/images/homepage/sign_up.svg">{{loggedInUserInfo.username}}</a>
+            <a class="nav-link" href="#" ng-if="loggedInUserInfo.user_type == 2" ui-sref="company.dashboard">
             <img src="html/images/homepage/sign_up.svg">{{loggedInUserInfo.username}}</a>
         </li>
         <li class="nav-item" ng-show="!loggedInUserInfo.id">

@@ -1,7 +1,7 @@
-hmapp.controller('userProfileController', userProfileController);
+hmapp.controller('companyProfileController', companyProfileController);
 
-userProfileController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+companyProfileController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function userProfileController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function companyProfileController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 }
