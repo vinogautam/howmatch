@@ -519,3 +519,39 @@ input[type="file"]{
 .margin-b20{
     margin-bottom: 20px;
 }
+.job_al{
+    font-size: 30px;
+    margin-top: 25px;
+}
+.emp_list{
+    color: #929090;
+}
+.emp_list .title{
+    font-weight: 700;
+    font-size: 15px;
+}
+.res_subtitle{
+    font-size: 13px!important;
+}
+.res_con{
+    padding-left: 10px;
+    color: #46cc62;
+}
+.preference .title{
+    color: #b8b8b8;
+    line-height: 2rem;
+    font-size: 13px;
+}
+.preference .desc{
+    margin-top: -20px;
+    color: #666
+    font-size:18px;
+}
+.pad10{
+    padding: 10px;
+}
+.del_con{
+    color: red;
+    font-size: 24px;
+    margin: 25px 25px 0px 0px
+}

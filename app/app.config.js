@@ -128,6 +128,20 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
+            name: 'user.settings',
+            label: 'Settings',
+            auth: true,
+            restricted:false,
+            url: '/settings',
+            templateUrl: 'app/user/settings/settings.html',
+            controller: 'userSettingsController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.user_alerts();
+                }
+            }
+        },
+        {
             name: 'company',
             label: 'Company',
             auth: true,
