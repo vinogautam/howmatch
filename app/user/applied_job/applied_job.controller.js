@@ -1,7 +1,9 @@
 hmapp.controller('appliedJobController', appliedJobController);
 
-appliedJobController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+appliedJobController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function appliedJobController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function appliedJobController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
+
+	$scope.applied_jobs = DATA.data;
 }

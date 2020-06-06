@@ -1,7 +1,9 @@
 hmapp.controller('userDashboardController', userDashboardController);
 
-userDashboardController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+userDashboardController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function userDashboardController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function userDashboardController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
+
+	$scope.dashboard = DATA.data;
 }
