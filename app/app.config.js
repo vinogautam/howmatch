@@ -230,6 +230,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/view_candidate',
             templateUrl: 'app/view_candidate/view_candidate.html',
             controller: 'viewcandidateController'
+        }        ,
+        {
+            name: 'companies',
+            label: 'Companies',
+            auth: false,
+            restricted:false,
+            url: '/companies',
+            templateUrl: 'app/companies/companies.html',
+            controller: 'companiesController'
         },
         {
             name: 'view_company',
