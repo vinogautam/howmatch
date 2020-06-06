@@ -1,25 +1,17 @@
 <h2>Jobs Applied Recently</h2>
 
-    <form>
-        <div class="form-row">
-          <div class="col position-re search">
-            <input type="text" class="form-control" placeholder="Search">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </div>
-          <div class="col">
-            <div class="form-group">
-                <select class="form-control" id="shotby">
-                  <option>Name</option>
-                  <option>Date</option>                              
-                </select>
-              </div>
-          </div>
-        </div>
-      </form>
+<form>
+  <div class="form-row">
+    <div class="col position-re search">
+      <input type="text" ng-model="search.$" class="form-control" placeholder="Search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+  </div>
+</form>
          
   
-  <div class="col-sm-12">
-  <div class="v_post row" ng-repeat="job in applied_jobs">
+<div class="col-sm-12">
+  <div class="v_post row" ng-repeat="job in applied_jobs | filter:search">
     <div class="po_img col-sm-2"></div>
     <div class="v-details col-sm-10">
       <h4 class="active">{{job.title}}</h4>
@@ -27,4 +19,5 @@
       <p>{{job.location}}</p>
     </div>
   </div>
+  <p ng-if="(applied_jobs | filter:search).length == 0">No results found</p>
 </div>
