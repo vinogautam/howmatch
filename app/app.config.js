@@ -248,6 +248,24 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/view_company',
             templateUrl: 'app/view_company/view_company.html',
             controller: 'viewcompanyController'
+        },
+        {
+            name: 'job_search',
+            label: 'Job Search',
+            auth: false,
+            restricted:false,
+            url: '/job_search',
+            templateUrl: 'app/job_search/job_search.html',
+            controller: 'jobsearchController'
+        },
+        {
+            name: 'view_job',
+            label: 'Jobs',
+            auth: false,
+            restricted:false,
+            url: '/view_job',
+            templateUrl: 'app/view_job/view_job.html',
+            controller: 'viewjobController'
         }
     ]
 

@@ -555,3 +555,20 @@ input[type="file"]{
     font-size: 24px;
     margin: 25px 25px 0px 0px
 }
+.view_job{
+    margin-top: 20px;
+    margin-left: 70px;
+}
+.view_job span{
+    padding: 5px;
+}
+.view_job i{
+    color: #46cc62;
+    font-size: 28px;
+    vertical-align: sub;
+}
+.view_job .content{
+    font-size: 13px;
+    color: #666;
+    padding-right: 70px;
+}
