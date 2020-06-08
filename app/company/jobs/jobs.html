@@ -1,4 +1,5 @@
-<div class="row">
+<main role="main" class="home_margin-top">
+  <div class="row">
   <div class="col-sm-6">
      <h5>Manage Jobs</h5>
   </div>
@@ -19,12 +20,12 @@
 
 <div class="joblist">
   <div>
-    <div class="v_post row">
+    <div class="v_post row" ng-repeat="job in totalItems">
     <div class="po_img col-sm-2"></div>
-    <div class="v-details col-sm-6">
-      <h4 class="active">Accountant for Bank</h4>
-      <p> Published 2 years ago</p>
-      <p>Ho Chi Minh, Vietnam</p>
+    <div class="v-details col-sm-6" >
+      <h4 class="active">{{job.title}}</h4>
+      <p> {{job.posted_on}}</p>
+      <p>{{job.location}}</p>
     </div>
     <div class="col-sm-2">
         <div>Number</div>
@@ -42,6 +43,7 @@
   </div>
   
 </div>
+</main>
 
 <div class="modal" tabindex="-1" role="dialog" id="submitjobModal">
     <div class="modal-dialog">
@@ -50,16 +52,16 @@
           <h5 class="modal-title">Submit Job</h5>
         </div>
         <div class="modal-body bg-gra usrmodal">
-          <form>  
+         <form role="form" name="jobform" novalidate="" ng-class="{submitted: pageInfo.submitted}"> 
   <div class="form-row">
-    <div class=" col-sm-6 form-group">
+    <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.title.$invalid}"> 
           <label for="name">Title</label>
-          <input type="text" class="form-control" id="name" placeholder="Job Title">
+          <input type="text" class="form-control" ng-model="job_form_data.title" id="name" placeholder="Job Title">
         </div>
         
-        <div class="col-sm-6 form-group">
+        <div class="col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.type.$invalid}">
           <label for="">Types  </label>
-          <select class="form-control select2multiple">
+          <select class="form-control select2multiple" ng-model="job_form_data.type">
             <option>Freelancer</option>
             <option>Full-time</option>
             <option>Part-time</option>
@@ -67,26 +69,26 @@
         </div>
     </div>
     <div class="form-row">
-      <div class=" col-sm-6 form-group">
+      <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.last_date.$invalid}">
           <label for="">Application DeadLine</label>
-          <input type="date" class="form-control" name="deadline" placeholder="">
+          <input type="date" class="form-control" name="deadline" placeholder="" ng-model="job_form_data.last_date">
       </div>
-        <div class=" col-sm-6 form-group">
+        <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.jtype.$invalid}">
           <label for="inputPassword4">Job Apply type </label>
-          <select class="form-control select2multiple">
+          <select class="form-control select2multiple" ng-model="job_form_data.jtype">
             <option>Internal</option>
             <option>External</option>
           </select>          
         </div>
     </div>
     <div class="form-row">
-      <div class=" col-sm-6 form-group">
+      <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.salary.$invalid}">
           <label for="">Salary  </label>
-          <input type="text" class="form-control" name="deadline" placeholder="">
+          <input type="text" class="form-control" name="deadline" placeholder="" ng-model="job_form_data.salary">
       </div>
-        <div class=" col-sm-6 form-group">
+        <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.experience.$invalid}">
           <label for="inputPassword4">Experience</label>
-          <select class="form-control select2multiple">
+          <select class="form-control select2multiple" ng-model="job_form_data.experience">
             <option>Fresher</option>
             <option>1 Yr Experience</option>
             <option>2 Yr Experience</option>
@@ -96,9 +98,9 @@
         </div>
     </div>
     <div class="form-row">
-      <div class="col-sm-6 form-group">
+      <div class="col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.gender.$invalid}">
         <label>Gender</label>
-        <select class="form-control select2multiple">
+        <select class="form-control select2multiple" ng-model="job_form_data.gender">
           <option>Male</option>
           <option>Female</option>
           <option>Other</option>
@@ -108,60 +110,56 @@
       
     </div>              
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.category.$invalid}">
         <label>Categories</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
+        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.category">
+          <option ng-repeat="cat in category" value="{{cat.id}}">{{cat.name}}</option>         
         </select>        
       </div>      
     </div>
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.description.$invalid}">
         <label>Descripton</label>
         <textarea class="form-control" row="5" type="text name
-        description"></textarea>     
+        description" ng-model="job_form_data.description"></textarea>     
       </div>      
     </div>
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
         <label>Tags</label>
-        <select class="form-control select2multiple" multiple="">
+        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.tags">
           <option>PHP</option>
           <option>Java</option>          
         </select>        
       </div>      
     </div>
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.industry.$invalid}">
         <label>Industry</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
+        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.industry">
+          <option ng-repeat="ind in industry" value="{{ind.id}}">{{ind.title}}</option>         
         </select>        
       </div>      
     </div>
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.qualification.$invalid}">
         <label>Qualification</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
+        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.qualification">
+          <option ng-repeat="edu in education" value="{{edu.id}}">{{edu.title}}</option>        
         </select>        
       </div>      
     </div>
     <div class="form-row">
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.job_level.$invalid}">
         <label>Career Level</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>Manager</option>
-          <option>Executive</option>          
+        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.job_level">
+          <option ng-repeat="jl in joblevel" value="{{jl.id}}">{{jl.title}}</option>         
         </select>        
       </div>      
     </div>
 
    <div class="text-right">               
-      <button type="submit" class="btn btn-success">Post Job</button>
+      <button ng-click="save_job(jobform)" type="submit" class="btn btn-success" data-dismiss="modal">Post Job</button>
   </div>
     </form>
             

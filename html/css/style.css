@@ -36,7 +36,7 @@ header{background:#fff; padding:7px 0;}
 .pos-re{position:relative;}
 .fa-filter{position: absolute; left: -47px;  background: #fff; width: 41px; height: 41px; font-size: 24px !important;
     padding: 9px 11px;  color: #777;}
-	.fa-filter:hover{background: #46cc62; color:#fff; cursor:pointer;}
+  .fa-filter:hover{background: #46cc62; color:#fff; cursor:pointer;}
 .fa-map-marker{position: absolute; top: 12px; left: 10px; font-size: 18px !important; color: #888;}
 .homepaddrl h2{margin-top:20px;}
 .img-content h1{ color:#fff; font-size:40px; padding:20px 0; font-weight:bold;}.img-content .p-text{color:#f1f1f1; font-size:22px; line-height:37px;}
@@ -101,18 +101,18 @@ footer h3{ font-size:20px; font-weight:600; padding-bottom:12px;}
 }
 .panel-heading {
   padding: 0;
-	border:0;
+  border:0;
 }
 .panel-title>a, .panel-title>a:active{
-	display:block;
-	padding:15px;
+  display:block;
+  padding:15px 15px 15px 0;
   color:#555;
-  font-size:16px;
+  font-size:14px;
   font-weight:bold;
-	text-transform:uppercase;
-	letter-spacing:1px;
+  text-transform:uppercase;
+  letter-spacing:1px;
   word-spacing:3px;
-	text-decoration:none;
+  text-decoration:none;
 }
 .panel-heading  a:before {
    font-family: 'Glyphicons Halflings';
@@ -121,9 +121,9 @@ footer h3{ font-size:20px; font-weight:600; padding-bottom:12px;}
    transition: all 0.5s;
 }
 .panel-heading.active a:before {
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 } 
 .bg-gra{ background: #ededed;  padding: 30px 100px;}
 .log-hd{text-align:center;}
@@ -132,7 +132,6 @@ footer h3{ font-size:20px; font-weight:600; padding-bottom:12px;}
 .log1-btn button{ width:100%; margin-bottom: 12px;}
 @media (min-width: 767px){
 .modal-dialog {max-width:650px !important}}
-
 .company_fe .cop_silder{ border:1px solid #ededed; height:200px}
 .padd20{padding:20px 0;}
 .sub_header{max-width:100%;}
@@ -159,9 +158,179 @@ footer h3{ font-size:20px; font-weight:600; padding-bottom:12px;}
   .pro-details p{ margin-bottom:10px;}
   .pro-details .exp{ color:#888;}
   .position-re { position: relative;}
-  .search .fa-search{position: absolute; top: 10px; transform: rotate(80deg); font-size: 17px; color: #888; }
+  .search .fa-search{position: absolute; top: 10px; left: 12px; transform: rotate(80deg); font-size: 17px; color: #888; }
   .search .form-control{ padding-left: 30px;}
   .pho-file-uploaad{ margin-bottom:30px;}
   .pho-file-uploaad .p-photo{border:1px solid #ededed; border-radius: 50px; width:100px; height:100px; padding:20px 15px; 
     text-align: center; float: left; margin-right:20px; margin-bottom:30px;}
   .pho-file-uploaad .p-photo .fa-user{ font-size: 50px; color: #666;}
+  .searchkey{ box-shadow: 0 0 5px 0 #ededed; padding:30px;}
+  /* The checkbox */
+  .filtercheck {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.filtercheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.filtercheck:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.filtercheck input:checked ~ .checkmark {
+  background-color:#46cc62;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.filtercheck input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.filtercheck .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+ /* The redio */
+.filterredio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.filterredio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark-redio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.filterredio:hover input ~ .checkmark-redio {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.filterredio input:checked ~ .checkmark-redio {
+  background-color: #46cc62;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-redio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.filterredio input:checked ~ .checkmark-redio:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+/* .filterredio .checkmark-redio:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+} */
+.slidecontainer {
+  width: 100%;
+  position: relative;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  background: #4CAF50;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius:100px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background:#fff;
+  cursor: pointer;
+  border-radius:100px;
+  border:2px solid #4CAF50; 
+}
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background:#fff;
+  cursor: pointer;
+  border-radius:100px;
+  border:2px solid #4CAF50; 
+}
