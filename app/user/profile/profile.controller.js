@@ -10,6 +10,9 @@ function userProfileController(DATA, $rootScope, $scope, $state, ApiService, $wi
 		$scope.profile.dob = new Date($scope.profile.dob);
 	}
 
+	$rootScope.loggedInUserInfo.profile = $scope.profile;
+	localStorage.setItem('hmuser', JSON.stringify($rootScope.loggedInUserInfo));
+
 	$scope.save = function(flag){
 		if(flag){
 			ApiService.user_profile($scope.profile).then(function(){

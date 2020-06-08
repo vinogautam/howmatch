@@ -397,15 +397,32 @@ body.loaded .preloader{
 input[type="file"]{
     display: none;
 }
-.pho-file-uploaad .p-photo.hv_img{
+.pho-file-uploaad .p-photo.hv_img, .pho-file .p-photo.hv_img{
     padding: 0;
     overflow: hidden;
 }
-.pho-file-uploaad .p-photo img{
+.pho-file-uploaad .p-photo img, .pho-file .p-photo img{
     object-fit: cover;
     width: 100%;
     height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    bottom: 0;
+    right: 0;
 }
+.pho-file-uploaad .p-photo{
+  background: #ccc;
+  position: relative;
+}
+.pho-file .p-photo{
+  width: 75px;
+  height: 75px;
+  background: #ccc;
+  position: relative;
+}
+
 .resume-sec h4{
     font-size: 18px;
 }

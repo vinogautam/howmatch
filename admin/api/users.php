@@ -8,6 +8,7 @@ function hm_login(){
 	$res = get_row("select * from users where (username = '$username' or email = '$username') and password = '$password'");
 
 	if(isset($res['id'])){
+		$res['profile'] = get_all_meta('users', $res['id']);
 		return array('status' => 'Success', 'data' => $res);
 	} else {
 		return array('status' => 'Error', 'msg' => 'Invalid Credentials');
