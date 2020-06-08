@@ -17,6 +17,15 @@ function hm_save_job(){
 	if(isset($data['qualification'])){
 		$data['qualification'] = serialize($data['qualification']);
 	}
+	if(isset($data['job_level'])){
+		$data['job_level'] = serialize($data['job_level']);
+	}
+	if(isset($data['category'])){
+		$data['category'] = serialize($data['category']);
+	}
+	if(isset($data['tags'])){
+		$data['tags'] = serialize($data['tags']);
+	}
 
 	if(isset($data['id'])){
 		$id = $data['id'];

@@ -100,5 +100,99 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+
+    apiService.hm_jobs = function(){
+        return httpService.get(APIURL+'hm_jobs')
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_save_job = function(data){
+        return httpService.post(APIURL+'hm_save_job', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_delete_job = function(id){
+        return httpService.post(APIURL+'hm_delete_job', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_change_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_category = function(){
+        return httpService.get(APIURL+'hm_category')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_packages = function(){
+        return httpService.get(APIURL+'hm_packages')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+     apiService.hm_skills = function(){
+        return httpService.get(APIURL+'hm_skills')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_industry= function(){
+        return httpService.get(APIURL+'hm_industry')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+apiService.hm_education = function(){
+        return httpService.get(APIURL+'hm_education')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+apiService.hm_joblevel = function(){
+        return httpService.get(APIURL+'hm_joblevel')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+apiService.hm_benefits = function(){
+        return httpService.get(APIURL+'hm_benefits')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+apiService.hm_location = function(){
+        return httpService.get(APIURL+'hm_location')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+apiService.hm_language = function(){
+        return httpService.get(APIURL+'hm_language')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+apiService.hm_designation= function(){
+        return httpService.get(APIURL+'hm_designation')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
     return apiService;
 });
