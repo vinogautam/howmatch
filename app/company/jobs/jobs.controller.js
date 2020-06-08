@@ -1,6 +1,6 @@
 hmapp.controller('jobsController', jobsController);
 
-jobsController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+jobsController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
 function jobsController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
@@ -14,10 +14,7 @@ function jobsController($rootScope, $scope, $state, ApiService, $window, $timeou
 
     $scope.pageInfo = {submitted: false};
     $scope.job_form_data = {industry: {}};
-    $scope.totalItems = [];
-    ApiService.hm_jobs().then(function(res){
-    	$scope.totalItems = res.data;
-    });
+    $scope.totalItems = DATA.data;
 
     $scope.save_job = function(frm){
     	$scope.pageInfo.submitted = true;
@@ -25,10 +22,7 @@ function jobsController($rootScope, $scope, $state, ApiService, $window, $timeou
     		ApiService.hm_save_job($scope.job_form_data).then(function(res){
     			$('#addNewAppModal').modal('hide');
     			ApiService.notification(res.msg, 'success');
-    			ApiService.hm_jobs().then(function(res){
-			    	$scope.totalItems = res.data;
-			    });
-			    $scope.job_form_data = {industry: {}};
+    			$state.reload();
     		});
     	} else {
     		ApiService.notification('Please fill all required fields', 'error');
@@ -49,18 +43,7 @@ function jobsController($rootScope, $scope, $state, ApiService, $window, $timeou
     	ApiService.hm_delete_job($scope.pageInfo.actionId).then(function(res){
     		$('#deleteAppModal').modal('hide');
     		ApiService.notification(res.msg, 'success');
-    		ApiService.hm_jobs().then(function(res){
-		    	$scope.totalItems = res.data;
-		    });
-    	});
-    };
-
-    $scope.change_status = function(st, id){
-    	ApiService.hm_change_status(st, id).then(function(res){
-    		ApiService.notification(res.msg, 'success');
-    		ApiService.hm_jobs().then(function(res){
-		    	$scope.totalItems = res.data;
-		    });
+    		$state.reload();
     	});
     };
 

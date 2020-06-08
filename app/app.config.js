@@ -175,7 +175,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/jobs',
             templateUrl: 'app/company/jobs/jobs.html',
-            controller: 'jobsController'
+            controller: 'jobsController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.hm_company_jobs();
+                }
+            }
         },
         {
             name: 'company.jobapplicants',
@@ -223,15 +228,6 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companySettingsController'
         },
         {
-            name: 'view_candidate',
-            label: 'View Candidates',
-            auth: false,
-            restricted:false,
-            url: '/view_candidate',
-            templateUrl: 'app/view_candidate/view_candidate.html',
-            controller: 'viewcandidateController'
-        }        ,
-        {
             name: 'companies',
             label: 'Companies',
             auth: false,
@@ -241,31 +237,60 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companiesController'
         },
         {
-            name: 'view_company',
-            label: 'View Company',
-            auth: false,
-            restricted:false,
-            url: '/view_company',
-            templateUrl: 'app/view_company/view_company.html',
-            controller: 'viewcompanyController'
-        },
-        {
             name: 'job_search',
             label: 'Job Search',
             auth: false,
             restricted:false,
             url: '/job_search',
             templateUrl: 'app/job_search/job_search.html',
-            controller: 'jobsearchController'
+            controller: 'jobsearchController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.job_search({});
+                }
+            }
         },
         {
             name: 'view_job',
             label: 'Jobs',
             auth: false,
             restricted:false,
-            url: '/view_job',
+            url: '/view_job/:id',
             templateUrl: 'app/view_job/view_job.html',
-            controller: 'viewjobController'
+            controller: 'viewjobController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.hm_view_job($stateParams.id);
+                }
+            }
+        },
+        {
+            name: 'view_company',
+            label: 'View Company',
+            auth: false,
+            restricted:false,
+            url: '/view_company/:id',
+            templateUrl: 'app/view_company/view_company.html',
+            controller: 'viewcompanyController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.view_company($stateParams.id);
+                }
+            }
+        },
+        {
+            name: 'view_candidate',
+            label: 'View Candidates',
+            auth: false,
+            restricted:false,
+            url: '/view_candidate/:id',
+            templateUrl: 'app/view_candidate/view_candidate.html',
+            controller: 'viewcandidateController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.view_candidate($stateParams.id);
+                }
+            }
         }
     ]
 

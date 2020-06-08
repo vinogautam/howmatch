@@ -101,14 +101,15 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
     };
 
 
-    apiService.hm_jobs = function(){
-        return httpService.get(APIURL+'hm_jobs')
+    apiService.company_jobs = function(){
+        return httpService.post(APIURL+'hm_company_jobs', {user_id: $rootScope.loggedInUserInfo.id})
         .then(function (res) {
             return res['data'];
         });
     };
 
     apiService.hm_save_job = function(data){
+        data.posted_by = $rootScope.loggedInUserInfo.id;
         return httpService.post(APIURL+'hm_save_job', data)
         .then(function (res) {
             return res['data'];
@@ -149,47 +150,78 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     }
 
-     apiService.hm_industry= function(){
+    apiService.hm_industry= function(){
         return httpService.get(APIURL+'hm_industry')
         .then(function (res) {
             return res['data'];
         });
     }
-apiService.hm_education = function(){
+    
+    apiService.hm_education = function(){
         return httpService.get(APIURL+'hm_education')
         .then(function (res) {
             return res['data'];
         });
     }
 
-apiService.hm_joblevel = function(){
+    apiService.hm_joblevel = function(){
         return httpService.get(APIURL+'hm_joblevel')
         .then(function (res) {
             return res['data'];
         });
     }
 
-apiService.hm_benefits = function(){
+    apiService.hm_benefits = function(){
         return httpService.get(APIURL+'hm_benefits')
         .then(function (res) {
             return res['data'];
         });
     }
 
-apiService.hm_location = function(){
+    apiService.hm_location = function(){
         return httpService.get(APIURL+'hm_location')
         .then(function (res) {
             return res['data'];
         });
     }
-apiService.hm_language = function(){
+    
+    apiService.hm_language = function(){
         return httpService.get(APIURL+'hm_language')
         .then(function (res) {
             return res['data'];
         });
     }
-apiService.hm_designation= function(){
+    
+    apiService.hm_designation= function(){
         return httpService.get(APIURL+'hm_designation')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.job_search= function(data){
+        return httpService.post(APIURL+'hm_job_search', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.view_company= function(id){
+        return httpService.post(APIURL+'hm_view_company', {id: id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.view_job= function(id){
+        return httpService.post(APIURL+'hm_view_job', {id: id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.view_candidate= function(id){
+        return httpService.post(APIURL+'hm_view_candidate', {id: id})
         .then(function (res) {
             return res['data'];
         });

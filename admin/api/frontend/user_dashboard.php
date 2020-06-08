@@ -33,3 +33,9 @@ function hm_user_alerts(){
 	$data = get_results("SELECT a.*, b.alert_on, b.is_read FROM `jobs` as a LEft join alerts as b on a.id = b.job_id WHERE b.user_id = ".$_POST['user_id']." order by b.alert_on");
 	return array('status' => 'Success', 'data' => $data);
 }
+
+function hm_view_candidate(){
+	$data = get_all_meta('users', $_POST['id']);
+	
+	return array('status' => 'Success', 'data' => $data);
+}
