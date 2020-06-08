@@ -178,7 +178,7 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'jobsController',
             resolve: {
                 DATA: function(ApiService) {
-                  return ApiService.hm_company_jobs();
+                  return ApiService.company_jobs();
                 }
             }
         },
@@ -260,7 +260,7 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'viewjobController',
             resolve: {
                 DATA: function($stateParams, ApiService) {
-                  return ApiService.hm_view_job($stateParams.id);
+                  return ApiService.view_job($stateParams.id);
                 }
             }
         },

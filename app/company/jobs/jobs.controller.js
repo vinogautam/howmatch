@@ -2,7 +2,7 @@ hmapp.controller('jobsController', jobsController);
 
 jobsController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function jobsController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
  	$('.select2multiple').select2();
 

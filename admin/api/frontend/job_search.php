@@ -3,7 +3,7 @@ function hm_job_search(){
 	$res = get_results("select * from jobs");
 	$new = [];
 	foreach ($res as $key => $value) {
-		$value['company_name'] = get_meta('users', $data['posted_by'], 'company_name');
+		$value['company_name'] = get_meta('users', $value['posted_by'], 'company_name');
 		$new[] = $value;
 	}
 
