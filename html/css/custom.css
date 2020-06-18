@@ -681,7 +681,10 @@ input[type="file"]{
     color: #000;
     background-color: #fff;
 }
-
+#contactModal textarea {
+  width: 100%;
+  height: 150px;
+}
 
 
 
