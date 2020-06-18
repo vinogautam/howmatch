@@ -637,4 +637,56 @@ input[type="file"]{
     width: 100%;
     font-size: 24px;
     font-weight: 600;
-  }    
+  }
+  .can_signup{
+    background-image: url(../images/elements/homepage/Asset1.png);
+    padding: 80px;
+    background-size: cover;
+  }
+  .signupsec{
+    color: #fff;
+    text-align: center;
+  }
+  .signupsec i{
+    font-size: 24px;
+  }
+  .com_signup{
+    margin:unset!important;
+    padding: 80px;
+  }
+  .mapsec{
+    margin: 50px;
+    text-align: center;
+  }
+  .mapsec hr{
+    width: 50%;
+    border-top: 2px solid #46cc62; 
+    margin-top: unset;
+    margin-bottom: unset;
+  }
+.appsec{
+    background-image: url(../images/elements/homepage/Asset2.png);
+    background-position: center;
+    background-size: cover;
+    height: auto;
+}
+.appdown{
+    padding: 80px;
+    color: #fff;
+}
+.appdown button{
+  border: 1px solid #fff;
+}
+.appdown button:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
