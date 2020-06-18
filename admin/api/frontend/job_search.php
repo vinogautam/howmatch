@@ -4,10 +4,13 @@ function hm_job_search(){
 	$new = [];
 	foreach ($res as $key => $value) {
 		$value['company_name'] = get_meta('users', $value['posted_by'], 'company_name');
+		
 		$new[] = $value;
 	}
 
-	return array('status' => 'Success', 'data' => $res);
+	$salary = get_row("SELECT max(salary) as maxsalary, min(salary) as minsalary FROM `jobs`");
+
+	return array('status' => 'Success', 'data' => $res, 'salary' => $salary);
 }
 
 function hm_view_job(){
@@ -15,19 +18,19 @@ function hm_view_job(){
 	if(isset($data['industry'])){
 		$data['industry'] = unserialize($data['industry']);
 	}
-	if(isset($data['career_level'])){
+	if(isset($data['career_level']) && $data['career_level']){
 		$data['career_level'] = unserialize($data['career_level']);
 	}
-	if(isset($data['qualification'])){
+	if(isset($data['qualification']) && $data['qualification']){
 		$data['qualification'] = unserialize($data['qualification']);
 	}
-	if(isset($data['job_level'])){
+	if(isset($data['job_level']) && $data['job_level']){
 		$data['job_level'] = unserialize($data['job_level']);
 	}
-	if(isset($data['category'])){
+	if(isset($data['category']) && $data['category']){
 		$data['category'] = unserialize($data['category']);
 	}
-	if(isset($data['tags'])){
+	if(isset($data['tags']) && $data['tags']){
 		$data['tags'] = unserialize($data['tags']);
 	}
 

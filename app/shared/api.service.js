@@ -59,6 +59,14 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.company_dashboard = function () {
+        return httpService
+        .post(APIURL+'hm_company_dashboard', {user_id: $rootScope.loggedInUserInfo.id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     apiService.user_profile = function (data) {
         data.user_id = $rootScope.loggedInUserInfo.id;
         return httpService

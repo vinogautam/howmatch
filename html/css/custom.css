@@ -416,12 +416,15 @@ input[type="file"]{
   position: relative;
 }
 .pho-file .p-photo{
+  padding: 15px;
   width: 75px;
   height: 75px;
   background: #ccc;
   position: relative;
 }
-
+.pho-file .p-photo .fa-user{
+  font-size: 42px;
+}
 .resume-sec h4{
     font-size: 18px;
 }
@@ -469,7 +472,6 @@ input[type="file"]{
 }
 .can_info img{
     width: 25px;
-    position: absolute;
 }
 .mar-l30{
     margin-left: 30px;
@@ -591,3 +593,48 @@ input[type="file"]{
 .margin-top0{
   margin-top: 0!important;
 }
+.pagination {
+  display: inline-block;
+}
+
+.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination li.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination li:hover:not(.active) {background-color: #ddd;}
+
+.pagination li:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.app-status{
+  padding: 25px 0!important;
+}
+.app-status i{
+  color: #46cc62;
+  font-size: 26px;
+}
+.job_share i{
+  color: blue;
+
+}
+.job_apply button{
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+  }    

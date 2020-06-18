@@ -1,5 +1,5 @@
 <main role="main" class="home_margin-top">
-  <div class="sub_header"><img src="html/images/homepage/subheader.png" class="img-fluid"></div>
+  <div class="sub_header"><img src="html/images/sub_job_search.png" class="img-fluid"></div>
   <div class="container padd30">
     <div class="row">      
       <div class="col-sm-4">
@@ -26,17 +26,8 @@
               </div>
               <div id="collapseOne" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">              
-                  <label class="filtercheck">Finance
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                  <label class="filtercheck">Food 
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                  <label class="filtercheck">Marketing
-
-                    <input type="checkbox">
+                  <label class="filtercheck" ng-repeat="cat in category">{{cat.name}}
+                    <input type="checkbox" value="{{cat.id}}">
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -53,16 +44,16 @@
               </div>
               <div id="collapseTwo" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                  <label class="filterredio">Finance 
-                    <input type="radio" checked="checked" name="job-type">
+                  <label class="filterredio">Full Time 
+                    <input value="Full Time" type="radio" checked="checked" name="job-type">
                     <span class="checkmark-redio "></span>
                   </label>
-                  <label class="filterredio">Food
-                    <input type="radio" name="job-type">
+                  <label class="filterredio">Part Time
+                    <input value="Part Time" type="radio" name="job-type">
                     <span class="checkmark-redio"></span>
                   </label>
-                  <label class="filterredio">Marketing
-                    <input type="radio" name="job-type">
+                  <label class="filterredio">Freelancer
+                    <input value="Freelancer" type="radio" name="job-type">
                     <span class="checkmark-redio"></span>
                   </label>
                 </div>
@@ -78,26 +69,14 @@
                 </h4>
               </div>
               <div id="collapseThree" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                  <label class="filterredio">Yearly  
-                    <input type="radio" checked="checked" name="salary">
-                    <span class="checkmark-redio "></span>
-                  </label>
-                  <label class="filterredio">Monthly
-                    <input type="radio" name="salary">
-                    <span class="checkmark-redio"></span>
-                  </label>
-                  <label class="filterredio">Weekly
-                    <input type="radio" name="salary">
-                    <span class="checkmark-redio"></span>
-                  </label>    
+                <div class="panel-body">    
                   <div class="slidecontainer"> 
-                    <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                    <input type="range" min="{{pageInfo.data.salary.minsalary}}" max="{{pageInfo.data.salary.maxsalary}}" value="0" class="slider" id="myRange">
                   </div>              
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default ng-hide">
               <div class="panel-heading" role="tab" id="headingFour">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
@@ -128,6 +107,10 @@
       </div>
       </div>
       <div class="col-sm-8">
+        <h2>Job Results</h2>
+        <hr>
+        <div ng-include="'app/elements/pagination.html'" class="pagination_container"></div>
+
         <div ng-repeat="job in jobs" class="v_post row">
           <div class="po_img col-sm-2"></div>
           <div class="v-details col-sm-10">
@@ -136,6 +119,8 @@
             <p>{{job.location}}</p>
           </div>
         </div>
+
+        <div ng-include="'app/elements/pagination.html'" class="pagination_container"></div>
       </div>
     </div>
   </div>

@@ -58,7 +58,10 @@ function get_row($sql){
 function get_results($sql){
 	global $db;
 	$result = mysqli_query($db, $sql);
-	$res =  mysqli_fetch_all($result, MYSQLI_ASSOC);
+	$res = [];
+	while($row = $result->fetch_assoc()){
+		$res[] = $row;
+	}
 	return $res ? $res : array();
 }
 
