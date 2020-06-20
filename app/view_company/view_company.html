@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-3 cmp_btn">
           <div class="view_can"><button class="btn btn-success" type="download">Follow Us</button></div>
-          <div class="view_can"><button class="btn btn-secondary">Add Review</button></div>
+          <div class="view_can"><button class="btn btn-secondary" ng-click="show_modal('#reviewModal')">Add Review</button></div>
         </div>
       </div>
     </div> 
@@ -237,7 +237,7 @@
               <label>Email</label>
               <input type="email" class="form-control" placeholder="Enter Your Email" name="email">
             </div>
-            <div>
+            <div class="text-center">
               <button class=" btn btn-success" type="submit" >Submit</button>
             </div>
         </form>
@@ -245,3 +245,47 @@
     </div>
   
 </main>
+
+<div class="modal apply-form-modal" tabindex="-1" role="dialog" id="reviewModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">Add Review</h5>
+        </div>
+        <div class="modal-body bg-gra">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <form name="ratingform">       
+            <div class="text-center">
+              <h5>Your Rating for this Listing</h5>
+
+                <p><i class="fa fa-star checked" aria-hidden="true"></i>
+                  <i class="fa fa-star checked" aria-hidden="true"></i>
+                  <i class="fa fa-star checked" aria-hidden="true"></i>
+                  <i class="fa fa-star-half-0" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </p>
+            </div>
+            
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Enter Your Email" name="email">
+            </div>
+            <div class="text-center">
+              <button class=" btn btn-success" type="submit" >Submit</button>
+            </div>
+        </form>
+               
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

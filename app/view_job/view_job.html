@@ -11,7 +11,7 @@
           </div>                      
         </div>
         <div class="col-sm-6 text-right">
-          <div class="view_can"><button class="btn btn-success" type="download">Apply</button></div>
+          <div class="view_can"><button class="btn btn-success" type="download" ng-click="show_modal('#applyjobModal')">Apply</button></div>
           <div class="view_can"><button class="btn btn-secondary">Shortlist</button></div>
           
         </div>
@@ -160,3 +160,155 @@
   </div>
 </div>
 </main>
+
+
+<div class="modal apply-form-modal" tabindex="-1" role="dialog" id="applyjobModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">You are applying for <b>xyz job</b></h5>
+        </div>
+        <div class="modal-body bg-gra">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <form name="jobapplyform" class="form-horizontal">
+
+                  <div class="resume-header">
+                    <div class="row">
+                        <!-- Resume Avatar -->
+                        <div class="col-sm-3 col-xs-4 user-pic">
+                            <div class="avatar img-circle text-center">
+                                <div class="avatar-sample">
+                                    <i class="fa fa-3x fa-user"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-9 col-xs-8">
+                            <!-- Full Name -->
+                            <h4 class="m-t-md">
+                                <span id="app-fullName">Harinath Rangasamy</span>
+                            </h4>
+
+                            <!-- Job Title -->
+                            <div class="m-t-xs app-title">
+                                <a href="javascript:void(0);" class="editable editable-click" data-placeholder="Professional headline. Ex: Project manager" tabindex="1" id="app-title" data-optional="1">Business Manager</a>
+                            </div>
+
+                            <input type="hidden" name="appJobTitle" id="appJobTitle" value="Business Manager">
+                        </div>
+                    </div>
+                </div>
+
+
+                  <div id="resume" class="resume-body">
+                    <!-- Email Address -->
+                    <div class="row form-group m-t-sm">
+                        <label for="app-resume" class="col-sm-3 col-xs-12 control-label">Email</label>
+                        <div class="col-sm-9 col-xs-12">
+                            <div class="form-control-static" id="app-email">harinathit@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="row form-group m-t-sm">
+                        <label for="app-resume" class="col-sm-3 col-xs-12 control-label">Phone number</label>
+                        <div class="col-sm-9 col-xs-12">
+                            <div class="form-control-static phone-number">
+                               <div class="form-control-static">9876543210</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Select Resume Block -->
+                    <div class="row form-group awe-check select-resume">
+                        <label for="app-resume" class="col-sm-3 col-xs-12 control-label">
+                            Resume
+                          </label>
+
+                        <div class="col-sm-9 col-xs-12">
+                            <div id="applyResume" class="m-t-xs">
+                              <div class="row select-resume__item">
+                                <div class="col-sm-12">
+                                  <div class="radio radio-success">
+                                    <input tabindex="5" type="radio" name="resumeApply" id="optionsRadios8946130" value="8946130" data-type="last_attachment">
+                                    <label for="optionsRadios8946130">
+                                      <span>Hari-BD.pdf</span>
+                                      <span class="small gray-light select-resume__hint"> (Uploaded: 01/06/2020 16:55)</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <input type="hidden" name="onlineResumeId" id="appDefaultResume" value="8946130">
+                            <input type="hidden" name="attachmentResume" id="attachmentResume" value="">
+
+                            <!-- Upload New CV -->
+                            <div class="row select-resume__item select-resume__upload-cv m-t-xs">
+                                <div class="col-sm-12">
+                                    <div class="radio radio-success">
+                                        <input tabindex="7" type="radio" name="resumeApply" id="optionsRadios3" value="newAttachment" data-type="new_attachment">
+
+                                        <label for="fileAttach"><a class="relative">Upload new CV
+                                                <i class="glyphicon glyphicon-upload" data-toggle="tooltip" title="Replace" data-placement="top"></i></a>
+                                        </label>
+
+                                        <input type="file" name="resumeFile" id="fileAttach" value="Attach new" tabindex="8" class="transparent absolute">
+
+                                        <span id="resume-filename" class="small m-l-md gray text-clip-50"></span>
+                                    </div>
+
+                                    <span class="small gray-light pull-left m-l-lg m-r-lg">You can only attach .doc, .docx, and .pdf files that are less than 2MB in size.</span>
+                                </div>
+                            </div>
+
+                            <div class="row select-resume__item select-resume__upload-cv m-t-xs">
+                                <div class="col-xs-10" style="padding-top: 5px;">
+                                    <div class="progress m-b-sm m-l-lg" style="display: none;">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-1">
+                                    <svg id="img-failed" style="display: none" width="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="20px"><path fill="#f78f8f" d="M15,28.5C7.556,28.5,1.5,22.444,1.5,15S7.556,1.5,15,1.5S28.5,7.556,28.5,15S22.444,28.5,15,28.5z"></path><path fill="#c74343" d="M15,2c7.168,0,13,5.832,13,13s-5.832,13-13,13S2,22.168,2,15S7.832,2,15,2 M15,1 C7.268,1,1,7.268,1,15s6.268,14,14,14s14-6.268,14-14S22.732,1,15,1L15,1z"></path><path fill="#fff" d="M14 8H16V22H14z" transform="rotate(134.999 15 15)"></path><path fill="#fff" d="M14 8H16V22H14z" transform="rotate(-134.999 15 15)"></path></svg>
+                                </div>
+                            </div>
+
+                            <span class="error-message" style="display: none;" id="errorAppResume">Please select resume</span>
+                            <span class="error-message" style="display: none;" id="errorAppResumeFile">Please attach .doc, .docx, and .pdf files that are less than 2048KB in size.</span>
+                            <span class="generalMessage small gray-light" style="display: none; padding-left:30px" id="generalMessage"></span>
+                            <div class="error-message" style="display: none; padding-left: 30px; color: rgb(239, 71, 79);" id="errorGeneralMessage"></div>
+
+                        </div>
+                    </div>
+
+                    <!-- Cover Letter -->
+                    
+                    <span id="errorAppSystem" style="display: none;" class="error-message"></span>
+                </div>
+                  <div class="modal-footer">
+                <input type="hidden" name="appliedType" id="appliedType">
+
+                <div class="pull-right">
+
+                    <button type="button" class="btn btn-defautl btn-outline track-event" data-evt-type="cancel-apply" tabindex="11" data-dismiss="modal">Cancel</button>
+
+                    <button type="button"  class="btn btn-success " tabindex="11">Send application</button>
+
+                    <button type="submit" id="applySendingProcessBtn" style="display: none;" class="btn btn-default" tabindex="10" disabled="">
+                        <img src="https://images.vietnamworks.com/loading.gif" alt=""> Sending
+                    </button>
+                </div>
+            </div>
+                </form>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

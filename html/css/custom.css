@@ -538,7 +538,7 @@ input[type="file"]{
     margin-bottom: 20px;
 }
 .job_al{
-    font-size: 30px;
+    width: 30px;
     margin-top: 25px;
 }
 .emp_list{
@@ -655,3 +655,92 @@ input[type="file"]{
     left: 15px;
     top: 0px;
   }
+  .can_signup{
+    background-image: url(../images/elements/homepage/Asset1.png);
+    padding: 80px;
+    background-size: cover;
+  }
+  .signupsec{
+    color: #fff;
+    text-align: center;
+  }
+  .signupsec i{
+    font-size: 24px;
+  }
+  .com_signup{
+    margin:unset!important;
+    padding: 80px;
+  }
+  .mapsec{
+    margin: 50px;
+    text-align: center;
+  }
+  .mapsec hr{
+    width: 50%;
+    border-top: 2px solid #46cc62; 
+    margin-top: unset;
+    margin-bottom: unset;
+  }
+.appsec{
+    background-image: url(../images/elements/homepage/Asset2.png);
+    background-position: center;
+    background-size: cover;
+    height: auto;
+}
+.appdown{
+    padding: 80px;
+    color: #fff;
+}
+.appdown button{
+  border: 1px solid #fff;
+}
+.appdown button:hover{
+    color: #000;
+    background-color: #fff;
+}
+#contactModal textarea {
+  width: 100%;
+  height: 150px;
+}
+.dash_menu img{
+    width: 25px;
+    position: absolute;
+    margin: 10px 0 0px 0px
+}
+.dash_menu a{
+      margin-left: 20px;
+}
+.dash_menu .active a{
+    color: #46cc62;
+    font-weight: 700;
+}
+.apply-form-modal .resume-body {
+    padding: 6px 30px;
+}
+.apply-form-modal .resume-header {
+    margin: 0!important;
+    display: block;
+    padding: 8px 30px;
+}
+.form-horizontal .control-label {
+    color: #555;
+    font-weight: 600;
+}
+.form-control-static {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-bottom: 0;
+}
+.apply-form-modal #app-email {
+    padding-top: 6px; 
+}
+.apply-form-modal .form-horizontal .form-group {
+    margin-left: 0!important;
+}
+.form-horizontal .form-group {
+    margin-bottom: 10px;
+}
+.m-t-sm {
+    margin-top: 10px;
+}
+
