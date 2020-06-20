@@ -538,7 +538,7 @@ input[type="file"]{
     margin-bottom: 20px;
 }
 .job_al{
-    font-size: 30px;
+    width: 30px;
     margin-top: 25px;
 }
 .emp_list{
@@ -685,9 +685,18 @@ input[type="file"]{
   width: 100%;
   height: 150px;
 }
-
-
-
+.dash_menu img{
+    width: 25px;
+    position: absolute;
+    margin: 10px 0 0px 0px
+}
+.dash_menu a{
+      margin-left: 20px;
+}
+.dash_menu .active a{
+    color: #46cc62;
+    font-weight: 700;
+}
 
 
 
