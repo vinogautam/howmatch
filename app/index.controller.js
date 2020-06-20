@@ -6,7 +6,7 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     var vm = this;
 
     $scope.user = localStorage.getItem('hmuser');
-
+    $rootScope.loggedInUserInfo = {};
     if(!!$scope.user){
         $rootScope.loggedInUserInfo = JSON.parse($scope.user);
     }

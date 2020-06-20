@@ -174,7 +174,7 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companyProfileController',
             resolve: {
                 DATA: function(ApiService) {
-                  return ApiService.company_profile();
+                  return ApiService.company_profile({});
                 }
             }
         },
@@ -457,6 +457,18 @@ hmapp.directive('fileUpload', function(ApiService, $rootScope, $timeout, $state,
         element.bind('change', function(event){
         	var file = event.target.files[0];
         	var ext = file.name.split('.').pop();
+            if(attrs.format){
+                format = attrs.format.split(',');
+                if(format.indexOf(ext.toLowerCase()) == -1){
+                    ApiService.notification('Invalid format', 'Error');
+                    return;
+                }
+            }
+
+            if(file.size > 2097152){
+                ApiService.notification('Max upload size is 2MB', 'Error');
+                return;
+            }
         	var fileReader = new FileReader();
         	fileReader.onload = function(){
         		ApiService.upload({name: file.name, ext: ext, data: fileReader.result}).then(function (res) {

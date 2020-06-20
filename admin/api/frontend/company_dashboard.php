@@ -8,6 +8,16 @@ function hm_view_company(){
 	
 }
 
+function hm_company_profile(){
+	if(isset($_POST['company_name'])){
+		foreach ($_POST as $key => $value) {
+			set_meta('users', $_POST['user_id'], $key, $value);
+		}
+	}
+	
+	return array('status' => 'Success', 'data' => get_all_meta('users', $_POST['user_id']), 'msg' => 'Profile updated Successfully');
+}
+
 function hm_company_dashboard(){
 	$data = array();
 	$data['applied_jobs'] = get_count("select * from job_applicants where user_id = ".$_POST['user_id']);

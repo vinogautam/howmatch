@@ -76,6 +76,15 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.company_profile = function (data) {
+        data.user_id = $rootScope.loggedInUserInfo.id;
+        return httpService
+        .post(APIURL+'hm_company_profile', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     apiService.user_applied_job = function () {
         return httpService
         .post(APIURL+'hm_user_applied_job', {user_id: $rootScope.loggedInUserInfo.id})
@@ -222,7 +231,7 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
     }
 
     apiService.view_job= function(id){
-        return httpService.post(APIURL+'hm_view_job', {id: id})
+        return httpService.post(APIURL+'hm_view_job', {id: id, user_id: $rootScope.loggedInUserInfo.id})
         .then(function (res) {
             return res['data'];
         });
@@ -234,5 +243,27 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
             return res['data'];
         });
     }
+
+    apiService.hm_shortlist_job = function(data){
+        return httpService.post(APIURL+'hm_shortlist_job', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_apply_job = function(data){
+        return httpService.post(APIURL+'hm_apply_job', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_page_view = function(data){
+        return httpService.post(APIURL+'hm_page_view', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });

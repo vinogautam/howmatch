@@ -2,20 +2,20 @@
   <h2>Edit Resume</h2>
 
   <div class="v_post">
-    <div class="resume-file-download" ng-if="profile.resume">
+    <div class="resume-file-download" ng-repeat="res in profile.resume_list">
       <div class="res-view">
-        <a href=""><h5>{{profile.resume}}</h5>
-            <a download="{{profile.resume}}" href="admin/api/uploads/{{profile.resume}}"><i class="fa fa-download"></i></a>
-            <i class="fa fa-trash" ng-click="profile.resume = '';save();"></i>
-        </a>
+        <h5 style="font-size: 16px;">{{$index+1}}). {{res.resume}}<span class="res-updated">(Uploaded on: {{res.updated_on | date: 'short'}})</span>
+        <a download="{{res.resume}}" href="admin/api/uploads/{{res.resume}}"><i class="fa fa-download"></i></a>
+        <i class="fa fa-trash" ng-click="delete('resume_list', $index);"></i>
+      </h5>
       </div>       
-          <p class="res-updated">Updated on: {{profile.resume_update_on | date: 'short'}}</p>
+          
     </div>      
        
     <div class="resume-file-uploaad">
       <label for="name">CV Attachment </label>
       <div class="resume">
-        <input file-upload type="file" id="resume" ng-model="profile.resume" after-upload="saveResume()" name="">
+        <input format="doc,docx,pdf" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="">
         <button trigger-upload="resume" class="btn btn-success">Update Resume</button>
       </div>        
     </div>      
