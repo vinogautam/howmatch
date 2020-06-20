@@ -697,7 +697,35 @@ input[type="file"]{
     color: #46cc62;
     font-weight: 700;
 }
-
+.apply-form-modal .resume-body {
+    padding: 6px 30px;
+}
+.apply-form-modal .resume-header {
+    margin: 0!important;
+    display: block;
+    padding: 8px 30px;
+}
+.form-horizontal .control-label {
+    color: #555;
+    font-weight: 600;
+}
+.form-control-static {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-bottom: 0;
+}
+.apply-form-modal #app-email {
+    padding-top: 6px; 
+}
+.apply-form-modal .form-horizontal .form-group {
+    margin-left: 0!important;
+}
+.form-horizontal .form-group {
+    margin-bottom: 10px;
+}
+.m-t-sm {
+    margin-top: 10px;
+}
 
 
 
