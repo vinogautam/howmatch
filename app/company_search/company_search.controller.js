@@ -3,15 +3,15 @@ hmapp.controller('companysearchController', companysearchController);
 companysearchController.$inject = ['$filter', 'DATA', 'PagerService', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
 function companysearchController($filter, DATA, PagerService, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
-	$scope.pageInfo = {data: DATA, filter: {category: {}, salary: DATA.salary.maxsalary}};
+    $scope.pageInfo = {data: DATA, filter: {category: {}, salary: DATA.salary.maxsalary}};
 
-	$scope.jobs_bk = DATA.data;
+    $scope.jobs_bk = DATA.data;
 
-	$scope.filteredItems = angular.copy($scope.jobs_bk);
+    $scope.filteredItems = angular.copy($scope.jobs_bk);
 
-	$scope.pager = {};
+    $scope.pager = {};
 
-	$scope.setPage = function(page) {
+    $scope.setPage = function(page) {
         if (page < 1 || page > $scope.pager.totalPages) {
             return;
         }
@@ -52,5 +52,4 @@ function companysearchController($filter, DATA, PagerService, $rootScope, $scope
     $scope.category = [];
     ApiService.hm_category().then(function(res){
         $scope.category = res.data;
-    });
-}
+    })

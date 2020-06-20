@@ -1,52 +1,126 @@
 <main role="main" class="home_margin-top">
-  <div class="sub_header"><img src="html/images/sub_comp_search.png" class="img-fluid"></div>
-  <div class="container">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-4 left-menu db_padd">
-          <div class="pho-file">
-            <div class="p-photo"><i class="fa fa-user" aria-hidden="true"></i></div>
-            <div class="pro-details"><h3>Vinodh L</h3><p>UI Developer</p><p class="exp">6 years of experience</p></div>
-          </div>
-            <nav class="navbar navbar-expand-md navbar-light">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidemenu"
-                aria-controls="sidemenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-start" id="sidemenu">
-                <ul class="dash_menu top-menu">
-                  <li class="nav-item " ng-class="{active: currentState == 'user.dashboard'}">
-                    <a class="nav-link" href="#" ui-sref="user.dashboard">Dashboard</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.profile'}">
-                    <a class="nav-link" href="#" ui-sref="user.profile">Profile</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.resume'}">
-                    <a class="nav-link" href="#" ui-sref="user.resume">My Resume</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.applied_job'}">
-                    <a class="nav-link" href="#" ui-sref="user.applied_job">Applied Jobs</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.shortlist_job'}">
-                    <a class="nav-link" href="#" ui-sref="user.shortlist_job">Shortlisted Jobs</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.following_employees'}">
-                    <a class="nav-link" href="#" ui-sref="user.following_employees">Following Employers</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.alerts'}">
-                    <a class="nav-link" href="#" ui-sref="user.alerts">Alerts Jobs</a>
-                  </li>
-                  <li class="nav-item" ng-class="{active: currentState == 'user.settings'}">
-                    <a class="nav-link" href="#" ui-sref="user.settings">Settings</a>
-                  </li>
-                </ul>
+  <div class="sub_header"><img src="html/images/elements/companies/Asset 4.png" class="img-fluid"></div>
+  <div class="container padd30">    
+     <div class="serh-form">
+            <form class="form-inline">
+              <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
+                <input type="text" class="form-control" id="staticEmail2" placeholder="Categories">
+                <i class="fa fa-search" aria-hidden="true"></i>
               </div>
-            </nav>            
-        </div>
-        <div class="col-sm-8 db_padd db-view">
-          <ui-view id='childviews'></ui-view>
+              <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
+                <input type="text" class="form-control" placeholder="location">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+              <button type="submit" class="btn btn-success mb-2">Search</button>
+            </form>
+          </div>
+
+          <section class="slider-section ng-scope">
+            <div class="container text-center my-3 padd30 padd-bt20">
+              <div class="homepaddrl">
+                <h2 class="font-weight-light">Featured Companies</h2>
+                <br>
+                <div id="carousel-one" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item">
+                      <ul class="silder-box">
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                      </ul>
+                    </div>
+                    <div class="carousel-item active">
+                      <ul class="silder-box">
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                      </ul>
+                    </div>
+                    <div class="carousel-item">
+                      <ul class="silder-box">
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                        <li><img src="html/images/company.jpg"></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!--<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+          </a>-->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-one" data-slide-to="0" class=""></li>
+                    <li data-target="#carousel-one" data-slide-to="1" class="active"></li>
+                    <li data-target="#carousel-one" data-slide-to="2" class=""></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+    </section>
+
+
+  <section class="slider-section ng-scope">
+    <div class="container text-center my-3 padd30 padd-bt20">
+      <div class="homepaddrl">
+        <h2 class="font-weight-light">New Companies</h2>
+        <br>
+        <div id="carousel-one" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <ul class="silder-box">
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+              </ul>
+            </div>
+            <div class="carousel-item active">
+              <ul class="silder-box">
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+              </ul>
+            </div>
+            <div class="carousel-item">
+              <ul class="silder-box">
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+                <li><img src="html/images/company.jpg"></li>
+              </ul>
+            </div>
+          </div>
+          <!--<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+  </a>-->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-one" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-one" data-slide-to="1" class="active"></li>
+            <li data-target="#carousel-one" data-slide-to="2" class=""></li>
+          </ol>
         </div>
       </div>
+    </div>
+  </section>
     </div>
   </div>
 </main>
