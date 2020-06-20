@@ -6,20 +6,19 @@
         <div class="searchkey">
         <h5>Search Keywords</h5>
         <div class="form-group mb-2">
-          <input type="text" class="form-control" id="searchkey" placeholder="Job Title or Keywords">
+          <input ng-change="fiterResult();" type="text" ng-model="pageInfo.filter.title" class="form-control" id="searchkey" placeholder="Job Title or Keywords">
         </div>
         <h5>Location</h5>
         <div class="form-group mb-2 pos-re">
-          <input type="text" class="form-control" id="locaiton" placeholder="Location" style="padding-left:26px;">
+          <input ng-change="fiterResult();" type="text" class="form-control" ng-model="pageInfo.filter.location" id="locaiton" placeholder="Location" style="padding-left:26px;">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
         </div>
         <div class="wrapper center-block">
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-              <div class="panel-heading active" role="tab" id="headingOne">
+              <div class="panel-heading1 active" role="tab" id="headingOne">
                 <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
+                  <a role="button" >
                     Category
                   </a>
                 </h4>
@@ -27,17 +26,16 @@
               <div id="collapseOne" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">              
                   <label class="filtercheck" ng-repeat="cat in category">{{cat.name}}
-                    <input type="checkbox" value="{{cat.id}}">
+                    <input ng-change="fiterResult();" ng-model="pageInfo.filter.category[cat.id]" type="checkbox" value="{{cat.id}}">
                     <span class="checkmark"></span>
                   </label>
                 </div>
               </div>
             </div>
             <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
+              <div class="panel-heading1" role="tab" id="headingTwo">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
+                  <a class="collapsed">
                     Job Type
                   </a>
                 </h4>
@@ -45,25 +43,24 @@
               <div id="collapseTwo" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
                   <label class="filterredio">Full Time 
-                    <input value="Full Time" type="radio" checked="checked" name="job-type">
+                    <input ng-change="fiterResult();" ng-model="pageInfo.filter.type"  value="Full Time" type="radio" checked="checked" name="job-type">
                     <span class="checkmark-redio "></span>
                   </label>
                   <label class="filterredio">Part Time
-                    <input value="Part Time" type="radio" name="job-type">
+                    <input ng-change="fiterResult();" ng-model="pageInfo.filter.type"  value="Part Time" type="radio" name="job-type">
                     <span class="checkmark-redio"></span>
                   </label>
                   <label class="filterredio">Freelancer
-                    <input value="Freelancer" type="radio" name="job-type">
+                    <input ng-change="fiterResult();" ng-model="pageInfo.filter.type"  value="Freelancer" type="radio" name="job-type">
                     <span class="checkmark-redio"></span>
                   </label>
                 </div>
               </div>
             </div>
             <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingThree">
+              <div class="panel-heading1" role="tab" id="headingThree">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                    href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <a>
                     Salary
                   </a>
                 </h4>
@@ -71,7 +68,8 @@
               <div id="collapseThree" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">    
                   <div class="slidecontainer"> 
-                    <input type="range" min="{{pageInfo.data.salary.minsalary}}" max="{{pageInfo.data.salary.maxsalary}}" value="0" class="slider" id="myRange">
+                    <input ng-change="fiterResult();"  style="margin-bottom: 10px;" class="form-control" type="number" ng-model="pageInfo.filter.salary" name="">
+                    <input ng-change="fiterResult();"  type="range" ng-model="pageInfo.filter.salary" min="{{pageInfo.data.salary.minsalary}}" max="{{pageInfo.data.salary.maxsalary}}" value="0" class="slider" id="myRange">
                   </div>              
                 </div>
               </div>
@@ -112,13 +110,17 @@
         <div ng-include="'app/elements/pagination.html'" class="pagination_container"></div>
 
         <div ng-repeat="job in jobs" class="v_post row">
-          <div class="po_img col-sm-2"></div>
+          <div class="po_img col-sm-2">
+            <img style="width: 100%;max-height: 100%;" ng-src="{{job.company_image ? 'admin/upload/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+          </div>
           <div class="v-details col-sm-10">
-            <h4 ui-sref="view_job({id: job.id})" class="active">{{job.title}}</h4>
+            <h4 ui-sref="view_job({id: job.id})" class="active cp">{{job.title}}</h4>
             <p> Published {{job.posted_on | timeago}}</p>
             <p>{{job.location}}</p>
+            <button ui-sref="view_job({id: job.id})"  class="btn btn-success view-more-job" type="download">View Job</button>
           </div>
         </div>
+        <div ng-if="jobs.length == 0"><p>No Results</p></div>
 
         <div ng-include="'app/elements/pagination.html'" class="pagination_container"></div>
       </div>
