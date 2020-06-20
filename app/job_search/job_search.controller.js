@@ -7,7 +7,7 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
 
 	$scope.jobs_bk = DATA.data;
 
-	$scope.filteredItems = angular.copy($scope.jobs_bk);
+    $scope.filteredItems = angular.copy($scope.jobs_bk);
 
 	$scope.pager = {};
 

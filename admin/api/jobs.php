@@ -2,7 +2,31 @@
 /* Admin Side*/
 function hm_jobs(){
 	$res = get_results("select * from jobs");
-	return array('status' => 'Success', 'data' => $res);
+
+	$new = [];
+	foreach ($res as $key => $value) {
+		if(isset($value['industry'])){
+			$value['industry'] = unserialize($value['industry']);
+		}
+		if(isset($value['career_level']) && $value['career_level']){
+			$value['career_level'] = unserialize($value['career_level']);
+		}
+		if(isset($value['qualification']) && $value['qualification']){
+			$value['qualification'] = unserialize($value['qualification']);
+		}
+		if(isset($value['job_level']) && $value['job_level']){
+			$value['job_level'] = unserialize($value['job_level']);
+		}
+		if(isset($value['tags']) && $value['tags']){
+			$value['tags'] = unserialize($value['tags']);
+		}
+		
+		$value['title'] = stripslashes($value['title']);
+		$value['description'] = stripslashes($value['description']);
+
+		$new[] = $value;
+	}
+	return array('status' => 'Success', 'data' => $new);
 }
 
 function hm_save_job(){
@@ -20,16 +44,17 @@ function hm_save_job(){
 	if(isset($data['job_level'])){
 		$data['job_level'] = serialize($data['job_level']);
 	}
-	if(isset($data['category'])){
-		$data['category'] = serialize($data['category']);
-	}
 	if(isset($data['tags'])){
 		$data['tags'] = serialize($data['tags']);
 	}
 
+	$data['title'] = addslashes($data['title']);
+	$data['description'] = addslashes($data['description']);
+
 	if(isset($data['id'])){
 		$id = $data['id'];
 		unset($data['id']);
+		//print_r($data);
 		update('jobs', $data, array('id' => $id));
 		return array('status' => 'Success', 'msg' => 'Job Updated Successfully');
 	} else {

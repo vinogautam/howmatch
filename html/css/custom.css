@@ -743,4 +743,9 @@ input[type="file"]{
 .m-t-sm {
     margin-top: 10px;
 }
-
+.silder-box li img{
+  width: 100%;
+}
+.view_company_page .silder-box li{
+  padding: 0;
+}

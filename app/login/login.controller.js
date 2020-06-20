@@ -25,6 +25,14 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 	   );
 	};
 
+	$scope.redirect = function(type){
+		if(!$rootScope.redirectTo){
+			$state.go(type+'.dashboard');
+		} else {
+			$state.go($rootScope.redirectTo.state, $rootScope.redirectTo.params)
+		}
+	};
+
 	$scope.login = function(fl){
 		if(fl){
 			ApiService.login($scope.signupData).then(function(response){
@@ -33,12 +41,12 @@ function loginController(facebookService, $rootScope, $scope, $state, ApiService
 						$("#signinModal").modal('hide');
 		                $rootScope.loggedInUserInfo = response.data;
 		                localStorage.setItem('hmuser', JSON.stringify(response.data));
-	                	$state.go('company.dashboard');
+	                	$scope.redirect('company');
 	                } else if(response.data.user_type == 3){
 	                	$("#signinModal").modal('hide');
 		                $rootScope.loggedInUserInfo = response.data;
 		                localStorage.setItem('hmuser', JSON.stringify(response.data));
-	                	$state.go('user.dashboard');
+	                	$scope.redirect('company');
 	                } else {
 	                	ApiService.notification('Invalid User Type. Please contact support', 'Error');
 	                }

@@ -26,6 +26,10 @@ function resumeController(DATA, $rootScope, $scope, $state, ApiService, $window,
 		$scope.profile.experience_info = [];
 	}
 
+	if($scope.profile.resume_list === undefined){
+		$scope.profile.resume_list = [];
+	}
+
 	if($scope.profile.benefits_list === undefined){
 		$scope.profile.benefits = {};
 	} else {
@@ -42,7 +46,7 @@ function resumeController(DATA, $rootScope, $scope, $state, ApiService, $window,
 	};
 
 	$scope.saveResume = function(){
-		$scope.profile.resume_update_on = new Date().getTime();
+		$scope.profile.resume_list.push({resume: $scope.pageInfo.resume, updated_on: new Date().getTime()});
 		$scope.save();
 	};
 
