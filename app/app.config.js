@@ -238,6 +238,15 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companySettingsController'
         },
         {
+            name: 'company.mypackage',
+            label: 'My Package',
+            auth: true,
+            restricted:false,
+            url: '/mypackage',
+            templateUrl: 'app/company/mypackage/mypackage.html',
+            controller: 'companyMypackageController'
+        },
+        {
             name: 'companies',
             label: 'Companies',
             auth: false,
@@ -301,6 +310,15 @@ function routes($stateProvider, $urlRouterProvider) {
                   return ApiService.view_candidate($stateParams.id);
                 }
             }
+        },
+        {
+            name: 'packages',
+            label: 'Packages',
+            auth: false,
+            restricted:false,
+            url: '/packages/',
+            templateUrl: 'app/packages/packages.html',
+            controller: 'packagesController',
         }
     ]
 

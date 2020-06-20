@@ -15,9 +15,16 @@
             <div><i style="position: relative;top: 0;left: 0;" class="fa fa-map-marker"></i> {{job.location}}</div>
           </div>                      
         </div>
+<<<<<<< HEAD
         <div class="col-sm-6 text-right" ng-hide="loggedInUserInfo.user_type == 2">
           <div class="view_can"><button class="btn btn-success" type="download" ng-click="apply_job();">Apply <i ng-if="job.applied" class="fa fa-check"></i></button></div>
           <div class="view_can"><button ng-click="shortlist_job()" class="btn btn-secondary">Shortlist <i ng-if="job.shortlisted" class="fa fa-check"></i></button></div>
+=======
+        <div class="col-sm-6 text-right">
+          <div class="view_can"><button class="btn btn-success" type="download" ng-click="show_modal('#applyjobModal')">Apply</button></div>
+          <div class="view_can"><button class="btn btn-secondary">Save Job</button></div>
+          
+>>>>>>> c75e72098614c83640ace560fefe23c45a324b47
         </div>
         <div class="col-sm-12 view_job" >
           <span><i class="fa fa-eye"></i></span><span class="content">{{job.no_of_views}} Views</span>

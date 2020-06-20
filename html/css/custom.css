@@ -749,3 +749,65 @@ input[type="file"]{
 .view_company_page .silder-box li{
   padding: 0;
 }
+.sub--section {
+    position: relative;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.sub--section_wrapper {
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    padding: 45px 35px 25px;
+    background: #fff;
+    z-index: 1;
+    position: relative;
+    margin: 20px 0;
+}
+.plan_detail{
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    padding: 45px 35px 25px;
+    background: #fff;
+    z-index: 1;
+    position: relative;
+    margin: 20px;
+    width: 350px;
+    text-align: center;
+}
+.plan_detail.active{
+  background-color: #46cc62;
+  color: #fff;
+}
+.sub--plan_action button{
+    border: 1px solid #46cc62;
+    color: #46cc62;
+}
+.sub--plan_action button:hover{
+  background-color: #46cc62;
+  border: 1px solid #46cc62;
+  color: #fff;
+}
+.plan_detail.active button{
+  border: 1px solid #fff;
+  color: #fff;
+}
+.plan_detail.active button:hover{
+  background-color: #1e7e34;
+  border-color: #1c7430;
+  color: #fff;
+}
