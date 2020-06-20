@@ -319,6 +319,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/packages/',
             templateUrl: 'app/packages/packages.html',
             controller: 'packagesController',
+        },
+        {
+            name: 'company_search',
+            label: 'Company Search',
+            auth: false,
+            restricted:false,
+            url: '/company_search/',
+            templateUrl: 'app/company_search/company_search.html',
+            controller: 'companysearchController',
         }
     ]
 
