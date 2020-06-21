@@ -29,9 +29,9 @@ function update($table, $array, $where){
 	foreach ($where as $key => $value) {
 		$arr2[] = $key."='$value'";
 	}
-	$arr2 = implode(',', $arr2);
-
-	return mysqli_query($db, "UPDATE $table SET $arr where $arr2");
+	$arr2 = implode(' and ', $arr2);
+	$sql = "UPDATE $table SET $arr where $arr2";
+	return mysqli_query($db, $sql);
 }
 
 function delete($table, $array){
@@ -43,7 +43,7 @@ function delete($table, $array){
 		$arr[] = $key."='$value'";
 	}
 
-	$arr = implode(',', $arr);
+	$arr = implode(' and ', $arr);
 
 	return mysqli_query($db, "DELETE FROM $table where $arr");
 }

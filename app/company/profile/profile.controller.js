@@ -24,6 +24,23 @@ function companyProfileController(DATA, $rootScope, $scope, $state, ApiService, 
 		}
 	};
 
+	$scope.addGallery = function(){
+		if($scope.profile.gallery == undefined){
+			$scope.profile.gallery = [];
+		}
+		$scope.profile.gallery.push($scope.pageInfo.gallery_image);
+		ApiService.company_profile($scope.profile).then(function(){
+			ApiService.notification('New Image added in gallery', 'Success');
+		});
+	};
+
+	$scope.delete_gallery = function(ind){
+		$scope.profile.gallery.splice(ind, 1);
+		ApiService.company_profile($scope.profile).then(function(){
+			ApiService.notification('Selected Image removed from gallery', 'Success');
+		});
+	};
+
 	$scope.change_slug = function(str){
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim
 	    str = str.toLowerCase();

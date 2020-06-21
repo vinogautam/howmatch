@@ -3,7 +3,7 @@ hmapp.controller('jobsearchController', jobsearchController);
 jobsearchController.$inject = ['$filter', 'DATA', 'PagerService', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
 function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
-	$scope.pageInfo = {data: DATA, filter: {category: {}, salary: DATA.salary.maxsalary}};
+	$scope.pageInfo = {data: DATA, filter: {category: {}, salary: parseInt(DATA.salary.maxsalary)}};
 
 	$scope.jobs_bk = DATA.data;
 

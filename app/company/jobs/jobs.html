@@ -4,7 +4,7 @@
      <h5>Manage Jobs</h5>
   </div>
   <div class="col-sm-6 left">
-    <button ng-click="show_modal('#submitjobModal')" class="right submitjob btn btn-success"><i class="fa fa-plus"></i>Submit Job</button>
+    <button ng-click="job_form_data = {industry: {}};show_modal('#submitjobModal')" class="right submitjob btn btn-success"><i class="fa fa-plus"></i>Submit Job</button>
   </div> 
 </div>
 
@@ -17,16 +17,21 @@
 
 <div class="joblist">
   <div>
-    <div class="v_post row" ng-repeat="job in totalItems | filter: search">
-    <div class="po_img col-sm-2"></div>
+    <p ng-if="(totalItems | filter: pageInfo.search).length == 0">No jobs posted</p>
+    <div class="v_post row" ng-repeat="job in totalItems | filter: pageInfo.search">
+    <div class="po_img col-sm-2">
+      <img style="width: 100%;max-height: 100%;" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+    </div>
     <div class="v-details col-sm-6" >
       <h4 class="active">{{job.title}}</h4>
       <p> {{job.posted_on}}</p>
       <p>{{job.location}}</p>
     </div>
-    <div class="col-sm-2">
-        <div>Number</div>
-        <div>Applicants</div>
+    <div class="col-sm-2 text-center">
+        <div ng-click="getApplicants(job)" class="cp">
+          <b >{{job.no_of_applicants}}</b><br>
+          Applicants
+        </div>
         
       </div>
       <div class="col-sm-2">
@@ -42,6 +47,40 @@
 </div>
 </main>
 
+
+<div class="modal" tabindex="-1" role="dialog" id="showApplicantModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title">{{job_form_data.title}} - Applicants</h5>
+        </div>
+      <div class="modal-body bg-gra usrmodal">
+        <div class="joblist">
+            <div ng-repeat="applicant in applicants" class="v_post row">
+              <div class="po_img col-sm-3">
+                <i ng-if="!applicant.profile_image" class="fa fa-user" aria-hidden="true"></i>
+                <img style="width: 100%;max-height: 100%;" ng-if="applicant.profile_image" ng-src="{{'admin/api/uploads/'+applicant.profile_image}}">
+              </div>
+              <div class="v-details col-sm-6">
+                <h4 class="active">{{applicant.name}}</h4>
+                <p>{{applicant.job_title}}</p>
+                <p>{{applicant.location}}</p>
+              </div>
+              <div class="col-sm-3">
+                  <div>
+                    <a target="blank" href="#!view_candidate/{{applicant.id}}"><i  class="fa fa-eye" data-toggle="tooltip" data-original-title="Edit Job" ></i> View Profile</a>
+                  </div>
+                  
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-cons">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal" tabindex="-1" role="dialog" id="submitjobModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -53,12 +92,12 @@
   <div class="form-row">
     <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.title.$invalid}"> 
           <label for="name">Title</label>
-          <input type="text" class="form-control" ng-model="job_form_data.title" id="name" placeholder="Job Title">
+          <input type="text" class="form-control" required="" ng-model="job_form_data.title" id="name" placeholder="Job Title">
         </div>
         
         <div class="col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.type.$invalid}">
           <label for="">Types  </label>
-          <select class="form-control select2multiple" ng-model="job_form_data.type">
+          <select class="form-control" required="" ng-model="job_form_data.type">
             <option>Freelancer</option>
             <option>Full Time</option>
             <option>Part Time</option>
@@ -68,11 +107,11 @@
     <div class="form-row">
       <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.last_date.$invalid}">
           <label for="">Application DeadLine</label>
-          <input type="date" class="form-control" name="deadline" placeholder="" ng-model="job_form_data.last_date">
+          <input type="date" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.last_date">
       </div>
         <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.jtype.$invalid}">
           <label for="inputPassword4">Job Apply type </label>
-          <select class="form-control select2multiple" ng-model="job_form_data.jtype">
+          <select class="form-control" required="" ng-model="job_form_data.jtype">
             <option>Internal</option>
             <option>External</option>
           </select>          
@@ -81,23 +120,17 @@
     <div class="form-row">
       <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.salary.$invalid}">
           <label for="">Salary  </label>
-          <input type="text" class="form-control" name="deadline" placeholder="" ng-model="job_form_data.salary">
+          <input type="text" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.salary">
       </div>
         <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.experience.$invalid}">
           <label for="inputPassword4">Experience</label>
-          <select class="form-control select2multiple" ng-model="job_form_data.experience">
-            <option>Fresher</option>
-            <option>1 Yr Experience</option>
-            <option>2 Yr Experience</option>
-            <option>3 Yr Experience</option>
-            <option>4 Yr Experience</option>
-          </select>          
+          <input type="text" ng-model="job_form_data.experience" required="" class="form-control" name="">         
         </div>
     </div>
     <div class="form-row">
       <div class="col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.gender.$invalid}">
         <label>Gender</label>
-        <select class="form-control select2multiple" ng-model="job_form_data.gender">
+        <select class="form-control" required="" ng-model="job_form_data.gender">
           <option>Male</option>
           <option>Female</option>
           <option>Both</option>
@@ -109,7 +142,7 @@
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.category.$invalid}">
         <label>Categories</label>
-        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.category">
+        <select class="form-control" required="" ng-model="job_form_data.category">
           <option ng-repeat="cat in category" value="{{cat.id}}">{{cat.name}}</option>         
         </select>        
       </div>      
@@ -164,7 +197,7 @@
           </div>
 
    <div class="text-right">               
-      <button ng-click="save_job(jobform)" type="submit" class="btn btn-success" data-dismiss="modal">Post Job</button>
+      <button ng-click="save_job(jobform)" type="submit" class="btn btn-success">Post Job</button>
   </div>
     </form>
             
@@ -178,10 +211,8 @@
   <div class="modal fade" id="deleteAppModal" tabindex="-1" role="dialog" aria-labelledby="deleteAppModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" name="jobform" novalidate="" ng-class="{submitted: pageInfo.submitted}">
+      <form role="form" novalidate="" ng-class="{submitted: pageInfo.submitted}">
       <div class="modal-header clearfix ">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
-        </button>
         <h4 class="p-b-5"><span class="semi-bold">Delete</span> Job</h4>
       </div>
       <div class="modal-body">

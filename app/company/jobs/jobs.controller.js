@@ -19,8 +19,12 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
     $scope.save_job = function(frm){
     	$scope.pageInfo.submitted = true;
     	if(frm.$valid){
-    		ApiService.hm_save_job($scope.job_form_data).then(function(res){
-    			$('#addNewAppModal').modal('hide');
+            var cpy = angular.copy($scope.job_form_data);
+            delete cpy.company_name;
+            delete cpy.company_image;
+            delete cpy.no_of_applicants;
+    		ApiService.hm_save_job(cpy).then(function(res){
+    			$('#submitjobModal').modal('hide');
     			ApiService.notification(res.msg, 'success');
     			$state.reload();
     		});
@@ -30,8 +34,9 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
     };
 
     $scope.edit_job = function(data){
+        data.last_date = new Date(data.last_date);
     	$scope.job_form_data = data;
-    	$('#addNewAppModal').modal('show');
+    	$('#submitjobModal').modal('show');
     };
 
     $scope.delete_job = function(data){
@@ -41,10 +46,25 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
 
     $scope.delete_job2 = function(id){
     	ApiService.hm_delete_job($scope.pageInfo.actionId).then(function(res){
-    		$('#deleteAppModal').modal('hide');
-    		ApiService.notification(res.msg, 'success');
-    		$state.reload();
-    	});
+            $('#deleteAppModal').modal('hide');
+            ApiService.notification(res.msg, 'success');
+            $state.reload();
+        });
+    };
+
+    $scope.applicants = [];
+    $scope.getApplicants = function(data){
+        if(data.no_of_applicants == 0){
+            return;
+        }
+        $scope.job_form_data = data;
+        $scope.applicants = [];
+        $rootScope.preloader = true;
+        ApiService.hm_get_Applicants(data.id).then(function(res){
+            $('#showApplicantModal').modal('show');
+            $rootScope.preloader = false;
+            $scope.applicants = res.data;
+        });
     };
 
     $scope.category = [];

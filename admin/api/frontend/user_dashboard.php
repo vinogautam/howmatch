@@ -35,7 +35,35 @@ function hm_user_alerts(){
 }
 
 function hm_view_candidate(){
+
 	$data = get_all_meta('users', $_POST['id']);
-	
+	$data['basic'] = get_data_by_id('users', $_POST['id']);
+
 	return array('status' => 'Success', 'data' => $data);
+}
+
+function hm_following_list(){
+	$applicants = get_results("select * from following_employees where user_id = ".$_POST['user_id']);
+	$new = [];
+	foreach ($applicants as $key => $value) {
+		$dd = array('id' => $value['user_id']);
+		$arr = array('company_image', 'name', 'location', 'slug');
+		foreach ($arr as $key => $val) {
+			$dd[$val] = get_meta('users', $value['user_id'], $val);
+		}
+		$new[] = $dd;
+	}
+
+	return array('status' => 'Success', 'data' => $new);
+}
+
+function hm_follow(){
+	insert('following_employees', array('user_id' => $_POST['user'], 'company_id' => $_POST['emp']));
+	return array('status' => 'Success');
+}
+
+function hm_unfollow(){
+	delete('following_employees', array('user_id' => $_POST['user'], 'company_id' => $_POST['emp']));
+
+	return array('status' => 'Success');
 }

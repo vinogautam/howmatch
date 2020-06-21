@@ -265,5 +265,26 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.hm_get_Applicants= function(id){
+        return httpService.post(APIURL+'hm_get_Applicants', {job_id: id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_company_shortlist= function(){
+        return httpService.post(APIURL+'hm_company_shortlist', {user_id: $rootScope.loggedInUserInfo.id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_remove_shortlist = function(id){
+        return httpService.post(APIURL+'hm_remove_shortlist', {user:id, emp: $rootScope.loggedInUserInfo.id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });

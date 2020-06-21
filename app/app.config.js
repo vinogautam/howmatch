@@ -208,7 +208,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/shortlist_candidates',
             templateUrl: 'app/company/shortlist_candidates/shortlist_candidates.html',
-            controller: 'shortlistcandidateController'
+            controller: 'shortlistcandidateController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.hm_company_shortlist();
+                }
+            }
         },
         {
             name: 'company.following_employees',

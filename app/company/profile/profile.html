@@ -18,7 +18,7 @@
           <div class="text-left">               
             <input format="png,jpg,jpeg" id="profileImage" file-upload type="file" ng-model="profile.company_image" name="">       
             <button trigger-upload="profileImage" class="btn btn-success">Upload Profile Image</button>
-            <button ng-click="show_modal('#galleryModal')">View Gallery</button>
+            <button ng-click="show_modal('#galleryModal')" class="btn btn-primary">View Gallery</button>
         </div>
         </div>
         </div>
@@ -107,3 +107,30 @@
     </div>
       </form>
  </div>
+
+ 
+
+<div class="modal" tabindex="-1" role="dialog" id="galleryModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header log-hd">
+          <h5 class="modal-title"> Gallery <input format="png,jpg,jpeg" id="gallery_image" file-upload type="file" after-upload="addGallery();" ng-model="pageInfo.gallery_image" name="">       
+            <button trigger-upload="gallery_image" class="btn btn-success"><i class="fa fa-plus"></i> New Image</button></h5>
+        </div>
+      <div class="modal-body bg-gra usrmodal">
+        <div class="joblist">
+            <div  class="row">
+              <div ng-repeat="gallery in profile.gallery" class="col-sm-3" style="position: relative;">
+                <i ng-click="delete_gallery($index)" class="fa fa-trash" aria-hidden="true" style="position: absolute;top: 0;
+                right: 0;color: red;"></i>
+                <img style="width: 100%;max-height: 100%;" ng-src="{{'admin/api/uploads/'+gallery}}">
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-cons">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

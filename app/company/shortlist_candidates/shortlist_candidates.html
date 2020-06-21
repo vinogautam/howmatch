@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-sm-6">
      <h5>Shortlisted Candidates</h5>
@@ -6,158 +7,32 @@
 
 <div class="margin-t20 search position-re row">
   <div class="col-sm-6">
-    <input type="text" name="search" placeholder="search" class="form-control">
+    <input ng-model="pageInfo.search.$" type="text" name="search" placeholder="search" class="form-control">
     <i class="fa fa-search"></i>
   </div>
-  <div class="col-sm-6">
-    <input type="text" name="sort" class="form-control"> 
-  </div>  
 </div>
 
 <div class="joblist">
-  <div>
-    <div class="v_post row">
-    <div class="po_img col-sm-3"></div>
-    <div class="v-details col-sm-6">
-      <h4 class="active">Candidate Name</h4>
-      <p> Graphic Desiner</p>
-      <p>Ho Chi Minh, Vietnam</p>
-    </div>
-    <div class="col-sm-3">
-        <div>
-          <a href="#" ng-click="show_modal(#viewresumeModal);"><i  class="fa fa-eye" data-toggle="tooltip" data-original-title="Edit Job" ></i> View</a>
-          <a href=""><i ng-click="delete_job(job.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Job" ></i> Delete</a>
-        </div>
-        
+  <p ng-if="(applicants | filter: pageInfo.search).length == 0">No Result</p>
+  <div ng-repeat="applicant in applicants | filter: pageInfo.search" class="v_post row">
+      <div class="po_img col-sm-3">
+        <i ng-if="!applicant.profile_image" class="fa fa-user" aria-hidden="true"></i>
+        <img style="width: 100%;max-height: 100%;" ng-if="applicant.profile_image" ng-src="{{'admin/api/uploads/'+applicant.profile_image}}">
       </div>
-  </div>
-  </div>
+      <div class="v-details col-sm-6">
+        <h4 class="active">{{applicant.name}}</h4>
+        <p>{{applicant.job_title}}</p>
+        <p>{{applicant.location}}</p>
+      </div>
+      <div class="col-sm-3">
+          <div>
+            <a ui-sref="view_candidate({id:applicant.id})"><i  class="fa fa-eye" data-toggle="tooltip" data-original-title="Edit Job" ></i> View Profile</a>
+            <br>
+            <br>
+            <a href=""><i ng-click="remove_shortlist(applicant.id);" class="fa fa-heart cp" data-toggle="tooltip" data-original-title="UnShortlist" ></i> UnShortlist</a>
+          </div>
+          
+        </div>
+    </div>
   
 </div>
-
-<div class="modal" tabindex="-1" role="dialog" id="viewresumeModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header log-hd">
-          <h5 class="modal-title">Submit Job</h5>
-        </div>
-        <div class="modal-body bg-gra usrmodal">
-          <form>  
-  <div class="form-row">
-    <div class=" col-sm-6 form-group">
-          <label for="name">Title</label>
-          <input type="text" class="form-control" id="name" placeholder="Job Title">
-        </div>
-        
-        <div class="col-sm-6 form-group">
-          <label for="">Types  </label>
-          <select class="form-control select2multiple">
-            <option>Freelancer</option>
-            <option>Full-time</option>
-            <option>Part-time</option>
-          </select>
-        </div>
-    </div>
-    <div class="form-row">
-      <div class=" col-sm-6 form-group">
-          <label for="">Application DeadLine</label>
-          <input type="date" class="form-control" name="deadline" placeholder="">
-      </div>
-        <div class=" col-sm-6 form-group">
-          <label for="inputPassword4">Job Apply type </label>
-          <select class="form-control select2multiple">
-            <option>Internal</option>
-            <option>External</option>
-          </select>          
-        </div>
-    </div>
-    <div class="form-row">
-      <div class=" col-sm-6 form-group">
-          <label for="">Salary  </label>
-          <input type="text" class="form-control" name="deadline" placeholder="">
-      </div>
-        <div class=" col-sm-6 form-group">
-          <label for="inputPassword4">Experience</label>
-          <select class="form-control select2multiple">
-            <option>Fresher</option>
-            <option>1 Yr Experience</option>
-            <option>2 Yr Experience</option>
-            <option>3 Yr Experience</option>
-            <option>4 Yr Experience</option>
-          </select>          
-        </div>
-    </div>
-    <div class="form-row">
-      <div class="col-sm-6 form-group">
-        <label>Gender</label>
-        <select class="form-control select2multiple">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-        
-      </div>
-      
-    </div>              
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Categories</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
-        </select>        
-      </div>      
-    </div>
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Descripton</label>
-        <textarea class="form-control" row="5" type="text name
-        description"></textarea>     
-      </div>      
-    </div>
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Tags</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>PHP</option>
-          <option>Java</option>          
-        </select>        
-      </div>      
-    </div>
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Industry</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
-        </select>        
-      </div>      
-    </div>
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Qualification</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>IT Software</option>
-          <option>IT Hardware</option>          
-        </select>        
-      </div>      
-    </div>
-    <div class="form-row">
-      <div class="col-sm-12 form-group">
-        <label>Career Level</label>
-        <select class="form-control select2multiple" multiple="">
-          <option>Manager</option>
-          <option>Executive</option>          
-        </select>        
-      </div>      
-    </div>
-
-   <div class="text-right">               
-      <button type="submit" class="btn btn-success">Post Job</button>
-  </div>
-    </form>
-            
-          </div>
-        </div>
-      </div>
-    </div>

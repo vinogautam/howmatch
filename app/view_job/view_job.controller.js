@@ -63,7 +63,7 @@ function viewjobController(DATA, $stateParams, $rootScope, $scope, $state, ApiSe
 		$scope.pageInfo.list = {resume: $scope.pageInfo.resume, updated_on: new Date().getTime()};
 	};
 
-	if(!$rootScope.loggedInUserInfo.profile.resume_list){
+	if($rootScope.loggedInUserInfo.profile && !$rootScope.loggedInUserInfo.profile.resume_list){
 		$rootScope.loggedInUserInfo.profile.resume_list = [];
 	}
 

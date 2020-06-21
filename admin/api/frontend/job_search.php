@@ -1,25 +1,25 @@
 <?php
 function hm_job_search(){
-	$res = get_results("select * from jobs");
+	$res = get_results("select * from jobs order by id desc");
 	$new = [];
 	foreach ($res as $key => $value) {
 		$value['company_name'] = get_meta('users', $value['posted_by'], 'company_name');
 		$value['company_image'] = get_meta('users', $value['posted_by'], 'company_image');
 
 		if(isset($value['industry'])){
-			$value['industry'] = unserialize($value['industry']);
+			$value['industry'] = unserialize(stripslashes($value['industry']));
 		}
 		if(isset($value['career_level']) && $value['career_level']){
-			$value['career_level'] = unserialize($value['career_level']);
+			$value['career_level'] = unserialize(stripslashes($value['career_level']));
 		}
 		if(isset($value['qualification']) && $value['qualification']){
-			$value['qualification'] = unserialize($value['qualification']);
+			$value['qualification'] = unserialize(stripslashes($value['qualification']));
 		}
 		if(isset($value['job_level']) && $value['job_level']){
-			$value['job_level'] = unserialize($value['job_level']);
+			$value['job_level'] = unserialize(stripslashes($value['job_level']));
 		}
 		if(isset($value['tags']) && $value['tags']){
-			$value['tags'] = unserialize($value['tags']);
+			$value['tags'] = unserialize(stripslashes($value['tags']));
 		}
 
 		$value['title'] = stripslashes($value['title']);
@@ -35,20 +35,21 @@ function hm_job_search(){
 
 function hm_view_job(){
 	$data = get_row("select * from jobs where id =". $_POST['id']);
+	
 	if(isset($data['industry'])){
-		$data['industry'] = unserialize($data['industry']);
+		$data['industry'] = unserialize(stripslashes($data['industry']));
 	}
 	if(isset($data['career_level']) && $data['career_level']){
-		$data['career_level'] = unserialize($data['career_level']);
+		$data['career_level'] = unserialize(stripslashes($data['career_level']));
 	}
 	if(isset($data['qualification']) && $data['qualification']){
-		$data['qualification'] = unserialize($data['qualification']);
+		$data['qualification'] = unserialize(stripslashes($data['qualification']));
 	}
 	if(isset($data['job_level']) && $data['job_level']){
-		$data['job_level'] = unserialize($data['job_level']);
+		$data['job_level'] = unserialize(stripslashes($data['job_level']));
 	}
 	if(isset($data['tags']) && $data['tags']){
-		$data['tags'] = unserialize($data['tags']);
+		$data['tags'] = unserialize(stripslashes($data['tags']));
 	}
 
 	$data['title'] = stripslashes($data['title']);
@@ -57,6 +58,7 @@ function hm_view_job(){
 	$data['category'] = get_data_by_id('category', $data['category']);
 
 	$data['company_name'] = get_meta('users', $data['posted_by'], 'company_name');
+	$data['company_image'] = get_meta('users', $data['posted_by'], 'company_image');
 	$data['company_slug_name'] = get_meta('users', $data['posted_by'], 'slug');
 
 	$data['shortlisted'] = false;
