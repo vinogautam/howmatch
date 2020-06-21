@@ -57,6 +57,7 @@ function hm_view_job(){
 	$data['category'] = get_data_by_id('category', $data['category']);
 
 	$data['company_name'] = get_meta('users', $data['posted_by'], 'company_name');
+	$data['company_slug_name'] = get_meta('users', $data['posted_by'], 'slug');
 
 	$data['shortlisted'] = false;
 	$data['applied'] = false;

@@ -1,19 +1,21 @@
 hmapp.controller('companyProfileController', companyProfileController);
 
-companyProfileController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+companyProfileController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function companyProfileController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function companyProfileController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+	$scope.pageInfo = {};
 	$scope.profile = DATA.data;
 	if($scope.profile.founded){
-		$scope.profile.founded = new Date($scope.profile.dob);
+		$scope.profile.founded = new Date($scope.profile.founded);
 	}
 
 	$rootScope.loggedInUserInfo.profile = $scope.profile;
+	
 	localStorage.setItem('hmuser', JSON.stringify($rootScope.loggedInUserInfo));
 
 	$scope.save = function(flag){
 		if(flag){
-			ApiService.user_profile($scope.profile).then(function(){
+			ApiService.company_profile($scope.profile).then(function(){
 				ApiService.notification('Profile updated successfully', 'Success');
 				$state.reload();
 			});
@@ -21,4 +23,22 @@ function companyProfileController($rootScope, $scope, $state, ApiService, $windo
 			ApiService.notification('Please fill all required fields', 'Error');
 		}
 	};
+
+	$scope.change_slug = function(str){
+	    str = str.replace(/^\s+|\s+$/g, ''); // trim
+	    str = str.toLowerCase();
+	  
+	    // remove accents, swap ñ for n, etc
+	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+	    for (var i=0, l=from.length ; i<l ; i++) {
+	        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	    }
+
+	    $scope.profile.slug = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	        .replace(/-+/g, '-'); // collapse dashes
+	    
+	}
 }
