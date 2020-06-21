@@ -13,6 +13,7 @@ function hm_company_profile(){
 		foreach ($_POST as $key => $value) {
 			set_meta('users', $_POST['user_id'], $key, $value);
 		}
+		update(array('slug' => $_POST['slug']), array('id' => $_POST['user_id']));
 	}
 	
 	return array('status' => 'Success', 'data' => get_all_meta('users', $_POST['user_id']), 'msg' => 'Profile updated Successfully');

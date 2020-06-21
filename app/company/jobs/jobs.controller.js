@@ -4,7 +4,7 @@ jobsController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService'
 
 function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
- 	$('.select2multiple').select2();
+ 	//$('.select2multiple').select2();
 
  	
 	$scope.pagingSize = 5;
