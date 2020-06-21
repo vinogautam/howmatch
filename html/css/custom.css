@@ -749,6 +749,9 @@ input[type="file"]{
 .view_company_page .silder-box li{
   padding: 0;
 }
+.companies_page .silder-box li{
+  padding: 0;
+}
 .sub--section {
     position: relative;
 }
