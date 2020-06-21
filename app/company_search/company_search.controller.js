@@ -52,4 +52,5 @@ function companysearchController($filter, DATA, PagerService, $rootScope, $scope
     $scope.category = [];
     ApiService.hm_category().then(function(res){
         $scope.category = res.data;
-    })
+    });
+}
