@@ -646,11 +646,11 @@ input[type="file"]{
     top: 0;
     bottom: 0;
   }
-  .can_info > div{
+  .view_candidate_page .can_info > div{
     position: relative;
     padding-left: 50px;
   }
-  .can_info > div > img{
+  .view_candidate_page .can_info > div > img{
     position: absolute;
     left: 15px;
     top: 0px;
@@ -816,4 +816,7 @@ input[type="file"]{
 }
 .edit_url{
   color: #46cc62
+}
+.view_candidate_page .progress-bar{
+  width: 50%;
 }
