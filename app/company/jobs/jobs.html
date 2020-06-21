@@ -10,17 +10,14 @@
 
 <div class="margin-t20 search position-re row">
   <div class="col-sm-6">
-    <input type="text" name="search" placeholder="search" class="form-control">
+    <input ng-model="pageInfo.search.$" type="text" name="search" placeholder="search" class="form-control">
     <i class="fa fa-search"></i>
   </div>
-  <div class="col-sm-6">
-    <input type="text" name="sort" class="form-control"> 
-  </div>  
 </div>
 
 <div class="joblist">
   <div>
-    <div class="v_post row" ng-repeat="job in totalItems">
+    <div class="v_post row" ng-repeat="job in totalItems | filter: search">
     <div class="po_img col-sm-2"></div>
     <div class="v-details col-sm-6" >
       <h4 class="active">{{job.title}}</h4>
