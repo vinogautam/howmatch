@@ -38,12 +38,12 @@ function hm_view_candidate(){
 
 	$data = get_all_meta('users', $_POST['id']);
 	$data['basic'] = get_data_by_id('users', $_POST['id']);
-
+	$data['no_of_views'] = get_count("select * from views where type = 'user' and ref_id = ".$_POST['id']." group by user_id");
 	return array('status' => 'Success', 'data' => $data);
 }
 
 function hm_following_list(){
-	$applicants = get_results("select * from following_employees where user_id = ".$_POST['user_id']);
+	$applicants = get_results("select * from following_employers where user_id = ".$_POST['user_id']);
 	$new = [];
 	foreach ($applicants as $key => $value) {
 		$dd = array('id' => $value['user_id']);
@@ -58,12 +58,38 @@ function hm_following_list(){
 }
 
 function hm_follow(){
-	insert('following_employees', array('user_id' => $_POST['user'], 'company_id' => $_POST['emp']));
+	insert('following_employers', array('user_id' => $_POST['user_id'], 'company_id' => $_POST['company_id']));
 	return array('status' => 'Success');
 }
 
 function hm_unfollow(){
-	delete('following_employees', array('user_id' => $_POST['user'], 'company_id' => $_POST['emp']));
+	delete('following_employers', array('user_id' => $_POST['user_id'], 'company_id' => $_POST['company_id']));
 
+	return array('status' => 'Success');
+}
+
+function hm_user_view(){
+	if(isset($_POST['user'])){
+		if($_POST['user'] != -1){
+			$res = get_count("select * from views where type = 'user' and ref_id = ".$_POST['id']." and user_id = ".$_POST['user']);
+			if($res == 0){
+				$arr = array(
+					'type' => 'user',
+					'ref_id' => $_POST['id'],
+					'user_id' => $_POST['user'],
+					'view_on' => date('Y-m-d H:i:s')
+				);
+				insert('views', $arr);
+			}
+		} else {
+			$arr = array(
+				'type' => 'user',
+				'ref_id' => $_POST['id'],
+				'user_id' => $_POST['user'],
+				'view_on' => date('Y-m-d H:i:s')
+			);
+			insert('views', $arr);
+		}
+	}	
 	return array('status' => 'Success');
 }
