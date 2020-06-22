@@ -622,12 +622,21 @@ input[type="file"]{
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.app-status{
-  padding: 25px 0!important;
+.app-status{ 
+  padding: 20px 0px;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 40px;
+  color: #fff;
+  background: #46cc62;
 }
-.app-status i{
-  color: #46cc62;
-  font-size: 26px;
+.app-status h3{
+  font-size: 22px;
+}
+.app-status img{
+  width: 60px;
+  padding: 10px;
 }
 .job_share i{
   color: blue;
