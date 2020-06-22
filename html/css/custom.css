@@ -623,16 +623,20 @@ input[type="file"]{
   border-bottom-right-radius: 5px;
 }
 .app-status{ 
+  padding: 20px 0px;
   text-align: center;
   width: 150px;
   height: 150px;
   margin-bottom: 40px;
-  margin-top: 10px;
   color: #fff;
   background: #46cc62;
 }
+.app-status h3{
+  font-size: 22px;
+}
 .app-status img{
-  width: 75px;
+  width: 60px;
+  padding: 10px;
 }
 .job_share i{
   color: blue;
