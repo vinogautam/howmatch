@@ -9,7 +9,7 @@
             <div class="pro-details"><h3>{{candidate.name}}</h3><p>{{candidate.job_title}}</p><p class="exp"> {{candidate.experience}}</p></div>
           </div>                      
         </div>
-        <div class="col-sm-6 text-right">
+        <div class="col-sm-6 text-right" ng-hide="loggedInUserInfo.user_type == 3">
           <div class="view_can"><button class="btn btn-success" type="download"><i class="fa fa-download"></i>Download CV</button></div>
           <div class="view_can"><button class="btn btn-secondary"><i class="fa fa-heart"></i>Shortlist</button></div>
           

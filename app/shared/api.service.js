@@ -224,7 +224,7 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
     }
 
     apiService.view_company= function(id){
-        return httpService.post(APIURL+'hm_view_company', {id: id})
+        return httpService.post(APIURL+'hm_view_company', {id: id, user_id: $rootScope.loggedInUserInfo.id})
         .then(function (res) {
             return res['data'];
         });
@@ -238,7 +238,7 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
     }
 
     apiService.view_candidate= function(id){
-        return httpService.post(APIURL+'hm_view_candidate', {id: id})
+        return httpService.post(APIURL+'hm_view_candidate', {id: id, user_id: $rootScope.loggedInUserInfo.id})
         .then(function (res) {
             return res['data'];
         });
@@ -265,6 +265,20 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.hm_user_view = function(data){
+        return httpService.post(APIURL+'hm_user_view', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_company_view = function(data){
+        return httpService.post(APIURL+'hm_company_view', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     apiService.hm_get_Applicants= function(id){
         return httpService.post(APIURL+'hm_get_Applicants', {job_id: id})
         .then(function (res) {
@@ -281,6 +295,41 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
 
     apiService.hm_remove_shortlist = function(id){
         return httpService.post(APIURL+'hm_remove_shortlist', {user:id, emp: $rootScope.loggedInUserInfo.id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_add_review = function(data){
+        return httpService.post(APIURL+'hm_add_review', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_follow = function(data){
+        return httpService.post(APIURL+'hm_follow', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_unfollow = function(data){
+        return httpService.post(APIURL+'hm_unfollow', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_following_list = function(){
+        return httpService.post(APIURL+'hm_following_list', {user_id: $rootScope.loggedInUserInfo.id})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_shortlist_candidate = function(data){
+        return httpService.post(APIURL+'hm_shortlist_candidate', data)
         .then(function (res) {
             return res['data'];
         });

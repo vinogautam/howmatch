@@ -1,7 +1,9 @@
 hmapp.controller('followingEmployeesController', followingEmployeesController);
 
-followingEmployeesController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+followingEmployeesController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function followingEmployeesController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function followingEmployeesController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
+
+	$scope.employees = DATA.data;
 }

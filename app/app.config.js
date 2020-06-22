@@ -108,8 +108,8 @@ function routes($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/user/following_employees/following_employees.html',
             controller: 'followingEmployeesController',
             resolve: {
-                DATA: function(ApiService) {
-                  return ApiService.user_following_employees();
+                DATA: function($stateParams, ApiService){
+                    return ApiService.hm_following_list();
                 }
             }
         },
@@ -222,7 +222,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/following_employees',
             templateUrl: 'app/company/following_employees/following_employees.html',
-            controller: 'followingEmployeesController'
+            controller: 'followingEmployeesController',
+            resolve: {
+                DATA: function($stateParams, ApiService){
+                    return ApiService.hm_following_list();
+                }
+            }
         },
         {
             name: 'company.alerts',
