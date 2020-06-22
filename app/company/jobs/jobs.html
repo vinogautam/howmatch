@@ -68,7 +68,7 @@
               </div>
               <div class="col-sm-3">
                   <div>
-                    <a target="blank" href="#!view_candidate/{{applicant.id}}"><i  class="fa fa-eye" data-toggle="tooltip" data-original-title="Edit Job" ></i> View Profile</a>
+                    <a target="_blank" href="#!view_candidate/{{applicant.id}}"><i  class="fa fa-eye" data-dismiss="modal" ></i> View Profile</a>
                   </div>
                   
                 </div>
@@ -153,6 +153,12 @@
         <textarea class="form-control" row="5" type="text name
         description" ng-model="job_form_data.description"></textarea>     
       </div>      
+    </div>
+    <div class="form-row">
+      <div class=" col-sm-12 form-group form-group-default">
+          <label for="">Location  </label>
+          <input type="text" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.location">
+      </div>
     </div>
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">

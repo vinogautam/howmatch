@@ -6,13 +6,13 @@
     <div class="container">
       <div class="row ">
         <div class="col-sm-3 cmp_image">
-          <img ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+          <img ng-src="{{company.company_image ? 'admin/api/uploads/'+company.company_image : 'html/images/company_placeholder.jpeg'}}">
         </div>
         <div class="col-sm-6 com_info">
           <h3>{{company.company_name}}</h3>
             <h5>{{company.category.join(', ')}}</h5>
             <p>
-              <span><img src="html/images/companies/url.svg">{{company.website}}</span><span>{{company.website}}</span>
+              <span><img src="html/images/companies/url.svg">{{company.website}}</span>
               <a target="blank" href="{{company.facebook}}"><i class="fa fa-facebook"></i></a>
               <a target="blank" href="{{company.linkedin}}"><i class="fa fa-linkedin"></i></a>
             </p>

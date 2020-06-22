@@ -36,4 +36,14 @@ function viewcandidateController($stateParams,DATA, $rootScope, $scope, $state, 
 			localStorage.setItem('hm_user_view', JSON.stringify(hm_user_view));
 		}
 	}
+
+	$scope.shortlist_candidate = function(){
+		if($scope.candidate.shortlisted){
+			return;
+		}
+		ApiService.hm_shortlist_candidate($stateParams.id).then(function(){
+			ApiService.notification('Shortlisted successfully', 'Success');
+			$state.reload();
+		});
+	};
 }

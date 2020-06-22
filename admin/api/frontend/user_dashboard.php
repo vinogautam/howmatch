@@ -3,7 +3,7 @@ function hm_user_dashboard(){
 	$data = array();
 	$data['applied_jobs'] = get_count("select * from job_applicants where user_id = ".$_POST['user_id']);
 	$data['shortlisted_jobs'] = get_count("select * from job_applicants where is_shortlisted = 1 and user_id = ".$_POST['user_id']);
-	$data['reviews'] = get_count("select * from reviews where type = 'user' and ref_id = ".$_POST['user_id']." group by user_id");
+	//$data['reviews'] = get_count("select * from reviews where type = 'user' and ref_id = ".$_POST['user_id']." group by user_id");
 	$data['views'] = get_count("select * from views where type = 'user' and ref_id = ".$_POST['user_id']." group by user_id");
 	$data['jobs'] = get_results("SELECT a.*, b.applied_on, b.shortlisted_on, b.shortlisted_on FROM `jobs` as a LEft join job_applicants as b on a.id = b.job_id WHERE b.user_id = ".$_POST['user_id']." order by b.applied_on asc limit 0,5");
 	return array('status' => 'Success', 'data' => $data);
@@ -39,6 +39,10 @@ function hm_view_candidate(){
 	$data = get_all_meta('users', $_POST['id']);
 	$data['basic'] = get_data_by_id('users', $_POST['id']);
 	$data['no_of_views'] = get_count("select * from views where type = 'user' and ref_id = ".$_POST['id']." group by user_id");
+
+	if(isset($_POST['user_id'])){
+		$data['shortlisted'] = get_count("select * from job_applicants where is_selected = 1 and selected_by = ".$_POST['user_id']);
+	}
 	return array('status' => 'Success', 'data' => $data);
 }
 
@@ -46,10 +50,10 @@ function hm_following_list(){
 	$applicants = get_results("select * from following_employers where user_id = ".$_POST['user_id']);
 	$new = [];
 	foreach ($applicants as $key => $value) {
-		$dd = array('id' => $value['user_id']);
-		$arr = array('company_image', 'name', 'location', 'slug');
+		$dd = array('id' => $value['company_id']);
+		$arr = array('company_image', 'company_name', 'location', 'slug', 'founded');
 		foreach ($arr as $key => $val) {
-			$dd[$val] = get_meta('users', $value['user_id'], $val);
+			$dd[$val] = get_meta('users', $value['company_id'], $val);
 		}
 		$new[] = $dd;
 	}

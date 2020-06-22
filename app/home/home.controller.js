@@ -21,4 +21,11 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
         $("#myToast").toast({ delay: 3000 });
         $("#myToast").toast('show');
     }); 
+
+    $scope.pageInfo = {search: {}};
+
+    $scope.search_job= function(){
+        $rootScope.search = angular.copy($scope.pageInfo.search);
+        $state.go('job_search');
+    };
 }

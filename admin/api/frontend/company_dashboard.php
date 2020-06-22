@@ -157,3 +157,25 @@ function hm_add_review(){
 	}
 	
 }
+
+function hm_shortlist_candidate(){
+	$res = get_results("select * from job_applicants where job_id in (select id from jobs where posted_by = ".$_POST['company_id'].") and user_id = ".$_POST['user_id']);
+	
+	if(count($res)){
+		$arr = array(
+			'is_selected' => 1,
+			'selected_on' => date('Y-m-d H:i:s'),
+			'selected_by' => $_POST['company_id']
+		);
+		update('job_applicants', $arr, array('id' => $res[0]['id']));
+	} else {
+		$arr = array(
+			'selected_by' => $_POST['company_id'],
+			'user_id' => $_POST['user_id'],
+			'is_selected' => 1,
+			'selected_on' => date('Y-m-d H:i:s')
+		);
+		insert('job_applicants', $arr);
+	}
+	return array('status' => 'Success');
+}

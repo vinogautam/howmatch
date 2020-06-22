@@ -328,8 +328,8 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
-    apiService.hm_shortlist_candidate = function(data){
-        return httpService.post(APIURL+'hm_shortlist_candidate', data)
+    apiService.hm_shortlist_candidate = function(id){
+        return httpService.post(APIURL+'hm_shortlist_candidate', {user_id:id, company_id: $rootScope.loggedInUserInfo.id})
         .then(function (res) {
             return res['data'];
         });

@@ -5,13 +5,16 @@
       <div class="row v_post">
         <div class="col-sm-6">
           <div class="pho-file view_can">
-            <div class="p-photo"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="p-photo">
+              <i ng-if="!candidate.profile_image" class="fa fa-user" aria-hidden="true"></i>
+              <img ng-if="candidate.profile_image" style="width:100%" ng-src="{{'admin/api/uploads/'+candidate.profile_image}}">
+            </div>
             <div class="pro-details"><h3>{{candidate.name}}</h3><p>{{candidate.job_title}}</p><p class="exp"> {{candidate.experience}} Years of Experience</p></div>
           </div>                      
         </div>
-        <div class="col-sm-6 text-right" ng-hide="loggedInUserInfo.user_type == 3">
-          <div class="view_can"><button class="btn btn-success" type="download"><i class="fa fa-download"></i>Download CV</button></div>
-          <div class="view_can"><button class="btn btn-secondary"><i class="fa fa-heart"></i>Shortlist</button></div>
+        <div class="col-sm-6 text-right" ng-if="loggedInUserInfo.user_type == 2">
+          <div class="view_can" ng-if="candidate.resume_list"><a href="admin/api/uploads/{{candidate.resume_list[candidate.resume_list.length-1].resume}}" download="{{candidate.resume_list[resume_list.length-1].resume}}" class="btn btn-success" type="download"><i class="fa fa-download"></i>Download CV</a></div>
+          <div class="view_can" ng-click="shortlist_candidate()"><button class="btn btn-secondary"><i class="fa fa-heart"></i>{{candidate.shortlisted ? 'Shortlisted' : 'Shortlist'}}</button></div>
           
         </div>
         

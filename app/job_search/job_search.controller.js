@@ -9,7 +9,7 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
 
     $scope.filteredItems = angular.copy($scope.jobs_bk);
 
-	$scope.pager = {};
+    $scope.pager = {};
 
 	$scope.setPage = function(page) {
         if (page < 1 || page > $scope.pager.totalPages) {
@@ -53,4 +53,11 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     ApiService.hm_category().then(function(res){
         $scope.category = res.data;
     });
+
+    if($rootScope.search){
+        $scope.pageInfo.filter.title = angular.copy($rootScope.search.title);
+        $scope.pageInfo.filter.location = angular.copy($rootScope.search.location);
+        $rootScope.search = undefined;
+        $scope.fiterResult();
+    }
 }
