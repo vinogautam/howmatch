@@ -146,8 +146,8 @@ footer h3{ font-size:20px; font-weight:600; padding-bottom:12px;}
 .db_padd{ padding-top:40px;}
 .db-view{ padding-left:30px;}
 .db-view h2{ padding-bottom:20px;font-size:22px; }
-.app-status{ box-shadow: 0 0 7px 0 #ededed; padding: 40px 0; border-radius: 100px; text-align: center;
-  border-bottom: 4px solid #43cc62; width:150px; height: 150px; margin-bottom: 40px; margin-top:10px;}
+/*.app-status{ box-shadow: 0 0 7px 0 #ededed; padding: 40px 0; border-radius: 100px; text-align: center;
+  border-bottom: 4px solid #43cc62; width:150px; height: 150px; margin-bottom: 40px; margin-top:10px;}*/
   .app-status h3{ font-weight: 700;}
   .app-status p{ font-size: 17px; margin-bottom:0;}
   .pho-file{ box-shadow: 0 0 6px 0 #ededed; background: #fff; padding:20px; border-radius: 70px 0 70px 0; border-bottom: 4px solid #ccc;
