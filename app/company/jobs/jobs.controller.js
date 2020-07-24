@@ -2,10 +2,10 @@ hmapp.controller('jobsController', jobsController);
 
 jobsController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval, datepicker) {
 	$scope.pageInfo = {};
  	//$('.select2multiple').select2();
-
+    $('.datepicker').datepicker();
  	
 	$scope.pagingSize = 5;
     $scope.dataPerPage = 10;

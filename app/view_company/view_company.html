@@ -8,14 +8,15 @@
         <div class="col-sm-3 cmp_image">
           <img ng-src="{{company.company_image ? 'admin/api/uploads/'+company.company_image : 'html/images/company_placeholder.jpeg'}}">
         </div>
+        <span class="rating_no">5</span>
         <div class="col-sm-6 com_info">
           <h3>{{company.company_name}}</h3>
             <h5>{{company.category.join(', ')}}</h5>
-            <p>
-              <span><img src="html/images/companies/url.svg">{{company.website}}</span>
+            <div class="url">
+              <a href="{{company.website}}"><img src="html/images/companies/url.svg">{{company.website}}</a>
               <a target="blank" href="{{company.facebook}}"><i class="fa fa-facebook"></i></a>
               <a target="blank" href="{{company.linkedin}}"><i class="fa fa-linkedin"></i></a>
-            </p>
+            </div>
             <p>{{company.location.join(', ')}}</p>
             <p><i class="fa fa-star checked" aria-hidden="true"></i>
               <i class="fa fa-star checked" aria-hidden="true"></i>

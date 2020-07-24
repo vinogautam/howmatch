@@ -107,7 +107,7 @@
     <div class="form-row">
       <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.last_date.$invalid}">
           <label for="">Application DeadLine</label>
-          <input type="date" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.last_date">
+          <input data-provide="datepicker" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.last_date">
       </div>
         <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.jtype.$invalid}">
           <label for="inputPassword4">Job Apply type </label>
@@ -134,10 +134,14 @@
           <option>Male</option>
           <option>Female</option>
           <option>Both</option>
-        </select>
-        
+        </select>        
       </div>
-      
+       <div class="col-sm-6">
+          <div class="form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
+            <label>No of Posts</label>
+            <input  name="tags" ng-model="job_form_data.no_of_position" required  type="text" class="form-control" placeholder="">
+          </div>
+        </div>      
     </div>              
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.category.$invalid}">

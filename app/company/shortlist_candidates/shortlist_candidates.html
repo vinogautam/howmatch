@@ -29,7 +29,8 @@
             <a ui-sref="view_candidate({id:applicant.id})"><i  class="fa fa-eye" data-toggle="tooltip" data-original-title="Edit Job" ></i> View Profile</a>
             <br>
             <br>
-            <a class="cp" ng-click="remove_shortlist(applicant.id);"><i  class="fa fa-heart cp" data-toggle="tooltip" data-original-title="UnShortlist" ></i> UnShortlist</a>
+            <!-- <a ng-click="remove_shortlist(applicant.id);"><i  class="fa fa- " data-toggle="tooltip" data-original-title="Delete" ></i> Delete</a> -->
+            <a class="cp" ui-sref="#" ng-click="remove_shortlist(applicant.id);"><i  class="fa fa-trash" data-toggle="tooltip" data-original-title="Delete Job"></i>Delete</a>
           </div>
           
         </div>

@@ -3,21 +3,28 @@
   <div class="container">
     <div class="container-fluid">
       <div class="row v_post">
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <div class="pho-file view_can">
             <div class="p-photo">
               <img style="width: 100%;max-height: 100%;" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
             </div>
             <div class="pro-details">
               <h3>{{job.title}}</h3>
-              <p class="exp">Posted by <span style="color: #46cc62;font-weight: bold;" class="cp" ui-sref="view_company({id: job.posted_by+'-'+job.company_slug_name})">{{job.company_name}}</span></p>
+              <p class="exp">Published {{job.posted_on | timeago}}</p>
             </div>
             <div><i style="position: relative;top: 0;left: 0;" class="fa fa-map-marker"></i> {{job.location}}</div>
           </div>                      
         </div>
-        <div class="col-sm-6 text-right" ng-hide="loggedInUserInfo.user_type == 2">
+        <div class="col-sm-3 text-right" ng-hide="loggedInUserInfo.user_type == 2">
           <div class="view_can"><button class="btn btn-success" type="download" ng-click="apply_job();">Apply <i ng-if="job.applied" class="fa fa-check"></i></button></div>
-          <div class="view_can"><button ng-click="shortlist_job()" class="btn btn-secondary">Shortlist <i ng-if="job.shortlisted" class="fa fa-check"></i></button></div>
+         <!--  <div class="view_can">
+            <button ng-click="shortlist_job()" class="btn btn-secondary"><span ng-hide="job.shortlisted" >Shortlist</span> 
+              <span ng-if="job.shortlisted">Shortlist <i  class="fa fa-check"></i></span>
+
+              {{candidate.shortlisted ? 'Shortlisted' : 'Shortlist'}}
+            </button> -->
+            <div class="view_can"  ng-click="shortlist_job()" ><button class="btn btn-secondary"><i class="fa fa-heart"></i>{{job.shortlisted ? 'Shortlisted' : 'Shortlist'}}</button></div>
+           <!--  </div> -->
         </div>
         <div class="col-sm-12 view_job" >
           <span><i class="fa fa-eye"></i></span><span class="content">{{job.no_of_views}} Views</span>
@@ -115,6 +122,9 @@
   <div class="container">
     <div class="row container-fluid">
       <div class="col-sm-8">
+        <div class="title">
+          <h4>Related Jobs</h4>
+        </div>
         <div class="can_info row">
           <div class="po_img col-sm-2"></div>
           <div class="v-details col-sm-10">
@@ -123,7 +133,7 @@
             <p>Ho Chi Minh, Vietnam</p>
           </div>
         </div>
-        <div class="can_info row">
+        <div class="can_info row ">
           <div class="po_img col-sm-2"></div>
           <div class="v-details col-sm-10">
             <h4 class="active">Accountant for Bank</h4>
@@ -133,7 +143,7 @@
         </div>        
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-sm-4 mg-top40">
           <div class="can_info" style="height: 300px;">
             <h5>Ad Banner</h5>
           </div>        

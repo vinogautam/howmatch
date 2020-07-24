@@ -5,6 +5,7 @@ jobsController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', '
 
 function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $('.datepicker').datepicker();
     $('.select2multiple').select2();
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');

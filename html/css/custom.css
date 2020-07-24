@@ -493,6 +493,7 @@ input[type="file"]{
 .com_info{
     margin-top: 60px;
     color: #fff;
+    margin-left: 40px;
 }
 .com_info i{
     color: #46cc62;
@@ -782,13 +783,7 @@ input[type="file"]{
     box-sizing: content-box;
 }
 .sub--section_wrapper {
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
-    padding: 45px 35px 25px;
-    background: #fff;
-    z-index: 1;
-    position: relative;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 .plan_detail{
     border-radius: 5px;
@@ -869,4 +864,119 @@ input[type="file"]{
 
 .star-rating label:hover:before {
   color: #FFC107;
+}
+.sticky-container {
+     padding: 0px;
+    margin: 0px;
+    position: fixed;
+    right: -250px;
+    top: 85%;
+    width: 320px;
+    z-index: 999;
+}
+.job_alert_sub {
+  position: absolute;
+  height: 50px;
+  padding: 10px;
+  right: 100%;
+}
+.job_alert_sub:hover > .job_alert_in{
+  width: 280px;
+  padding-left: 50px;
+}
+
+.job_alert_sub:hover > .arama-buton{
+  background: white;
+  
+}
+.arama-buton {
+  display: flex;
+}
+
+.job_alert_in {
+  border: 1px solid #46cc62;
+  border-radius: 10px;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+.job_alert_sub img{
+  width: 50px;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+}
+.mg-top40{
+    margin-top: 40px;
+}
+.rating_no{
+    background: #46cc62;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    padding: 8px;
+    margin-top: 205px;
+    margin-left: -100px;
+    z-index: 999;
+}
+.url a{
+  padding-right: 10px;
+  color: #fff;
+}
+.url a:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+.block-to-top.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    -o-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+}
+.block-to-top {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    bottom: 133px;
+    right: 30px;
+    z-index: 10;
+    background-color: transparent;
+    transition: all .3s linear;
+    -o-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+}
+.block-to-top .block-inner {
+    position: relative;
+    cursor: pointer;
+    width: 37px;
+    height: 37px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.block-to-top .scroll-icon {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(/images/scroll-to-top.svg);
 }
