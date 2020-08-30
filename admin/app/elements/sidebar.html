@@ -76,6 +76,10 @@
             </a>
             <span class="icon-thumbnail"><i class=" fa fa-chevron-left" ng-class="{'fa fa-chevron-down': menu.pagesidebar,'fa fa-chevron-left': !menu.pagesidebar}"></i></span>
             <ul ng-click="$event.stopPropagation();" class="sub-menu" ng-style="{display: menu.pagesidebar ? 'block' : 'none'}">
+              <li ui-sref="keywords">
+                <a href="javascript:;"><span class="title">Keywords</span></a>
+                <span class="icon-thumbnail">K</span>
+              </li>
               <li ui-sref="skills">
                 <a href="javascript:;"><span class="title">Skills</span></a>
                 <span class="icon-thumbnail">s</span>

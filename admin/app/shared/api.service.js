@@ -335,6 +335,37 @@ apiService.hm_education = function(){
     }
 
 
+
+    apiService.hm_keywords = function(){
+        return httpService.get(APIURL+'hm_keywords')
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    apiService.hm_save_keywords = function(data){
+        return httpService.post(APIURL+'hm_save_keywords', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
+    apiService.hm_delete_keywords= function(id){
+        return httpService.post(APIURL+'hm_delete_keywords', {delete:[id]})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+     apiService.hm_change_keywords_status = function(st, id){
+        return httpService.post(APIURL+'hm_change_keywords_status', {status: st, id:id})
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+
     apiService.hm_pages = function(){
         return httpService.get(APIURL+'hm_pages')
         .then(function (res) {
