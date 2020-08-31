@@ -150,6 +150,15 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'locationController'
         },
         {
+            name: 'keywords',
+            label: 'keywords',
+            auth: true,
+            restricted:false,
+            url: '/keywords',
+            templateUrl: 'app/keywords/keywords.html',
+            controller: 'keywordsController'
+        },
+        {
             name: 'language',
             label: 'Language',
             auth: true,
