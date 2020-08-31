@@ -5,20 +5,10 @@ function hm_jobs(){
 
 	$new = [];
 	foreach ($res as $key => $value) {
-		if(isset($value['industry'])){
-			$value['industry'] = unserialize(stripslashes($value['industry']));
-		}
-		if(isset($value['career_level']) && $value['career_level']){
-			$value['career_level'] = unserialize(stripslashes($value['career_level']));
-		}
-		if(isset($value['qualification']) && $value['qualification']){
-			$value['qualification'] = unserialize(stripslashes($value['qualification']));
-		}
-		if(isset($value['job_level']) && $value['job_level']){
-			$value['job_level'] = unserialize(stripslashes($value['job_level']));
-		}
-		if(isset($value['tags']) && $value['tags']){
-			$value['tags'] = unserialize(stripslashes($value['tags']));
+		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags');
+
+		foreach ($arr as $key => $val) {
+			$value[$val] = get_relative_data('jobs', $val, $value['id']);
 		}
 		
 		$value['title'] = stripslashes($value['title']);
@@ -31,38 +21,35 @@ function hm_jobs(){
 
 function hm_save_job(){
 	$data = $_POST;
-	
-	if(isset($data['industry'])){
-		$data['industry'] = addslashes(serialize($data['industry']));
-	}
-	if(isset($data['career_level'])){
-		$data['career_level'] = addslashes(serialize($data['career_level']));
-	}
-	if(isset($data['qualification'])){
-		$data['qualification'] = addslashes(serialize($data['qualification']));
-	}
-	if(isset($data['job_level'])){
-		$data['job_level'] = addslashes(serialize($data['job_level']));
-	}
-	if(isset($data['tags'])){
-		$data['tags'] = addslashes(serialize($data['tags']));
-	}
 
 	$data['title'] = addslashes($data['title']);
 	$data['description'] = addslashes($data['description']);
 
+	$data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+
 	if(isset($data['id'])){
+		delete('relative_data', array('ref_table' => 'jobs', 'ref_id' => $data['id']));
 		$id = $data['id'];
 		unset($data['id']);
-		//print_r($data);
 		update('jobs', $data, array('id' => $id));
-		return array('status' => 'Success', 'msg' => 'Job Updated Successfully');
+		$ret = array('status' => 'Success', 'msg' => 'Job Updated Successfully');
 	} else {
 		$data['posted_on'] = date('Y-m-d H:i:s');
 		$data['status'] = 1;
 		insert('jobs', $data);
-		return array('status' => 'Success', 'msg' => 'Job Added Successfully');
+		$id = last_id();
+		$ret = array('status' => 'Success', 'msg' => 'Job Added Successfully');
 	}
+
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags');
+
+	foreach ($arr as $key => $value) {
+		if(isset($data[$value]) && is_array($data[$value])){
+			set_relative_data('jobs', $value, $id, $data[$value]);
+		}
+	}
+
+	return $ret
 }
 
 function hm_delete_job(){

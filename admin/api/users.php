@@ -45,6 +45,9 @@ function hm_save_user(){
 		'user_type' => $_POST['user_type'],
 		'updated_on' => date('Y-m-d H:i:s')
 	);
+
+	$data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+	
 	if(isset($_POST['id'])){
 		if(isset($_POST['password'])){
 			$data['password'] = md5($_POST['password']);

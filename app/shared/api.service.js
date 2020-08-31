@@ -335,5 +335,19 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.hm_featured_company = function(){
+        return httpService.post(APIURL+'hm_featured_company', {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_featured_job = function(){
+        return httpService.post(APIURL+'hm_featured_job', {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });

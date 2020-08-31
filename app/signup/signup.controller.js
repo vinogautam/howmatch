@@ -7,6 +7,10 @@ function signupController($rootScope, $scope, $state, ApiService, $window, $time
 
 	$scope.signupData = {profile: {}, user_type: '3'};
 
+	$rootScope.$on('signUpType', function(e,d){
+		$scope.signupData.user_type = d;
+	});
+
 	$scope.register = function(fl){
 		if(fl){
 			ApiService.register($scope.signupData).then(function(response){

@@ -122,3 +122,18 @@ function hm_test_meta(){
 	print_r(get_meta('users', 1, 'roles'));
 	print_r(get_all_meta('users', 1));
 }
+
+function set_relative_data($table, $column, $id, $data){
+	foreach ($data as $key => $value) {
+		insert('relative_data', array('ref_table' => $table, 'ref_id' => $id, 'ref_column' => $column, 'value' => $value));
+	}
+}
+
+function get_relative_data($table, $column, $id){
+	$res = get_results("select * from relative_data where ref_table = '$table' and ref_column = '$column' and ref_id = $id");
+	$ddata = [];
+	foreach ($data as $key => $value) {
+		$ddata[] = $value['value'];
+	}
+	return $ddata;
+}

@@ -75,4 +75,10 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     $scope.show_modal = function(id){
         $(id).modal('show');
     };
+
+    $scope.openSignUp = function(e, emp){
+        e.preventDefault();
+        $scope.show_modal('#signupModal');
+        $rootScope.$broadcast('signUpType', emp);
+    };
 }

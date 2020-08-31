@@ -103,10 +103,10 @@
         <p class="small-text">Create a new company using this form, make sure you fill them all</p>
           <div class="row">
               <div class="profile_picture">
-                <img ng-if="form_data.profile.profile_picture" src="{{pageInfo.profile_picture}}">
+                <img ng-if="form_data.profile.profile_picture" src="{{form_data.profile.profile_picture}}">
               </div>
               <button trigger-upload="profile_picture" class="btn btn-primary">Upload Image</button>
-              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="pageInfo.profile_picture">
+              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="form_data.profile.profile_picture">
               
           </div>
           <div class="row">
@@ -232,7 +232,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" >
                 <label>Is Featured Company</label>
-                <input type="checkbox" name="">
+                <input type="checkbox" name="is_featured" ng-model="form_data.is_featured">
               </div>
             </div>
           </div>

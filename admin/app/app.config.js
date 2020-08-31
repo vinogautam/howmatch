@@ -304,10 +304,28 @@ hmapp.directive('fileUpload', function(ApiService, $rootScope, $timeout, $state,
     link: function (scope, element, attrs, ngModel) {
         element.bind('change', function(event){
         	var file = event.target.files[0];
-        	
+        	var ext = file.name.split('.').pop();
+            if(attrs.format){
+                format = attrs.format.split(',');
+                if(format.indexOf(ext.toLowerCase()) == -1){
+                    ApiService.notification('Invalid format', 'Error');
+                    return;
+                }
+            }
+
+            if(file.size > 2097152){
+                ApiService.notification('Max upload size is 2MB', 'Error');
+                return;
+            }
         	var fileReader = new FileReader();
         	fileReader.onload = function(){
-        		ngModel.$setViewValue(fileReader.result);
+        		ApiService.upload({name: file.name, ext: ext, data: fileReader.result}).then(function (res) {
+                    ngModel.$setViewValue(res['data']);
+
+                    if(attrs.afterUpload){
+                        scope.$eval(attrs.afterUpload);
+                    }
+                });
         	}
         	fileReader.readAsDataURL( file );
         	

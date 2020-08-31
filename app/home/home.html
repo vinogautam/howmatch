@@ -10,12 +10,76 @@
           <div class="serh-form">
             <form class="form-inline">
               <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
-                <input ng-model="pageInfo.search.title" type="text" class="form-control" id="staticEmail2">
-                <i class="fa fa-filter" aria-hidden="true"></i>
-			<i class="fa fa-search" aria-hidden="true"></i>
+                <input autocomplete="off" ng-model="pageInfo.search.title" type="text" class="form-control" id="staticEmail2">
+                  
+                 <div class="filter_result">
+                   <div class="row h100">
+                     <div class="col-md-6 h100">
+                       <div ng-if="!pageInfo.search.title">
+                         <h6 class="search_title">RECENT SEARCHES</h6>
+                         <div class="search_list">
+                          <ul>
+                            <li>Angular developer(0 Jobs)</li>
+                            <li>PHP(10 Jobs)</li>
+                          </ul>
+                         </div>
+                       </div>
+                       <div ng-if="pageInfo.search.title">
+                         <h6>ARE YOU LOOKING FOR</h6>
+                         <div class="search_list">
+                          
+                           
+                         </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6 h100" style="border-left: 1px solid;">
+                       <h6 class="search_title">POPULAR KEYWORDS</h6>
+                       <div class="keyword_list">
+                        <span>sales</span>
+                        <span>marketing</span>
+                        <span>IT</span>
+                        <span>Software</span>
+                         
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <i class="fa fa-filter" aria-hidden="true"></i>
+                 <i class="fa fa-search" aria-hidden="true"></i>
               </div>
               <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
-                <input ng-model="pageInfo.search.location" type="text" class="form-control" id="inputPassword2">
+                <input autocomplete="off" ng-model="pageInfo.search.location" type="text" class="form-control" id="inputPassword2">
+                <div class="filter_result" style="right: 0;">
+                   <div class="row h100">
+                     <div class="col-md-6 h100">
+                       <h6 class="search_title">POPULAR KEYWORDS</h6>
+                       <div class="keyword_list">
+                        <span>sales</span>
+                        <span>marketing</span>
+                        <span>IT</span>
+                        <span>Software</span>
+                         
+                       </div>
+                     </div>
+                     <div class="col-md-6 h100" style="border-left: 1px solid;">
+                       <div ng-if="!pageInfo.search.location">
+                         <h6 class="search_title">RECENT SEARCHES</h6>
+                         <div class="search_list">
+                            <ul>
+                            <li>Angular developer(0 Jobs)</li>
+                            <li>PHP(10 Jobs)</li>
+                          </ul>
+                         </div>
+                       </div>
+                       <div ng-if="pageInfo.search.location">
+                         <h6>ARE YOU LOOKING FOR</h6>
+                         <div class="search_list">
+                           
+                         </div>
+                        </div>
+                     </div>
+                   </div>
+                 </div>
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
               </div>
               <button ng-click="search_job()" class="btn btn-success mb-2">Search</button>
@@ -348,14 +412,14 @@
         </div>
       </div>
     </section>
-    <section class="signupsec">      
+    <section ng-hide="loggedInUserInfo.id" class="signupsec">      
         <div class="row" style="height: 300px">
           <div class="col-sm-6 bg-green com_signup ">
             <div class="container">
               <i class="fa fa-laptop" aria-hidden="true"></i>
               <h4>I am an Employer</h4>
               <p>Signed in companies are able to post new job offer, searching for candidate...</p>
-              <button type="submit" class="btn bg-white mb-2">Register as Company</button>
+              <button ng-click="openSignUp($event, '2');" class="btn bg-white mb-2">Register as Company</button>
             </div>
           </div>
           <div class="col-sm-6 can_signup">
@@ -363,7 +427,7 @@
               <i class="fa fa-user" aria-hidden="true"></i>
               <h4>I am a Candidate</h4>
               <p>Signed in candidates are able to apply for new job offer, searching for companies...</p>
-              <button type="submit" class="btn bg-white mb-2">Register as Candidate</button>
+              <button ng-click="openSignUp($event, '3');" class="btn bg-white mb-2">Register as Candidate</button>
             </div>
           </div>
         </div>

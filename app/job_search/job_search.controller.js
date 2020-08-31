@@ -12,12 +12,14 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     $scope.pager = {};
 
 	$scope.setPage = function(page) {
+        // get pager object from service
+        $scope.pager = PagerService.GetPager($scope.filteredItems.length, page, 10);
+
         if (page < 1 || page > $scope.pager.totalPages) {
             return;
         }
 
-        // get pager object from service
-        $scope.pager = PagerService.GetPager($scope.filteredItems.length, page, 10);
+        
         $scope.pager.label = 'jobs';
         // get current page of items
         $scope.jobs = $scope.filteredItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
@@ -26,6 +28,7 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     $scope.setPage(1);
 
     $scope.fiterResult = function(){
+        $scope.jobs = [];
         $scope.filteredItems = angular.copy($scope.jobs_bk);
         $scope.filteredItems = $filter("filter")($scope.filteredItems, {title: $scope.pageInfo.filter.title, type: $scope.pageInfo.filter.type, location: $scope.pageInfo.filter.location});
         

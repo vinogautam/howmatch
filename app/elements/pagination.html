@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" ng-if="pager.totalItems">
     <div class="col-md-3" style="padding: 10px">
-        Showing {{pager.startIndex+1}} - {{pager.endIndex+1}} of {{pager.totalItems}} {{pager.label}}
+        Showing {{pager.totalItems ? pager.startIndex+1 : 0}} - {{pager.endIndex+1}} of {{pager.totalItems}} {{pager.label}}
     </div>
     <div class="col-md-6 text-center">
         <ul ng-if="pager.pages.length" class="pagination">
@@ -16,7 +16,7 @@
         </ul>
     </div>
 
-    <div class="col-md-3 text-right" style="padding: 10px">
+    <div ng-if="pager.totalPages > 1" class="col-md-3 text-right" style="padding: 10px">
         Go to <input style="width: 50px;" type="number" ng-model="pageInfo.cpage" ng-change="setPage(pageInfo.cpage)">
     </div>
 </div>

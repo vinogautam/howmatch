@@ -10,6 +10,14 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
             type: type
         }).show();
     };
+
+    apiService.upload = function(data){
+        return httpService
+        .post(APIURL+'hm_upload', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
     
 	apiService.login = function (data) {
 	    return httpService
