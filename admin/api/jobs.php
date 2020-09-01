@@ -49,7 +49,7 @@ function hm_save_job(){
 		}
 	}
 
-	return $ret
+	return $ret;
 }
 
 function hm_delete_job(){

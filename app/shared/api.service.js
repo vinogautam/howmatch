@@ -349,5 +349,12 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.get_home_data = function(){
+        return httpService.post(APIURL+'get_home_data', {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });

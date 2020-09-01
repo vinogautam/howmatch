@@ -369,6 +369,10 @@ input:focus+.filter_result{
 .keyword_list span:hover{
   background: #ccc;
 }
+.search_list{
+  height: 150px;
+  overflow: auto;
+}
 .search_list li{
   list-style: none;
   margin-left: -40px;
@@ -378,4 +382,7 @@ input:focus+.filter_result{
 }
 .search_list li:hover{
   background: #ccc;
+}
+.search-parent-div:hover .filter_result{
+  display: block;
 }

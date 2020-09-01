@@ -22,20 +22,24 @@ function post_query(){
 	return array('status' => 'Success');
 }
 
-function hm_featured_company(){
-	$res = get_results("select * from users where is_featured = 1 and user_type = 2 and status = 1 ");
-	$new_res = array();
+function get_home_data(){
+	$data = array();
+	$res = get_results("select * from jobs where status = 1");
 	foreach ($res as $key => $value) {
-		$value['profile'] = get_all_meta('users', $value['id']);
-		unset($value['password']);
-		$new_res[] = $value;
+		$data[] = array('title' => $value['title'], 'type' => 'job');
 	}
-	return array('status' => 'Success', 'data' => $new_res);
-}
 
-function hm_featured_job(){
+	$res = get_results("SELECT *, (SELECT count(*) from jobs where jobs.category = category.id) as cnt FROM `category` where status = 1");
+	foreach ($res as $key => $value) {
+		if($value['cnt']){
+			$data[] = array('id' => $value['id'], 'title' => $value['name'], 'type' => 'category', 'cnt' => $value['cnt'], 'image' => $value['image']);
+		}
+	}
+
+	$location = array();
+
 	$res = get_results("select * from jobs where is_featured = 1 and status = 1 order by id desc");
-	$new = [];
+	$featured_jobs = [];
 	foreach ($res as $key => $value) {
 		$value['company_name'] = get_meta('users', $value['posted_by'], 'company_name');
 		$value['company_image'] = get_meta('users', $value['posted_by'], 'company_image');
@@ -59,27 +63,16 @@ function hm_featured_job(){
 		$value['title'] = stripslashes($value['title']);
 		$value['description'] = stripslashes($value['description']);
 
-		$new[] = $value;
+		$featured_jobs[] = $value;
 	}
 
-	$salary = get_row("SELECT max(salary) as maxsalary, min(salary) as minsalary FROM `jobs`");
-
-	return array('status' => 'Success', 'data' => $new, 'salary' => $salary);
-}
-
-function get_search_list(){
-	$data = array();
-	$res = get_results("select * from jobs where status = 1");
+	$res = get_results("select * from users where is_featured = 1 and user_type = 2 and status = 1 ");
+	$featured_company = array();
 	foreach ($res as $key => $value) {
-		$data[] = array('title' => $value['title'], 'type' => 'job');
+		$value['profile'] = get_all_meta('users', $value['id']);
+		unset($value['password']);
+		$featured_company[] = $value;
 	}
 
-	$res = get_results("SELECT *, (SELECT count(*) from jobs where jobs.category = category.id) as cnt FROM `category` where status = 1");
-	foreach ($res as $key => $value) {
-		if($value['cnt']){
-			$data[] = array('title' => $value['name'], 'type' => 'category', 'cnt' => $value['cnt'], 'image' => $value['image']);
-		}
-	}
-
-	return array('status' => 'Success', 'data' => $data);
+	return array('status' => 'Success', 'data' => $data, 'location' => $location, 'featured_jobs' => $featured_jobs, 'featured_company' => $featured_company);
 }

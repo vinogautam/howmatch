@@ -60,6 +60,10 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     if($rootScope.search){
         $scope.pageInfo.filter.title = angular.copy($rootScope.search.title);
         $scope.pageInfo.filter.location = angular.copy($rootScope.search.location);
+        if($rootScope.search.category){
+            $scope.pageInfo.filter.category[$rootScope.search.category] = true;
+        }
+        
         $rootScope.search = undefined;
         $scope.fiterResult();
     }

@@ -24,8 +24,52 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
 
     $scope.pageInfo = {search: {}};
 
-    $scope.search_job= function(){
+    var hw_search_title = localStorage.getItem('hw_search_title');
+    $scope.recent_search_title = hw_search_title ? JSON.parse(hw_search_title) : [];
+
+    var hw_search_location = localStorage.getItem('hw_search_location');
+    $scope.recent_search_location = hw_search_location ? JSON.parse(hw_search_location) : [];
+
+    $scope.search_job = function(){
         $rootScope.search = angular.copy($scope.pageInfo.search);
+
+        if($rootScope.search.title){
+            if($scope.recent_search_title.indexOf($rootScope.search.title) == -1){
+                $scope.recent_search_title.push($rootScope.search.title);
+                localStorage.setItem('hw_search_title', JSON.stringify($scope.recent_search_title));
+            }
+        }
+
+        if($rootScope.search.location){
+            if($scope.recent_search_location.indexOf($rootScope.search.location) == -1){
+                $scope.recent_search_location.push($rootScope.search.location);
+                localStorage.setItem('hw_search_location', JSON.stringify($scope.recent_search_location));
+            }
+        }
+
         $state.go('job_search');
     };
+
+    $scope.search_job2 = function(tt){
+        if(tt.type == 'category'){
+            $rootScope.search = {category: tt.id};
+        } else {
+            $rootScope.search = {title: tt.title};
+        }
+
+        if(tt.title){
+            if($scope.recent_search_title.indexOf(tt.title) == -1){
+                $scope.recent_search_title.push(tt.title);
+                localStorage.setItem('hw_search_title', JSON.stringify($scope.recent_search_title));
+            }
+        }
+
+        $state.go('job_search');
+    };
+
+    $scope.home_data = {};
+
+    ApiService.get_home_data().then(function(res){
+        $scope.home_data = res;
+    });
 }
