@@ -269,6 +269,15 @@ hmapp.directive("datePicker", function(){
     };
 });
 
+hmapp.directive("select2multiple", function(){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $(element).select2();
+        }
+    };
+});
+
 hmapp.directive("cdatePicker", function(){
     return {
         restrict: "A",

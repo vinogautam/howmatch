@@ -1,11 +1,11 @@
 <?php
 /* Admin Side*/
 function hm_jobs(){
-	$res = get_results("select * from jobs");
+	$res = get_results("select * from jobs order by is_featured desc, id desc");
 
 	$new = [];
 	foreach ($res as $key => $value) {
-		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags');
+		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
 
 		foreach ($arr as $key => $val) {
 			$value[$val] = get_relative_data('jobs', $val, $value['id']);
@@ -13,6 +13,7 @@ function hm_jobs(){
 		
 		$value['title'] = stripslashes($value['title']);
 		$value['description'] = stripslashes($value['description']);
+		$value['is_featured'] = $value['is_featured'] == 1;
 
 		$new[] = $value;
 	}
@@ -41,7 +42,7 @@ function hm_save_job(){
 		$ret = array('status' => 'Success', 'msg' => 'Job Added Successfully');
 	}
 
-	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags');
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
 
 	foreach ($arr as $key => $value) {
 		if(isset($data[$value]) && is_array($data[$value])){

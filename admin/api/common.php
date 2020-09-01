@@ -4,7 +4,7 @@ function insert($table, $array){
 
 	$keys = implode(",", array_keys($array));
 	$values = implode("','", array_values($array));
-	$sql = "INSERT INTO $table ($keys) VALUES ('$values')";
+	echo $sql = "INSERT INTO $table ($keys) VALUES ('$values')";
 	return mysqli_query($db, $sql);
 }
 
@@ -132,8 +132,20 @@ function set_relative_data($table, $column, $id, $data){
 function get_relative_data($table, $column, $id){
 	$res = get_results("select * from relative_data where ref_table = '$table' and ref_column = '$column' and ref_id = $id");
 	$ddata = [];
-	foreach ($data as $key => $value) {
+	foreach ($res as $key => $value) {
 		$ddata[] = $value['value'];
 	}
 	return $ddata;
+}
+
+function get_all_lovs(){
+	$res = array();
+
+	$arr = array('keywords', 'designation', 'education', 'industry', 'joblevel', 'skills', 'location');
+
+	foreach ($arr as $key => $value) {
+		$res[$value] = get_results("select * from ".$value);
+	}
+
+	return $res;
 }

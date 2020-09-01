@@ -98,7 +98,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: newform.title.$invalid}">
                 <label>Location Title</label>
-                <input name="name" required="" ng-model="form_data.title" type="text" class="form-control" placeholder="Name of the Location">
+                <input name="name" required="" ng-model="form_data.title" type="text" class="form-control" >
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: newform.description.$invalid}">
                 <label>Description</label>
-                <input  name="description" ng-model="form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                <textarea style="height: auto;" name="description" ng-model="form_data.description" required id="appDescription" type="text" class="form-control" ></textarea>
               </div>
             </div>
           </div>

@@ -476,6 +476,12 @@ apiService.hm_education = function(){
         });
     }
 
-
+    apiService.get_all_lovs  = function(data){
+        return httpService.post(APIURL+'get_all_lovs', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+    
     return apiService;
 });

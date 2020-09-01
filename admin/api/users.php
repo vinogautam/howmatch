@@ -27,10 +27,11 @@ function hm_users(){
 }
 
 function hm_company(){
-	$res = get_results("select * from users where user_type = 2");
+	$res = get_results("select * from users where user_type = 2 order by is_featured desc, id desc");
 	$new_res = array();
 	foreach ($res as $key => $value) {
 		$value['profile'] = get_all_meta('users', $value['id']);
+		$value['is_featured'] = $value['is_featured'] == 1;
 		unset($value['password']);
 		$new_res[] = $value;
 	}
@@ -46,7 +47,7 @@ function hm_save_user(){
 		'updated_on' => date('Y-m-d H:i:s')
 	);
 
-	$data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+	$data['is_featured'] = isset($_POST['is_featured']) ? 1 : 0;
 	
 	if(isset($_POST['id'])){
 		if(isset($_POST['password'])){
@@ -63,6 +64,8 @@ function hm_save_user(){
 		$id = last_id();
 		$res = array('status' => 'Success', 'msg' => 'Users Added Successfully');
 	}
+
+	//print_r($data);exit;
 
 	foreach ($profile as $key => $value) {
 		set_meta('users', $id, $key, $value);

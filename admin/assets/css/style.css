@@ -68,3 +68,11 @@ input[type="file"]{display: none;}
 .select2{
 	width: 100%!important;
 }
+.featured{
+  background: #17977c;
+  display: inline-block;
+  padding: 2px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+}

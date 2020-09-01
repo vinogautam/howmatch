@@ -1,7 +1,7 @@
 <?php
 /* Admin Side*/
 function hm_category(){
-	$res = get_results("select * from category");
+	$res = get_results("select *, (SELECT count(*) from jobs where jobs.category = category.id) as no_of_job from category");
 	$new_res =  array();
 	foreach ($res as $key => $value) {
 		if($value['parent'] == 0){

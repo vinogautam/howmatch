@@ -5,10 +5,23 @@ jobsController.$inject = ['$scope', '$state', '$rootScope', 'APIURL', '$http', '
 
 function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
 
+    $scope.pageInfo = {submitted: false};
     $('.datepicker').datepicker();
-    $('.select2multiple').select2();
     $('#show-modal').click(function() {
         $('#addNewAppModal').modal('show');
+        $scope.pageInfo.showForm = true;
+        $scope.job_form_data = {industry: {}};
+        $scope.$apply();
+    });
+
+    $("#addNewAppModal").on("hidden.bs.modal", function () {
+        $scope.pageInfo.showForm = false;
+        $scope.$apply();
+    });
+
+    $scope.lov = {};
+    ApiService.get_all_lovs().then(function(res){
+        $scope.lov = res;
     });
 
     $scope.pagingSize = 5;
@@ -16,7 +29,7 @@ function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
     $scope.totalItems = [];
     $scope.displayItems = [];
 
-    $scope.pageInfo = {submitted: false};
+    
     $scope.job_form_data = {industry: {}};
     $scope.totalItems = [];
     ApiService.hm_jobs().then(function(res){
@@ -42,6 +55,7 @@ function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
     $scope.edit_job = function(data){
     	$scope.job_form_data = data;
     	$('#addNewAppModal').modal('show');
+        $scope.pageInfo.showForm = true;
     };
 
     $scope.delete_job = function(data){

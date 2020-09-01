@@ -40,7 +40,7 @@
         <tbody>
           <tr class="gradeX" ng-repeat="t in totalItems" repeat-end="initTooltip()">
             <td>{{$index + 1}}</td>
-            <td>{{t.profile.company_name}}</td>
+            <td>{{t.profile.company_name}}<br><span class="featured" ng-if="t.is_featured">Featured</span></td>
             <td>{{t.profile.employer_name}}</td>
             <td>
               <p>Website: {{t.profile.website}}</p>
