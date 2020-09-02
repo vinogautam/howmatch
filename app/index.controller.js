@@ -31,8 +31,16 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
     $rootScope.preloader = true;
 
     $rootScope.lov = {};
+    $rootScope.lov_obj = {};
     ApiService.get_all_lovs().then(function(res){
         $rootScope.lov = res;
+        angular.forEach(res, function(v,k){
+            $rootScope.lov_obj[k] = {};
+
+            angular.forEach(v, function(v2,k2){
+                $rootScope.lov_obj[k][v2.id] = v2.title;
+            });
+        });
     });
 
     window.addEventListener('load', (event) => {

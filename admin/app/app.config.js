@@ -278,6 +278,15 @@ hmapp.directive("select2multiple", function(){
     };
 });
 
+hmapp.directive("carousel", function(){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $(element).carousel();
+        }
+    };
+});
+
 hmapp.directive("cdatePicker", function(){
     return {
         restrict: "A",

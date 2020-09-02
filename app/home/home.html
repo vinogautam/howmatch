@@ -87,14 +87,10 @@
     <div class="homepaddrl">
       <h2>Featured Companies</h2>
        <section class="customer-logos slider">
-          <div class="slide"><img src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"><h5>Company Name</h5></div>
-          <div class="slide"><img src="https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg"><h5>Company Name</h5></div>
+          <div class="slide" ng-repeat="cm in home_data.featured_company">
+            <img width="100" src="{{cm.profile.profile_picture ? 'admin/api/uploads/'+cm.profile.profile_picture : 'html/images/company_placeholder.jpeg'}}">
+            <h5>{{cm.profile.company_name}}</h5>
+          </div>
        </section>
     </div>
   </div>
@@ -106,186 +102,26 @@
           <br>
           <div id="carousel-two" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              <div class="carousel-item" ng-class="{active: k == 0}" ng-repeat="(k,sli) in home_data.featured_jobs">
                 <div class="row">
-                 <div class="col-sm-6">
-                   <div class="row fe-jb-ls">
-                   <div class="col-sm-4">
-                     <img src="html/images/homepage/museum.png">
+                <div class="col-sm-6" ng-repeat="job in sli">
+                  <div class="row fe-jb-ls">
+                    <div class="col-sm-4">
+                      <img style="width: 100%;max-height: 100%;" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+                    </div>
+                    <div class="col-sm-8">
+                   <h4 ui-sref="view_job({id: job.id})" class="active cp">{{job.title}}</h4>
+                    <p> Published {{job.posted_on | timeago}}</p>
+                   <hr>
+                   <p><i style="position: relative;top: 0;left: 0;" class="fa fa-map-marker"></i> {{job.location_name}}</p>
                    </div>
-                   <div class="col-sm-8">
-                  <h4>Accountant for Bank</h4>
-                  <p> Published 2 years ago</p>
-                  <hr>
-                  <p>Ho Chi Minh, Vietnam</p>
                   </div>
-                 </div>
-                </div>
-                 <div class="col-sm-6">
-                  <div class="row fe-jb-ls">
-                  <div class="col-sm-4">
-                    <img src="html/images/homepage/museum.png">
-                  </div>
-                  <div class="col-sm-8">
-                 <h4>Accountant for Bank</h4>
-                 <p> Published 2 years ago</p>
-                 <hr>
-                 <p>Ho Chi Minh, Vietnam</p>
-                 </div>
-                </div>
-              </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="row fe-jb-ls">
-                  <div class="col-sm-4">
-                    <img src="html/images/homepage/museum.png">
-                  </div>
-                  <div class="col-sm-8">
-                 <h4>Accountant for Bank</h4>
-                 <p> Published 2 years ago</p>
-                 <hr>
-                 <p>Ho Chi Minh, Vietnam</p>
-                 </div>
-                </div>
-              </div>
-                <div class="col-sm-6">
-                  <div class="row fe-jb-ls">
-                  <div class="col-sm-4">
-                    <img src="html/images/homepage/museum.png">
-                  </div>
-                  <div class="col-sm-8">
-                 <h4>Accountant for Bank</h4>
-                 <p> Published 2 years ago</p>
-                 <hr>
-                 <p>Ho Chi Minh, Vietnam</p>
-                 </div>
-                </div>
+                </div> 
               </div> 
-              </div> 
-            </div>    
-            <div class="carousel-item">
-              <div class="row">
-               <div class="col-sm-6">
-                 <div class="row fe-jb-ls">
-                 <div class="col-sm-4">
-                  <img src="html/images/homepage/museum.png">
-                 </div>
-                 <div class="col-sm-8">
-                <h4>Accountant for Bank</h4>
-                <p> Published 2 years ago</p>
-                <hr>
-                <p>Ho Chi Minh, Vietnam</p>
-                </div>
-               </div>
-              </div>
-               <div class="col-sm-6">
-                <div class="row fe-jb-ls">
-                <div class="col-sm-4">
-                  <img src="html/images/homepage/museum.png">
-                </div>
-                <div class="col-sm-8">
-               <h4>Accountant for Bank</h4>
-               <p> Published 2 years ago</p>
-               <hr>
-               <p>Ho Chi Minh, Vietnam</p>
-               </div>
-              </div>
-            </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="row fe-jb-ls">
-                <div class="col-sm-4">
-                  <img src="html/images/homepage/museum.png">
-                </div>
-                <div class="col-sm-8">
-               <h4>Accountant for Bank</h4>
-               <p> Published 2 years ago</p>
-               <hr>
-               <p>Ho Chi Minh, Vietnam</p>
-               </div>
-              </div>
-            </div>
-              <div class="col-sm-6">
-                <div class="row fe-jb-ls">
-                <div class="col-sm-4">
-                  <img src="html/images/homepage/museum.png">
-                </div>
-                <div class="col-sm-8">
-               <h4>Accountant for Bank</h4>
-               <p> Published 2 year ago</p>
-               <hr>
-               <p>Ho Chi Minh, Vietnam</p>
-               </div>
-              </div>
-            </div> 
-            </div> 
-          </div>   
-          <div class="carousel-item">
-            <div class="row">
-             <div class="col-sm-6">
-               <div class="row fe-jb-ls">
-               <div class="col-sm-4">
-                <img src="html/images/homepage/museum.png">
-               </div>
-               <div class="col-sm-8">
-              <h4>Accountant for Bank</h4>
-              <p> Published 2 years ago</p>
-              <hr>
-              <p>Ho Chi Minh, Vietnam</p>
-              </div>
-             </div>
-            </div>
-             <div class="col-sm-6">
-              <div class="row fe-jb-ls">
-              <div class="col-sm-4">
-                <img src="html/images/homepage/museum.png">
-              </div>
-              <div class="col-sm-8">
-             <h4>Accountant for Bank</h4>
-             <p> Published 2 years ago</p>
-             <hr>
-             <p>Ho Chi Minh, Vietnam</p>
-             </div>
-            </div>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 ">
-              <div class="row fe-jb-ls">
-              <div class="col-sm-4">
-                <img src="html/images/homepage/museum.png">
-              </div>
-              <div class="col-sm-8">
-             <h4>Accountant for Bank</h4>
-             <p> Published 2 years ago</p>
-             <hr>
-             <p>Ho Chi Minh, Vietnam</p>
-             </div>
-            </div>
-          </div>
-            <div class="col-sm-6">
-              <div class="row fe-jb-ls">
-              <div class="col-sm-4">
-                <img src="html/images/homepage/museum.png">
-              </div>
-              <div class="col-sm-8">
-             <h4>Accountant for Bank</h4>
-             <p> Published 2 years ago</p>
-             <hr>
-             <p>Ho Chi Minh, Vietnam</p>
-             </div>
-            </div>
-          </div> 
-          </div> 
-        </div>           
-
+            </div>  
           </div>
           <ol class="carousel-indicators">
-            <li data-target="#carousel-two" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-two" data-slide-to="1"></li>
-            <li data-target="#carousel-two" data-slide-to="2"></li>
+            <li data-target="#carousel-two" data-slide-to="{{k}}" ng-class="{active: k == 0}" ng-repeat="(k,sli) in home_data.featured_jobs"></li>
           </ol>
           </div> 
         </div>

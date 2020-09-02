@@ -5,6 +5,18 @@ jobsearchController.$inject = ['$filter', 'DATA', 'PagerService', '$rootScope', 
 function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {data: DATA, filter: {category: {}, salary: parseInt(DATA.salary.maxsalary)}};
 
+    angular.forEach(DATA.data, function(j){
+        $arr = [ 'keywords', 'location'];
+        angular.forEach($arr, function(a){
+            j[a+'_name'] = [];
+            angular.forEach(j[a], function(l){
+                var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
+                j[a+'_name'].push(ld);
+            });
+            j[a+'_name'] = j[a+'_name'].join(',');
+        });
+    });
+
 	$scope.jobs_bk = DATA.data;
 
     $scope.filteredItems = angular.copy($scope.jobs_bk);
@@ -30,7 +42,7 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     $scope.fiterResult = function(){
         $scope.jobs = [];
         $scope.filteredItems = angular.copy($scope.jobs_bk);
-        $scope.filteredItems = $filter("filter")($scope.filteredItems, {title: $scope.pageInfo.filter.title, type: $scope.pageInfo.filter.type, location: $scope.pageInfo.filter.location});
+        $scope.filteredItems = $filter("filter")($scope.filteredItems, {keywords_name: $scope.pageInfo.filter.title, title: $scope.pageInfo.filter.title, type: $scope.pageInfo.filter.type, location_name: $scope.pageInfo.filter.location});
         
         var cate = [];
         angular.forEach($scope.pageInfo.filter.category, function(v,k){

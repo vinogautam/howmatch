@@ -5,7 +5,7 @@ function hm_jobs(){
 
 	$new = [];
 	foreach ($res as $key => $value) {
-		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
+		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
 
 		foreach ($arr as $key => $val) {
 			$value[$val] = get_relative_data('jobs', $val, $value['id']);
@@ -28,7 +28,7 @@ function hm_save_job(){
 
 	$data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
 
-	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
 
 	foreach ($arr as $key => $value) {
 		unset($data[$value]);
@@ -48,7 +48,7 @@ function hm_save_job(){
 		$ret = array('status' => 'Success', 'msg' => 'Job Added Successfully');
 	}
 
-	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
 
 	foreach ($arr as $key => $value) {
 		if(isset($data2[$value]) && is_array($data2[$value])){

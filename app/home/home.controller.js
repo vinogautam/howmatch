@@ -3,7 +3,7 @@ hmapp.controller('homeController', homeController);
 homeController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
 function homeController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
- 	$('#carousel-one, #carousel-two').carousel();
+ 	//$('#carousel-one, #carousel-two').carousel();
 
  	$(window).scroll(function(){ 
         if ($(this).scrollTop() > 100) { 
@@ -71,6 +71,19 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
 
     ApiService.get_home_data().then(function(res){
         $scope.home_data = res;
+        angular.forEach($scope.home_data.featured_jobs, function(jj){
+            angular.forEach(jj, function(j){
+                $arr = ['location'];
+                angular.forEach($arr, function(a){
+                    j[a+'_name'] = [];
+                    angular.forEach(j[a], function(l){
+                        var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
+                        j[a+'_name'].push(ld);
+                    });
+                    j[a+'_name'] = j[a+'_name'].join(',');
+                });
+            });
+        });
     });
     $(document).ready(function(){
     $('.customer-logos').slick({

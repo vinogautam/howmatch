@@ -436,6 +436,24 @@ hmapp.directive("cdatePicker", function(){
     };
 });
 
+hmapp.directive("select2multiple", function(){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $(element).select2();
+        }
+    };
+});
+
+hmapp.directive("carousel", function($timeout){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $timeout(function(){$(element).carousel();},1000);
+        }
+    };
+});
+
 hmapp.directive('ngRightClick', function($parse) {
     return function(scope, element, attrs) {
         var fn = $parse(attrs.ngRightClick);

@@ -17,6 +17,8 @@ function post_query(){
 			'message' => $_POST['message'],
 			'posted_on' => date('Y-m-d H:i:s')
 		);
+
+		insert('contact_request', $arr);
 	}
 
 	return array('status' => 'Success');
@@ -44,20 +46,10 @@ function get_home_data(){
 		$value['company_name'] = get_meta('users', $value['posted_by'], 'company_name');
 		$value['company_image'] = get_meta('users', $value['posted_by'], 'company_image');
 
-		if(isset($value['industry'])){
-			$value['industry'] = unserialize(stripslashes($value['industry']));
-		}
-		if(isset($value['career_level']) && $value['career_level']){
-			$value['career_level'] = unserialize(stripslashes($value['career_level']));
-		}
-		if(isset($value['qualification']) && $value['qualification']){
-			$value['qualification'] = unserialize(stripslashes($value['qualification']));
-		}
-		if(isset($value['job_level']) && $value['job_level']){
-			$value['job_level'] = unserialize(stripslashes($value['job_level']));
-		}
-		if(isset($value['tags']) && $value['tags']){
-			$value['tags'] = unserialize(stripslashes($value['tags']));
+		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
+
+		foreach ($arr as $key => $val) {
+			$value[$val] = get_relative_data('jobs', $val, $value['id']);
 		}
 
 		$value['title'] = stripslashes($value['title']);
@@ -74,5 +66,5 @@ function get_home_data(){
 		$featured_company[] = $value;
 	}
 
-	return array('status' => 'Success', 'data' => $data, 'location' => $location, 'featured_jobs' => $featured_jobs, 'featured_company' => $featured_company);
+	return array('status' => 'Success', 'data' => $data, 'location' => $location, 'featured_jobs' => array_chunk($featured_jobs, 4), 'featured_company' => $featured_company);
 }

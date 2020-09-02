@@ -196,8 +196,8 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
-                <label>Tags</label>
-                <select select2multiple name="tags" required class="form-control select2multiple" multiple="multiple"  ng-model="job_form_data.tags">
+                <label>Tags or Keywords</label>
+                <select select2multiple name="tags" required class="form-control select2multiple" multiple="multiple"  ng-model="job_form_data.keywords">
                   <option ng-repeat="ind in lov.keywords" value="{{ind.id}}">{{ind.title}}</option>
                 </select>
               </div>
