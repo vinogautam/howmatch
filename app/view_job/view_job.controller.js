@@ -7,6 +7,16 @@ function viewjobController(DATA, $stateParams, $rootScope, $scope, $state, ApiSe
 
 	$scope.job = DATA.data;
 
+	$arr = ['location', 'industry'];
+    angular.forEach($arr, function(a){
+        $scope.job[a+'_name'] = [];
+        angular.forEach($scope.job[a], function(l){
+            var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
+            $scope.job[a+'_name'].push(ld);
+        });
+        $scope.job[a+'_name'] = $scope.job[a+'_name'].join(',');
+    });
+
 	if($rootScope.loggedInUserInfo.id){
 		ApiService.hm_page_view({user: $rootScope.loggedInUserInfo.id, job: $stateParams.id}).then(function(){
 

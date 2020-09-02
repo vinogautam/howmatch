@@ -28,6 +28,14 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         }
     });
 
+    $scope.contactForm = {};
+    $scope.contact_query = function(){
+        ApiService.contact_query($scope.contactForm).then(function(){
+            ApiService.notification('Your query submitted successfully', 'success');
+            $("#contactModal").modal('hide');
+        });
+    };
+
     $rootScope.preloader = true;
 
     $rootScope.lov = {};

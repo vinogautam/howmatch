@@ -35,7 +35,7 @@
                      <div class="col-md-6 h100" style="border-left: 1px solid;">
                        <h6 class="search_title">POPULAR KEYWORDS</h6>
                        <div class="keyword_list">
-                        <span ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job">{{key.title}}({{key.no_of_job}})</span>
+                        <span style="cursor: pointer;" ng-click="pageInfo.search.title=key.title;search_job();" ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job != 0">{{key.title}}({{key.no_of_job}})</span>
                        </div>
                      </div>
                    </div>
@@ -50,7 +50,7 @@
                      <div class="col-md-6 h100">
                        <h6 class="search_title">POPULAR KEYWORDS</h6>
                        <div class="keyword_list">
-                        <span ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job">{{key.title}}({{key.no_of_job}})</span>
+                        <span style="cursor: pointer;" ng-click="pageInfo.search.title=key.title;search_job();" ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job != 0">{{key.title}}({{key.no_of_job}})</span>
                        </div>
                      </div>
                      <div class="col-md-6 h100" style="border-left: 1px solid;">
@@ -88,7 +88,7 @@
       <h2>Featured Companies</h2>
        <section class="customer-logos slider">
           <div class="slide" ng-repeat="cm in home_data.featured_company">
-            <img width="100" src="{{cm.profile.profile_picture ? 'admin/api/uploads/'+cm.profile.profile_picture : 'html/images/company_placeholder.jpeg'}}">
+            <img width="150" height="150" src="{{cm.profile.profile_picture ? 'admin/api/uploads/'+cm.profile.profile_picture : 'html/images/company_placeholder.jpeg'}}">
             <h5>{{cm.profile.company_name}}</h5>
           </div>
        </section>
@@ -144,61 +144,14 @@
           <div class="col-sm-12">
             <h2 style="margin-bottom:40px;">Popular Job Categories</h2>
             <div class="row">
-              <div class="col-sm-3 padd7">
+              
+              <div class="col-sm-3 padd7" ng-if="cat.type == 'category'" ng-repeat="cat in home_data.data | orderBy : '-cnt'" ng-click="search_job2(cat);">
                 <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 0.png">
-                <h4>Lorem ipsum</h4>
+                <img src="{{'admin/api/uploads/'+cat.image}}">
+                <h4>{{cat.title}}</h4>
                 </div>
               </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 1.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 2.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 3.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="row">
-              <div class="col-sm-12">
-                <hr>
-              </div>
-            </div> -->
-            <div class="row">
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 4.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 5.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 6.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
-              <div class="col-sm-3 padd7">
-                <div class="pop-jb">
-                <img src="./html/images/homepage/Layer 7.png">
-                <h4>Lorem ipsum</h4>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
