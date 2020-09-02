@@ -184,6 +184,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/pages',
             templateUrl: 'app/pages/pages.html',
             controller: 'pagesController'
+        },
+        {
+            name: 'contact_request',
+            label: 'Contact Request',
+            auth: true,
+            restricted:false,
+            url: '/contact_request',
+            templateUrl: 'app/contact_request/contact_request.html',
+            controller: 'contact_requestController'
         }
     ]
 

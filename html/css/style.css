@@ -358,14 +358,17 @@ input:focus+.filter_result{
 }
 .keyword_list{
   margin-top: 15px;
+  height: 150px;
+  overflow: auto;
 }
 .keyword_list span{
-  border: 1px solid #aaa; 
+  display: inline-block;
+  border: 1px solid #aaa;
   border-radius: 25px;
   padding: 5px;
   color: #000;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 2px;
 }
 .keyword_list span:hover{
   background: #ccc;

@@ -130,7 +130,8 @@ function set_relative_data($table, $column, $id, $data){
 }
 
 function get_relative_data($table, $column, $id){
-	$res = get_results("select * from relative_data where ref_table = '$table' and ref_column = '$column' and ref_id = $id");
+	$sql = "select * from relative_data where ref_table = '$table' and ref_column = '$column' and ref_id = $id";
+	$res = get_results($sql);
 	$ddata = [];
 	foreach ($res as $key => $value) {
 		$ddata[] = $value['value'];
@@ -144,7 +145,8 @@ function get_all_lovs(){
 	$arr = array('keywords', 'designation', 'education', 'industry', 'joblevel', 'skills', 'location');
 
 	foreach ($arr as $key => $value) {
-		$res[$value] = get_results("select *, (SELECT count(*) from jobs where jobs.category = ".$value.".id) as no_of_job from ".$value);
+		$sql = "select *, (SELECT count(*) from jobs where jobs.category = ".$value.".id) as no_of_job from ".$value;
+		$res[$value] = get_results($sql);
 	}
 
 	return $res;
