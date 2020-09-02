@@ -408,9 +408,7 @@
               <label>Skill</label>
               <select class="form-control selyr" required="" ng-model="pageInfo.skills_form_data.skill">
                 <option value="">Select Skill</option>
-                <option>PHP</option>
-                <option>HTML</option>
-                <option>JAVASCRIPT</option>
+                <option ng-repeat="l in lov.skills" value="{{l.title}}">{{l.title}}</option>
               </select>             
             </div>
 
@@ -504,7 +502,7 @@
               <label>Expected Job Level</label>
                <select name="skills" class="form-control select2multiple"  ng-model="profile.preferred_joblevel" multiple >
                 <option value="0">Select Job Level</option>
-                <option ng-repeat="jl in joblevel" value="{{jl.id}}">{{jl.title}}</option>
+                <option ng-repeat="jl in lov.joblevel" value="{{jl.id}}">{{jl.title}}</option>
               </select>                       
             </div>
 

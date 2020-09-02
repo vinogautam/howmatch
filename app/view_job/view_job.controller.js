@@ -7,7 +7,7 @@ function viewjobController(DATA, $stateParams, $rootScope, $scope, $state, ApiSe
 
 	$scope.job = DATA.data;
 
-	$arr = ['location', 'industry'];
+	$arr = ['location', 'industry', 'keywords'];
     angular.forEach($arr, function(a){
         $scope.job[a+'_name'] = [];
         angular.forEach($scope.job[a], function(l){

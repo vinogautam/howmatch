@@ -25,7 +25,7 @@
     <div class="v-details col-sm-6" >
       <h4 class="active">{{job.title}}</h4>
       <p> {{job.posted_on}}</p>
-      <p>{{job.location}}</p>
+      <p>{{job.location_name}}</p>
     </div>
     <div class="col-sm-2 text-center">
         <div ng-click="getApplicants(job)" class="cp">
@@ -64,7 +64,7 @@
               <div class="v-details col-sm-6">
                 <h4 class="active">{{applicant.name}}</h4>
                 <p>{{applicant.job_title}}</p>
-                <p>{{applicant.location}}</p>
+                <p>{{applicant.location_name}}</p>
               </div>
               <div class="col-sm-3">
                   <div>
@@ -88,7 +88,7 @@
           <h5 class="modal-title">Submit Job</h5>
         </div>
         <div class="modal-body bg-gra usrmodal">
-         <form role="form" name="jobform" novalidate="" ng-class="{submitted: pageInfo.submitted}"> 
+         <form ng-if="pageInfo.showForm" role="form" name="jobform" novalidate="" ng-class="{submitted: pageInfo.submitted}"> 
   <div class="form-row">
     <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.title.$invalid}"> 
           <label for="name">Title</label>
@@ -107,7 +107,7 @@
     <div class="form-row">
       <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.last_date.$invalid}">
           <label for="">Application DeadLine</label>
-          <input data-provide="datepicker" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.last_date">
+          <input autocomplete="off" date-picker class="form-control" name="deadline" placeholder="" ng-model="job_form_data.last_date">
       </div>
         <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.jtype.$invalid}">
           <label for="inputPassword4">Job Apply type </label>
@@ -161,50 +161,43 @@
     <div class="form-row">
       <div class=" col-sm-12 form-group form-group-default">
           <label for="">Location  </label>
-          <input type="text" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.location">
+          <select class="form-control" select2multiple multiple="" ng-model="job_form_data.location">
+          <option ng-repeat="ind in lov.location" value="{{ind.id}}">{{ind.title}}</option>         
+        </select>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
         <label>Tags</label>
-        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.tags">
-          <option>PHP</option>
-          <option>Java</option>          
+        <select class="form-control" select2multiple multiple="" ng-model="job_form_data.tags">
+          <option ng-repeat="ind in lov.keywords" value="{{ind.id}}">{{ind.title}}</option>         
         </select>        
       </div>      
     </div>
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.industry.$invalid}">
         <label>Industry</label>
-        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.industry">
-          <option ng-repeat="ind in industry" value="{{ind.id}}">{{ind.title}}</option>         
+        <select class="form-control " select2multiple multiple="" ng-model="job_form_data.industry">
+          <option ng-repeat="ind in lov.industry" value="{{ind.id}}">{{ind.title}}</option>         
         </select>        
       </div>      
     </div>
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.qualification.$invalid}">
         <label>Qualification</label>
-        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.qualification">
-          <option ng-repeat="edu in education" value="{{edu.id}}">{{edu.title}}</option>        
+        <select class="form-control" select2multiple multiple="" ng-model="job_form_data.qualification">
+          <option ng-repeat="edu in lov.education" value="{{edu.id}}">{{edu.title}}</option>        
         </select>        
       </div>      
     </div>
     <div class="form-row">
       <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.job_level.$invalid}">
         <label>Career Level</label>
-        <select class="form-control select2multiple" multiple="" ng-model="job_form_data.job_level">
-          <option ng-repeat="jl in joblevel" value="{{jl.id}}">{{jl.title}}</option>         
+        <select select2multiple class="form-control " multiple="" ng-model="job_form_data.job_level">
+          <option ng-repeat="jl in lov.joblevel" value="{{jl.id}}">{{jl.title}}</option>         
         </select>        
       </div>      
     </div>
-    <div class="form-row">
-            <div class="col-sm-12">
-              <div class="form-group form-group-default" >
-                <label>Is Featured Job</label>
-                <input type="checkbox" name="">
-              </div>
-            </div>
-          </div>
 
    <div class="text-right">               
       <button ng-click="save_job(jobform)" type="submit" class="btn btn-success">Post Job</button>

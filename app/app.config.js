@@ -263,7 +263,12 @@ function routes($stateProvider, $urlRouterProvider) {
             restricted:false,
             url: '/companies',
             templateUrl: 'app/companies/companies.html',
-            controller: 'companiesController'
+            controller: 'companiesController',
+            resolve: {
+                DATA: function($stateParams, ApiService){
+                    return ApiService.hm_company();
+                }
+            }
         },
         {
             name: 'job_search',
@@ -418,6 +423,9 @@ hmapp.directive("datePicker", function(){
             
             $(element).on('changeDate', function(ev){
                 $(this).datepicker('hide');
+                if(!scope.$$phase) {
+                    scope.$apply();
+                }
             });
         }
     };

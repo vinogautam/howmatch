@@ -8,20 +8,10 @@ function hm_company_jobs(){
 		$value['company_image'] = get_meta('users', $value['posted_by'], 'company_image');
 		$value['no_of_applicants'] = get_count("select * from job_applicants where job_id = ".$value['id']." and is_applied = 1");
 
-		if(isset($value['industry'])){
-			$value['industry'] = unserialize(stripslashes($value['industry']));
-		}
-		if(isset($value['career_level']) && $value['career_level']){
-			$value['career_level'] = unserialize(stripslashes($value['career_level']));
-		}
-		if(isset($value['qualification']) && $value['qualification']){
-			$value['qualification'] = unserialize(stripslashes($value['qualification']));
-		}
-		if(isset($value['job_level']) && $value['job_level']){
-			$value['job_level'] = unserialize(stripslashes($value['job_level']));
-		}
-		if(isset($value['tags']) && $value['tags']){
-			$value['tags'] = unserialize(stripslashes($value['tags']));
+		$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
+
+		foreach ($arr as $key => $val) {
+			$value[$val] = get_relative_data('jobs', $val, $value['id']);
 		}
 
 		$value['title'] = stripslashes($value['title']);

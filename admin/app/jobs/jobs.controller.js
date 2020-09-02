@@ -11,12 +11,12 @@ function jobsController($scope, $state, $rootScope, APIURL, $http, ApiService) {
         $('#addNewAppModal').modal('show');
         $scope.pageInfo.showForm = true;
         $scope.job_form_data = {industry: {}};
-        $scope.$apply();
+        if(!$scope.$$phase) {$scope.$apply();}
     });
 
     $("#addNewAppModal").on("hidden.bs.modal", function () {
         $scope.pageInfo.showForm = false;
-        $scope.$apply();
+        if(!$scope.$$phase) {$scope.$apply();}
     });
 
     $scope.lov = {};

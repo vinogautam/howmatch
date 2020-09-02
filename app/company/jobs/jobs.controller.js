@@ -5,8 +5,18 @@ jobsController.$inject = ['DATA', '$rootScope', '$scope', '$state', 'ApiService'
 function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval, datepicker) {
 	$scope.pageInfo = {};
  	//$('.select2multiple').select2();
-    $('.datepicker').datepicker();
+    //$('.datepicker').datepicker();
  	
+    $("#submitjobModal").on("hidden.bs.modal", function () {
+        $scope.pageInfo.showForm = false;
+        if(!$scope.$$phase) {$scope.$apply();}
+    });
+
+    $("#submitjobModal").on("shown.bs.modal", function () {
+        $scope.pageInfo.showForm = true;
+        if(!$scope.$$phase) {$scope.$apply();}
+    });
+
 	$scope.pagingSize = 5;
     $scope.dataPerPage = 10;
     $scope.totalItems = [];
@@ -14,6 +24,19 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
 
     $scope.pageInfo = {submitted: false};
     $scope.job_form_data = {industry: {}};
+
+    angular.forEach(DATA.data, function(j){
+        $arr = [ 'keywords', 'location'];
+        angular.forEach($arr, function(a){
+            j[a+'_name'] = [];
+            angular.forEach(j[a], function(l){
+                var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
+                j[a+'_name'].push(ld);
+            });
+            j[a+'_name'] = j[a+'_name'].join(',');
+        });
+    });
+
     $scope.totalItems = DATA.data;
 
     $scope.save_job = function(frm){
@@ -71,25 +94,4 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
     ApiService.hm_category().then(function(res){
         $scope.category = res.data;
     });
-
-    $scope.education = [];
-    ApiService.hm_education().then(function(res){
-        $scope.education = res.data;
-    });
-
-    $scope.industry = [];
-    ApiService.hm_industry().then(function(res){
-        $scope.industry = res.data;
-    });
-
-    $scope.joblevel = [];
-    ApiService.hm_joblevel().then(function(res){
-        $scope.joblevel = res.data;
-    });
-
-     $scope.location = [];
-    ApiService.hm_location().then(function(res){
-        $scope.location = res.data;
-    });
-
 }

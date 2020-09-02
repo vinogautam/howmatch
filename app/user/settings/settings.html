@@ -1,10 +1,10 @@
+<div class="row ng-hide">
+  <div class="col-sm-6">
+     <h5>Settings</h5>
+  </div>
+  </div>
 <div class=" container-fluid   container-fixed-lg bg-white">
   <div class="settingscard card card-transparent">
-    <div class=" settingshead card-header">
-      <div class="card-title">Settings</div>
-      <div class="clearfix"></div>
-      <div class="export-options-container"></div>
-    </div>
     <div class="card-body">
       <form role="form" name="changpform" novalidate="" ng-class="{submitted: pageInfo.submitted2}">
       
@@ -24,12 +24,13 @@
                 <input ng-pattern="/^.{6,}$/"  name="password" required="" ng-model="changep_form_data.password" type="password" class="form-control">
               </div>
             </div> 
-          </div class="padding">   
+          </div>   
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: changpform.cpassword.$invalid}">
                 <label>Confirm Password</label>
                 <input ng-pattern="/^.{6,}$/"  name="cpassword" required="" compare-to="changep_form_data.password" ng-model="changep_form_data.cpassword" type="password" class="form-control">
+                <p ng-if="changpform.cpassword.$error.compareTo" style="color: red">Retype new password</p>
               </div>
             </div> 
           </div>   
@@ -38,7 +39,7 @@
         <button ng-click="change_password(changpform)" id="add-app" type="button" class="btn btn-primary  btn-cons">Save</button>
        
          </form>
-        <div>
+        <div class="ng-hide">
             <form role="form" name="deleteform" novalidate="" ng-class="{submitted: pageInfo.submitted2}">
                 
                   <h4>Delete Profile</h4>

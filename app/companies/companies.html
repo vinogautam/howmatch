@@ -1,7 +1,7 @@
 <main role="main" class="home_margin-top">
   <div class="sub_header"><img src="html/images/elements/companies/Asset 4.png" class="img-fluid"></div>
   <div class="container padd30">    
-     <div class="serh-form">
+     <div class="serh-form ng-hide">
             <form class="form-inline">
               <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
                 <input type="text" class="form-control" id="staticEmail2" placeholder="Categories">
@@ -20,50 +20,12 @@
               <div class="homepaddrl">
                 <h2 class="font-weight-light">Featured Companies</h2>
                 <br>
-                <div id="carousel-one" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item">
-                      <ul class="silder-box">
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                      </ul>
+                <section class="featured-customer-logos slider">
+                    <div class="slide" ng-repeat="cm in home_data.featured_company">
+                      <img width="150" height="150" src="{{cm.profile.profile_picture ? 'admin/api/uploads/'+cm.profile.profile_picture : 'html/images/company_placeholder.jpeg'}}">
+                      <h5>{{cm.profile.company_name}}</h5>
                     </div>
-                    <div class="carousel-item active">
-                      <ul class="silder-box">
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                      </ul>
-                    </div>
-                    <div class="carousel-item">
-                      <ul class="silder-box">
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                        <li><img src="html/images/company.jpg"></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!--<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-          </a>-->
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel-one" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel-one" data-slide-to="1" class="active"></li>
-                    <li data-target="#carousel-one" data-slide-to="2" class=""></li>
-                  </ol>
-                </div>
+                 </section>
               </div>
             </div>
     </section>
@@ -74,50 +36,12 @@
       <div class="homepaddrl">
         <h2 class="font-weight-light">New Companies</h2>
         <br>
-        <div id="carousel-one" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item">
-              <ul class="silder-box">
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-              </ul>
+        <section class="featured-customer-logos slider">
+            <div class="slide" ng-repeat="cm in companies" ui-sref="view_company({id: cm.id+'-'+cm.slug})">
+              <img width="150" height="150" src="{{cm.profile.profile_picture ? 'admin/api/uploads/'+cm.profile.profile_picture : 'html/images/company_placeholder.jpeg'}}">
+              <h5>{{cm.profile.company_name}}</h5>
             </div>
-            <div class="carousel-item active">
-              <ul class="silder-box">
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-              </ul>
-            </div>
-            <div class="carousel-item">
-              <ul class="silder-box">
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-                <li><img src="html/images/company.jpg"></li>
-              </ul>
-            </div>
-          </div>
-          <!--<a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="sr-only">Next</span>
-  </a>-->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-one" data-slide-to="0" class=""></li>
-            <li data-target="#carousel-one" data-slide-to="1" class="active"></li>
-            <li data-target="#carousel-one" data-slide-to="2" class=""></li>
-          </ol>
-        </div>
+         </section>
       </div>
     </div>
   </section>

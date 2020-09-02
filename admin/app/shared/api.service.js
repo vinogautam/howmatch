@@ -463,7 +463,7 @@ apiService.hm_education = function(){
     }
 
     apiService.hm_change_password = function(data){
-        return httpService.post(APIURL+'hm_change_password', data)
+        return httpService.post(APIURL+'hm_change_password?id='+$rootScope.loggedInUserInfo.ID, data)
         .then(function (res) {
             return res['data'];
         });

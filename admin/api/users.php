@@ -110,7 +110,7 @@ function hm_change_password(){
 	$dt = get_count('select * from users where id = 1 and password = "'.md5($_POST['old_password']).'"');
 	
 	if($dt){
-		update('users', array('password' => md5($_POST['password'])), array('id' => 1));
+		update('users', array('password' => md5($_POST['password'])), array('id' => $_GET['id']));
 		return array('status' => 'Success', 'msg' => 'Password updated Successfully');
 	} else {
 		return array('status' => 'Error', 'msg' => 'Invalid Old Password');

@@ -67,6 +67,14 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.hm_company = function () {
+        return httpService
+        .post(APIURL+'hm_company', {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     apiService.user_profile = function (data) {
         data.user_id = $rootScope.loggedInUserInfo.id;
         return httpService
@@ -365,6 +373,13 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
 
     apiService.get_all_lovs = function(){
         return httpService.post(APIURL+'get_all_lovs', {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_change_password = function(data){
+        return httpService.post(APIURL+'hm_change_password?id='+$rootScope.loggedInUserInfo.ID, data)
         .then(function (res) {
             return res['data'];
         });
