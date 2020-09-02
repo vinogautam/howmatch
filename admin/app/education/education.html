@@ -30,7 +30,6 @@
             <th>#</th>
             <th>Education Title</th>
             <th>Description</th>
-            <th>No. of Candidates</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -40,9 +39,6 @@
             <td>{{$index + 1}}</td>
             <td>{{t.title}}</td>
             <td>{{t.description}}</td>
-            <td>
-              <p>{{t.no_of_posting}}</p>
-            </td>
             <td ng-if="t.status == 0">
               <i ng-click="change_status(1, t.id);" class="inactive_dt cp fa fa-times"></i>
             </td>
@@ -107,7 +103,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: newform.description.$invalid}">
                 <label>Description</label>
-                <input  name="description" ng-model="form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                <input  name="description" ng-model="form_data.description" id="appDescription" type="text" class="form-control" >
               </div>
             </div>
           </div>
