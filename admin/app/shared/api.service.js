@@ -482,6 +482,15 @@ apiService.hm_education = function(){
             return res['data'];
         });
     }
+
+    apiService.hm_contact_request  = function(data){
+        return httpService.post(APIURL+'hm_contact_request', data)
+        .then(function (res) {
+            return res['data'];
+        });
+    }
+
+    
     
     return apiService;
 });
