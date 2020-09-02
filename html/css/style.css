@@ -365,6 +365,7 @@ input:focus+.filter_result{
   padding: 5px;
   color: #000;
   cursor: pointer;
+  margin: 0 5px;
 }
 .keyword_list span:hover{
   background: #ccc;

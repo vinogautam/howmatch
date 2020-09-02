@@ -106,7 +106,7 @@
             <div class="col-sm-6">
               <div class="form-group form-group-default" ng-class="{invalid: catform.name.$invalid}">
                 <label>Name</label>
-                <input name="name" required="" ng-model="cat_form_data.name" type="text" class="form-control" placeholder="Name of the Category">
+                <input name="name" required="" ng-model="cat_form_data.name" type="text" class="form-control">
               </div>
             </div>
              <div class="col-sm-6">
@@ -123,11 +123,20 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: catform.description.$invalid}">
                 <label>Description</label>
-                <input  name="description" ng-model="cat_form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                <textarea style="height: auto;" name="description" ng-model="cat_form_data.description" required id="appDescription" type="text" class="form-control"></textarea>
               </div>
             </div>
           </div>
+          <div class="row">
+              <div class="profile_picture">
+                <img ng-if="cat_form_data.image" src="{{'api/uploads/'+cat_form_data.image}}">
+              </div>
+              <button trigger-upload="profile_picture" class="btn btn-primary">Upload Image</button>
+              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="cat_form_data.image">
+              
+          </div>
         </div>
+
       <div class="modal-footer">
         <button ng-click="save_cat(catform)" id="add-app" type="button" class="btn btn-primary  btn-cons">Add</button>
         <button type="button" class="btn btn-cons" data-dismiss="modal">Close</button>

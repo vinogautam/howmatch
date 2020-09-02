@@ -35,11 +35,7 @@
                      <div class="col-md-6 h100" style="border-left: 1px solid;">
                        <h6 class="search_title">POPULAR KEYWORDS</h6>
                        <div class="keyword_list">
-                        <span>sales</span>
-                        <span>marketing</span>
-                        <span>IT</span>
-                        <span>Software</span>
-                         
+                        <span ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job">{{key.title}}({{key.no_of_job}})</span>
                        </div>
                      </div>
                    </div>
@@ -47,34 +43,29 @@
                  <i class="fa fa-filter" aria-hidden="true"></i>
                  <i class="fa fa-search" aria-hidden="true"></i>
               </div>
-              <div class="form-group mb-2 col-sm-5 pdd0 pos-re">
+              <div class="form-group mb-2 col-sm-5 pdd0 pos-re search-parent-div">
                 <input autocomplete="off" ng-model="pageInfo.search.location" type="text" class="form-control" id="inputPassword2">
                 <div class="filter_result" style="right: 0;">
                    <div class="row h100">
                      <div class="col-md-6 h100">
                        <h6 class="search_title">POPULAR KEYWORDS</h6>
                        <div class="keyword_list">
-                        <span>sales</span>
-                        <span>marketing</span>
-                        <span>IT</span>
-                        <span>Software</span>
-                         
+                        <span ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job">{{key.title}}({{key.no_of_job}})</span>
                        </div>
                      </div>
                      <div class="col-md-6 h100" style="border-left: 1px solid;">
-                       <div ng-if="!pageInfo.search.location">
+                       <div ng-if="!pageInfo.search.location && recent_search_title.length">
                          <h6 class="search_title">RECENT SEARCHES</h6>
                          <div class="search_list">
                             <ul>
-                            <li>Angular developer(0 Jobs)</li>
-                            <li>PHP(10 Jobs)</li>
-                          </ul>
+                              <li ng-click="$event.preventDefault();pageInfo.search.location=tt;search_job();" ng-repeat="tt in recent_search_location">{{tt}}</li>
+                            </ul>
                          </div>
                        </div>
-                       <div ng-if="pageInfo.search.location">
-                         <h6>ARE YOU LOOKING FOR</h6>
+                       <div ng-if="pageInfo.search.location || recent_search_title.length == 0">
+                         <h6 class="search_title">ARE YOU LOOKING FOR</h6>
                          <div class="search_list">
-                           
+                           <li style="margin-left: 0;" ng-click="pageInfo.search.location=tt.title;search_job();" ng-repeat="tt in lov.location | filter: {title: pageInfo.search.location}">{{tt.title}}</li>
                          </div>
                         </div>
                      </div>

@@ -4,7 +4,7 @@ function insert($table, $array){
 
 	$keys = implode(",", array_keys($array));
 	$values = implode("','", array_values($array));
-	echo $sql = "INSERT INTO $table ($keys) VALUES ('$values')";
+	$sql = "INSERT INTO $table ($keys) VALUES ('$values')";
 	return mysqli_query($db, $sql);
 }
 
@@ -144,7 +144,7 @@ function get_all_lovs(){
 	$arr = array('keywords', 'designation', 'education', 'industry', 'joblevel', 'skills', 'location');
 
 	foreach ($arr as $key => $value) {
-		$res[$value] = get_results("select * from ".$value);
+		$res[$value] = get_results("select *, (SELECT count(*) from jobs where jobs.category = ".$value.".id) as no_of_job from ".$value);
 	}
 
 	return $res;

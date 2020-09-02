@@ -22,11 +22,17 @@ function hm_jobs(){
 
 function hm_save_job(){
 	$data = $_POST;
-
+	$data2 = $_POST;
 	$data['title'] = addslashes($data['title']);
 	$data['description'] = addslashes($data['description']);
 
 	$data['is_featured'] = isset($data['is_featured']) ? 1 : 0;
+
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
+
+	foreach ($arr as $key => $value) {
+		unset($data[$value]);
+	}
 
 	if(isset($data['id'])){
 		delete('relative_data', array('ref_table' => 'jobs', 'ref_id' => $data['id']));
@@ -45,8 +51,8 @@ function hm_save_job(){
 	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'tags', 'location');
 
 	foreach ($arr as $key => $value) {
-		if(isset($data[$value]) && is_array($data[$value])){
-			set_relative_data('jobs', $value, $id, $data[$value]);
+		if(isset($data2[$value]) && is_array($data2[$value])){
+			set_relative_data('jobs', $value, $id, $data2[$value]);
 		}
 	}
 

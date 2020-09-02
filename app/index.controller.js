@@ -30,6 +30,11 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
 
     $rootScope.preloader = true;
 
+    $rootScope.lov = {};
+    ApiService.get_all_lovs().then(function(res){
+        $rootScope.lov = res;
+    });
+
     window.addEventListener('load', (event) => {
         $('body').addClass('loaded');
         $rootScope.preloader = false;
