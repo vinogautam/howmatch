@@ -358,7 +358,7 @@ input:focus+.filter_result{
 }
 .keyword_list{
   margin-top: 15px;
-  height: 50px;
+  height: 150px;
   overflow: auto;
 }
 .keyword_list span{

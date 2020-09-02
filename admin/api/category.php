@@ -22,6 +22,7 @@ function hm_save_category(){
 		$id = $data['id'];
 		unset($data['id']);
 		unset($data['parent_details']);
+		unset($data['no_of_job']);
 		update('category', $data, array('id' => $id));
 		return array('status' => 'Success', 'msg' => 'Category Updated Successfully');
 	} else {

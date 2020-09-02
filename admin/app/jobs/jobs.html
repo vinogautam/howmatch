@@ -151,9 +151,16 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
+              <div class="form-group form-group-default" ng-class="{invalid: jobform.no_of_position.$invalid}">
                 <label>No of Position</label>
                 <input  name="tags" ng-model="job_form_data.no_of_position" required  type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group form-group-default" ng-class="{invalid: jobform.salary.$invalid}">
+                <label>Salary</label>
+                <input  name="tags" ng-model="job_form_data.salary" required  type="text" class="form-control" placeholder="">
               </div>
             </div>
             
