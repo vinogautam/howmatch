@@ -364,8 +364,8 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
-    apiService.contact_query = function(){
-        return httpService.post(APIURL+'contact_query', {})
+    apiService.contact_query = function(data){
+        return httpService.post(APIURL+'contact_query', data)
         .then(function (res) {
             return res['data'];
         });

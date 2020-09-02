@@ -29,28 +29,26 @@
             <th>#</th>
             <th>Name</th>
             <th> Contact</th>
+           
             <th>Subject</th>
             <th>Message</th>
-            <th>Action</th>
+            <th class="ng-hide">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="gradeX"  repeat-end="initTooltip()">
+          <tr class="gradeX" ng-repeat="t in totalItems" repeat-end="initTooltip()">
             <td>{{$index + 1}}</td>
             <td>
-              <!-- <img width="50" ng-if="t.profile.profile_picture" src="{{'api/uploads/'+t.profile.profile_picture}}"><br>
-              {{t.profile.company_name}}<br><span class="featured" ng-if="t.is_featured">Featured</span> -->
-                Hari
+                {{t.name}}
               </td>            
             <td>              
               <p>Email: {{t.email}}</p>
-              <p>Phone:</p>
+              <p>Phone:{{t.phone}}</p>              
             </td>
-            <td>Test message</td>
-             <td>Test message</td>
-            <td>
+            <td>{{t.subject}}</td>
+            <td>{{t.message}}</td>
+            <td class="ng-hide">
               <i ng-click="view(t);" class="fa fa-eye cp" data-toggle="tooltip" data-original-title="View Message" ></i> &nbsp;&nbsp;&nbsp;
-              
             </td>
           </tr>
           <tr ng-if="totalItems.length == 0"><td colspan="7">No Message</td></tr>
@@ -59,6 +57,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="viewAppModal" tabindex="-1" role="dialog" aria-labelledby="viewAppModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">

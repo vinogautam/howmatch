@@ -8,11 +8,12 @@ function home(){
 	return array('status' => 'Success', 'data' => $data);
 }
 
-function post_query(){
+function contact_query(){
 	if(isset($_POST['name'])){
 		$arr = array(
 			'name' => $_POST['name'],
 			'email' => $_POST['email'],
+			'phone' => $_POST['phone'],
 			'subject' => $_POST['subject'],
 			'message' => $_POST['message'],
 			'posted_on' => date('Y-m-d H:i:s')
@@ -22,6 +23,13 @@ function post_query(){
 	}
 
 	return array('status' => 'Success');
+}
+
+function hm_contact_request()
+{
+	$res = get_results("select * from contact_request order by id desc");
+
+	return array('status' => 'Success', 'data' => $res);
 }
 
 function get_home_data(){
