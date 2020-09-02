@@ -5,6 +5,17 @@ viewcompanyController.$inject = ['$stateParams','DATA','$rootScope', '$scope', '
 function viewcompanyController($stateParams,DATA, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {rating: {}};
 	$scope.company = DATA.data;
+
+	$arr = ['location', 'category'];
+    angular.forEach($arr, function(a){
+        $scope.company[a+'_name'] = [];
+        angular.forEach($scope.company[a], function(l){
+            var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
+            $scope.company[a+'_name'].push(ld);
+        });
+        $scope.company[a+'_name'] = $scope.company[a+'_name'].join(',');
+    });
+
 	$scope.pageInfo.status = DATA.status;
 
 	if($rootScope.loggedInUserInfo.id){

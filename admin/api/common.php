@@ -142,7 +142,7 @@ function get_relative_data($table, $column, $id){
 function get_all_lovs(){
 	$res = array();
 
-	$arr = array('keywords', 'designation', 'education', 'industry', 'joblevel', 'skills', 'location');
+	$arr = array('category', 'keywords', 'designation', 'education', 'industry', 'joblevel', 'skills', 'location');
 
 	foreach ($arr as $key => $value) {
 		$sql = "select *, (SELECT count(*) from jobs where jobs.category = ".$value.".id) as no_of_job from ".$value;
