@@ -12,7 +12,7 @@
               <h3>{{job.title}}</h3>
               <p class="exp">Published {{job.posted_on | timeago}}</p>
             </div>
-            <div><i style="position: relative;top: 0;left: 0;" class="fa fa-map-marker"></i> {{job.location}}</div>
+            <div><i style="position: relative;top: 0;left: 0;" class="fa fa-map-marker"></i> {{job.location_name}}</div>
           </div>                      
         </div>
         <div class="col-sm-3 text-right" ng-hide="loggedInUserInfo.user_type == 2">
@@ -78,17 +78,17 @@
         <div>
           <img src="html/images/experience.svg">
           <p>Industry</p>
-          <p>{{job.industry}}</p>
+          <p>{{job.industry_name}}</p>
         </div>
         <div>
           <img src="html/images/qualification.svg">
           <p>Qualification</p>
-          <p>{{job.qulaitication}}</p>
+          <p>{{job.qualification_name}}</p>
         </div>
         <div>
           <img src="html/images/career.svg">
           <p>Career Level</p>
-          <p>{{job.career_level}}</p>
+          <p>{{job.career_level_name}}</p>
         </div>
       </div>
 

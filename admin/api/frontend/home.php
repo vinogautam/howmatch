@@ -28,7 +28,7 @@ function get_home_data(){
 	$data = array();
 	$res = get_results("select * from jobs where status = 1");
 	foreach ($res as $key => $value) {
-		$data[] = array('title' => $value['title'], 'type' => 'job');
+		$data[] = array('title' => $value['title'], 'type' => 'job', 'cnt' => 0);
 	}
 
 	$res = get_results("SELECT *, (SELECT count(*) from jobs where jobs.category = category.id) as cnt FROM `category` where status = 1");

@@ -26,20 +26,10 @@ function hm_job_search(){
 function hm_view_job(){
 	$data = get_row("select * from jobs where id =". $_POST['id']);
 	
-	if(isset($data['industry'])){
-		$data['industry'] = unserialize(stripslashes($data['industry']));
-	}
-	if(isset($data['career_level']) && $data['career_level']){
-		$data['career_level'] = unserialize(stripslashes($data['career_level']));
-	}
-	if(isset($data['qualification']) && $data['qualification']){
-		$data['qualification'] = unserialize(stripslashes($data['qualification']));
-	}
-	if(isset($data['job_level']) && $data['job_level']){
-		$data['job_level'] = unserialize(stripslashes($data['job_level']));
-	}
-	if(isset($data['tags']) && $data['tags']){
-		$data['tags'] = unserialize(stripslashes($data['tags']));
+	$arr = array('industry', 'career_level', 'qualification', 'job_level', 'keywords', 'location');
+
+	foreach ($arr as $key => $val) {
+		$data[$val] = get_relative_data('jobs', $val, $data['id']);
 	}
 
 	$data['title'] = stripslashes($data['title']);
