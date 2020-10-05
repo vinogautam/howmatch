@@ -72,16 +72,16 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
-            name: 'user.srclied_job',
-            label: 'srclied Job',
+            name: 'user.applied_job',
+            label: 'applied Job',
             auth: true,
             restricted:false,
-            url: '/srclied_job',
-            templateUrl: 'src/user/srclied_job/srclied_job.html',
-            controller: 'srcliedJobController',
+            url: '/applied_job',
+            templateUrl: 'src/user/applied_job/applied_job.html',
+            controller: 'appliedJobController',
             resolve: {
                 DATA: function(ApiService) {
-                  return ApiService.user_srclied_job();
+                  return ApiService.user_applied_job();
                 }
             }
         },
@@ -181,7 +181,7 @@ function routes($stateProvider, $urlRouterProvider) {
         {
             name: 'company.jobs',
             label: 'Jobs',
-            auth: true,
+            auth: false,
             restricted:false,
             url: '/jobs',
             templateUrl: 'src/company/jobs/jobs.html',

@@ -85,7 +85,7 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
             });
         });
 
-        $timeout(function(){
+        /*$timeout(function(){
             $('.customer-logos').slick({
                 slidesToShow: 5,
                 slidesToScroll: 1,
@@ -106,6 +106,6 @@ function homeController($rootScope, $scope, $state, ApiService, $window, $timeou
                     }
                 }]
             });
-        }, 1000);
+        }, 1000);*/
     });
 }
