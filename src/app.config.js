@@ -100,13 +100,13 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
-            name: 'user.following_employees',
-            label: 'Following Employees',
+            name: 'user.following_employers',
+            label: 'Following Employers',
             auth: true,
             restricted:false,
-            url: '/following_employees',
-            templateUrl: 'src/user/following_employees/following_employees.html',
-            controller: 'followingEmployeesController',
+            url: '/following_employers',
+            templateUrl: 'src/user/following_employers/following_employers.html',
+            controller: 'followingEmployersController',
             resolve: {
                 DATA: function($stateParams, ApiService){
                     return ApiService.hm_following_list();
@@ -193,13 +193,27 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
-            name: 'company.jobsrclicants',
-            label: 'Job srclicants',
+            name: 'company.jobpost',
+            label: 'Post Job',
+            auth: false,
+            restricted:false,
+            url: '/jobpost',
+            templateUrl: 'src/company/jobpost/jobpost.html',
+            controller: 'jobpostController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.company_jobs();
+                }
+            }
+        },
+        {
+            name: 'company.jobapplicants',
+            label: 'Job Arclicants',
             auth: true,
             restricted:false,
-            url: '/jobsrclicants',
-            templateUrl: 'src/company/jobsrclicants/jobsrclicants.html',
-            controller: 'jobsrclicantsController'
+            url: '/jobapplicants',
+            templateUrl: 'src/company/jobapplicants/jobapplicants.html',
+            controller: 'jobapplicantsController'
         },
         {
             name: 'company.shortlist_candidates',

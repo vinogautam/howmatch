@@ -8,32 +8,27 @@
       <img  alt="brand logo" src="assets/images/demologo.png">
     </div> 
     <div class="poster_details">
-      <h2>PHP Core Website Fixes <span class="varified"><i class="fas fa-check"></i>Verified</span></h2>
+      <h2>{{job.title}} <span class="varified"><i class="fas fa-check"></i>Verified</span></h2>
       <h5>About the Employer</h5>
+      <h6 class="emp_name">{{job.company_name}}</h6>
       <ul>
         <li>
           <a href="#">
-            <i class="fas fa-landmark"></i>
-            Magna Aliqua
-          </a>
-        </li>
-        <li>
-          <a href="#">
             <i class="fas fa-map-marker-alt"></i>
-            New York
+           {{job.location_name}}
           </a>
         </li>
         <li>
           <a href="#">
             <i class="far fa-clock"></i>
-            5 days ago
+           {{job.posted_on | timeago}}
           </a>
         </li>
       </ul>   
     </div>
     <div class="poster_action">
       <a class="addtofav" title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-      <a class="btn btn-third" href="#">Apply Now</a>
+      <button class="btn btn-third" type="download" ng-click="apply_job();">Apply <i ng-if="job.applied" class="fa fa-check"></i></button>
       
     </div>
   </div>
@@ -58,9 +53,9 @@
           <div class="row ">
             <div class="col-md-12 single_job_main">
               <h2>Job Description</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget vestibulum ante, sit amet blandit tellus. Pellentesque sit amet viverra lorem. Sed non diam egestas ex aliquam feugiat. Nullam urna mauris, rutrum sed erat quis, gravida scelerisque enim. Cras dapibus orci magna, sit amet fringilla est porttitor sit amet. Proin eget justo mauris. Proin leo urna, ornare quis lacus id, pretium ullamcorper libero. Suspendisse congue tortor pellentesque diam accumsan, vel dictum tellus tincidunt. Vivamus dapibus dignissim posuere. Aliquam eget sem semper, feugiat mauris eget, convallis nisi. Curabitur interdum, mi vitae commodo mattis, lacus erat aliquet urna, ut malesuada elit quam quis justo. </p>
-              <p> Quisque aliquet eros libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vitae sapien sit amet ante mattis laoreet. Sed at quam quis ligula suscipit iaculis in tempus diam. Cras pulvinar facilisis commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean a leo eget felis porta pharetra. Donec vitae metus metus. Fusce pharetra turpis non felis laoreet cursus. </p>
-              <p> Suspendisse potenti. Suspendisse efficitur augue enim, a aliquet nunc malesuada sit amet. Praesent finibus egestas velit sit amet lobortis. Aliquam ultricies tempus facilisis. Sed maximus, turpis eu pharetra fringilla, sem tellus pharetra lorem, at dictum tortor libero sit amet nulla. Cras quis enim vitae enim congue elementum. Integer tincidunt sit amet nulla at ultricies. Mauris id hendrerit urna. </p>
+              <div>
+                {{job.description}}
+              </div>
             </div>
             <div class="section-divider"></div>
             <div class="col-md-12 single_job_main">
@@ -156,22 +151,17 @@
                 <li>
                   <i class="fas fa-map-marker-alt"></i>
                   <h6>Location</h6>
-                  <p>London, United Kingdom</p>
+                  <p>{{job.location_name}}</p>
                 </li>
                 <li>
                   <i class="fas fa-briefcase"></i>
                   <h6>Job Type</h6>
-                  <p>Full Time</p>
+                  <p>{{job.type}}</p>
                 </li>
                 <li>
                   <i class="fas fa-money-bill-alt"></i>
-                  <h6>Salary</h6>
-                  <p>$35k - $38k</p>
-                </li>
-                <li>
-                  <i class="far fa-clock"></i>
-                  <h6>Date Posted</h6>
-                  <p>$35k - $38k</p>
+                  <h6>Offered Salary</h6p>
+                  <p>{{job.salary}}</p>
                 </li>
               </ul>
         </div>            
@@ -191,7 +181,7 @@
           <div class=" sjs_box_action">
               <a class="btn btn-third" href="#">Contact Employer</a>
                 <p>- or -</p> 
-              <a class="btn btn-primary" href="#">Apply Job</a>
+              <button class="btn btn-primary" type="download" ng-click="apply_job();">Apply <i ng-if="job.applied" class="fa fa-check"></i></button>
             </div>
         </div>
       </div>

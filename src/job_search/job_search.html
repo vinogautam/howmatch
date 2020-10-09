@@ -14,6 +14,7 @@
 
 
 
+
 <!-- Main 
 ================================================== -->
 <main>
@@ -110,316 +111,39 @@
 
             </form>
             </li>
-            <li >
-              <a href="job-seeker-dashboard.html">
-                <i class="fas fa-border-all"></i> Job Dashboard
-              </a>
-            </li>
-        </ul>
-        <h5>Organize and Manage</h5>
-        <ul class="user_navigation">
-            <li>
-              <a href="my-stared-jobs.html"><i class="fas fa-star"></i> View My Stared Jobs</a>
-            </li>
-        </ul>
-        <h5>Account</h5>
-        <ul class="user_navigation">    
-            <li>
-              <a href="edit-profile.html"><i class="fas fa-user"></i> Update My Profile</a>
-            </li>
-            <li>
-              <a href="edit-password.html"><i class="fas fa-key"></i>Change Password</a>
-            </li>
-            <li>
-              <a href="edit-password.html"><i class="fas fa-power-off"></i> Logout</a>
-            </li>
-          </ul>
+            
         </div>
         <div class=" job_main_right">
           <div class="jm_headings">
-              <h5>Browse Jobs in list</h5>
+              <h5>Browse Jobs </h5>
           </div>
           <div class="row full_width featured_box_outer">
-            <div class="col-sm-12">
+            <div class="col-sm-12" ng-repeat="job in jobs">
               <div class="featured_box ">
                 <div class="fb_image">
-                  <img  alt="brand logo" src="assets/images/c-logo-02.webp">
+                  <img  alt="brand logo" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
                 </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
+                <div class="fb_content">                  
+                  <h4 ui-sref="view_job({id: job.id})" class="active cp">{{job.title}}</h4>
                   <ul>
                     <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
+                      <i class="fas fa-map-marker-alt"></i> {{job.location_name}}
                     </li>
                     <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        2 days ago
-                      </a>
+                       <i class="fas fa-map-marker-alt"></i> {{job.posted_on | timeago}}
                     </li>
                   </ul>
                 </div>
                 <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img  alt="brand logo" src="assets/images/c-logo-05.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        3 days ago
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="fas fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img  alt="brand logo" src="assets/images/c-logo-01.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                      </li><li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        5 days ago
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary disabled" href="#">Applied</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img   alt="brand logo" src="assets/images/c-logo-03.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        5 days ago
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
+                  <a title="add to favourite" href="#" ng-click="shortlist_job()"><i class="far fa-heart"></i></a>
+                  <a class="btn btn-primary" ui-sref="view_job({id: job.id})">Apply Now</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="section-divider">
           </div>
-          <!-- <div class="jm_headings">
-              <h5>Browse Jobs in grid</h5>
-          </div>
-          <div class="row two_col featured_box_outer">
-            <div class="col-sm-6">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img  alt="brand logo" src="assets/images/c-logo-01.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        2 days ago
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img   alt="brand logo" src="assets/images/c-logo-02.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        3 days ago
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="fas fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img   alt="brand logo" src="assets/images/c-logo-03.webp">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                      </li><li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        5 days ago
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary disabled" href="#">Applied</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="featured_box ">
-                <div class="fb_image">
-                  <img  alt="brand logo" src="assets/images/demo-restro.jpg">
-                </div>
-                <div class="fb_content">
-                  <h4>Restaurant General Manager</h4>
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-landmark"></i>
-                        Magna Aliqua
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fas fa-map-marker-alt"></i>
-                        New York
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="far fa-clock"></i>
-                        5 days ago
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary" href="#">Apply Now</a>
-                </div>
-              </div>
-            </div>
-          </div> -->
+          <div ng-include="'app/elements/pagination.html'" class="pagination_container"></div>
         </div>
       </div>
     </div>

@@ -1,16 +1,18 @@
+<div class=" job_main_right">
+  <div class="row job_section">
+  <div class="col-sm-12">
+    <div class="jm_headings">
+      <div class="col-sm-6">
+       <h5>Shortlisted Candidates</h5>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="col-sm-6">
-     <h5>Shortlisted Candidates</h5>
+  <div class="margin-t20 search position-re ">
+   
+      <input ng-model="pageInfo.search.$" type="text" name="search" placeholder="search" class="form-control">
+      <i class="fa fa-search"></i>
+   
   </div>
-  </div>
-
-<div class="margin-t20 search position-re row">
-  <div class="col-sm-6">
-    <input ng-model="pageInfo.search.$" type="text" name="search" placeholder="search" class="form-control">
-    <i class="fa fa-search"></i>
-  </div>
-</div>
 
 <div class="joblist">
   <p ng-if="(applicants | filter: pageInfo.search).length == 0">No Result</p>
@@ -36,4 +38,7 @@
         </div>
     </div>
   
+</div>
+</div>
+</div>
 </div>
