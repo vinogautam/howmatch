@@ -299,6 +299,20 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
+            name: 'candidate_search',
+            label: 'Search Candidates',
+            auth: false,
+            restricted:false,
+            url: '/candidate_search',
+            templateUrl: 'src/candidate_search/candidate_search.html',
+            controller: 'candidatesearchController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.job_search({});
+                }
+            }
+        },
+        {
             name: 'view_job',
             label: 'Jobs',
             auth: false,
