@@ -5,19 +5,26 @@
       <h2>Edit Profile</h2>
     </div>
     <div class="row"> 
-        <div class="col-sm-12">               
-          <div class="pho-file-uploaad">
+        <div class="col-sm-3">               
+          <div class=" pho-file-uploaad">
             <div class="p-photo" ng-class="{hv_img: profile.profile_image}">
               <i ng-if="!profile.profile_image" class="fa fa-user" aria-hidden="true"></i>
               <img ng-if="profile.profile_image" ng-src="{{'admin/api/uploads/'+profile.profile_image}}">
             </div>      
           </div>
-          <div class="text-left">        
-            <input format="png,jpg,jpeg" id="profileImage" file-upload type="file" ng-model="profile.profile_image" name="">       
-            <button trigger-upload="profileImage" class="btn btn-success">Upload Profile Image</button>
+        </div>
+          <div class="text-left col-sm-9"> 
+          <div class="row">
+            <div class="col-md-6">
+              <input format="png,jpg,jpeg" id="profileImage" file-upload type="file" ng-model="profile.profile_image" name="" class="form-control"> 
+            </div>
+            <div class="col-md-6">
+              <button trigger-upload="profileImage" class="btn btn-primary">Upload Profile Image</button>
+            </div>            
+          </div>              
         </div>
         </div>
-        </div>
+        <div class="section-divider"></div>
           <form name="profileForm" autocomplete="off"> 
         <div class="form-row">
           <div class="form-group col-md-6">

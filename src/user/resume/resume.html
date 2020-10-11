@@ -29,32 +29,36 @@
     <div class="col-sm-12">
       <div class="resume-file-uploaad">
         <label for="name">CV Attachment </label>
-        <div class="resume">
-          <input format="doc,docx,pdf" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="">
-          <button trigger-upload="resume" class="btn btn-success">Update Resume</button>
+        <div class="resume row">
+          <div class="col-md-8">
+            <input format="doc,docx,pdf" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="" class="form-control">
+          </div>
+          <div class="col-md-4"><button trigger-upload="resume" class="btn btn-primary">Update Resume</button></div>
+          
         </div>        
       </div>        
     </div>
 
-    <!-- <div class="col-sm-6">
+    <div class="col-sm-12">
       <div class="resume-file-uploaad">
         <label for="name">Additional Documents</label>
-        <div class="resume">
-          <input format="doc,docx,pdf,jpg, jpeg, png" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="">
-          <button trigger-upload="resume" class="btn btn-success">Upload Documents</button>
+        <div class="resume row">
+          <div class="col-md-8">
+          <input format="doc,docx,pdf,jpg, jpeg, png" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="" class="form-control"></div>
+          <div class="col-md-4"><button trigger-upload="resume" class="btn btn-primary">Upload Documents</button></div>
         </div>        
       </div>       
-    </div>  -->       
+    </div>        
   </div>
 
-
+<div class="section-divider"></div>
 
   <div class="v_post">
     <div class="row">
       <h4 class="col-sm-6">Resume Headline</h4>
-      <div class="col-sm-6 addex">
+      <div class="col-sm-6 addex text-right">
         <a href="#" ng-click="$event.preventDefault();show_modal('#headModal')">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i class="fas fa-edit" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -62,13 +66,13 @@
       <p>{{profile.headline}}</p>
     </div>
   </div>
-
+<div class="section-divider"></div>
   <div class="v_post">
   <div class="row">
     <h4 class="col-sm-6">Summary</h4>
-    <div class="col-sm-6 addex">
+    <div class="col-sm-6 addex text-right">
       <a href="#" ng-click="$event.preventDefault();show_modal('#summaryModal')">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <i class="fas fa-edit" aria-hidden="true"></i>
       </a>
     </div>
   </div>
@@ -76,13 +80,13 @@
      <p>{{profile.summary}}</p>
   </div>
 </div>
-
+<div class="section-divider"></div>
 <div class="v_post">
   <div class="row">
     <h4 class="col-sm-6">Key Skills</h4>
-    <div class="col-sm-6 addex">
+    <div class="col-sm-6 addex text-right">
       <a href="#" ng-click="$event.preventDefault();pageInfo.skills_form_data={};pageInfo.submitted=false;pageInfo.index=-1;show_modal('#skillModal')">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Add/Edit SKills
+        <i class="fas fa-edit" aria-hidden="true"></i>Add/Edit SKills
       </a>
     </div>
   </div>
@@ -96,17 +100,17 @@
         </div>
       </div>
       <div class="col-md-2 text-right ">
-        <i ng-click="pageInfo.skills_form_data = copy(sk);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#skillModal');" class="res_con fa fa-edit cp"></i> <i style="color: red;" class=" res_con cp fa fa-trash" ng-click="delete('skills_info', $index)"></i>
+        <i ng-click="pageInfo.skills_form_data = copy(sk);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#skillModal');" class="res_con fas fa-edit cp"></i> <i style="color: red;" class=" res_con cp fa fa-trash" ng-click="delete('skills_info', $index)"></i>
       </div>
     </div>
   </div>
 </div>
 
-
+<div class="section-divider"></div>
 <div class="v_post">
   <div class="row">
     <h4 class="col-sm-6">Experience</h4>
-    <div class="col-sm-6 addex">
+    <div class="col-sm-6 addex text-right">
       <a href="#" ng-click="$event.preventDefault();pageInfo.submitted=false;show_modal('#experienceModal');pageInfo.exp_form_data={};pageInfo.index=-1;">
         <i class="fa fa-plus"></i>Add Experience
       </a>
@@ -125,11 +129,11 @@
   </div>
   
 </div>
-
+<div class="section-divider"></div>
 <div class="v_post">
   <div class="row">
     <h4 class="col-sm-6">Education</h4>
-    <div class="col-sm-6 addex">
+    <div class="col-sm-6 addex text-right">
       <a href="#" ng-click="$event.preventDefault();pageInfo.submitted=false;show_modal('#educationModal');pageInfo.edu_form_data={};pageInfo.index=-1;">
         <i class="fa fa-plus"></i>Add Education
       </a>
@@ -145,13 +149,13 @@
 
 </div>
 
-
+<div class="section-divider"></div>
 <div class="v_post">
   <div class="row">
     <h4 class="col-sm-6">Working Preference</h4>
-    <div class="col-sm-6 addex">
+    <div class="col-sm-6 addex text-right">
       <a href="#" ng-click="$event.preventDefault();show_modal('#preferedModal')">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <i class="fas fa-edit" aria-hidden="true"></i>
       </a>
     </div>
   </div>

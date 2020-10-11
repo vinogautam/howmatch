@@ -18,3 +18,19 @@ padding: 0px!important;
 .job_search_page .job_main_right{
 	width: 77%!important;
 }
+.modal{
+	z-index: 9999;
+	margin-top: 100px;
+}
+.p-photo img{
+	max-width: 100px;
+    height: auto;
+    border-radius: 100px;
+    top: -3px;
+    bottom: 0;
+    right: -3px;
+    border: 4px solid #fff;
+}
+textarea.form-control {
+	padding: 15px;
+    }

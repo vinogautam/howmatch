@@ -17,35 +17,31 @@
             <div class="row align-items-center">
               <div class="col-md-12 text-center" data-aos="fade-down" data-aos-delay="200">
                 <h2>Find the  most exciting<br> starup jobs</h2>
-                <p>Most complete 2020 template for Job board sites.</p>
+                <p></p>
                 <a class="btn btn-third" href="browse-jobs.html">Know more
                   <i class="material-icons">arrow_right_alt</i>
                 </a>
               </div>
               <div class="col-md-12" data-aos="fade-down" data-aos-delay="200">
                 <div class="banner_form_cont" >
-                  <form action="browse-jobs.html">
+                  <form>
                     <div class="banerSearch" data-aos="fade-up" data-aos-delay="200">
                       <div class="fild-wrap fw-job-title">
                         <i class="fas fa-briefcase"></i>
-                        <select class="js-example-basic-multiple" name="state">
-                          <option value="AL"> JOB TITLE, SKILL, INDUSTRY</option>
-                          <option value="1">Concierge</option>
-                          <option value="2">Event Planner</option>
-                          <option value="3">Executive Chef</option>
-                           <option value="4">General Manager</option>
-
+                        <select ng-model="pageInfo.search.title" select2 name="state">
+                          <option value=""> JOB TITLE, SKILL, INDUSTRY</option>
+                          <option ng-repeat="key in lov.keywords" value="{{key.title}}">{{key.title}}</option>
                         </select>
                       </div>
                       <div class="fild-wrap fw-job-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <select class="js-example-basic-single" name="state">
-                          <option value="AL">ALABAMA</option>
-                          <option value="WY">WYOMING</option>
+                        <select ng-model="pageInfo.search.location" select2 name="state">
+                          <option value="">Location</option>
+                          <option ng-repeat="key in lov.location" value="{{key.title}}">{{key.title}}</option>
                         </select>
                       </div>
                       <div class="fild-wrap fw-submit">
-                        <button type="submit" class="btn btn-primary" value="">
+                        <button class="btn btn-primary" ng-click="search_job()" value="">
                            <i class="material-icons">search</i> SEARCH JOBS
                         </button>
                       </div>
@@ -655,7 +651,7 @@
       </div>
     </div>
     <div class="container">
-      <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">JoDice Status</h2>
+      <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">HowMatch Status</h2>
       
       <div class="row justify-content-center">
         <div class="col-auto">

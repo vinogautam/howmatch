@@ -5,18 +5,13 @@ signupController.$inject = ['$rootScope', '$scope', '$state', 'ApiService', '$wi
 function signupController($rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 
-	$scope.signupData = {profile: {}, user_type: '3'};
-
-	$rootScope.$on('signUpType', function(e,d){
-		$scope.signupData.user_type = d;
-	});
+	$scope.signupData = {profile: {}, user_type: $state.params.id};
 
 	$scope.register = function(fl){
 		if(fl){
 			ApiService.register($scope.signupData).then(function(response){
 				if (response.status === 'Success') {
-					$("#signupModal").modal('hide');
-					$("#signinModal").modal('show');
+					$state.go('login');
 	            } else {
 	                ApiService.notification(response.msg, 'error');
 	            }
@@ -27,7 +22,6 @@ function signupController($rootScope, $scope, $state, ApiService, $window, $time
 	};
 
 	$scope.openLogin = function(){
-		$("#signupModal").modal('hide');
-		$("#signinModal").modal('show');
+		$state.go('login');
 	};
 }

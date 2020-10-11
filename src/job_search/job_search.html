@@ -36,9 +36,9 @@
                 <label>Location</label>
                 <div class="field">
                     <i class="fas fa-map-marker-alt"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option value="AL">ALABAMA</option>
-                      <option value="WY">WYOMING</option>
+                    <select ng-model="pageInfo.filter.location" ng-change="fiterResult();" select2 name="location">
+                      <option value="">Select Location</option>
+                      <option ng-repeat="key in lov.location track by $index" value="{{key.title}}">{{key.title}}</option>
                     </select>
                 </div>
               </div>  
@@ -46,11 +46,9 @@
                 <label>Keywords</label>
                 <div class="field">
                     <i class="fas fa-briefcase"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option value="AL">e.g. job title</option>
-                      <option value="WY">Title 1</option>
-                      <option value="WY">Title 2</option>
-                      <option value="WY">Title 3</option>
+                    <select ng-model="pageInfo.filter.title" ng-change="fiterResult();" select2 name="title">
+                      <option value="">Select Keyword</option>
+                      <option ng-repeat="key in lov.keywords track by $index" value="{{key.title}}">{{key.title}}</option>
                     </select>
                 </div>
               </div>
@@ -59,17 +57,9 @@
                 <label>Category</label>
                 <div class="field">
                     <i class="fas fa-briefcase"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option>Admin Support</option>
-                      <option>Customer Service</option>
-                      <option>Data Analytics</option>
-                      <option>Design &amp; Creative</option>
-                      <option>Legal</option>
-                      <option>Software Developing</option>
-                      <option>IT &amp; Networking</option>
-                      <option>Writing</option>
-                      <option>Translation</option>
-                      <option>Sales &amp; Marketing</option>
+                    <select ng-model="pageInfo.filter.category" ng-change="fiterResult();" select2 name="category">
+                      <option value="">Select Category</option>
+                      <option ng-repeat="cat in category track by $index" value="{{cat.id}}">{{cat.name}}</option>
                     </select>
                 </div>
               </div>
@@ -77,7 +67,7 @@
               <div class="form-group">
                 <label>Salary</label>
                 <div class="field">
-                  <input type="text" placeholder="e.g. 10k" class="form-control">
+                  <input ng-model="pageInfo.filter.salary" ng-change="fiterResult();" type="text" placeholder="e.g. 10000" class="form-control">
                 </div>
               </div>
 
@@ -85,25 +75,9 @@
                 <label>Tags</label>
                 <div class="field">
                   <div class="form-group custom_checkboxes">
-                    <label class="custom_checkbox" for="tag-1">
-                      <input type="checkbox" name="usertype" id="tag-1" value="job seeker">
-                      <span><i class="fas fa-check"></i>PHP</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-2">
-                      <input type="checkbox" name="usertype" id="tag-2" value="employer">
-                      <span><i class="fas fa-check"></i> MySQL</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-3">
-                      <input type="checkbox" name="usertype" id="tag-3" value="employer">
-                      <span><i class="fas fa-check"></i> API</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-4">
-                      <input type="checkbox" name="usertype" id="tag-4" value="employer">
-                      <span><i class="fas fa-check"></i> react</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-5">
-                      <input type="checkbox" name="usertype" id="tag-5" value="employer">
-                      <span><i class="fas fa-check"></i> design</span>
+                    <label style="margin-right: 5px;" class="custom_checkbox" ng-repeat="key in lov.keywords | orderBy: '-no_of_job'" ng-show="key.no_of_job != 0" for="tag-{{key.id}}" ng-click="pageInfo.filter.title=key.title;fiterResult();">
+                      <input type="checkbox" name="usertype" id="tag-{{key.id}}" value="job seeker">
+                      <span><i class="fas fa-check"></i>{{key.title}}</span>
                     </label>
                   </div>
                 </div>
@@ -111,6 +85,33 @@
 
             </form>
             </li>
+            </ul>
+            <div  ng-show="loggedInUserInfo.id && loggedInUserInfo.user_type == 3">
+              <h5>Organize and Manage</h5>
+              <ul class="user_navigation">
+                <li>
+                    <a ui-sref="user.applied_job"><i class="fas fa-star"></i> View My Jobs Applied</a>
+                  </li>
+                  <li>
+                    <a ui-sref="user.shortlist_job"><i class="fas fa-star"></i> View My Stared Jobs</a>
+                  </li>
+                  <li>
+                    <a ui-sref="user.alerts"><i class="fas fa-star"></i> Job Matches</a>
+                  </li>
+              </ul>
+              <h5>Account</h5>
+              <ul class="user_navigation">    
+                  <li>
+                    <a ui-sref="user.profile"><i class="fas fa-user"></i> Update My Profile</a>
+                  </li>
+                  <li>
+                    <a ui-sref="user.settings"><i class="fas fa-key"></i>Change Password</a>
+                  </li>
+                  <li>
+                    <a href="#" ng-click="logout()"><i class="fas fa-power-off"></i> Logout</a>
+                  </li>
+                </ul>
+            </div>
             
         </div>
         <div class=" job_main_right">
@@ -120,26 +121,52 @@
           <div class="row full_width featured_box_outer">
             <div class="col-sm-12" ng-repeat="job in jobs">
               <div class="featured_box ">
-                <div class="fb_image">
-                  <img  alt="brand logo" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+                
+                <div class=" col-md-10">
+                  <div class="row"> 
+                      <div class="col-md-2">
+                        <div class="fb_image">
+                          <img width="150px;"  alt="brand logo" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
+                        </div>
+                      </div>
+                      <div class="col-md-10 fb_content" style="margin: 0;">
+                        <h4 style="display: inline-block;" ui-sref="view_job({id: job.id})" class="active cp">{{job.title}} <span ng-if="job.is_featured == 1" class="varified"><i class="fas fa-check"></i>Verified</span></h4>
+                        <ul>
+                          <li>
+                            <i class="fas fa-map-marker-alt"></i> {{job.location_name}}
+                          </li>
+                          <li>
+                             <i class="fas fa-clock"></i> {{job.posted_on | timeago}}
+                          </li>
+                          <li>
+                            <i class="fas fa-map-marker-alt"></i> {{job.salary}}
+                          </li>
+                        </ul>
+                      </div>
+                  </div>              
+                  
+                  <p style="font-size: 13px;">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                  </p>
+                  
+                  <div class="row" style="font-size: 14px;">
+                    <div class="col-md-4">
+                      Company : {{job.company_name}}
+                    </div>
+                    <div class="col-md-4">
+                      Job Type: {{job.type}}
+                    </div>
+                    <div class="col-md-4">
+                      Category: {{category_data[job.category] ? category_data[job.category].name : '-'}}
+                    </div>
+                  </div>
                 </div>
-                <div class="fb_content">                  
-                  <h4 ui-sref="view_job({id: job.id})" class="active cp">{{job.title}}</h4>
-                  <ul>
-                    <li>
-                      <i class="fas fa-map-marker-alt"></i> {{job.location_name}}
-                    </li>
-                    <li>
-                       <i class="fas fa-map-marker-alt"></i> {{job.posted_on | timeago}}
-                    </li>
-                  </ul>
-                </div>
-                <div class="fb_action">
-                  <a title="add to favourite" href="#" ng-click="shortlist_job()"><i class="far fa-heart"></i></a>
-                  <a class="btn btn-primary" ui-sref="view_job({id: job.id})">Apply Now</a>
+                <div class="fb_action col-md-2">
+                  <a style="margin-top: 50px;" class="btn btn-primary" ui-sref="view_job({id: job.id})">View Job</a>
                 </div>
               </div>
             </div>
+            <div ng-if="jobs.length == 0">No Jobs found</div>
           </div>
           <div class="section-divider">
           </div>

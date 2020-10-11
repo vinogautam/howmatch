@@ -3,7 +3,18 @@ hmapp.controller('jobsearchController', jobsearchController);
 jobsearchController.$inject = ['$filter', 'DATA', 'PagerService', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
 function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
-	$scope.pageInfo = {data: DATA, filter: {category: {}, salary: parseInt(DATA.salary.maxsalary)}};
+	
+    $(".filter_btn").on("click",function(e){
+        e.preventDefault();
+        $(this).toggleClass("active");
+        $(".filter_option").slideToggle();
+    });
+
+    if($rootScope.loggedInUserInfo.id){
+        $(".filter_btn").trigger('click');
+    }
+
+    $scope.pageInfo = {data: DATA, filter: {salary: parseInt(DATA.salary.maxsalary)}};
 
     angular.forEach(DATA.data, function(j){
         $arr = [ 'keywords', 'location'];
@@ -42,31 +53,26 @@ function jobsearchController($filter, DATA, PagerService, $rootScope, $scope, $s
     $scope.fiterResult = function(){
         $scope.jobs = [];
         $scope.filteredItems = angular.copy($scope.jobs_bk);
-        $scope.filteredItems = $filter("filter")($scope.filteredItems, {keywords_name: $scope.pageInfo.filter.title, title: $scope.pageInfo.filter.title, type: $scope.pageInfo.filter.type, location_name: $scope.pageInfo.filter.location});
+        $scope.filteredItems = $filter("filter")($scope.filteredItems, {category: $scope.pageInfo.filter.category, keywords_name: $scope.pageInfo.filter.title, title: $scope.pageInfo.filter.title, type: $scope.pageInfo.filter.type, location_name: $scope.pageInfo.filter.location});
         
-        var cate = [];
-        angular.forEach($scope.pageInfo.filter.category, function(v,k){
-            if(v){
-                cate.push(k);
-            }
-        });
-
-        if(cate.length){
-            $scope.filteredItems = $scope.filteredItems.filter(function(a){
-                return cate.indexOf(a.category) != -1;
-            });
-        }
+        
         
         $scope.filteredItems = $scope.filteredItems.filter(function(a){
-            return a.salary <= $scope.pageInfo.filter.salary;
+            return parseInt(a.salary) <= parseInt($scope.pageInfo.filter.salary);
         });
+
+        $scope.filteredItems = $filter("orderBy")($scope.filteredItems, '-is_featured');
 
         $scope.setPage(1);
     };
 
     $scope.category = [];
+    $scope.category_data = {};
     ApiService.hm_category().then(function(res){
         $scope.category = res.data;
+        angular.forEach($scope.category, function(v,k){
+            $scope.category_data[v.id] = v;
+        });
     });
 
     if($rootScope.search){

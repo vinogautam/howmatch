@@ -355,6 +355,20 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
+            name: 'contactus',
+            label: 'Contact Us',
+            auth: false,
+            restricted:false,
+            url: '/contactus/',
+            templateUrl: 'src/contactus/contactus.html',
+            controller: 'contactusController',
+            resolve: {
+                DATA: function($stateParams, ApiService) {
+                  return ApiService.contact_query($scope.contactForm);
+                }
+            }
+        },
+        {
             name: 'packages',
             label: 'Packages',
             auth: false,
@@ -490,11 +504,17 @@ hmapp.directive("cdatePicker", function(){
     };
 });
 
-hmapp.directive("select2multiple", function(){
+hmapp.directive("select2", function(){
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModel) {
             $(element).select2();
+
+            $(element).on("select2:select", function (e) { 
+                ngModel.$setViewValue($(this).val());
+                $(this).trigger('change');
+            });
         }
     };
 });
