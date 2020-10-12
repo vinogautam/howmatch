@@ -5,13 +5,13 @@
     <div class="col-md-6 text-center">
         <ul ng-if="pager.pages.length" class="pagination">
             <li ng-class="{disabled:pager.currentPage === 1}" ng-click="setPage(pager.currentPage - 1)">
-                <a>Previous</a>
+                <a class="pgn"><i class="fas fa-angle-left"></i>Previous </a>
             </li>
             <li ng-repeat="page in pager.pages" ng-click="setPage(page)" ng-class="{active:pager.currentPage === page}">
-                <a>{{page}}</a>
+                <a> {{page}} </a>
             </li>                
             <li ng-click="setPage(pager.currentPage + 1)" ng-class="{disabled:pager.currentPage === pager.totalPages}">
-                <a>Next</a>
+                <a class="pgn"> Next <i class="fas fa-angle-right"></i></a>
             </li>
         </ul>
     </div>

@@ -11,37 +11,61 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </div>
                         </div>
-                        </form>
-                  <div class="joblist">
-                    <div>
-                      <p ng-if="(totalItems | filter: pageInfo.search).length == 0">No jobs posted</p>
-                      <div class="v_post row" ng-repeat="job in totalItems | filter: pageInfo.search">
-                      <div class="po_img col-sm-2">
-                        <img style="width: 100%;max-height: 100%;" ng-src="{{job.company_image ? 'admin/api/uploads/'+job.company_image : 'html/images/company_placeholder.jpeg'}}">
-                      </div>
-                      <div class="v-details col-sm-6" >
-                        <h4 class="active">{{job.title}}</h4>
-                        <p> {{job.posted_on}}</p>
-                        <p>{{job.location_name}}</p>
-                      </div>
-                      <div class="col-sm-2 text-center">
-                          <div ng-click="getApplicants(job)" class="cp">
-                            <b >{{job.no_of_applicants}}</b><br>
-                            Applicants
-                          </div>
-                          
-                        </div>
-                        <div class="col-sm-2">
-                          <div>
-                            <i ng-click="edit_job(job);" class="fa fa-pencil cp" data-toggle="tooltip" data-original-title="Edit Job" ></i> &nbsp;&nbsp;&nbsp;
-                                <i ng-click="delete_job(job.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Job" ></i>
-                          </div>
-                          
-                        </div>
-                    </div>
-                    </div>
-                    
-                  </div>
+                        </form>                    
+              <div class="table-cont">
+              
+               <table class="table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Vacancies</th>
+                    <th>Posted</th>
+                    <th>Expires</th>
+                    <th>Interest</th>
+                    <th>Contacted</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  ng-repeat="job in totalItems | filter: pageInfo.search">
+                    <td>
+                      <h6>
+
+                        <a ui-sref="">{{job.title}}</a>
+                      </h6>
+                      
+                    </td>
+                    <td>
+                      Active
+                    </td>
+                    <td>
+                      {{job.no_of_position}}
+                    </td>
+                    <td>
+                       {{job.posted_on}} 
+                    </td>
+                    <td>
+                       {{job.posted_on}}
+                    </td>
+                    <td>
+                      {{job.no_of_applicants}}
+                    </td>
+                    <td>
+                      1
+                    </td>
+                    <td>
+                      <i ng-click="edit_job(job.id);" class="fas fa-edit" data-toggle="tooltip" data-original-title="Edit Job" ></i> &nbsp;&nbsp;&nbsp;
+                      <i ng-click="delete_job(job.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Job" ></i>
+                    </td>
+                  </tr> 
+                  
+                               
+                </tbody>
+              </table>
+              </div>
+
+
           </div>
           </div>  
            

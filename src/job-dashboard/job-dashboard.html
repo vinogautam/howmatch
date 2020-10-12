@@ -1,0 +1,186 @@
+<header class="header_01 header_inner">
+  <div class="header_main">
+   <div class="header_menu fixed-top" ng-include="'src/elements/header.html'">
+    </div>
+    <div class="header_btm">
+      <h2>Job Content</h2>
+    </div>
+  </div> 
+</header>
+
+
+<!-- End Header 02
+================================================== -->
+
+<!-- Main 
+================================================== -->
+<main>
+  <div class="job_container">
+    <div class="container">
+      <div class="row job_main">
+        <div class="col-sm-12">
+          <div class="row job_detail">
+            <div class="col-sm-6">
+              <ul class="container_cont">
+               <li> Jobs:<div class="dropdown">
+                  <span onclick="myFunction()" class="dropbtn">Content Writer</span>
+                  <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#about">About</a>
+                    <a href="#base">Base</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#custom">Custom</a>
+                    <a href="#support">Support</a>
+                    <a href="#tools">Tools</a>
+                  </div>
+                 </div> (95)</li>
+               <li><i class="fas fa-clock"></i> 17/09/2020</li>
+               <li> Hired:0/95</li>
+               <li> View Report</li>
+              </ul>
+        </div>
+        <div class="col-sm-6 srh-filter text-right" >
+          <span class="srh"><input ng-model="search.$" type="text" class="form-control" placeholder="Search" width="50%">
+                  <i class="fa fa-search" aria-hidden="true"></i></span>
+             <span><i class="fas fa-filter"></i> </span>             
+        </div>
+      </div>
+       
+          <!-- grid view-->
+          <div class="gridview-open"> 
+            <div class=" row nav nav-pills can-tab" role="tablist">
+              
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu1">Receive resume <span>94</span> </a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Screening <span>1</span> </a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Interview  <span>0</span> </a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Offered  <span>0</span> </a>
+              </div>            
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Hired   <span>0</span> </a>
+              </div> 
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Disqualified  <span>0</span> </a>
+              </div> 
+              <div class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Candidate Rejected  <span>0</span> </a>
+              </div>
+            </div>
+            <!-- Tab panes -->
+
+            <div class="grid-drag row">
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-display">
+                <div class="col-lg-3 col-md-3 col-sm-12 drgedrap-list">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12">
+                        <img src="./assets/images/default-profile.png" class="user-img mt-17">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-12 col-info">
+                        <p class="p-title mb-0">Dummy heading</p>
+                         <p class="p-details mb-0">Dummy content</p>
+                         <p class="p-cont"> 3 years <span class="call-icon"><i class="fas fa-phone-volume"></i></span> 0903860379</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+              
+          </div>
+          
+        </div>       
+      </div>
+    </div>
+  </div>
+</main>

@@ -3,7 +3,7 @@
     <div class="header_menu fixed-top" ng-include="'src/elements/header.html'">
     </div>
     <div class="header_btm">
-      <h2>Browse Jobs</h2>
+      <h2>{{currentstate.label}}</h2>
     </div>
   </div> 
 </header>
@@ -112,33 +112,7 @@
 
             </form>
             </li>
-            <li  >
-              <a href="job-dashboard.html">
-                <i class="fas fa-border-all"></i> Job Dashboard </a>
-              </li>
-          </ul>
-          <h5>Organize and Manage</h5>
-          <ul class="user_navigation">
-              <li >
-              <a href="post-a-job.html"><i class="fas fa-paper-plane"></i> Post Job</a>
-              </li>
-              <li>
-                <a href="my-job-listing.html"><i class="far fa-list-alt"></i> My job listings</a>
-              </li>
-              
-              
-          </ul>
-          <h5>Account</h5>
-          <ul class="user_navigation">
-            <li>
-                <a href="emp-edit-profile.html"><i class="fas fa-user"></i> Update My Profile</a>
-              </li>
-              <li >
-                <a href="emp-edit-password.html"><i class="fas fa-key"></i>Change Password</a>
-              </li>
-              <li>
-                <a href="#"><i class="fas fa-power-off"></i> Logout</a>
-              </li>
+            
           </ul>
         </div>
         <div class=" job_main_right">

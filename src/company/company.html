@@ -1,94 +1,6 @@
 <header class="header_01 header_inner">
   <div class="header_main">
-    <div class="header_menu fixed-top">
-      <div class="container">
-        <div class="header_top">
-          <div class="logo">
-            <a ui-sref="home">
-              <div class="howmatchlogo"><span class="text-success">How</span>Match</div>
-            </a>
-          </div>
-          <div class="navigation">
-            <nav> 
-              <div class="hamburger hamburger--spring js-hamburger ">
-                    <div class="hamburger-box">
-                      <div class="hamburger-inner"></div>
-                    </div>
-                  </div>
-                  <ul>
-                    <li class=" current_page">
-                      <a ui-sref="home">Home</a>
-                    </li>
-                    <li class="">
-                      <a ui-sref="job_search">Search Job</a>                  
-                    </li>
-                    <li class="">
-                      <a href="#">Post Job</a>
-                     </li>
-
-                    <li class="">
-                      <a href="#">Companies</a>
-                    </li>
-                  </ul>
-            </nav>
-            <div class="ac_nav after_login_ac_nav">
-              <!-- logedin-->
-                 <div class="login_pop after_login" ng-class="{hv_img: loggedInUserInfo.profile.company_image}">
-                  <button class="btn btn-primary withdp">
-                    <i ng-if="!loggedInUserInfo.profile.company_image" class="fa fa-user" aria-hidden="true"></i>
-                    <img ng-if="loggedInUserInfo.profile.company_image" ng-src="{{'admin/api/uploads/'+loggedInUserInfo.profile.company_image}}"> {{loggedInUserInfo.profile.company_name}}
-                    <i class="fas fa-caret-down"></i>
-                  </button>
-                  <div class="login_pop_box login_pop_box_menu">
-                    <div class="login_pop_box_head">
-                      <div class=" "ng-class="{hv_img: loggedInUserInfo.profile.company_image}">
-                        <i ng-if="!loggedInUserInfo.profile.company_image" class="fa fa-user" aria-hidden="true"></i>
-                        <img ng-if="loggedInUserInfo.profile.company_image" ng-src="{{'admin/api/uploads/'+loggedInUserInfo.profile.company_image}}">
-                        <h5>{{loggedInUserInfo.profile.company_name}}</h5> 
-                        <h6>{{loggedInUserInfo.username}}</h6>
-                      </div>
-                    </div>
-                    <ul class="user_navigation">
-                        <li>
-                          <a ui-sref="dashboard"><i class="fas fa-border-all"></i>Dashboard </a>
-                        </li>
-                        <li>
-                          <a ui-sref="jobpost"><i class="fas fa-paper-plane"></i>Post Job</a>
-                        </li>
-                        <li>
-                          <a ui-sref="jobs"><i class="far fa-list-alt"></i>My job listings</a>
-                        </li>
-                        <li>
-                          <a ui-sref="profile"><i class="fas fa-user"></i>Update My Profile</a>
-                        </li>
-                        <li>
-                          <a ui-sref="settings"><i class="fas fa-key"></i>Change Password</a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fas fa-power-off"></i> Logout</a>
-                        </li>
-                      </ul>
-                  </div>
-                </div>
-                <div class="login_pop after_login">
-                  <button class="btn btn-msg">
-                    <i class="fas fa-bell"></i>
-                    <span class="msg-count">2</span>
-                   </button>
-                  <div class="login_pop_box job_seekernotifi ">
-                      <h6>Notifications</h6>
-                      <ul>
-                        <li><img alt=""   src="assets/images/profile-1.png"><a href="#"> John Stone applying this job  contact  </a> </li>
-                        <li><img alt=""   src="assets/images/profile-2.png"><a href="#">Nguta Ithya  applying this job  contact  </a> </li>
-                        <li><img alt=""   src="assets/images/profile-4.png"><a href="#">Salome Simoes applying this job</a> </li>
-                      </ul>
-                  </div>
-                </div>
-              <!--end logedin-->
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="header_menu fixed-top" ng-include="'src/elements/header.html'">
     </div>
     <div class="header_btm">
       <h2>Job Dashboard</h2>
@@ -108,109 +20,32 @@
   <div class="job_container">
     <div class="container">
       <div class="row job_main">
-        <div class="sidebar">
+        <div class="sidebar" >
 
           <ul class="user_navigation">
             <li  >
-              <a href="find-staff.html"><i class="fas fa-search"></i> Find Staff </a>
+              <a ui-sref="candidate_search"><i class="fas fa-search"></i> Find Staff </a>
               <a class="filter_btn" href="#sidebar_filter_option"> 
                 <i class="fas fa-filter"></i>
-                <i class="fas fa-times"></i>
+                
               </a>
             </li>
-            <li>
-            <form id="#sidebar_filter_option" class="filter_option">
-              <div class="form-group">
-                <label>Location</label>
-                <div class="field">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option value="AL">ALABAMA</option>
-                      <option value="WY">WYOMING</option>
-                    </select>
-                </div>
-              </div>  
-              <div class="form-group">
-                <label>Keywords</label>
-                <div class="field">
-                    <i class="fas fa-briefcase"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option value="AL">e.g. job title</option>
-                      <option value="WY">Title 1</option>
-                      <option value="WY">Title 2</option>
-                      <option value="WY">Title 3</option>
-                    </select>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label>Category</label>
-                <div class="field">
-                    <i class="fas fa-briefcase"></i>
-                    <select class="js-example-basic-single" name="state">
-                      <option>Admin Support</option>
-                      <option>Customer Service</option>
-                      <option>Data Analytics</option>
-                      <option>Design &amp; Creative</option>
-                      <option>Legal</option>
-                      <option>Software Developing</option>
-                      <option>IT &amp; Networking</option>
-                      <option>Writing</option>
-                      <option>Translation</option>
-                      <option>Sales &amp; Marketing</option>
-                    </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Salary</label>
-                <div class="field">
-                  <input type="text" placeholder="e.g. 10k" class="form-control">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Tags</label>
-                <div class="field">
-                  <div class="form-group custom_checkboxes">
-                    <label class="custom_checkbox" for="tag-1">
-                      <input type="checkbox" name="usertype" id="tag-1" value="job seeker">
-                      <span><i class="fas fa-check"></i>PHP</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-2">
-                      <input type="checkbox" name="usertype" id="tag-2" value="employer">
-                      <span><i class="fas fa-check"></i> MySQL</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-3">
-                      <input type="checkbox" name="usertype" id="tag-3" value="employer">
-                      <span><i class="fas fa-check"></i> API</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-4">
-                      <input type="checkbox" name="usertype" id="tag-4" value="employer">
-                      <span><i class="fas fa-check"></i> react</span>
-                    </label>
-                    <label class="custom_checkbox" for="tag-5">
-                      <input type="checkbox" name="usertype" id="tag-5" value="employer">
-                      <span><i class="fas fa-check"></i> design</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-            </form>
-            </li>
+            
             <li class="is-active" >
-              <a ui-sref="dashboard">
-                <i class="fas fa-border-all"></i>Job Dashboard </a>
+              <a ui-sref="company.dashboard">
+                <i class="fas fa-border-all"></i>Dashboard </a>
               </li>
           </ul>
           <h5>Organize and Manage</h5>
           <ul class="user_navigation">
+              <li>
+                <a ui-sref="job-dashboard"><i class="fas fa-border-all"></i>Job Dashboard </a>
+              </li>
               <li >
-              <a ui-sref="jobpost"><i class="fas fa-paper-plane"></i>Post Job</a>
+                <a ui-sref="company.jobpost"><i class="fas fa-paper-plane"></i>Post Job</a>
               </li>
               <li>
-                <a ui-sref="jobs"><i class="far fa-list-alt"></i> My job listings</a>
+                <a ui-sref="company.jobs"><i class="far fa-list-alt"></i> My job listings</a>
               </li>
               
               
@@ -218,13 +53,13 @@
           <h5>Account</h5>
           <ul class="user_navigation">
             <li>
-                <a ui-sref="profile"><i class="fas fa-user"></i> Update My Profile</a>
+                <a ui-sref="company.profile"><i class="fas fa-user"></i> Update My Profile</a>
               </li>
               <li >
-                <a ui-sref="settings"><i class="fas fa-key"></i>Change Password</a>
+                <a ui-sref="company.settings"><i class="fas fa-key"></i>Change Password</a>
               </li>
               <li>
-                <a href="#"><i class="fas fa-power-off"></i> Logout</a>
+                <a href="#" ng-click="logout()"><i class="fas fa-power-off"></i> Logout</a>
               </li>
           </ul>
         </div>

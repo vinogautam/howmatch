@@ -80,7 +80,7 @@
         <div class="form-row">
           <div class=" col-sm-12 form-group form-group-default">
               <label for="">Location  </label>
-              <select class="form-control" select2multiple multiple="" ng-model="job_form_data.location">
+              <select class="form-control" select2 multiple="" ng-model="job_form_data.location">
               <option ng-repeat="ind in lov.location" value="{{ind.id}}">{{ind.title}}</option>         
             </select>
           </div>
@@ -88,7 +88,7 @@
         <div class="form-row">
           <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
             <label>Tags</label>
-            <select class="form-control" select2multiple multiple="" ng-model="job_form_data.tags">
+            <select class="form-control" multiple=""  select2 ng-model="job_form_data.tags">
               <option ng-repeat="ind in lov.keywords" value="{{ind.id}}">{{ind.title}}</option>         
             </select>        
           </div>      
@@ -96,7 +96,7 @@
         <div class="form-row">
           <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.industry.$invalid}">
             <label>Industry</label>
-            <select class="form-control " select2multiple multiple="" ng-model="job_form_data.industry">
+            <select class="form-control " multiple="" select2 ng-model="job_form_data.industry">
               <option ng-repeat="ind in lov.industry" value="{{ind.id}}">{{ind.title}}</option>         
             </select>        
           </div>      
@@ -104,7 +104,7 @@
         <div class="form-row">
           <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.qualification.$invalid}">
             <label>Qualification</label>
-            <select class="form-control" select2multiple multiple="" ng-model="job_form_data.qualification">
+            <select class="form-control" multiple="" select2 ng-model="job_form_data.qualification">
               <option ng-repeat="edu in lov.education" value="{{edu.id}}">{{edu.title}}</option>        
             </select>        
           </div>      
@@ -112,7 +112,7 @@
         <div class="form-row">
           <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.job_level.$invalid}">
             <label>Career Level</label>
-            <select select2multiple class="form-control " multiple="" ng-model="job_form_data.job_level">
+            <select select2 class="form-control " multiple="" ng-model="job_form_data.job_level">
               <option ng-repeat="jl in lov.joblevel" value="{{jl.id}}">{{jl.title}}</option>         
             </select>        
           </div>      

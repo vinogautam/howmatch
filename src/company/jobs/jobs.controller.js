@@ -59,7 +59,7 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
     $scope.edit_job = function(data){
         data.last_date = new Date(data.last_date);
     	$scope.job_form_data = data;
-    	$('#submitjobModal').modal('show');
+    	$state.go('company.jobpost');
     };
 
     $scope.delete_job = function(data){

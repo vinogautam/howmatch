@@ -271,6 +271,15 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'companyMypackageController'
         },
         {
+            name: 'job-dashboard',
+            label: 'Job Dashboard',
+            auth: true,
+            restricted:false,
+            url: '/job-dashboard',
+            templateUrl: 'src/job-dashboard/job-dashboard.html',
+            controller: 'jobdashboardController'
+        },
+        {
             name: 'companies',
             label: 'Companies',
             auth: false,
