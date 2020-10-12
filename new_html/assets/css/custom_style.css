@@ -25,6 +25,16 @@ padding: 0px!important;
 	z-index: 9999;
 	margin-top: 100px;
 }
+.modal label{
+    display: inline-block;
+}
+.modal input{
+    width: auto;
+}
+.modal-header h5{
+	width: 100%;
+	text-align: center;
+}
 .p-photo img{
 	max-width: 100px;
     height: auto;
@@ -38,7 +48,7 @@ textarea.form-control {
 	padding: 15px;
     }
 
-    .container_cont{ padding:0; }
+.container_cont{ padding:0; }
 .container_cont li{ float: left; padding: 7px 20px 7px 0; list-style-type: none; font-size: 13px; }
 
 .dropbtn {
@@ -150,6 +160,7 @@ textarea.form-control {
 .pgn i{
 	padding: 5px;
 }
+<<<<<<< HEAD
 .preloader{
     position: fixed;
     background: rgba(255,255,255,0.7);
@@ -217,4 +228,21 @@ textarea.form-control {
     bottom: 0;
     margin: auto;
     text-align: center;
+}
+.shorlist_btn{
+	margin-top: 0!important;
+	margin-left: 0!important;
+	margin-bottom: 10px;
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    transform: rotate(80deg);
+    font-size: 17px;
+    color: #888;
+}
+.search .form-control {
+    padding-left: 30px;
 }
