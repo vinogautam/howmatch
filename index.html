@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="new_html/assets/css/color-1.css">
   <link rel="stylesheet" href="new_html/assets/css/icon.css">
   <link rel="stylesheet" href="new_html/assets/css/custom_style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -30,8 +31,8 @@
   
 
 
-  <div class="preloader spinner-border spinner-border-sm" ng-if="preloader">
-    
+  <div class="preloader" ng-if="preloader">
+    <span class="spinner-border spinner-border-sm"></span>
   </div>
   
 
@@ -91,6 +92,7 @@
   <script src="new_html/assets/js/custom.js"></script>
   <script src="new_html/assets/js/jquery.toast.js"></script>
   <script src="new_html/assets/js/underscore.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     window.fbAsyncInit = function() {
       FB.init({

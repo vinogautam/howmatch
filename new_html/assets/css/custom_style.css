@@ -150,3 +150,71 @@ textarea.form-control {
 .pgn i{
 	padding: 5px;
 }
+.preloader{
+    position: fixed;
+    background: rgba(255,255,255,0.7);
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.preloader span{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.job-status-container{
+  -ms-flex: 0 0 14.2%;
+  flex: 0 0 14.2%;
+  max-width: 14.2%;
+  padding:0;
+}
+.job-status-container .header-panel{
+  border: 1px solid #ff6158;
+  color:#ff6158;
+}
+.job-status-container .draggable-panel{
+  padding: 10px;
+}
+.job-status-container .draggable-panel .user-short-info{
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  min-width: 200px;
+}
+.job-status-container .draggable-panel .user-short-info h4{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+  color: #ff6158;
+}
+.job-status-container .draggable-panel .user-short-info .user-destination{
+    font-size: 14px;
+    display: block;
+    line-height: 10px;
+}
+.job-status-container .draggable-panel .user-short-info .user-experience{
+  font-size: 12px;
+}
+.job-status-container .draggable-panel .user-short-info .fa-user{
+    background: #ccc;
+    width: 40px;
+    height: 40px;
+    display: block;
+    padding: 12px 0;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
