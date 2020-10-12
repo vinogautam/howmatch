@@ -80,6 +80,7 @@ textarea.form-control {
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 200px;
 }
 
 .dropdown-content {
@@ -100,7 +101,9 @@ textarea.form-control {
 }
 
 .dropdown a:hover {background-color: #ddd;}
-
+.dropdown .select2-selection__rendered{
+	padding-left: 10px !important;
+}
 .show {display: block;}
 .can-tab li{background: #ededed; padding: 0 4px 0 0px; border-right: 1px solid #ccc;}
 .can-tab li a{ color:#444; }
@@ -193,7 +196,7 @@ textarea.form-control {
 }
 .job-status-container .draggable-panel{
   padding: 10px;
-  height: 100%;
+  height: calc(100% - 50px);
 }
 .job-status-container .draggable-panel .user-short-info{
   margin: 0;

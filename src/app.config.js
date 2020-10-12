@@ -275,9 +275,14 @@ function routes($stateProvider, $urlRouterProvider) {
             label: 'Job Dashboard',
             auth: true,
             restricted:false,
-            url: '/job-dashboard',
+            url: '/job-dashboard/:id',
             templateUrl: 'src/job-dashboard/job-dashboard.html',
-            controller: 'jobdashboardController'
+            controller: 'jobdashboardController',
+            resolve: {
+                DATA: function(ApiService) {
+                  return ApiService.company_jobs();
+                }
+            }
         },
         {
             name: 'companies',
@@ -425,7 +430,7 @@ hmapp.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if (event.which === 13) {
-                scope.$srcly(function () {
+                scope.$apply(function () {
                     scope.$eval(attrs.ngEnter);
                 });
                 event.preventDefault();
@@ -438,7 +443,7 @@ hmapp.directive('ngEscape', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if (event.key === "Escape") {
-                scope.$srcly(function () {
+                scope.$apply(function () {
                     scope.$eval(attrs.ngEscape);
                 });
                 event.preventDefault();
@@ -451,7 +456,7 @@ hmapp.directive('ngUparrow', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if (event.which === 38) {
-                scope.$srcly(function () {
+                scope.$apply(function () {
                     scope.$eval(attrs.ngUparrow);
                 });
                 event.preventDefault();
@@ -464,7 +469,7 @@ hmapp.directive('ngDownarrow', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if (event.which === 40) {
-                scope.$srcly(function () {
+                scope.$apply(function () {
                     scope.$eval(attrs.ngDownarrow);
                 });
                 event.preventDefault();
@@ -484,6 +489,44 @@ hmapp.directive("repeatEnd", function(){
     };
 });
 
+hmapp.directive("droppable", function($parse){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            var fn = $parse(attrs.ngDrop);
+            $(element).droppable({
+              accept: ".user-short-info",
+              classes: {
+                "ui-droppable-active": "ui-state-highlight"
+              },
+              drop: function( event, ui ) {
+                scope.$apply(function() {
+                    fn(scope, {event, ui});
+                });
+              }
+            });
+        }
+    };
+});
+
+hmapp.directive("draggable", function($parse){
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            $(element).draggable({
+              cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+              revert: "invalid", // when not dropped, the item will revert back to its initial position
+              containment: "document",
+              helper: "clone",
+              cursor: "move",
+              classes: {
+                "ui-draggable": "highlight"
+              }
+            });
+        }
+    };
+});
+
 hmapp.directive("datePicker", function(){
     return {
         restrict: "A",
@@ -493,7 +536,7 @@ hmapp.directive("datePicker", function(){
             $(element).on('changeDate', function(ev){
                 $(this).datepicker('hide');
                 if(!scope.$$phase) {
-                    scope.$srcly();
+                    scope.$apply();
                 }
             });
         }
@@ -541,7 +584,7 @@ hmapp.directive('ngRightClick', function($parse) {
     return function(scope, element, attrs) {
         var fn = $parse(attrs.ngRightClick);
         element.bind('contextmenu', function(event) {
-            scope.$srcly(function() {
+            scope.$apply(function() {
                 event.preventDefault();
                 fn(scope, {$event:event});
             });

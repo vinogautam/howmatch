@@ -1,30 +1,34 @@
 hmapp.controller('jobdashboardController', jobdashboardController);
 
-jobdashboardController.$inject = [ '$stateParams', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
+jobdashboardController.$inject = ['DATA' ,'$stateParams', '$rootScope', '$scope', '$state', 'ApiService', '$window', '$timeout', '$interval'];
 
-function jobdashboardController($stateParams, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
+function jobdashboardController(DATA, $stateParams, $rootScope, $scope, $state, ApiService, $window, $timeout, $interval) {
 	$scope.pageInfo = {};
 
-	$( ".user-short-info").draggable({
-      cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      containment: "document",
-      helper: "clone",
-      cursor: "move",
-      classes: {
-	    "ui-draggable": "highlight"
-	  }
-    });
- 
-    // Let the trash be droppable, accepting the gallery items
-    $('.draggable-panel').droppable({
-      accept: ".user-short-info",
-      classes: {
-        "ui-droppable-active": "ui-state-highlight"
-      },
-      drop: function( event, ui ) {
-        //deleteImage( ui.draggable );
-      }
-    });
+	
 
+    $scope.jobs = DATA.data;
+
+    $scope.pageInfo = {screening_daa: {}};
+
+    $scope.getData = function(){
+      ApiService.hm_screening_data($scope.pageInfo.selectedJob).then(function(res){
+        $scope.pageInfo.screening_data = res.data
+      });
+    };
+
+    if($scope.jobs.length){
+      $scope.pageInfo.selectedJob = $stateParams.id != 0 ? $stateParams.id : $scope.jobs[0].id;
+
+      $scope.getData();
+    }
+    
+    $scope.onDrop = function(event, ui, status){
+      $rootScope.preloader = true;
+      ApiService.hm_update_screening($scope.pageInfo.selectedJob, ui.draggable[0].dataset.id, status).then(function(res){
+        $rootScope.preloader = false;
+        $scope.pageInfo.screening_data = res.data
+      })
+    };
+    
 }
