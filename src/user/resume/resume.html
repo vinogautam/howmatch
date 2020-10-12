@@ -117,9 +117,9 @@
     </div>
   </div>
 
-  <div class="">
+  <div class="res_de">
     <div class="emp_list" ng-repeat="exp in profile.experience_info">
-      <h5 class="title">{{exp.designation}} <i ng-click="pageInfo.exp_form_data = copy(exp);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#experienceModal');" class="res_con fa fa-pencil cp"></i></h5>
+      <h5 class="title">{{exp.designation}} <i ng-click="pageInfo.exp_form_data = copy(exp);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#experienceModal');" class="res_con fas fa-edit cp"></i></h5>
       <h6 class="res_subtitle">{{exp.organization}}</h6>
       <p ng-if="exp.current_org == 'yes'">{{month[exp.start_month]}} {{exp.start_year}} to Present</p>
       <p ng-if="exp.current_org == 'no'">{{month[exp.start_month]}} {{exp.start_year}} to {{month[exp.end_month]}} {{exp.end_year}}({{exp.dif}})</p>
@@ -139,9 +139,9 @@
       </a>
     </div>
   </div>
-  <div class="">
+  <div class="res_de">
     <div class="emp_list" ng-repeat="exp in profile.education">
-      <h5 class="title">{{exp.education}} {{exp.course}} {{exp.specialization}} <i ng-click="pageInfo.edu_form_data = copy(exp);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#educationModal');" class="res_con fa fa-pencil cp"></i></h5>
+      <h5 class="title">{{exp.education}} {{exp.course}} {{exp.specialization}} <i ng-click="pageInfo.edu_form_data = copy(exp);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#educationModal');" class="res_con fas fa-edit cp"></i></h5>
       <h6>{{exp.institute}}</h6>
       <p><b>Pass Out:</b> {{exp.year}}({{exp.type}}) <b>Grade:</b> {{exp.grade}}</p>
     </div>
@@ -493,14 +493,14 @@
           <form role="form" name="pref_form" ng-class="{submitted: pageInfo.submitted}">
             <div class="form-group form-group-default" ng-class="{invalid: expform.designation.$invalid}">
               <label>Prefered Working Location</label>
-              <select name="skills" class="form-control select2multiple"  ng-model="profile.preferred_location" multiple >
+              <select name="skills" class="form-control "  select2 ng-model="profile.preferred_location" multiple >
                 <option value="0">Select Location</option>
                 <option ng-repeat="loc in location" value="{{loc.id}}">{{loc.title}}</option>
               </select>           
             </div>
             <div class="form-group form-group-default" ng-class="{invalid: expform.category.$invalid}">
               <label>Expected Job Category</label>
-               <select name="skills" class="form-control select2multiple"  ng-model="profile.preferred_category" multiple >
+               <select name="skills" class="form-control " select2 ng-model="profile.preferred_category" multiple >
                 <option value="0">Select Category</option>
                 <option ng-repeat="cat in category" value="{{cat.id}}">{{cat.name}}</option>
               </select>
@@ -508,7 +508,7 @@
 
             <div class="form-group form-group-default" ng-class="{invalid: expform.joblevel.$invalid}">
               <label>Expected Job Level</label>
-               <select name="skills" class="form-control select2multiple"  ng-model="profile.preferred_joblevel" multiple >
+               <select name="skills" class="form-control " select2  ng-model="profile.preferred_joblevel" multiple >
                 <option value="0">Select Job Level</option>
                 <option ng-repeat="jl in lov.joblevel" value="{{jl.id}}">{{jl.title}}</option>
               </select>                       

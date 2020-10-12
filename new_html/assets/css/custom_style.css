@@ -28,7 +28,7 @@ padding: 0px!important;
 .modal label{
     display: inline-block;
 }
-.modal input{
+.modal input[type=radio]{
     width: auto;
 }
 .modal-header h5{
@@ -106,8 +106,8 @@ textarea.form-control {
 .can-tab li a{ color:#444; }
 .can-tab .nav-link.active, .can-tab .show > .nav-link{ background: none; color:#444 }
 .can-tab .nav-link span{ font-size: 12px;
-    background: #ccc; border-radius: 50px; width: 20px; height: 20px; display: inline-block;
-    padding: 1px 0px;  text-align: center;}
+    background: #fff; border-radius: 50px; width: 25px; height: 25px; display: inline-block;
+    padding: 4px 0px;  text-align: center;color: #ff6158;}
 .hr-resume-list{border-top:1px solid #ededed; }
 .hr-resume-list .resume-list, .tbl-resume-title{padding: 20px 0 5px;}
 .hr-resume-list .resume-list:hover{background:#fff4f3;}
@@ -160,7 +160,7 @@ textarea.form-control {
 .pgn i{
 	padding: 5px;
 }
-<<<<<<< HEAD
+
 .preloader{
     position: fixed;
     background: rgba(255,255,255,0.7);
@@ -186,11 +186,14 @@ textarea.form-control {
   padding:0;
 }
 .job-status-container .header-panel{
-  border: 1px solid #ff6158;
-  color:#ff6158;
+  border: 1px solid #ffff;
+  color:#ffff;
+  width: 92%;
+  font-weight: 600;
 }
 .job-status-container .draggable-panel{
   padding: 10px;
+  height: 100%;
 }
 .job-status-container .draggable-panel .user-short-info{
   margin: 0;
@@ -210,9 +213,11 @@ textarea.form-control {
     font-size: 14px;
     display: block;
     line-height: 10px;
+    color: #999;
 }
 .job-status-container .draggable-panel .user-short-info .user-experience{
   font-size: 12px;
+  color: #ccc;
 }
 .job-status-container .draggable-panel .user-short-info .fa-user{
     background: #ccc;
@@ -245,4 +250,38 @@ textarea.form-control {
 }
 .search .form-control {
     padding-left: 30px;
+}
+.ui-state-highlight{
+	background: none!important;
+	border: 1px dashed #ccc!important;
+	color: #ccc;
+
+}
+.header-panel {
+  	height:50px;
+    vertical-align:middle;
+    text-align:center;
+    padding:4px 10px;
+    color:#ffffff;
+    background-color:#ff6158;
+    position:relative;
+    display:inline-block;
+}
+.header-panel:after{
+    position:absolute;
+    right:-20px;
+    content:" ";
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 25px 0 25px 20px;
+    border-color: transparent transparent transparent #ff6158;
+    top: 0;
+}
+.res_de h5{
+	position: relative;
+}
+.res_de i{
+	position: absolute;
+	right: 0;
 }
