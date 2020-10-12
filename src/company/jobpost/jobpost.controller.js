@@ -39,7 +39,7 @@ function jobpostController(DATA, $rootScope, $scope, $state, ApiService, $window
             delete cpy.company_image;
             delete cpy.no_of_applicants;
     		ApiService.hm_save_job(cpy).then(function(res){
-    			$('#submitjobModal').modal('hide');
+    			$state.go('company.jobs');
     			ApiService.notification(res.msg, 'success');
     			$state.reload();
     		});

@@ -27,118 +27,11 @@
 <body class="{{currentState}}_page ">
   <ui-view></ui-view>
   <footer ng-include="'src/elements/footer.html'"></footer>
-  <div class="modal" tabindex="-1" role="dialog" id="signinModal" ng-controller="loginController">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header log-hd">
-          <h5 class="modal-title">Welcome to <span class="text-success">How</span> Match</h5>
-        </div>
-        <div class="modal-body bg-gra">
-          <div class="container-fluid" ng-include="'src/login/login.html'">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal" tabindex="-1" role="dialog" id="signupModal" ng-controller="signupController">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header log-hd">
-          <h5 class="modal-title">Welcome to <span class="text-success">How</span> Match</h5>
-        </div>
-        <div class="modal-body bg-gra">
-          <div class="container-fluid" ng-include="'src/signup/signup.html'">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" tabindex="-1" role="dialog" id="contactModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header log-hd">
-          <h5 class="modal-title">Welcome to <span class="text-success">How</span> Match</h5>
-        </div>
-        <div class="modal-body bg-gra">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <form name="contactform">
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="">Name</label>
-                      <input ng-model="contactForm.name" name="first_name" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="">Email</label>
-                      <input ng-model="contactForm.email" name="emil" type="email" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="">Phone Number</label>
-                      <input ng-model="contactForm.phone" name="phone" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="">Subject</label>
-                      <input ng-model="contactForm.subject" name="subject" type="text" class="form-control" placeholder="Subject">
-                    </div>
-                    <div class="form-group col-md-12">
-                      <label for="inputPassword4">Messge</label>
-                      <textarea ng-model="contactForm.message" cols="5" class="form-control" name="message" placeholder="Type you message here..."></textarea>
-                    </div>
-                  </div>               
-                  <div class="row">
-                    <div class="col-md-12 log-btn">
-                      <button ng-click="contact_query();" type="submit" class="btn btn-success">Submit</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
 
-
-  <div class="preloader" ng-if="preloader">
-    <div class="boxes">
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+  <div class="preloader spinner-border spinner-border-sm" ng-if="preloader">
+    
   </div>
   
 
@@ -189,6 +82,7 @@
   <script src="src/candidate_search/candidate_search.controller.js"></script>
   <script src="src/company/mypackage/mypackage.controller.js"></script>
   <script src="src/job-dashboard/job-dashboard.controller.js"></script>
+  <script src="src/contactus/contactus.controller.js"></script>
   <script src="new_html/assets/js/jquery-3.4.1.min.js"></script>
   <script src="new_html/assets/js/select2.min.js"></script>
   <script src="new_html/assets/js/bootstrap.min.js"></script>

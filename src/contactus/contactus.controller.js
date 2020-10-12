@@ -8,7 +8,7 @@ function contactusController($rootScope, $scope, $state, ApiService, $window, $t
     $scope.contact_query = function(){
         ApiService.contact_query($scope.contactForm).then(function(){
             ApiService.notification('Your query submitted successfully', 'success');
-            $("#contactModal").modal('hide');
+            $state.go('contactus')
         });
     };
 }
