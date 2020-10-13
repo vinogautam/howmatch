@@ -95,9 +95,9 @@
                   <li>
                     <a ui-sref="user.shortlist_job"><i class="fas fa-star"></i> View My Stared Jobs</a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a ui-sref="user.alerts"><i class="fas fa-star"></i> Job Matches</a>
-                  </li>
+                  </li> -->
               </ul>
               <h5>Account</h5>
               <ul class="user_navigation">    
@@ -146,7 +146,7 @@
                   </div>              
                   
                   <div style="font-size: 13px;">
-                    {{job.description}}
+                    {{job.description | shortContent:200}}
                   </div>
                   
                   <div class="row" style="font-size: 14px;">

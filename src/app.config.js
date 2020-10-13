@@ -216,7 +216,21 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'jobpostController',
             resolve: {
                 DATA: function(ApiService) {
-                  return ApiService.company_jobs();
+                  return ;
+                }
+            }
+        },
+        {
+            name: 'company.editjob',
+            label: 'Post Job',
+            auth: false,
+            restricted:false,
+            url: '/jobpost/:id',
+            templateUrl: 'src/company/jobpost/jobpost.html',
+            controller: 'jobpostController',
+            resolve: {
+                DATA: function(ApiService, $stateParams) {
+                  return ApiService.view_job($stateParams.id);
                 }
             }
         },
@@ -553,10 +567,13 @@ hmapp.directive("draggable", function($parse){
 hmapp.directive("datePicker", function(){
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModel) {
             $(element).datepicker({'format': 'yyyy-mm-dd', startDate: new Date()});
             
-            $(element).on('changeDate', function(ev){
+            $(element).on('change', function(ev){
+                ngModel.$setViewValue($(this).val());
+                $(this).trigger('change');
                 $(this).datepicker('hide');
                 if(!scope.$$phase) {
                     scope.$apply();
@@ -569,10 +586,13 @@ hmapp.directive("datePicker", function(){
 hmapp.directive("cdatePicker", function(){
     return {
         restrict: "A",
-        link: function (scope, element, attrs) {
+        require: '?ngModel',
+        link: function (scope, element, attrs, ngModel) {
             $(element).datepicker({'format': 'yyyy-mm-dd'});
             
             $(element).on('changeDate', function(ev){
+                ngModel.$setViewValue($(this).val());
+                $(this).trigger('change');
                 $(this).datepicker('hide');
             });
         }

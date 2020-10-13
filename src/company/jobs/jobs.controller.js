@@ -57,9 +57,8 @@ function jobsController(DATA, $rootScope, $scope, $state, ApiService, $window, $
     };
 
     $scope.edit_job = function(data){
-        data.last_date = new Date(data.last_date);
-    	$scope.job_form_data = data;
-    	$state.go('company.jobpost');
+        
+    	$state.go('company.jobpost', {id: id});
     };
 
     $scope.delete_job = function(data){

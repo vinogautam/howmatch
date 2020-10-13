@@ -164,7 +164,7 @@ function hm_update_screening(){
 	return hm_screening_data();
 }
 
-function hm_pages(){
+function hm_getpage(){
 	$response = get_row('select * from pages where slug = "'.$_GET['id'].'"');
 	return array('status' => 'Success', 'data' => $response);
 }

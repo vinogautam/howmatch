@@ -6,46 +6,60 @@
     </div>
 
   <div class="v_post row">
-    <div class="col-sm-6">
+    <div class="col-sm-8">
+      <h4>Resume</h4>
       <div class="resume-file-download" ng-repeat="res in profile.resume_list">
       <div class="res-view">
-        <h5 style="font-size: 16px;">{{$index+1}}). {{res.resume}}<span class="res-updated">(Uploaded on: {{res.updated_on | date: 'short'}})</span>
-        <a download="{{res.resume}}" href="admin/api/uploads/{{res.resume}}"><i class="fa fa-download"></i></a>
-        <i class="fa fa-trash" ng-click="delete('resume_list', $index);"></i>
+        <h5>
+          <span class="res_name">{{$index+1}}). {{res.resume}} </span>
+          <span class="res-updated">(Uploaded on: {{res.updated_on | date: 'short'}})</span>
+        
       </h5>
+      <div class="res_icon">
+        <a download="{{res.resume}}" href="admin/api/uploads/{{res.resume}}"><i class="fa fa-download"></i></a>
+          <i class="fas fa-trash" ng-click="delete('resume_list', $index);"></i>
+      </div>
+      
       </div>            
     </div>  
     </div>
-    <div class="col-sm-6">
-      <div class="resume-file-download" ng-repeat="res in profile.resume_list">
-      <div class="res-view">
-        <h5 style="font-size: 16px;">{{$index+1}}). {{res.resume}}<span class="res-updated">(Uploaded on: {{res.updated_on | date: 'short'}})</span>
-        <a download="{{res.resume}}" href="admin/api/uploads/{{res.resume}}"><i class="fa fa-download"></i></a>
-        <i class="fa fa-trash" ng-click="delete('resume_list', $index);"></i>
-      </h5>
-      </div>            
-    </div>       
-    </div>
-    <div class="col-sm-12">
+
+    <div class="col-sm-4">
       <div class="resume-file-uploaad">
-        <label for="name">CV Attachment </label>
-        <div class="resume row">
-          <div class="col-md-8">
+        <div class="resume row text-center">
+          
             <input format="doc,docx,pdf" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="" class="form-control">
-          </div>
-          <div class="col-md-4"><button trigger-upload="resume" class="btn btn-primary">Update Resume</button></div>
+          
+          <button trigger-upload="resume" class="btn btn-primary">Update Resume</button>
           
         </div>        
       </div>        
     </div>
+  </div>
+    <div class="section-divider"></div>
+    <div class="row">
+    <div class="col-sm-8">
+      <h4>Additional Documents</h4>
+      <div class="resume-file-download" ng-repeat="res in profile.Adddoc_list">
+        <div class="res-view ">
+          <h5>
+            <span class="res_name">{{$index+1}}). {{res.resume}} 
+            </span>
+            <span class="res-updated">(Uploaded on: {{res.updated_on | date: 'short'}})</span>
+        </h5>
+          <div class="text-right res_icon"><a download="{{res.adddoc}}" href="admin/api/uploads/{{res.adddoc}}"><i class="fa fa-download"></i></a>
+              <i class="fas fa-trash" ng-click="delete('Adddoc_list', $index);"></i></div>            
+        </div>   
+        </div>
+    </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-4">
       <div class="resume-file-uploaad">
-        <label for="name">Additional Documents</label>
-        <div class="resume row">
-          <div class="col-md-8">
-          <input format="doc,docx,pdf,jpg, jpeg, png" file-upload type="file" id="resume" ng-model="pageInfo.resume" after-upload="saveResume()" name="" class="form-control"></div>
-          <div class="col-md-4"><button trigger-upload="resume" class="btn btn-primary">Upload Documents</button></div>
+        <div class="resume row text-center">
+          
+          <input format="doc,docx,pdf,jpg, jpeg, png" file-upload type="file" id="adddoc" ng-model="pageInfo.adddoc" after-upload="saveAdddoc()" name="" class="form-control">
+          <button trigger-upload="adddoc" class="btn btn-primary">Upload Documents</button>
+          
         </div>        
       </div>       
     </div>        
@@ -90,7 +104,7 @@
       </a>
     </div>
   </div>
-  <div>
+  <div class="res_de">
     <div ng-repeat="sk in profile.skills_info" class="row no-margin" style="margin-bottom: 10px !important;">
       <div class="col-md-3">{{sk.skill}}<span ng-if="sk.primary == 'yes'">(Primary)</span></div>
       <div class="col-md-3">{{sk.year}} years {{sk.month}} months</div>
@@ -100,7 +114,7 @@
         </div>
       </div>
       <div class="col-md-2 text-right ">
-        <i ng-click="pageInfo.skills_form_data = copy(sk);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#skillModal');" class="res_con fas fa-edit cp"></i> <i style="color: red;" class=" res_con cp fa fa-trash" ng-click="delete('skills_info', $index)"></i>
+        <i ng-click="pageInfo.skills_form_data = copy(sk);pageInfo.submitted=false;pageInfo.index=$index;show_modal('#skillModal');" class="res_con fas fa-edit cp"></i> <i  class=" res_con cp fa fa-trash" ng-click="delete('skills_info', $index)"></i>
       </div>
     </div>
   </div>

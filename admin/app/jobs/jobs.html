@@ -145,7 +145,7 @@
             <div class="col-sm-12">
               <div class="form-group form-group-default" ng-class="{invalid: jobform.description.$invalid}">
                 <label>Description</label>
-                <textarea style="height: auto;" rows="5" name="description" ng-model="job_form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it"></textarea>
+                <textarea ui-tinymce="tinymceOptions" style="height: auto;" rows="5" name="description" ng-model="job_form_data.description" required id="appDescription" type="text" class="form-control" placeholder="Tell us more about it"></textarea>
               </div>
             </div>
           </div>

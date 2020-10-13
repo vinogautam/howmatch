@@ -4,8 +4,9 @@
     </div>
     <div class="header_btm header_job_single">
   <div class="header_job_single_inner container">
-    <div class="poster_company">
-      <img  alt="brand logo" src="assets/images/demologo.png">
+    <div class="poster_company"ng-class="{hv_img: profile.company_image}">
+              <i ng-if="!profile.company_image" class="fa fa-user" aria-hidden="true"></i>
+              <img ng-if="profile.company_image" ng-src="{{'admin/api/uploads/'+profile.company_image}}">
     </div> 
     <div class="poster_details">
       <h2>{{job.title}} <span class="varified"><i class="fas fa-check"></i>Verified</span></h2>

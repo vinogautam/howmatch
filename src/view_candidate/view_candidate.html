@@ -142,9 +142,10 @@
           </div>
           <div class="sjs_box sjs_box_action">
               <h3>Attachments</h3>
-              <a target="_blank" class="download-cv" href="#"><i class="fas fa-file-download"></i><span>Curriculum Vitae</span></a>
-            </div>
-          
+              <a target="_blank" class="download-cv" href="admin/api/uploads/{{candidate.resume_list[candidate.resume_list.length-1].resume}}" download="{{candidate.resume_list[resume_list.length-1].resume}}"><i class="fas fa-file-download"></i><span>Resume</span></a>
+
+              <a target="_blank" class="download-cv"  ng-repeat="list in candidate.Adddoc_list" href="admin/api/uploads/{{list.resume}}" download="{{list.resume}}"><i class="fas fa-file-download"></i><span>Additional Document</span></a>
+            </div>          
         </div>
       </div>
     </div>

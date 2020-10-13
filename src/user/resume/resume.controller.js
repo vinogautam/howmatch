@@ -29,6 +29,10 @@ function resumeController(DATA, $rootScope, $scope, $state, ApiService, $window,
 	if($scope.profile.resume_list === undefined){
 		$scope.profile.resume_list = [];
 	}
+	if($scope.profile.Adddoc_list === undefined){
+		$scope.profile.Adddoc_list = [];
+	}
+
 
 	if($scope.profile.benefits_list === undefined){
 		$scope.profile.benefits = {};
@@ -47,6 +51,10 @@ function resumeController(DATA, $rootScope, $scope, $state, ApiService, $window,
 
 	$scope.saveResume = function(){
 		$scope.profile.resume_list.push({resume: $scope.pageInfo.resume, updated_on: new Date().getTime()});
+		$scope.save();
+	};
+	$scope.saveAdddoc = function(){
+		$scope.profile.Adddoc_list.push({resume: $scope.pageInfo.adddoc, updated_on: new Date().getTime()});
 		$scope.save();
 	};
 

@@ -17,20 +17,10 @@ function jobpostController(DATA, $rootScope, $scope, $state, ApiService, $window
     $scope.pageInfo = {submitted: false};
     $scope.job_form_data = {industry: {}};
 
-    angular.forEach(DATA.data, function(j){
-        $arr = [ 'keywords', 'location'];
-        angular.forEach($arr, function(a){
-            j[a+'_name'] = [];
-            angular.forEach(j[a], function(l){
-                var ld = $rootScope.lov_obj[a][l] ? $rootScope.lov_obj[a][l] : '';
-                j[a+'_name'].push(ld);
-            });
-            j[a+'_name'] = j[a+'_name'].join(',');
-        });
-    });
-
-    $scope.totalItems = DATA.data;
-
+    if($rootScope.currentState == 'company.editjob'){
+        $scope.job_form_data = DATA.data;
+    }
+    
     $scope.save_job = function(frm){
     	$scope.pageInfo.submitted = true;
     	if(frm.$valid){

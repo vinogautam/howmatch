@@ -11,7 +11,10 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </div>
                         </div>
-                        </form>                    
+                        </form> 
+
+                        <div class="section-divider">
+                        </div>                   
               <div class="table-cont">
               
                <table class="table">
@@ -23,7 +26,7 @@
                     <th>Posted</th>
                     <th>Expires</th>
                     <th>Interest</th>
-                    <th>Contacted</th>
+                    
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -32,7 +35,7 @@
                     <td>
                       <h6>
 
-                        <a ui-sref="">{{job.title}}</a>
+                        <a ui-sref="job-dashboard({id: job.id})">{{job.title}}</a>
                       </h6>
                       
                     </td>
@@ -51,11 +54,9 @@
                     <td>
                       {{job.no_of_applicants}}
                     </td>
+                   
                     <td>
-                      1
-                    </td>
-                    <td>
-                      <i ng-click="edit_job(job.id);" class="fas fa-edit" data-toggle="tooltip" data-original-title="Edit Job" ></i> &nbsp;&nbsp;&nbsp;
+                      <i ui-sref="company.editjob({id: job.id})" class="fas fa-edit" data-toggle="tooltip" data-original-title="Edit Job" ></i> &nbsp;&nbsp;&nbsp;
                       <i ng-click="delete_job(job.id);" class="fa fa-trash cp" data-toggle="tooltip" data-original-title="Delete Job" ></i>
                     </td>
                   </tr> 

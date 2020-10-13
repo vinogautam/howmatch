@@ -296,7 +296,59 @@ input[type=file]{
 .res_de h5{
 	position: relative;
 }
-.res_de i{
+/*.res_de i{
 	position: absolute;
 	right: 0;
+}*/
+.res_name{
+	width: 50%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: inline-block;
+}
+.res-view h5{
+	font-size: 14px;
+	font-weight: normal;
+
+}
+.res-view{
+	position: relative;
+}
+.res-view span{
+	display: block;
+}
+.res_icon{
+	position: absolute;
+	right: 0;
+	top:5px;
+}
+.res_icon i{
+	padding: 5px;
+}
+.res-updated{
+	color: #716e6efc;
+}
+.resume button{
+    position: absolute;
+    height: 50px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+.progress-bar {
+    border: 1px solid #ff6158;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-bar div {
+    background: #ff6158a6;
+}
+.res_de  i{
+    color: var(--thm-color-1);
+}
+.tox{
+	display: none;
 }

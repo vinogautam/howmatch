@@ -60,4 +60,9 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         $rootScope.loggedInUserInfo = {};
         $state.go('login');
     }
+
+    $scope.tinymceOptions = {
+    plugins: 'link image code',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+  };
 }

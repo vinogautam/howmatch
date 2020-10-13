@@ -385,7 +385,7 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
     apiService.pages = function(data){
-        return httpService.post(APIURL+'hm_pages&id='+data, {})
+        return httpService.post(APIURL+'hm_getpage&id='+data, {})
         .then(function (res) {
             return res['data'];
         });

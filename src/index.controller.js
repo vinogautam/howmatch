@@ -102,4 +102,9 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         $scope.show_modal('#signupModal');
         $rootScope.$broadcast('signUpType', emp);
     };
+    
+    $scope.tinymceOptions = {
+    plugins: 'link image code',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+  };
 }
