@@ -246,3 +246,15 @@ textarea.form-control {
 .search .form-control {
     padding-left: 30px;
 }
+.payment_form form{
+  width: 100%;
+}
+.padl20{
+  padding-left: 20px;
+}
+.btn .btn-cons:hover{
+  color: #fff;
+}
+input[type=file]{
+  display: none;
+}

@@ -58,4 +58,9 @@ function companyProfileController(DATA, $rootScope, $scope, $state, ApiService, 
 	        .replace(/-+/g, '-'); // collapse dashes
 	    
 	}
+
+	$scope.category = [];
+    ApiService.hm_category().then(function(res){
+        $scope.category = res.data;
+    });
 }

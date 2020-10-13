@@ -21,6 +21,20 @@ function routes($stateProvider, $urlRouterProvider) {
             controller: 'homeController'
         },
         {
+            name: 'pages',
+            label: 'Page',
+            auth: false,
+            restricted:false,
+            url: '/pages/:id',
+            templateUrl: 'src/pages/pages.html',
+            controller: 'pagesController',
+            resolve: {
+                DATA: function(ApiService, $stateParams) {
+                  return ApiService.pages($stateParams.id);
+                }
+            }
+        },
+        {
             name: 'user',
             label: 'User',
             auth: true,
@@ -385,6 +399,15 @@ function routes($stateProvider, $urlRouterProvider) {
             url: '/packages/',
             templateUrl: 'src/packages/packages.html',
             controller: 'packagesController',
+        },
+        {
+            name: 'company.payment',
+            label: 'Payment',
+            auth: true,
+            restricted:false,
+            url: '/payment/',
+            templateUrl: 'src/payment/payment.html',
+            controller: 'paymentController',
         },
         {
             name: 'company_search',

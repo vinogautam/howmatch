@@ -379,7 +379,13 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
     };
 
     apiService.hm_change_password = function(data){
-        return httpService.post(APIURL+'hm_change_password?id='+$rootScope.loggedInUserInfo.ID, data)
+        return httpService.post(APIURL+'hm_change_password&id='+$rootScope.loggedInUserInfo.ID, data)
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+    apiService.pages = function(data){
+        return httpService.post(APIURL+'hm_pages&id='+data, {})
         .then(function (res) {
             return res['data'];
         });
