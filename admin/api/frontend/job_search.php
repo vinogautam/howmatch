@@ -130,3 +130,41 @@ function hm_page_view(){
 	}	
 	return array('status' => 'Success');
 }
+
+function hm_screening_data(){
+	$res = get_results("select * from job_applicants where job_id = ".$_GET['job']);
+
+	$response = array('job' => get_row("select * from jobs where id =". $_GET['job']));
+
+	$response['status'] = array();
+
+	$response['count'] = count($res);
+
+	$status = array('Received resume', 'Screening', 'Interview', 'Offered', 'Hired', 'Disqualified', 'Candidate Rejected');
+
+	foreach ($status as $key => $value) {
+		$response['status'][$value] = [];
+	}
+
+	foreach ($res as $key => $value) {
+		$st = $value['screening_status'] ? $value['screening_status'] : 'Received resume';
+
+		$data = get_all_meta('users', $value['user_id']);
+		$data['id'] = $value['id'];
+		$data['user_id'] = $value['user_id'];
+
+		$response['status'][$st][] = $data;
+	}
+
+	return array('status' => 'Success', 'data' => $response);
+}
+
+function hm_update_screening(){
+	update('job_applicants', array('screening_status' => $_POST['status']), array('id' => $_POST['id']));
+	return hm_screening_data();
+}
+
+function hm_pages(){
+	$response = get_row('select * from pages where slug = "'.$_GET['id'].'"');
+	return array('status' => 'Success', 'data' => $response);
+}

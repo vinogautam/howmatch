@@ -391,5 +391,19 @@ hmapp.factory('ApiService', function (httpService, $q, APIURL, $rootScope) {
         });
     };
 
+    apiService.hm_screening_data = function(id){
+        return httpService.post(APIURL+'hm_screening_data&job='+id, {})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
+    apiService.hm_update_screening = function(job, id, status){
+        return httpService.post(APIURL+'hm_update_screening&job='+job, {id: id, status: status})
+        .then(function (res) {
+            return res['data'];
+        });
+    };
+
     return apiService;
 });
