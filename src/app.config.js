@@ -195,7 +195,7 @@ function routes($stateProvider, $urlRouterProvider) {
         {
             name: 'company.jobs',
             label: 'Jobs',
-            auth: false,
+            auth: true,
             restricted:false,
             url: '/jobs',
             templateUrl: 'src/company/jobs/jobs.html',
@@ -209,7 +209,7 @@ function routes($stateProvider, $urlRouterProvider) {
         {
             name: 'company.jobpost',
             label: 'Post Job',
-            auth: false,
+            auth: true,
             restricted:false,
             url: '/jobpost',
             templateUrl: 'src/company/jobpost/jobpost.html',
@@ -223,7 +223,7 @@ function routes($stateProvider, $urlRouterProvider) {
         {
             name: 'company.editjob',
             label: 'Post Job',
-            auth: false,
+            auth: true,
             restricted:false,
             url: '/jobpost/:id',
             templateUrl: 'src/company/jobpost/jobpost.html',
@@ -397,7 +397,7 @@ function routes($stateProvider, $urlRouterProvider) {
             }
         },
         {
-            name: 'contactus',
+            name: 'contact',
             label: 'Contact Us',
             auth: false,
             restricted:false,
@@ -604,7 +604,13 @@ hmapp.directive("select2", function(){
         restrict: "A",
         require: '?ngModel',
         link: function (scope, element, attrs, ngModel) {
-            $(element).select2();
+            $(element).select2({matcher: function(params, data) {
+                params.term = params.term || '';
+                if (data.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+                    return data;
+                }
+                return false;
+            }});
 
             $(element).on("select2:select", function (e) { 
                 ngModel.$setViewValue($(this).val());

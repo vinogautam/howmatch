@@ -26,7 +26,7 @@
         <div class="form-row">
           <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.last_date.$invalid}">
               <label for="">Application DeadLine</label>
-              <input autocomplete="off" date-picker class="form-control" name="deadline" placeholder="" ng-model="job_form_data.last_date">
+              <input autocomplete="off"  type="date" class="form-control" name="deadline" placeholder="" ng-model="job_form_data.last_date">
           </div>
             <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.jtype.$invalid}">
               <label for="inputPassword4">Job Apply type </label>
@@ -42,7 +42,7 @@
               <input type="text" class="form-control" required="" name="deadline" placeholder="" ng-model="job_form_data.salary">
           </div>
             <div class=" col-sm-6 form-group form-group-default" ng-class="{invalid: jobform.experience.$invalid}">
-              <label for="inputPassword4">Experience</label>
+              <label for="inputPassword4">Experience(in years)</label>
               <input type="text" ng-model="job_form_data.experience" required="" class="form-control" name="">         
             </div>
         </div>
@@ -86,9 +86,9 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.tags.$invalid}">
+          <div class="col-sm-12 form-group form-group-default" ng-class="{invalid: jobform.keywords.$invalid}">
             <label>Tags</label>
-            <select class="form-control" multiple=""  select2 ng-model="job_form_data.tags">
+            <select class="form-control" name="keywords" multiple=""  select2 ng-model="job_form_data.keywords">
               <option ng-repeat="ind in lov.keywords" value="{{ind.id}}">{{ind.title}}</option>         
             </select>        
           </div>      

@@ -28,7 +28,7 @@
       </ul>   
     </div>
     <div class="poster_action">
-      <a class="addtofav" title="add to favourite" href="#"><i class="far fa-heart"></i></a>
+      <a ng-click="$event.preventDefault();shortlist_job();"  class="addtofav" title="add to favourite" href="#"><i class="{{job.shortlisted ? 'fas' : 'far'}} fa-heart"></i></a>
       <button ng-if="!job.applied" class="btn btn-third" type="download" ng-click="apply_job();">Apply </i></button>
       <button ng-if="job.applied" class="btn btn-third" type="download" ng-click="apply_job();">Applied <i class="fa fa-check"></i></button>
       

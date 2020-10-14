@@ -35,7 +35,7 @@ function hm_view_job(){
 	$data['title'] = stripslashes($data['title']);
 	$data['description'] = stripslashes($data['description']);
 
-	$data['category'] = get_data_by_id('category', $data['category']);
+	$data['category_detail'] = get_data_by_id('category', $data['category']);
 
 	$data['company_name'] = get_meta('users', $data['posted_by'], 'company_name');
 	$data['company_image'] = get_meta('users', $data['posted_by'], 'company_image');

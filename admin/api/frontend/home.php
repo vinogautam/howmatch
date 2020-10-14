@@ -12,6 +12,7 @@ function contact_query(){
 	if(isset($_POST['name'])){
 		$arr = array(
 			'name' => $_POST['name'],
+			'user_type' => $_POST['user_type'],
 			'email' => $_POST['email'],
 			'phone' => $_POST['phone'],
 			'subject' => $_POST['subject'],
@@ -74,5 +75,5 @@ function get_home_data(){
 		$featured_company[] = $value;
 	}
 
-	return array('status' => 'Success', 'data' => $data, 'location' => $location, 'featured_jobs' => array_chunk($featured_jobs, 4), 'featured_company' => $featured_company);
+	return array('status' => 'Success', 'data' => $data, 'location' => $location, 'featured_jobs' => $featured_jobs, 'featured_company' => $featured_company);
 }

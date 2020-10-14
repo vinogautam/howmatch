@@ -132,7 +132,7 @@
                 <img ng-if="cat_form_data.image" src="{{'api/uploads/'+cat_form_data.image}}">
               </div>
               <button trigger-upload="profile_picture" class="btn btn-primary">Upload Image</button>
-              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="cat_form_data.image">
+              <input file-upload type="file" id="profile_picture" name="profile_picture" ng-model="cat_form_data.image" required="">
               
           </div>
         </div>

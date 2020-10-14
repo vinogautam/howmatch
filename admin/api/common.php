@@ -30,7 +30,7 @@ function update($table, $array, $where){
 		$arr2[] = $key."='$value'";
 	}
 	$arr2 = implode(' and ', $arr2);
-	$sql = "UPDATE $table SET $arr where $arr2";
+	echo $sql = "UPDATE $table SET $arr where $arr2";
 	return mysqli_query($db, $sql);
 }
 

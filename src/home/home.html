@@ -18,7 +18,7 @@
               <div class="col-md-12 text-center" data-aos="fade-down" data-aos-delay="200">
                 <h2>Find the  most exciting<br> starup jobs</h2>
                 <p></p>
-                <a class="btn btn-third" href="browse-jobs.html">Know more
+                <a class="btn btn-third" ui-sref="job_search">Know more
                   <i class="material-icons">arrow_right_alt</i>
                 </a>
               </div>
@@ -28,7 +28,7 @@
                     <div class="banerSearch" data-aos="fade-up" data-aos-delay="200">
                       <div class="fild-wrap fw-job-title">
                         <i class="fas fa-briefcase"></i>
-                        <select ng-model="pageInfo.search.title" select2 name="state">
+                        <select ng-model="pageInfo.search.title" select2  name="state">
                           <option value=""> JOB TITLE, SKILL, INDUSTRY</option>
                           <option ng-repeat="key in lov.keywords" value="{{key.title}}">{{key.title}}</option>
                         </select>
@@ -238,268 +238,45 @@
     </div>
     <div class="container">
       <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Featured Jobs</h2>
-      <div class="row two_col featured_box_outer">
-        <div class="col-sm-6" >
+      <div class="row two_col featured_box_outer" >
+        <div class="col-sm-6" ng-repeat="fj in home_data.featured_jobs" >
           <div class="featured_box ">
             <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img  alt="brand logo" src="new_html/assets/images/c-logo-01.webp">
+              <a ui-sref="view_job({id: fj.id})">
+                <img width="150px;"  alt="brand logo" ng-src="{{fj.company_image ? 'admin/api/uploads/'+fj.company_image : 'html/images/company_placeholder.jpeg'}}">
               </a>
             </div>
             <div class='fb_content' >
               <h4>
-                <a href="job-single.html">2000 Words English to German</a>
+                <a ui-sref="view_job({id: fj.id})">{{fj.title}}</a>
               </h4>
               <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
+                
                 <li>
                   <a href="#">
                     <i class="fas fa-map-marker-alt"></i>
-                    New York
+                    {{lov.location[fj.location[0]].title}}
                   </a>
                 </li>
                 <li>
                   <a href="#">
                     <i class="far fa-clock"></i>
-                    2 days ago
+                   {{fj.posted_on | timeago}}
                   </a>
                 </li>
               </ul>
             </div>
             <div class="fb_action" >
-              <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-              <a class="btn btn-third" href="job-single.html">Apply Now</a>
-              <ul class="tags">
-                <li>copywriting</li>
-                <li>translating</li>
-                <li>editing</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" >
-          <div class="featured_box ">
-            <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img  alt="brand logo" src="new_html/assets/images/c-logo-02.webp">
-              </a>
-            </div>
-            <div class='fb_content' >
-              <h4>
-                <a href="job-single.html">Fix Python Selenium Code</a>
-              </h4>
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-map-marker-alt"></i>
-                    New York
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="far fa-clock"></i>
-                    3 days ago
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="fb_action"  >
-              <a title="add to favourite" href="#"><i class="fas fa-heart"></i></a>
-              <a class="btn btn-third" href="job-single.html">Apply Now</a>
-              <ul class="tags">
-                <li>Python</li>
-                <li>Flask</li>
-                <li>API Development</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" >
-          <div class="featured_box ">
-            <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img alt="brand logo" src="new_html/assets/images/c-logo-03.webp">
-              </a>
-            </div>
-            <div class='fb_content'>
-              <h4>
-                <a href="job-single.html">Restaurant General Manager</a>
-              </h4>
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-map-marker-alt"></i>
-                    New York
-                  </a>
-                </li> 
-                <li>
-                  <a href="#">
-                    <i class="far fa-clock"></i>
-                    5 days ago
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="fb_action" >
-              <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-              <a class="btn btn-third disabled" href="job-single.html">Applied</a>
-              <ul class="tags">
-                <li>Python</li>
-                <li>Flask</li>
-                <li>API Development</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" >
-          <div class="featured_box ">
-            <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img  alt="brand logo" src="new_html/assets/images/c-logo-05.webp">
-              </a>
-            </div>
-            <div class='fb_content' >
-              <h4>
-                <a href="job-single.html">PHP Core Website Fixes</a>
-              </h4>
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-map-marker-alt"></i>
-                    New York
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="far fa-clock"></i>
-                    5 days ago
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="fb_action" >
-              <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-              <a class="btn btn-third" href="job-single.html">Apply Now</a>
-              <ul class="tags">
-                <li>PHP</li>
-                <li>MySQL </li>
-                <li>API Development</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6"  >
-          <div class="featured_box "> 
-            <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img  alt="brand logo" src="new_html/assets/images/c-logo-05.webp">
-              </a>
-            </div>
-            <div class='fb_content' >
-              <h4>
-                <a href="job-single.html">Restaurant General Manager</a>
-              </h4>
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-map-marker-alt"></i>
-                    New York
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="far fa-clock"></i>
-                    7 days ago
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="fb_action" >
-              <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-              <a class="btn btn-third" href="job-single.html">Apply Now</a>
-              <ul class="tags">
-                <li>PHP</li>
-                <li>MySQL </li>
-                <li>API Development</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" >
-          <div class="featured_box ">
-            <div class="fb_image" >
-              <a href="compnay-profile-single.html">
-                <img  alt="brand logo" src="new_html/assets/images/c-logo-05.webp">
-              </a>
-            </div>
-            <div class='fb_content' >
-              <h4>
-                <a href="job-single.html">Food Delviery Mobile App</a>
-              </h4>
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-landmark"></i>
-                    Magna Aliqua
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-map-marker-alt"></i>
-                    New York
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="far fa-clock"></i>
-                    9 days ago
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="fb_action" >
-              <a title="add to favourite" href="#"><i class="far fa-heart"></i></a>
-              <a class="btn btn-third" href="job-single.html">Apply Now</a>
-              <ul class="tags">
-                <li>IOS</li>
-                <li>Android</li>
-                <li>mobile apps</li>
-                <li>design</li>
+              <a ng-click="$event.preventDefault();shortlist_job();"  class="addtofav" title="add to favourite" href="#"><i class="{{fj.shortlisted ? 'fas' : 'far'}} fa-heart"></i></a>
+              <a class="btn btn-third" ui-sref="view_job({id: fj.id})">Apply Now</a>
+              <ul class="tags" ng-repeat="tags in fj.keywords">
+                <li>{{lov.keywords[tags].title}}</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="col-md-12 text-right" > 
-          <a data-aos="fade-down" data-aos-delay="400" class="btn btn-primary" href="#">Browse All Jobs <i class="fas fa-long-arrow-alt-right"></i></a>
+          <a data-aos="fade-down" data-aos-delay="400" class="btn btn-primary" ui-sref="job_search">Browse All Jobs <i class="fas fa-long-arrow-alt-right"></i></a>
         </div>
       </div>
     </div>
@@ -609,10 +386,10 @@
             <img  alt="" src="new_html/assets/images/blog1.jpg" class="img-responsive">
             <div class="post_content">
               <h6>
-                <a href="blog-single.html">4 Secrets To Be Strategic About Your Job Search</a>
+                <a href="#">4 Secrets To Be Strategic About Your Job Search</a>
               </h6>
               <p>Queequeg removed himself to just beyond the head of the … </p>
-              <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              <a class="btn btn-secondary btn-rounded" href="#">Continue reading</a>
             </div>
           </div>
         </div>
@@ -621,10 +398,10 @@
             <img  alt="" src="new_html/assets/images/blog2.jpg" class="img-responsive">
             <div class="post_content">
               <h6>
-                <a href="blog-single.html">Why Long-Term Unemployment Isn’t As Bad As You Think</a>
+                <a href="#">Why Long-Term Unemployment Isn’t As Bad As You Think</a>
               </h6>
               <p>Queequeg removed himself to just beyond the head of the … </p>
-              <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              <a class="btn btn-secondary btn-rounded" href="#">Continue reading</a>
             </div>
           </div>
         </div>
@@ -633,10 +410,10 @@
             <img  alt="" src="new_html/assets/images/blog3.jpg" class="img-responsive">
             <div class="post_content">  
               <h6>
-                <a href="blog-single.html">6 Ways Your Job is Losing You Future Earnings</a>
+                <a href="#">6 Ways Your Job is Losing You Future Earnings</a>
               </h6>
               <p>Queequeg removed himself to just beyond the head of the … </p>
-              <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              <a class="btn btn-secondary btn-rounded" href="#">Continue reading</a>
             </div>
           </div>
         </div>

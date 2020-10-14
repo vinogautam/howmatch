@@ -149,15 +149,15 @@
                     {{job.description | shortContent:200}}
                   </div>
                   
-                  <div class="row" style="font-size: 14px;">
+                  <div class="row" style="font-size: 14px; margin-top: 10px; color:#ff6158;">
                     <div class="col-md-4">
-                      Company : {{job.company_name}}
+                      Company : <span style="color: #666">{{job.company_name}}</span>
                     </div>
                     <div class="col-md-4">
-                      Job Type: {{job.type}}
+                      Job Type: <span style="color: #666">{{job.type}}</span>
                     </div>
                     <div class="col-md-4">
-                      Category: {{category_data[job.category] ? category_data[job.category].name : '-'}}
+                      Category: <span style="color: #666">{{category_data[job.category] ? category_data[job.category].name : '-'}}</span>
                     </div>
                   </div>
                 </div>

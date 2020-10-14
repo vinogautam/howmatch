@@ -19,6 +19,7 @@ function jobpostController(DATA, $rootScope, $scope, $state, ApiService, $window
 
     if($rootScope.currentState == 'company.editjob'){
         $scope.job_form_data = DATA.data;
+        $scope.job_form_data.last_date = new Date($scope.job_form_data.last_date);
     }
     
     $scope.save_job = function(frm){
@@ -28,10 +29,16 @@ function jobpostController(DATA, $rootScope, $scope, $state, ApiService, $window
             delete cpy.company_name;
             delete cpy.company_image;
             delete cpy.no_of_applicants;
+            delete cpy.category_detail;;
+            delete cpy.company_slug_name;
+            delete cpy.shortlisted;
+            delete cpy.applied;
+            delete cpy.no_of_views;
+            delete cpy.no_of_applicants;
+
     		ApiService.hm_save_job(cpy).then(function(res){
-    			$state.go('company.jobs');
     			ApiService.notification(res.msg, 'success');
-    			$state.reload();
+                $state.go('company.jobs');
     		});
     	} else {
     		ApiService.notification('Please fill all required fields', 'error');

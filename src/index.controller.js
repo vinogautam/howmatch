@@ -26,6 +26,10 @@ function indexController($rootScope, $scope, $state, ApiService, $window, $timeo
         if(toState.name != fromState.name){
             $("html, body").animate({ scrollTop: 0 }, "slow");
         }
+
+        if($rootScope.currentStateDetails.auth && !$rootScope.loggedInUserInfo.id){
+            $state.go('login');
+        }
     });
 
     $scope.contactForm = {};

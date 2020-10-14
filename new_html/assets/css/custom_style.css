@@ -344,11 +344,37 @@ input[type=file]{
     overflow: hidden;
 }
 .progress-bar div {
-    background: #ff6158a6;
+    background: #ff6158;
 }
 .res_de  i{
     color: var(--thm-color-1);
 }
 .tox{
 	display: none;
+}
+.jq-toast-wrap{
+  z-index: 9999 !important;
+}
+.home_page .fild-wrap input{
+  padding-left: 50px;
+  margin: 0;
+  border: none;
+}
+.home_page .dropdownlist{
+  height: 200px;
+  overflow: hidden;
+  list-style: none;
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background: #fff;
+}
+.home_page .dropdownlist li:hover{
+  background: #ff6158;
+}
+.home_page .fild-wrap input:focus+.dropdownlist{
+  display: block;
+}
+.banerSearch{
+  overflow: initial !important;
 }
